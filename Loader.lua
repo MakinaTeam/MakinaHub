@@ -1017,7 +1017,7 @@ function Library:CreateWindow(a)
 	PatinumText.BackgroundTransparency = 1
 	PatinumText.Size = UDim2.new(0, 63, 0, 17)
 	PatinumText.BorderColor3 = Color3.fromRGB(223, 223, 223)
-	PatinumText.Text = "Makina Hub | "..os.date("%A, %B %dth, %Y.")
+	PatinumText.Text = "VN Hub | ".."<font color='rgb(0, 0, 255)'>[Testings]</font> 🇻🇳"
 	PatinumText.Name = "PatinumText"
 
 	local TimeMark = Instance.new("Frame")
