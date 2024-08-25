@@ -1042,7 +1042,7 @@ function Library:CreateWindow(a)
 	UserIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	UserIcon.ImageTransparency = 0.5
 	UserIcon.ImageColor3 = Color3.fromRGB(0, 0, 0)
-	UserIcon.Image = "rbxassetid://19002905465"
+  UserIcon.Image = "rbxassetid://15965809846"
 	UserIcon.Size = UDim2.new(0, 20, 0, 20)
 	UserIcon.BackgroundTransparency = 1
 	UserIcon.LayoutOrder = 4
