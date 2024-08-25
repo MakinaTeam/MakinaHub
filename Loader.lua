@@ -992,7 +992,7 @@ function Library:CreateWindow(a)
 	Credit.BorderSizePixel = 0
 	Credit.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	Credit.Size = UDim2.new(0, 217, 0, 43)
-	Credit.Position = UDim2.new(0, 0, 0.68605, 0)
+	Credit.Position = UDim2.new(0.38737, 0, 0.05667, 0)
 	Credit.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	Credit.Name = "Credit"
 
@@ -1010,15 +1010,142 @@ function Library:CreateWindow(a)
 
 	PatinumText.Parent = Credit
 	PatinumText.BorderSizePixel = 0
-	PatinumText.BackgroundColor3 = Color3.fromRGB(223, 223, 223)
+	PatinumText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	PatinumText.TextSize = 11
 	PatinumText.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-	PatinumText.TextColor3 = Color3.fromRGB(223, 223, 223)
+	PatinumText.TextColor3 = Color3.fromRGB(0, 0, 0)
 	PatinumText.BackgroundTransparency = 1
 	PatinumText.Size = UDim2.new(0, 63, 0, 17)
-	PatinumText.BorderColor3 = Color3.fromRGB(223, 223, 223)
-	PatinumText.Text = "Makina Hub | Meme Sea"
+	PatinumText.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	PatinumText.Text = "Patinum"
 	PatinumText.Name = "PatinumText"
+
+	Keed1.Parent = Credit
+	Keed1.BorderSizePixel = 0
+	Keed1.BackgroundColor3 = Color3.fromRGB(223, 223, 223)
+	Keed1.Size = UDim2.new(0, 1, 0, 23)
+	Keed1.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Keed1.Name = "Keed1"
+	Keed1.LayoutOrder = 1
+	Keed1.BackgroundTransparency = 0.4
+
+	Bang1.Parent = Credit
+	Bang1.BorderSizePixel = 0
+	Bang1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Bang1.Size = UDim2.new(0, 7, 0, 15)
+	Bang1.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Bang1.Name = "Bang1"
+	Bang1.LayoutOrder = 3
+	Bang1.BackgroundTransparency = 1
+
+	UserIcon.Parent = Credit
+	UserIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	UserIcon.ImageTransparency = 0.5
+	UserIcon.ImageColor3 = Color3.fromRGB(0, 0, 0)
+	UserIcon.Image = "rbxassetid://2790547157"
+	UserIcon.Size = UDim2.new(0, 20, 0, 20)
+	UserIcon.BackgroundTransparency = 1
+	UserIcon.LayoutOrder = 4
+	UserIcon.Name = "UserIcon"
+	UserIcon.Position = UDim2.new(0, 0, 0.68605, 0)
+
+	CreditText.Parent = Credit
+	CreditText.BorderSizePixel = 0
+	CreditText.TextTransparency = 0.5
+	CreditText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	CreditText.TextSize = 9
+	CreditText.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+	CreditText.TextColor3 = Color3.fromRGB(0, 0, 0)
+	CreditText.BackgroundTransparency = 1
+	CreditText.Size = UDim2.new(0, 55, 0, 17)
+	CreditText.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	CreditText.Text = a.Credit
+	CreditText.LayoutOrder = 5
+	CreditText.Name = "CreditText"
+	CreditText.Position = UDim2.new(0.41935, 0, 0.30233, 0)
+
+	Keed2.Parent = Credit
+	Keed2.BorderSizePixel = 0
+	Keed2.BackgroundColor3 = Color3.fromRGB(223, 223, 223)
+	Keed2.Size = UDim2.new(0, 1, 0, 23)
+	Keed2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Keed2.Name = "Keed2"
+	Keed2.LayoutOrder = 7
+	Keed2.BackgroundTransparency = 0.4
+
+	Bang2.Parent = Credit
+	Bang2.BorderSizePixel = 0
+	Bang2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Bang2.Size = UDim2.new(0, 7, 0, 15)
+	Bang2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Bang2.Name = "Bang1"
+	Bang2.LayoutOrder = 6
+	Bang2.BackgroundTransparency = 1
+
+	Bang3.Parent = Credit
+	Bang3.BorderSizePixel = 0
+	Bang3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Bang3.Size = UDim2.new(0, 7, 0, 15)
+	Bang3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Bang3.Name = "Bang1"
+	Bang3.LayoutOrder = 8
+	Bang3.BackgroundTransparency = 1
+
+	FPSValue.Parent = Credit
+	FPSValue.BorderSizePixel = 0
+	FPSValue.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	FPSValue.TextSize = 9
+	FPSValue.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+	FPSValue.TextColor3 = Color3.fromRGB(11, 192, 57)
+	FPSValue.BackgroundTransparency = 1
+	FPSValue.Size = UDim2.new(0, 22, 0, 17)
+	FPSValue.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	FPSValue.Text = "60"
+	FPSValue.LayoutOrder = 10
+	FPSValue.Name = "FPSValue"
+	FPSValue.Position = UDim2.new(0.82488, 0, 0.30233, 0)
+
+	local fps = 0
+	local lastTime = tick()
+	local Runser = game:GetService("RunService")
+	local rs = Runser.RenderStepped
+
+	rs:Connect(function()
+		local currentTime = tick()
+		local deltaTime = currentTime - lastTime
+		lastTime = currentTime
+		fps = 1 / deltaTime
+	end)
+
+	task.defer(function()
+		while wait(.5) do
+			pcall(function()
+				if fps >= 35 then
+					FPSValue.TextColor3 = Color3.fromRGB(11, 192, 57)
+				elseif fps >= 15 then
+					FPSValue.TextColor3 = Color3.fromRGB(195, 163, 0)
+				else
+					FPSValue.TextColor3 = Color3.fromRGB(195, 0, 3)
+				end
+				FPSValue.Text = string.format("%.0f", fps)
+			end)
+		end
+	end)
+
+	FPSText.Parent = Credit
+	FPSText.BorderSizePixel = 0
+	FPSText.TextTransparency = 0.5
+	FPSText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	FPSText.TextSize = 9
+	FPSText.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+	FPSText.TextColor3 = Color3.fromRGB(0, 0, 0)
+	FPSText.BackgroundTransparency = 1
+	FPSText.Size = UDim2.new(0, 18, 0, 17)
+	FPSText.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	FPSText.Text = "FPS"
+	FPSText.LayoutOrder = 9
+	FPSText.Name = "FPSText"
+	FPSText.Position = UDim2.new(0.74194, 0, 0.30233, 0)
 
 	local TimeMark = Instance.new("Frame")
 	local UICorner3 = Instance.new("UICorner")
