@@ -1013,11 +1013,11 @@ function Library:CreateWindow(a)
 	PatinumText.BackgroundColor3 = Color3.fromRGB(223, 223, 223)
 	PatinumText.TextSize = 11
 	PatinumText.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-	PatinumText.TextColor3 = Color3.fromRGB(0, 0, 0)
+	PatinumText.TextColor3 = Color3.fromRGB(223, 223, 223)
 	PatinumText.BackgroundTransparency = 1
 	PatinumText.Size = UDim2.new(0, 63, 0, 17)
 	PatinumText.BorderColor3 = Color3.fromRGB(223, 223, 223)
-	PatinumText.Text = "VN Hub | ".."<font color='rgb(0, 0, 255)'>[Testings]</font> 🇻🇳"
+	PatinumText.Text = "Makina Hub | Meme Sea"
 	PatinumText.Name = "PatinumText"
 
 	local TimeMark = Instance.new("Frame")
