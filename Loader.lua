@@ -963,21 +963,74 @@ function Library:CreateWindow(a)
 	UICorner.Parent = BackGround
 	UICorner.CornerRadius = UDim.new(0, 9)
 
-  local Credit = Instance.new("Frame")
+  	local Credit = Instance.new("Frame")
+	local UICorner2 = Instance.new("UICorner")
+	local UIStroke = Instance.new("UIStroke")
+	local UIListLayout = Instance.new("UIListLayout")
+	local PatinumText = Instance.new("TextLabel")
+	local Keed1 = Instance.new("Frame")
+	local Bang1 = Instance.new("Frame")
+	local UserIcon = Instance.new("ImageLabel")
+	local CreditText = Instance.new("TextLabel")
+	local Keed2 = Instance.new("Frame")
+	local Bang2 = Instance.new("Frame")
+	local Bang3 = Instance.new("Frame")
+	local FPSValue = Instance.new("TextLabel")
+	local FPSText = Instance.new("TextLabel")
 
-  local PatinumText =   Instance.new("TextLabel")
+	Credit.Parent = BackGround
+	Credit.BorderSizePixel = 0
+	Credit.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Credit.Size = UDim2.new(0, 217, 0, 43)
+	Credit.Position = UDim2.new(0.38737, 0, 0.05667, 0)
+	Credit.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Credit.Name = "Credit"
 
-	PatinumText.Parent = Credit
-	PatinumText.BorderSizePixel = 0
-	PatinumText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	PatinumText.TextSize = 11
-	PatinumText.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-	PatinumText.TextColor3 = Color3.fromRGB(0, 0, 0)
-	PatinumText.BackgroundTransparency = 1
-	PatinumText.Size = UDim2.new(0, 63, 0, 17)
-	PatinumText.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	PatinumText.Text = "Patinum"
-	PatinumText.Name = "PatinumText"
+	UICorner2.Parent = Credit
+	UICorner2.CornerRadius = UDim.new(0, 9)
+
+	UIStroke.Parent = Credit
+	UIStroke.Transparency = 0.6
+	UIStroke.Color = Color3.fromRGB(223, 223, 223)
+
+	UIListLayout.Parent = Credit
+	UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
+	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	UIListLayout.FillDirection = Enum.FillDirection.Horizontal
+	local Credit = Instance.new("Frame")
+	local UICorner2 = Instance.new("UICorner")
+	local UIStroke = Instance.new("UIStroke")
+	local UIListLayout = Instance.new("UIListLayout")
+	local PatinumText = Instance.new("TextLabel")
+	local Keed1 = Instance.new("Frame")
+	local Bang1 = Instance.new("Frame")
+	local UserIcon = Instance.new("ImageLabel")
+	local CreditText = Instance.new("TextLabel")
+	local Keed2 = Instance.new("Frame")
+	local Bang2 = Instance.new("Frame")
+	local Bang3 = Instance.new("Frame")
+	local FPSValue = Instance.new("TextLabel")
+	local FPSText = Instance.new("TextLabel")
+
+	Credit.Parent = BackGround
+	Credit.BorderSizePixel = 0
+	Credit.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Credit.Size = UDim2.new(0, 217, 0, 43)
+	Credit.Position = UDim2.new(0.38737, 0, 0.05667, 0)
+	Credit.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Credit.Name = "Credit"
+
+	UICorner2.Parent = Credit
+	UICorner2.CornerRadius = UDim.new(0, 9)
+
+	UIStroke.Parent = Credit
+	UIStroke.Transparency = 0.6
+	UIStroke.Color = Color3.fromRGB(223, 223, 223)
+
+	UIListLayout.Parent = Credit
+	UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
+	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	UIListLayout.FillDirection = Enum.FillDirection.Horizontal
 
 	local Tab = Instance.new("Frame")
 	local UIStroke4 = Instance.new("UIStroke")
