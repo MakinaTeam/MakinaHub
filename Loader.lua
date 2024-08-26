@@ -963,6 +963,22 @@ function Library:CreateWindow(a)
 	UICorner.Parent = BackGround
 	UICorner.CornerRadius = UDim.new(0, 9)
 
+  local Credit = Instance.new("Frame")
+
+  local PatinumText =   Instance.new("TextLabel")
+
+	PatinumText.Parent = Credit
+	PatinumText.BorderSizePixel = 0
+	PatinumText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	PatinumText.TextSize = 11
+	PatinumText.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+	PatinumText.TextColor3 = Color3.fromRGB(0, 0, 0)
+	PatinumText.BackgroundTransparency = 1
+	PatinumText.Size = UDim2.new(0, 63, 0, 17)
+	PatinumText.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	PatinumText.Text = "Patinum"
+	PatinumText.Name = "PatinumText"
+
 	local Tab = Instance.new("Frame")
 	local UIStroke4 = Instance.new("UIStroke")
 	local TabList = Instance.new("Frame")
