@@ -1022,15 +1022,6 @@ function Library:CreateWindow(a)
 	PatinumText.Text = "Patinum"
 	PatinumText.Name = "PatinumText"
 
-	Keed1.Parent = Credit
-	Keed1.BorderSizePixel = 0
-	Keed1.BackgroundColor3 = Color3.fromRGB(223, 223, 223)
-	Keed1.Size = UDim2.new(0, 1, 0, 23)
-	Keed1.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Keed1.Name = "Keed1"
-	Keed1.LayoutOrder = 1
-	Keed1.BackgroundTransparency = 0.4
-
 	Bang1.Parent = Credit
 	Bang1.BorderSizePixel = 0
 	Bang1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
