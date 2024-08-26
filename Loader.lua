@@ -836,7 +836,20 @@ Patinum.Name = "Patinum"
 Patinum.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 Patinum.ResetOnSpawn = false
 
+local CloseUIClick_1 = Instance.new("ImageButton")
 local UICorner_1 = Instance.new("UICorner")
+
+CloseUIClick_1.Name = "CloseUIClick"
+CloseUIClick_1.Parent = Patinum
+CloseUIClick_1.Active = true
+CloseUIClick_1.AnchorPoint = Vector2.new(0.5, 0.5)
+CloseUIClick_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+CloseUIClick_1.BackgroundTransparency = 1
+CloseUIClick_1.BorderColor3 = Color3.fromRGB(0,0,0)
+CloseUIClick_1.BorderSizePixel = 0
+CloseUIClick_1.Position = UDim2.new(0.064, 0,0.232, 0)
+CloseUIClick_1.Size = UDim2.new(0, 30,0, 30)
+CloseUIClick_1.Image = ""
 
 UICorner_1.Parent = CloseUIClick_1
 UICorner_1.CornerRadius = UDim.new(0,9)
