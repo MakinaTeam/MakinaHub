@@ -1044,7 +1044,7 @@ function Library:CreateWindow(a)
 	Discord["BorderSizePixel"] = 0
 	Discord["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
 	Discord["Size"] = UDim2.new(0, 43, 0, 43)
-	Discord["Position"] = UDim2.new(0.86737, 0, 0.05667, 0)
+	Discord["Position"] = UDim2.new(0, 0, 0.68605, 0)
 	Discord["BorderColor3"] = Color3.fromRGB(0, 0, 0)
 	Discord["Name"] = [[Discord]]
 
