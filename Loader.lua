@@ -1046,15 +1046,6 @@ function Library:CreateWindow(a)
 	CreditText.Name = "CreditText"
 	CreditText.Position = UDim2.new(0.41935, 0, 0.30233, 0)
 
-	Keed2.Parent = Credit
-	Keed2.BorderSizePixel = 0
-	Keed2.BackgroundColor3 = Color3.fromRGB(223, 223, 223)
-	Keed2.Size = UDim2.new(0, 1, 0, 23)
-	Keed2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Keed2.Name = "Keed2"
-	Keed2.LayoutOrder = 7
-	Keed2.BackgroundTransparency = 0.4
-
 	Bang2.Parent = Credit
 	Bang2.BorderSizePixel = 0
 	Bang2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
