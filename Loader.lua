@@ -990,20 +990,7 @@ function Library:CreateWindow(a)
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 	UIListLayout.FillDirection = Enum.FillDirection.Horizontal
 
-	CreditText.Parent = Credit
-	CreditText.BorderSizePixel = 0
-	CreditText.TextTransparency = 0.5
-	CreditText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	CreditText.TextSize = 9
-	CreditText.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-	CreditText.TextColor3 = Color3.fromRGB(0, 0, 0)
-	CreditText.BackgroundTransparency = 1
-	CreditText.Size = UDim2.new(0, 55, 0, 17)
-	CreditText.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	CreditText.Text = a.Credit
-	CreditText.LayoutOrder = 5
-	CreditText.Name = "CreditText"
-	CreditText.Position = UDim2.new(0.91935, 0, 0.30233, 0)
+	
 
 	local TimeMark = Instance.new("Frame")
 	local UICorner3 = Instance.new("UICorner")
