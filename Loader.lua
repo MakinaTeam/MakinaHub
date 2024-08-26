@@ -994,7 +994,7 @@ function Library:CreateWindow(a)
 	Credit.BorderSizePixel = 0
 	Credit.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	Credit.Size = UDim2.new(0, 217, 0, 43)
-	Credit.Position = UDim2.new(0.38737, 0, 0.05667, 0)
+	Credit.Position = UDim2.new(0.82488, 0, 0.30233, 0)
 	Credit.BorderColor3 = Color3.fromRGB(255, 255, 255)
 	Credit.Name = "Credit"
 
