@@ -968,15 +968,11 @@ function Library:CreateWindow(a)
 	local UIStroke = Instance.new("UIStroke")
 	local UIListLayout = Instance.new("UIListLayout")
 	local PatinumText = Instance.new("TextLabel")
-	local Keed1 = Instance.new("Frame")
 	local Bang1 = Instance.new("Frame")
 	local UserIcon = Instance.new("ImageLabel")
 	local CreditText = Instance.new("TextLabel")
-	local Keed2 = Instance.new("Frame")
 	local Bang2 = Instance.new("Frame")
 	local Bang3 = Instance.new("Frame")
-	local FPSValue = Instance.new("TextLabel")
-	local FPSText = Instance.new("TextLabel")
 
 	Credit.Parent = BackGround
 	Credit.BorderSizePixel = 0
@@ -1007,7 +1003,7 @@ function Library:CreateWindow(a)
 	PatinumText.BackgroundTransparency = 1
 	PatinumText.Size = UDim2.new(0, 63, 0, 17)
 	PatinumText.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	PatinumText.Text = "Patinum"
+	PatinumText.Text = "Makina Hub | "..os.date("%A, %B %dth, %Y.")
 	PatinumText.Name = "PatinumText"
 
 	Bang1.Parent = Credit
@@ -1062,62 +1058,6 @@ function Library:CreateWindow(a)
 	Bang3.Name = "Bang1"
 	Bang3.LayoutOrder = 8
 	Bang3.BackgroundTransparency = 1
-
-	FPSValue.Parent = Credit
-	FPSValue.BorderSizePixel = 0
-	FPSValue.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	FPSValue.TextSize = 9
-	FPSValue.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-	FPSValue.TextColor3 = Color3.fromRGB(11, 192, 57)
-	FPSValue.BackgroundTransparency = 1
-	FPSValue.Size = UDim2.new(0, 22, 0, 17)
-	FPSValue.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	FPSValue.Text = "60"
-	FPSValue.LayoutOrder = 10
-	FPSValue.Name = "FPSValue"
-	FPSValue.Position = UDim2.new(0.82488, 0, 0.30233, 0)
-
-	local fps = 0
-	local lastTime = tick()
-	local Runser = game:GetService("RunService")
-	local rs = Runser.RenderStepped
-
-	rs:Connect(function()
-		local currentTime = tick()
-		local deltaTime = currentTime - lastTime
-		lastTime = currentTime
-		fps = 1 / deltaTime
-	end)
-
-	task.defer(function()
-		while wait(.5) do
-			pcall(function()
-				if fps >= 35 then
-					FPSValue.TextColor3 = Color3.fromRGB(11, 192, 57)
-				elseif fps >= 15 then
-					FPSValue.TextColor3 = Color3.fromRGB(195, 163, 0)
-				else
-					FPSValue.TextColor3 = Color3.fromRGB(195, 0, 3)
-				end
-				FPSValue.Text = string.format("%.0f", fps)
-			end)
-		end
-	end)
-
-	FPSText.Parent = Credit
-	FPSText.BorderSizePixel = 0
-	FPSText.TextTransparency = 0.5
-	FPSText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	FPSText.TextSize = 9
-	FPSText.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-	FPSText.TextColor3 = Color3.fromRGB(0, 0, 0)
-	FPSText.BackgroundTransparency = 1
-	FPSText.Size = UDim2.new(0, 18, 0, 17)
-	FPSText.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	FPSText.Text = "FPS"
-	FPSText.LayoutOrder = 9
-	FPSText.Name = "FPSText"
-	FPSText.Position = UDim2.new(0.74194, 0, 0.30233, 0)
 
 	local TimeMark = Instance.new("Frame")
 	local UICorner3 = Instance.new("UICorner")
