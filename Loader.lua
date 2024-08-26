@@ -1005,15 +1005,6 @@ function Library:CreateWindow(a)
 	CreditText.Name = "CreditText"
 	CreditText.Position = UDim2.new(0.41935, 0, 0.30233, 0)
 
-   local Logo = Instance.new("ImageLabel")
-	Logo.Name = "Logo"
-	Logo.Parent = Top
-	Logo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Logo.BackgroundTransparency = 1.000
-	Logo.Position = UDim2.new(0, 0, 0.68605, 0)
-	Logo.Size = UDim2.new(0, 40, 0, 40)
-	Logo.Image = "rbxassetid://116137934957260"
-
 	local TimeMark = Instance.new("Frame")
 	local UICorner3 = Instance.new("UICorner")
 	local UIStroke2 = Instance.new("UIStroke")
@@ -1097,7 +1088,7 @@ function Library:CreateWindow(a)
 	Discord["BorderSizePixel"] = 0
 	Discord["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
 	Discord["Size"] = UDim2.new(0, 43, 0, 43)
-	Discord["Position"] = UDim2.new(0.86737, 0, 0.05667, 0)
+	Discord["Position"] = UDim2.new(0, 0, 0.68605, 0)
 	Discord["BorderColor3"] = Color3.fromRGB(0, 0, 0)
 	Discord["Name"] = [[Discord]]
 
@@ -1114,7 +1105,7 @@ function Library:CreateWindow(a)
 	IconDiscord["ImageColor3"] = Color3.fromRGB(0, 0, 0)
 	IconDiscord["ImageTransparency"] = 0.5
 	IconDiscord["AnchorPoint"] = Vector2.new(0.5, 0.5)
-	IconDiscord["Image"] = [[rbxassetid://18977771125]]
+	IconDiscord["Image"] = [[rbxassetid://116137934957260]]
 	IconDiscord["Size"] = UDim2.new(0.65, 0, 0.5, 0)
 	IconDiscord["BorderColor3"] = Color3.fromRGB(0, 0, 0)
 	IconDiscord["BackgroundTransparency"] = 1
