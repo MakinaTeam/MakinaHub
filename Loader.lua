@@ -839,18 +839,6 @@ Patinum.ResetOnSpawn = false
 local CloseUIClick_1 = Instance.new("ImageButton")
 local UICorner_1 = Instance.new("UICorner")
 
-CloseUIClick_1.Name = "CloseUIClick"
-CloseUIClick_1.Parent = Patinum
-CloseUIClick_1.Active = true
-CloseUIClick_1.AnchorPoint = Vector2.new(0.5, 0.5)
-CloseUIClick_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
-CloseUIClick_1.BackgroundTransparency = 1
-CloseUIClick_1.BorderColor3 = Color3.fromRGB(0,0,0)
-CloseUIClick_1.BorderSizePixel = 0
-CloseUIClick_1.Position = UDim2.new(0.064, 0,0.232, 0)
-CloseUIClick_1.Size = UDim2.new(0, 30,0, 30)
-CloseUIClick_1.Image = ""
-
 UICorner_1.Parent = CloseUIClick_1
 UICorner_1.CornerRadius = UDim.new(0,9)
 
@@ -994,8 +982,8 @@ function Library:CreateWindow(a)
 	Credit.BorderSizePixel = 0
 	Credit.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	Credit.Size = UDim2.new(0, 217, 0, 43)
-	Credit.Position = UDim2.new(0.82488, 0, 0.30233, 0)
-	Credit.BorderColor3 = Color3.fromRGB(255, 255, 255)
+	Credit.Position = UDim2.new(0.38737, 0, 0.05667, 0)
+	Credit.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	Credit.Name = "Credit"
 
 	UICorner2.Parent = Credit
@@ -1010,6 +998,18 @@ function Library:CreateWindow(a)
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 	UIListLayout.FillDirection = Enum.FillDirection.Horizontal
 
+	PatinumText.Parent = Credit
+	PatinumText.BorderSizePixel = 0
+	PatinumText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	PatinumText.TextSize = 11
+	PatinumText.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+	PatinumText.TextColor3 = Color3.fromRGB(0, 0, 0)
+	PatinumText.BackgroundTransparency = 1
+	PatinumText.Size = UDim2.new(0, 63, 0, 17)
+	PatinumText.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	PatinumText.Text = "Patinum"
+	PatinumText.Name = "PatinumText"
+
 	Bang1.Parent = Credit
 	Bang1.BorderSizePixel = 0
 	Bang1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -1018,6 +1018,17 @@ function Library:CreateWindow(a)
 	Bang1.Name = "Bang1"
 	Bang1.LayoutOrder = 3
 	Bang1.BackgroundTransparency = 1
+
+	UserIcon.Parent = Credit
+	UserIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	UserIcon.ImageTransparency = 0.5
+	UserIcon.ImageColor3 = Color3.fromRGB(0, 0, 0)
+	UserIcon.Image = "rbxassetid://2790547157"
+	UserIcon.Size = UDim2.new(0, 20, 0, 20)
+	UserIcon.BackgroundTransparency = 1
+	UserIcon.LayoutOrder = 4
+	UserIcon.Name = "UserIcon"
+	UserIcon.Position = UDim2.new(0, 0, 0.68605, 0)
 
 	CreditText.Parent = Credit
 	CreditText.BorderSizePixel = 0
@@ -1032,7 +1043,7 @@ function Library:CreateWindow(a)
 	CreditText.Text = a.Credit
 	CreditText.LayoutOrder = 5
 	CreditText.Name = "CreditText"
-	CreditText.Position = UDim2.new(0.82488, 0, 0.30233, 0)
+	CreditText.Position = UDim2.new(0.41935, 0, 0.30233, 0)
 
 	Bang2.Parent = Credit
 	Bang2.BorderSizePixel = 0
@@ -1051,6 +1062,62 @@ function Library:CreateWindow(a)
 	Bang3.Name = "Bang1"
 	Bang3.LayoutOrder = 8
 	Bang3.BackgroundTransparency = 1
+
+	FPSValue.Parent = Credit
+	FPSValue.BorderSizePixel = 0
+	FPSValue.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	FPSValue.TextSize = 9
+	FPSValue.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+	FPSValue.TextColor3 = Color3.fromRGB(11, 192, 57)
+	FPSValue.BackgroundTransparency = 1
+	FPSValue.Size = UDim2.new(0, 22, 0, 17)
+	FPSValue.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	FPSValue.Text = "60"
+	FPSValue.LayoutOrder = 10
+	FPSValue.Name = "FPSValue"
+	FPSValue.Position = UDim2.new(0.82488, 0, 0.30233, 0)
+
+	local fps = 0
+	local lastTime = tick()
+	local Runser = game:GetService("RunService")
+	local rs = Runser.RenderStepped
+
+	rs:Connect(function()
+		local currentTime = tick()
+		local deltaTime = currentTime - lastTime
+		lastTime = currentTime
+		fps = 1 / deltaTime
+	end)
+
+	task.defer(function()
+		while wait(.5) do
+			pcall(function()
+				if fps >= 35 then
+					FPSValue.TextColor3 = Color3.fromRGB(11, 192, 57)
+				elseif fps >= 15 then
+					FPSValue.TextColor3 = Color3.fromRGB(195, 163, 0)
+				else
+					FPSValue.TextColor3 = Color3.fromRGB(195, 0, 3)
+				end
+				FPSValue.Text = string.format("%.0f", fps)
+			end)
+		end
+	end)
+
+	FPSText.Parent = Credit
+	FPSText.BorderSizePixel = 0
+	FPSText.TextTransparency = 0.5
+	FPSText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	FPSText.TextSize = 9
+	FPSText.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+	FPSText.TextColor3 = Color3.fromRGB(0, 0, 0)
+	FPSText.BackgroundTransparency = 1
+	FPSText.Size = UDim2.new(0, 18, 0, 17)
+	FPSText.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	FPSText.Text = "FPS"
+	FPSText.LayoutOrder = 9
+	FPSText.Name = "FPSText"
+	FPSText.Position = UDim2.new(0.74194, 0, 0.30233, 0)
 
 	local TimeMark = Instance.new("Frame")
 	local UICorner3 = Instance.new("UICorner")
@@ -1152,7 +1219,7 @@ function Library:CreateWindow(a)
 	IconDiscord["ImageColor3"] = Color3.fromRGB(0, 0, 0)
 	IconDiscord["ImageTransparency"] = 0.5
 	IconDiscord["AnchorPoint"] = Vector2.new(0.5, 0.5)
-	IconDiscord["Image"] = [[http://www.roblox.com/asset/?id=12058969086]]
+	IconDiscord["Image"] = [[rbxassetid://18977771125]]
 	IconDiscord["Size"] = UDim2.new(0.65, 0, 0.5, 0)
 	IconDiscord["BorderColor3"] = Color3.fromRGB(0, 0, 0)
 	IconDiscord["BackgroundTransparency"] = 1
