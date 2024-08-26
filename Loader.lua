@@ -990,19 +990,6 @@ function Library:CreateWindow(a)
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 	UIListLayout.FillDirection = Enum.FillDirection.Horizontal
 
-	PatinumText.Parent = Credit
-	PatinumText.BorderSizePixel = 0
-	PatinumText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	PatinumText.TextSize = 11
-	PatinumText.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-	PatinumText.TextColor3 = Color3.fromRGB(0, 0, 0)
-	PatinumText.BackgroundTransparency = 1
-	PatinumText.Size = UDim2.new(0, 63, 0, 17)
-	PatinumText.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	PatinumText.Text = "Makina Hub | "
-	PatinumText.Name = "PatinumText"
-  PatinumText.Position = UDim2.new(0.41935, 0, 0.30233, 0)
-
 	CreditText.Parent = Credit
 	CreditText.BorderSizePixel = 0
 	CreditText.TextTransparency = 0.5
