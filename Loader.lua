@@ -972,7 +972,7 @@ function Library:CreateWindow(a)
 	TimeMark.BorderSizePixel = 0
 	TimeMark.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	TimeMark.Size = UDim2.new(0, 67, 0, 43)
-	TimeMark.Position = UDim2.new(0.22105, 0, 0.05667, 0)
+	TimeMark.Position = UDim2.new(0, 0, 0.68605, 0)
 	TimeMark.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	TimeMark.Name = "TimeMark"
 
@@ -1033,69 +1033,6 @@ function Library:CreateWindow(a)
 	Icon["BackgroundTransparency"] = 1
 	Icon["Name"] = [[Selected: timer_enabled]]
 	Icon["Position"] = UDim2.new(0.1028, 0, 0.55814, 0)
-
-	local Discord = Instance.new("Frame")
-	local UICorner4 = Instance.new("UICorner")
-	local UIStroke3 = Instance.new("UIStroke")
-	local IconDiscord = Instance.new("ImageLabel")
-	local DiscordClick = Instance.new("TextButton")
-
-	Discord["Parent"] = BackGround
-	Discord["BorderSizePixel"] = 0
-	Discord["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
-	Discord["Size"] = UDim2.new(0, 43, 0, 43)
-	Discord["Position"] = UDim2.new(0, 0, 0.68605, 0)
-	Discord["BorderColor3"] = Color3.fromRGB(0, 0, 0)
-	Discord["Name"] = [[Discord]]
-
-	UICorner4["Parent"] = Discord
-	UICorner4["CornerRadius"] = UDim.new(0, 9)
-
-	UIStroke3["Parent"] = Discord
-	UIStroke3["Transparency"] = 0.6
-	UIStroke3["Color"] = Color3.fromRGB(223, 223, 223)
-
-	IconDiscord["Parent"] = Discord
-	IconDiscord["BorderSizePixel"] = 0
-	IconDiscord["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
-	IconDiscord["ImageColor3"] = Color3.fromRGB(0, 0, 0)
-	IconDiscord["ImageTransparency"] = 0.5
-	IconDiscord["AnchorPoint"] = Vector2.new(0.5, 0.5)
-	IconDiscord["Image"] = [[rbxassetid://18977771125]]
-	IconDiscord["Size"] = UDim2.new(0.65, 0, 0.5, 0)
-	IconDiscord["BorderColor3"] = Color3.fromRGB(0, 0, 0)
-	IconDiscord["BackgroundTransparency"] = 1
-	IconDiscord["Name"] = [[IconDiscord]]
-	IconDiscord["Position"] = UDim2.new(0.5, 0, 0.5, 0)
-
-	DiscordClick["Parent"] = Discord
-	DiscordClick["BorderSizePixel"] = 0
-	DiscordClick["TextSize"] = 14
-	DiscordClick["TextColor3"] = Color3.fromRGB(0, 0, 0)
-	DiscordClick["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
-	DiscordClick["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-	DiscordClick["Size"] = UDim2.new(1, 0, 1, 0)
-	DiscordClick["BackgroundTransparency"] = 1
-	DiscordClick["Name"] = [[DiscordClick]]
-	DiscordClick["BorderColor3"] = Color3.fromRGB(0, 0, 0)
-	DiscordClick["Text"] = [[]]
-
-	local function tweensize(object, target)
-		local targetSize = target
-		local tweenInfo = TweenInfo.new(0.2, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
-		local tween = Tw:Create(object, tweenInfo, {Size = targetSize})
-		tween:Play()
-	end
-
-	DiscordClick.MouseButton1Click:Connect(function()
-		tweensize(Discord, UDim2.new(0, 35, 0, 35))
-		Tw:Create(Discord, Tf2, {Position = UDim2.new(0.863, 0,0.07, 0)}):Play()
-		task.delay(0.16, function()
-			tweensize(Discord, UDim2.new(0, 43, 0, 43))
-			Tw:Create(Discord, Tf2, {Position = UDim2.new(0.867, 0,0.057, 0)}):Play()
-		end)
-		setclipboard("https://discord.gg/D9YT7p2e5v")
-	end)
 
 	local Tab = Instance.new("Frame")
 	local UIStroke4 = Instance.new("UIStroke")
