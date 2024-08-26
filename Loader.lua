@@ -1040,16 +1040,6 @@ function Library:CreateWindow(a)
 	Bang1.LayoutOrder = 3
 	Bang1.BackgroundTransparency = 1
 
-	UserIcon.Parent = Credit
-	UserIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	UserIcon.ImageTransparency = 0.5
-	UserIcon.ImageColor3 = Color3.fromRGB(0, 0, 0)
-	UserIcon.Image = "rbxassetid://116137934957260"
-	UserIcon.Size = UDim2.new(0, 20, 0, 20)
-	UserIcon.BackgroundTransparency = 1
-	UserIcon.Name = "UserIcon"
-	UserIcon.Position = UDim2.new(0, 0, 0.68605, 0)
-
 	CreditText.Parent = Credit
 	CreditText.BorderSizePixel = 0
 	CreditText.TextTransparency = 0.5
