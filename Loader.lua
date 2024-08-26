@@ -1003,7 +1003,7 @@ function Library:CreateWindow(a)
 	CreditText.Text = a.Credit
 	CreditText.LayoutOrder = 5
 	CreditText.Name = "CreditText"
-	CreditText.Position = UDim2.new(0.41935, 0, 0.30233, 0)
+	CreditText.Position = UDim2.new(0.91935, 0, 0.30233, 0)
 
 	local TimeMark = Instance.new("Frame")
 	local UICorner3 = Instance.new("UICorner")
