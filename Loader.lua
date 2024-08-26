@@ -995,7 +995,7 @@ function Library:CreateWindow(a)
 	Text["BorderColor3"] = Color3.fromRGB(0, 0, 0)
 	Text["Text"] = [[SERVER]]
 	Text["Name"] = [[Text]]
-	Text["Position"] = UDim2.new(0.10931, 0, 0.12766, 0)
+	Text["Position"] = UDim2.new(0, 0, 0.68605, 0)
 
 	Des["Parent"] = TimeMark
 	Des["BorderSizePixel"] = 0
