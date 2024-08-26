@@ -972,7 +972,7 @@ function Library:CreateWindow(a)
 	TimeMark.BorderSizePixel = 0
 	TimeMark.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	TimeMark.Size = UDim2.new(0, 67, 0, 43)
-	TimeMark.Position = UDim2.new(0.22105, 0, 0.05667, 0)
+	TimeMark.Position = UDim2.new(0, 0, 0.68605, 0)
 	TimeMark.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	TimeMark.Name = "TimeMark"
 
