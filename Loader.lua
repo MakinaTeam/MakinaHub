@@ -995,7 +995,7 @@ function Library:CreateWindow(a)
 	Credit.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	Credit.Size = UDim2.new(0, 217, 0, 43)
 	Credit.Position = UDim2.new(0.38737, 0, 0.05667, 0)
-	Credit.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Credit.BorderColor3 = Color3.fromRGB(255, 255, 255)
 	Credit.Name = "Credit"
 
 	UICorner2.Parent = Credit
@@ -1009,18 +1009,6 @@ function Library:CreateWindow(a)
 	UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 	UIListLayout.FillDirection = Enum.FillDirection.Horizontal
-
-	PatinumText.Parent = Credit
-	PatinumText.BorderSizePixel = 0
-	PatinumText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	PatinumText.TextSize = 11
-	PatinumText.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-	PatinumText.TextColor3 = Color3.fromRGB(0, 0, 0)
-	PatinumText.BackgroundTransparency = 1
-	PatinumText.Size = UDim2.new(0, 63, 0, 17)
-	PatinumText.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	PatinumText.Text = "Patinum"
-	PatinumText.Name = "PatinumText"
 
 	Bang1.Parent = Credit
 	Bang1.BorderSizePixel = 0
@@ -1164,7 +1152,7 @@ function Library:CreateWindow(a)
 	IconDiscord["ImageColor3"] = Color3.fromRGB(0, 0, 0)
 	IconDiscord["ImageTransparency"] = 0.5
 	IconDiscord["AnchorPoint"] = Vector2.new(0.5, 0.5)
-	IconDiscord["Image"] = [[rbxassetid://117970823338448]]
+	IconDiscord["Image"] = [[http://www.roblox.com/asset/?id=12058969086]]
 	IconDiscord["Size"] = UDim2.new(0.65, 0, 0.5, 0)
 	IconDiscord["BorderColor3"] = Color3.fromRGB(0, 0, 0)
 	IconDiscord["BackgroundTransparency"] = 1
