@@ -1032,7 +1032,7 @@ function Library:CreateWindow(a)
 	CreditText.Text = a.Credit
 	CreditText.LayoutOrder = 5
 	CreditText.Name = "CreditText"
-	CreditText.Position = UDim2.new(0.41935, 0, 0.30233, 0)
+	CreditText.Position = UDim2.new(0.82488, 0, 0.30233, 0)
 
 	Bang2.Parent = Credit
 	Bang2.BorderSizePixel = 0
