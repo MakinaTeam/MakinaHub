@@ -883,7 +883,19 @@ UserInputService.InputChanged:Connect(function(input)
 end)
 
 function Library:CreateWindow(a)
+   local BackGround = Instance.new("CanvasGroup")
 	local UICorner =  Instance.new("UICorner")
+
+	BackGround.Parent = Patinum
+	BackGround.Active = true
+	BackGround.BorderSizePixel = 0
+	BackGround.BackgroundColor3 = Color3.fromRGB(242, 242, 242)
+	BackGround.AnchorPoint = Vector2.new(0.5, 0.5)
+	BackGround.GroupColor3 = Color3.fromRGB(242, 242, 242)
+	BackGround.Size = UDim2.new(0, 0, 0, 0)
+	BackGround.Position = UDim2.new(0.5, 0, 0.5, 0)
+	BackGround.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	BackGround.Name = "BackGround"
 
 	local function OpenUI()
 		local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
@@ -979,10 +991,6 @@ function Library:CreateWindow(a)
 	UIStroke.Transparency = 0.6
 	UIStroke.Color = Color3.fromRGB(223, 223, 223)
 
-	UIListLayout.Parent = Credit
-	UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
-	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-	UIListLayout.FillDirection = Enum.FillDirection.Horizontal
 	local Credit = Instance.new("Frame")
 	local UICorner2 = Instance.new("UICorner")
 	local UIStroke = Instance.new("UIStroke")
