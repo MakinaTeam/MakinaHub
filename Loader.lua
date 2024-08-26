@@ -893,7 +893,7 @@ function Library:CreateWindow(a)
 	BackGround.AnchorPoint = Vector2.new(0.5, 0.5)
 	BackGround.GroupColor3 = Color3.fromRGB(242, 242, 242)
 	BackGround.Size = UDim2.new(0, 0, 0, 0)
-	BackGround.Position = UDim2.new(0.5, 0, 0.5, 0)
+	BackGround.Position = UDim2.new(0, 0, 0.68605, 0)
 	BackGround.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	BackGround.Name = "BackGround"
 
@@ -969,7 +969,6 @@ function Library:CreateWindow(a)
 	local UIListLayout = Instance.new("UIListLayout")
 	local PatinumText = Instance.new("TextLabel")
 	local Bang1 = Instance.new("Frame")
-	local UserIcon = Instance.new("ImageLabel")
 	local CreditText = Instance.new("TextLabel")
 	local Bang2 = Instance.new("Frame")
 	local Bang3 = Instance.new("Frame")
@@ -1014,17 +1013,6 @@ function Library:CreateWindow(a)
 	Bang1.Name = "Bang1"
 	Bang1.LayoutOrder = 3
 	Bang1.BackgroundTransparency = 1
-
-	UserIcon.Parent = Credit
-	UserIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	UserIcon.ImageTransparency = 0.5
-	UserIcon.ImageColor3 = Color3.fromRGB(0, 0, 0)
-	UserIcon.Image = "rbxassetid://2790547157"
-	UserIcon.Size = UDim2.new(0, 20, 0, 20)
-	UserIcon.BackgroundTransparency = 1
-	UserIcon.LayoutOrder = 4
-	UserIcon.Name = "UserIcon"
-	UserIcon.Position = UDim2.new(0, 0, 0.68605, 0)
 
 	CreditText.Parent = Credit
 	CreditText.BorderSizePixel = 0
