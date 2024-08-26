@@ -836,6 +836,15 @@ Patinum.Name = "Patinum"
 Patinum.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 Patinum.ResetOnSpawn = false
 
+local UICorner_1 = Instance.new("UICorner")
+
+UICorner_1.Parent = CloseUIClick_1
+UICorner_1.CornerRadius = UDim.new(0,9)
+
+local UserInputService = game:GetService("UserInputService")
+
+local gui = CloseUIClick_1
+
 local dragging
 local dragInput
 local dragStart
@@ -900,6 +909,15 @@ function Library:CreateWindow(a)
 	end
 
 	OpenUI()
+
+
+	CloseUIClick_1.MouseButton1Click:Connect(function()
+		if BackGround.Visible then
+			BackGround.Visible = false
+		else
+			BackGround.Visible = true
+		end
+	end)
 
 	local UserInputService = game:GetService("UserInputService")
 
