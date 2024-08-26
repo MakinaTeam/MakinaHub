@@ -1249,7 +1249,7 @@ function Library:CreateWindow(a)
 	IconDiscord["ImageColor3"] = Color3.fromRGB(0, 0, 0)
 	IconDiscord["ImageTransparency"] = 0.5
 	IconDiscord["AnchorPoint"] = Vector2.new(0.5, 0.5)
-	IconDiscord["Image"] = [[rbxassetid://18977771125]]
+	IconDiscord["Image"] = [[http://www.roblox.com/asset/?id=12058969086]]
 	IconDiscord["Size"] = UDim2.new(0.65, 0, 0.5, 0)
 	IconDiscord["BorderColor3"] = Color3.fromRGB(0, 0, 0)
 	IconDiscord["BackgroundTransparency"] = 1
