@@ -893,7 +893,7 @@ function Library:CreateWindow(a)
 	BackGround.AnchorPoint = Vector2.new(0.5, 0.5)
 	BackGround.GroupColor3 = Color3.fromRGB(242, 242, 242)
 	BackGround.Size = UDim2.new(0, 0, 0, 0)
-	BackGround.Position = UDim2.new(0, 0, 0.68605, 0)
+	BackGround.Position = UDim2.new(0.5, 0, 0.5, 0)
 	BackGround.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	BackGround.Name = "BackGround"
 
@@ -968,10 +968,7 @@ function Library:CreateWindow(a)
 	local UIStroke = Instance.new("UIStroke")
 	local UIListLayout = Instance.new("UIListLayout")
 	local PatinumText = Instance.new("TextLabel")
-	local Bang1 = Instance.new("Frame")
 	local CreditText = Instance.new("TextLabel")
-	local Bang2 = Instance.new("Frame")
-	local Bang3 = Instance.new("Frame")
 
 	Credit.Parent = BackGround
 	Credit.BorderSizePixel = 0
@@ -1005,15 +1002,6 @@ function Library:CreateWindow(a)
 	PatinumText.Text = "Makina Hub | "..os.date("%A, %B %dth, %Y.")
 	PatinumText.Name = "PatinumText"
 
-	Bang1.Parent = Credit
-	Bang1.BorderSizePixel = 0
-	Bang1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Bang1.Size = UDim2.new(0, 7, 0, 15)
-	Bang1.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Bang1.Name = "Bang1"
-	Bang1.LayoutOrder = 3
-	Bang1.BackgroundTransparency = 1
-
 	CreditText.Parent = Credit
 	CreditText.BorderSizePixel = 0
 	CreditText.TextTransparency = 0.5
@@ -1028,24 +1016,6 @@ function Library:CreateWindow(a)
 	CreditText.LayoutOrder = 5
 	CreditText.Name = "CreditText"
 	CreditText.Position = UDim2.new(0.41935, 0, 0.30233, 0)
-
-	Bang2.Parent = Credit
-	Bang2.BorderSizePixel = 0
-	Bang2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Bang2.Size = UDim2.new(0, 7, 0, 15)
-	Bang2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Bang2.Name = "Bang1"
-	Bang2.LayoutOrder = 6
-	Bang2.BackgroundTransparency = 1
-
-	Bang3.Parent = Credit
-	Bang3.BorderSizePixel = 0
-	Bang3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Bang3.Size = UDim2.new(0, 7, 0, 15)
-	Bang3.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Bang3.Name = "Bang1"
-	Bang3.LayoutOrder = 8
-	Bang3.BackgroundTransparency = 1
 
 	local TimeMark = Instance.new("Frame")
 	local UICorner3 = Instance.new("UICorner")
