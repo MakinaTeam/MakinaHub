@@ -1001,6 +1001,7 @@ function Library:CreateWindow(a)
 	PatinumText.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	PatinumText.Text = "Makina Hub | "..os.date("%A, %B %dth, %Y.")
 	PatinumText.Name = "PatinumText"
+  PatinumText.Position = UDim2.new(0.41935, 0, 0.30233, 0)
 
 	CreditText.Parent = Credit
 	CreditText.BorderSizePixel = 0
