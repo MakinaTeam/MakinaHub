@@ -1005,6 +1005,15 @@ function Library:CreateWindow(a)
 	CreditText.Name = "CreditText"
 	CreditText.Position = UDim2.new(0.41935, 0, 0.30233, 0)
 
+   local Logo = Instance.new("ImageLabel")
+	Logo.Name = "Logo"
+	Logo.Parent = Top
+	Logo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Logo.BackgroundTransparency = 1.000
+	Logo.Position = UDim2.new(0, 0, 0.68605, 0)
+	Logo.Size = UDim2.new(0, 40, 0, 40)
+	Logo.Image = "rbxassetid://116137934957260"
+
 	local TimeMark = Instance.new("Frame")
 	local UICorner3 = Instance.new("UICorner")
 	local UIStroke2 = Instance.new("UIStroke")
