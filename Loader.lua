@@ -839,6 +839,18 @@ Patinum.ResetOnSpawn = false
 local CloseUIClick_1 = Instance.new("ImageButton")
 local UICorner_1 = Instance.new("UICorner")
 
+CloseUIClick_1.Name = "CloseUIClick"
+CloseUIClick_1.Parent = Patinum
+CloseUIClick_1.Active = true
+CloseUIClick_1.AnchorPoint = Vector2.new(0.5, 0.5)
+CloseUIClick_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+CloseUIClick_1.BackgroundTransparency = 1
+CloseUIClick_1.BorderColor3 = Color3.fromRGB(0,0,0)
+CloseUIClick_1.BorderSizePixel = 0
+CloseUIClick_1.Position = UDim2.new(0.064, 0,0.232, 0)
+CloseUIClick_1.Size = UDim2.new(0, 30,0, 30)
+CloseUIClick_1.Image = "rbxassetid://16384956178"
+
 UICorner_1.Parent = CloseUIClick_1
 UICorner_1.CornerRadius = UDim.new(0,9)
 
@@ -883,7 +895,7 @@ UserInputService.InputChanged:Connect(function(input)
 end)
 
 function Library:CreateWindow(a)
-   local BackGround = Instance.new("CanvasGroup")
+	local BackGround = Instance.new("CanvasGroup")
 	local UICorner =  Instance.new("UICorner")
 
 	BackGround.Parent = Patinum
@@ -896,6 +908,8 @@ function Library:CreateWindow(a)
 	BackGround.Position = UDim2.new(0.5, 0, 0.5, 0)
 	BackGround.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	BackGround.Name = "BackGround"
+
+
 
 	local function OpenUI()
 		local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
@@ -961,6 +975,180 @@ function Library:CreateWindow(a)
 	UICorner.Parent = BackGround
 	UICorner.CornerRadius = UDim.new(0, 9)
 
+	local Credit = Instance.new("Frame")
+	local UICorner2 = Instance.new("UICorner")
+	local UIStroke = Instance.new("UIStroke")
+	local UIListLayout = Instance.new("UIListLayout")
+	local PatinumText = Instance.new("TextLabel")
+	local Keed1 = Instance.new("Frame")
+	local Bang1 = Instance.new("Frame")
+	local UserIcon = Instance.new("ImageLabel")
+	local CreditText = Instance.new("TextLabel")
+	local Keed2 = Instance.new("Frame")
+	local Bang2 = Instance.new("Frame")
+	local Bang3 = Instance.new("Frame")
+	local FPSValue = Instance.new("TextLabel")
+	local FPSText = Instance.new("TextLabel")
+
+	Credit.Parent = BackGround
+	Credit.BorderSizePixel = 0
+	Credit.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Credit.Size = UDim2.new(0, 217, 0, 43)
+	Credit.Position = UDim2.new(0.38737, 0, 0.05667, 0)
+	Credit.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Credit.Name = "Credit"
+
+	UICorner2.Parent = Credit
+	UICorner2.CornerRadius = UDim.new(0, 9)
+
+	UIStroke.Parent = Credit
+	UIStroke.Transparency = 0.6
+	UIStroke.Color = Color3.fromRGB(223, 223, 223)
+
+	UIListLayout.Parent = Credit
+	UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
+	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	UIListLayout.FillDirection = Enum.FillDirection.Horizontal
+
+	PatinumText.Parent = Credit
+	PatinumText.BorderSizePixel = 0
+	PatinumText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	PatinumText.TextSize = 11
+	PatinumText.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+	PatinumText.TextColor3 = Color3.fromRGB(0, 0, 0)
+	PatinumText.BackgroundTransparency = 1
+	PatinumText.Size = UDim2.new(0, 63, 0, 17)
+	PatinumText.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	PatinumText.Text = "Makina Hub"
+	PatinumText.Name = "PatinumText"
+
+	Keed1.Parent = Credit
+	Keed1.BorderSizePixel = 0
+	Keed1.BackgroundColor3 = Color3.fromRGB(223, 223, 223)
+	Keed1.Size = UDim2.new(0, 1, 0, 23)
+	Keed1.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Keed1.Name = "Keed1"
+	Keed1.LayoutOrder = 1
+	Keed1.BackgroundTransparency = 0.4
+
+	Bang1.Parent = Credit
+	Bang1.BorderSizePixel = 0
+	Bang1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Bang1.Size = UDim2.new(0, 7, 0, 15)
+	Bang1.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Bang1.Name = "Bang1"
+	Bang1.LayoutOrder = 3
+	Bang1.BackgroundTransparency = 1
+
+	UserIcon.Parent = Credit
+	UserIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	UserIcon.ImageTransparency = 0.5
+	UserIcon.ImageColor3 = Color3.fromRGB(0, 0, 0)
+	UserIcon.Image = "rbxassetid://2790547157"
+	UserIcon.Size = UDim2.new(0, 20, 0, 20)
+	UserIcon.BackgroundTransparency = 1
+	UserIcon.LayoutOrder = 4
+	UserIcon.Name = "UserIcon"
+	UserIcon.Position = UDim2.new(0, 0, 0.68605, 0)
+
+	CreditText.Parent = Credit
+	CreditText.BorderSizePixel = 0
+	CreditText.TextTransparency = 0.5
+	CreditText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	CreditText.TextSize = 9
+	CreditText.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+	CreditText.TextColor3 = Color3.fromRGB(0, 0, 0)
+	CreditText.BackgroundTransparency = 1
+	CreditText.Size = UDim2.new(0, 55, 0, 17)
+	CreditText.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	CreditText.Text = a.Credit
+	CreditText.LayoutOrder = 5
+	CreditText.Name = "CreditText"
+	CreditText.Position = UDim2.new(0.41935, 0, 0.30233, 0)
+
+	Keed2.Parent = Credit
+	Keed2.BorderSizePixel = 0
+	Keed2.BackgroundColor3 = Color3.fromRGB(223, 223, 223)
+	Keed2.Size = UDim2.new(0, 1, 0, 23)
+	Keed2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Keed2.Name = "Keed2"
+	Keed2.LayoutOrder = 7
+	Keed2.BackgroundTransparency = 0.4
+
+	Bang2.Parent = Credit
+	Bang2.BorderSizePixel = 0
+	Bang2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Bang2.Size = UDim2.new(0, 7, 0, 15)
+	Bang2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Bang2.Name = "Bang1"
+	Bang2.LayoutOrder = 6
+	Bang2.BackgroundTransparency = 1
+
+	Bang3.Parent = Credit
+	Bang3.BorderSizePixel = 0
+	Bang3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Bang3.Size = UDim2.new(0, 7, 0, 15)
+	Bang3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Bang3.Name = "Bang1"
+	Bang3.LayoutOrder = 8
+	Bang3.BackgroundTransparency = 1
+
+	FPSValue.Parent = Credit
+	FPSValue.BorderSizePixel = 0
+	FPSValue.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	FPSValue.TextSize = 9
+	FPSValue.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+	FPSValue.TextColor3 = Color3.fromRGB(11, 192, 57)
+	FPSValue.BackgroundTransparency = 1
+	FPSValue.Size = UDim2.new(0, 22, 0, 17)
+	FPSValue.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	FPSValue.Text = "60"
+	FPSValue.LayoutOrder = 10
+	FPSValue.Name = "FPSValue"
+	FPSValue.Position = UDim2.new(0.82488, 0, 0.30233, 0)
+
+	local fps = 0
+	local lastTime = tick()
+	local Runser = game:GetService("RunService")
+	local rs = Runser.RenderStepped
+
+	rs:Connect(function()
+		local currentTime = tick()
+		local deltaTime = currentTime - lastTime
+		lastTime = currentTime
+		fps = 1 / deltaTime
+	end)
+
+	task.defer(function()
+		while wait(.5) do
+			pcall(function()
+				if fps >= 35 then
+					FPSValue.TextColor3 = Color3.fromRGB(11, 192, 57)
+				elseif fps >= 15 then
+					FPSValue.TextColor3 = Color3.fromRGB(195, 163, 0)
+				else
+					FPSValue.TextColor3 = Color3.fromRGB(195, 0, 3)
+				end
+				FPSValue.Text = string.format("%.0f", fps)
+			end)
+		end
+	end)
+
+	FPSText.Parent = Credit
+	FPSText.BorderSizePixel = 0
+	FPSText.TextTransparency = 0.5
+	FPSText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	FPSText.TextSize = 9
+	FPSText.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+	FPSText.TextColor3 = Color3.fromRGB(0, 0, 0)
+	FPSText.BackgroundTransparency = 1
+	FPSText.Size = UDim2.new(0, 18, 0, 17)
+	FPSText.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	FPSText.Text = "FPS"
+	FPSText.LayoutOrder = 9
+	FPSText.Name = "FPSText"
+	FPSText.Position = UDim2.new(0.74194, 0, 0.30233, 0)
+
 	local TimeMark = Instance.new("Frame")
 	local UICorner3 = Instance.new("UICorner")
 	local UIStroke2 = Instance.new("UIStroke")
@@ -972,7 +1160,7 @@ function Library:CreateWindow(a)
 	TimeMark.BorderSizePixel = 0
 	TimeMark.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	TimeMark.Size = UDim2.new(0, 67, 0, 43)
-	TimeMark.Position = UDim2.new(0, 0, 0.68605, 0)
+	TimeMark.Position = UDim2.new(0.22105, 0, 0.05667, 0)
 	TimeMark.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	TimeMark.Name = "TimeMark"
 
@@ -1033,6 +1221,69 @@ function Library:CreateWindow(a)
 	Icon["BackgroundTransparency"] = 1
 	Icon["Name"] = [[Selected: timer_enabled]]
 	Icon["Position"] = UDim2.new(0.1028, 0, 0.55814, 0)
+
+	local Discord = Instance.new("Frame")
+	local UICorner4 = Instance.new("UICorner")
+	local UIStroke3 = Instance.new("UIStroke")
+	local IconDiscord = Instance.new("ImageLabel")
+	local DiscordClick = Instance.new("TextButton")
+
+	Discord["Parent"] = BackGround
+	Discord["BorderSizePixel"] = 0
+	Discord["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+	Discord["Size"] = UDim2.new(0, 43, 0, 43)
+	Discord["Position"] = UDim2.new(0.86737, 0, 0.05667, 0)
+	Discord["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+	Discord["Name"] = [[Discord]]
+
+	UICorner4["Parent"] = Discord
+	UICorner4["CornerRadius"] = UDim.new(0, 9)
+
+	UIStroke3["Parent"] = Discord
+	UIStroke3["Transparency"] = 0.6
+	UIStroke3["Color"] = Color3.fromRGB(223, 223, 223)
+
+	IconDiscord["Parent"] = Discord
+	IconDiscord["BorderSizePixel"] = 0
+	IconDiscord["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+	IconDiscord["ImageColor3"] = Color3.fromRGB(0, 0, 0)
+	IconDiscord["ImageTransparency"] = 0.5
+	IconDiscord["AnchorPoint"] = Vector2.new(0.5, 0.5)
+	IconDiscord["Image"] = [[rbxassetid://18977771125]]
+	IconDiscord["Size"] = UDim2.new(0.65, 0, 0.5, 0)
+	IconDiscord["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+	IconDiscord["BackgroundTransparency"] = 1
+	IconDiscord["Name"] = [[IconDiscord]]
+	IconDiscord["Position"] = UDim2.new(0.5, 0, 0.5, 0)
+
+	DiscordClick["Parent"] = Discord
+	DiscordClick["BorderSizePixel"] = 0
+	DiscordClick["TextSize"] = 14
+	DiscordClick["TextColor3"] = Color3.fromRGB(0, 0, 0)
+	DiscordClick["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+	DiscordClick["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+	DiscordClick["Size"] = UDim2.new(1, 0, 1, 0)
+	DiscordClick["BackgroundTransparency"] = 1
+	DiscordClick["Name"] = [[DiscordClick]]
+	DiscordClick["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+	DiscordClick["Text"] = [[]]
+
+	local function tweensize(object, target)
+		local targetSize = target
+		local tweenInfo = TweenInfo.new(0.2, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
+		local tween = Tw:Create(object, tweenInfo, {Size = targetSize})
+		tween:Play()
+	end
+
+	DiscordClick.MouseButton1Click:Connect(function()
+		tweensize(Discord, UDim2.new(0, 35, 0, 35))
+		Tw:Create(Discord, Tf2, {Position = UDim2.new(0.863, 0,0.07, 0)}):Play()
+		task.delay(0.16, function()
+			tweensize(Discord, UDim2.new(0, 43, 0, 43))
+			Tw:Create(Discord, Tf2, {Position = UDim2.new(0.867, 0,0.057, 0)}):Play()
+		end)
+		setclipboard("https://discord.gg/D9YT7p2e5v")
+	end)
 
 	local Tab = Instance.new("Frame")
 	local UIStroke4 = Instance.new("UIStroke")
