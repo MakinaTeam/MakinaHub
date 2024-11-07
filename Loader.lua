@@ -4658,8 +4658,7 @@ spawn(
 							end
 						end
 					end
-				else					
-					toTarget(CFrame.new(-9506.234375, 172.130615234375, 6117.0771484375))
+				else							
 					for i, v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do
 						if v.Name == "Reborn Skeleton" then
 							toTarget(v.HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
