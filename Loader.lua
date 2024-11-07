@@ -4623,4 +4623,4 @@ Title = "- If you this checking, Status Bones !",
 Content = ""
 })
 
-DoBones:SetDesc("You' now having : "..CheckItem("Bones".."Bones"))
+DoBones:SetDesc("You' now having : "..CheckItem("Bones"..CheckItem("Bone"))
