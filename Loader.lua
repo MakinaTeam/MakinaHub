@@ -221,6 +221,9 @@ _G.Config = {
     ["Auto Dough King"] = false,
     ["Auto Dough King Hop"] = false,
   },
+   ["Bones"] = {
+    ["Auto Farm Bones"] = false,
+  },
 }
 end
 
@@ -4620,7 +4623,56 @@ Tabs.AutomaticTab:AddSection("\\\\ Bones //")
 
 local DoBones = Tabs.AutomaticTab:AddParagraph({
 Title = "- If you this checking, Status Bones !",
-Content = "You' now having : "..CheckItem"Bones"..("Bones")
+Content = "You' now having : "..CheckItem"Bones"..(" Bones")
 })
+Tabs.AutomaticTab:AddToggle("", {Title = "Auto Farm Bone", Default = _G.Config["Bones"]["Auto Farm Bones"],Description = "- If you click this Button, You will farm reborn skeleton  !" }):OnChanged(function(Value)
+_G.Auto_Bone = Value
+_G.Config["Bones"]["Auto Farm Bones"] =  Value
+Saveconfig()
+end)
 
---DoBones:SetDesc("You' now having : "..CheckItem("Bones"))
+
+spawn(
+            function()
+	while wait() do
+		if _G.Auto_Bone and World3 then
+			pcall(  
+                            function()
+				if game:GetService("Workspace").Enemies:FindFirstChild("Reborn Skeleton") or game:GetService("Workspace").Enemies:FindFirstChild("Living Zombie") or game:GetService("Workspace").Enemies:FindFirstChild("Demonic Soul") or game:GetService("Workspace").Enemies:FindFirstChild("Posessed Mummy") then
+					for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+						if v.Name == "Reborn Skeleton" or v.Name == "Living Zombie" or v.Name == "Demonic Soul" or v.Name == "Posessed Mummy" then
+							if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+								repeat
+									wait()
+									AutoHaki()
+									if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+									wait()
+									end
+			                        toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))						
+                                    EquipWeapon(_G.SelectWeapon)
+								    BringMob(v.Name,v.HumanoidRootPart.CFrame)						
+                                    v.HumanoidRootPart.CanCollide = false
+									v.Humanoid.WalkSpeed = 0
+									v.Head.CanCollide = false							
+								until not _G.AutoFarm or not v.Parent or v.Humanoid.Health <= 0
+							end
+						end
+					end
+				else					
+					toTarget(CFrame.new(-9506.234375, 172.130615234375, 6117.0771484375))
+					for i, v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do
+						if v.Name == "Reborn Skeleton" then
+							toTarget(v.HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
+						elseif v.Name == "Living Zombie" then
+							toTarget(v.HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
+						elseif v.Name == "Demonic Soul" then
+							toTarget(v.HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
+						elseif v.Name == "Posessed Mummy" then
+							toTarget(v.HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
+						end
+					end
+				end
+			end)
+		end
+	end
+end)
