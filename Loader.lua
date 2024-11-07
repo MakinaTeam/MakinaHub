@@ -4631,44 +4631,44 @@ _G.Config["Bones"]["Auto Farm Bones"] =  Value
 Saveconfig()
 end)
 
-
-spawn(
-            function()
-	while wait() do
-		if _G.Auto_Bone and World3 then
-			pcall(  
-                            function()
-				if game:GetService("Workspace").Enemies:FindFirstChild("Reborn Skeleton") or game:GetService("Workspace").Enemies:FindFirstChild("Living Zombie") or game:GetService("Workspace").Enemies:FindFirstChild("Demonic Soul") or game:GetService("Workspace").Enemies:FindFirstChild("Posessed Mummy") then
-					for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-						if v.Name == "Reborn Skeleton" or v.Name == "Living Zombie" or v.Name == "Demonic Soul" or v.Name == "Posessed Mummy" then
-							if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-								repeat
-									wait()
-									AutoHaki()									
-			                        toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))						
+spawn(function()
+    while task.wait() do
+        if _G.Auto_Bone then
+            pcall(function()
+                if game:GetService("Workspace").Enemies:FindFirstChild("Reborn Skeleton") or game:GetService("Workspace").Enemies:FindFirstChild("Living Zombie") or game:GetService("Workspace").Enemies:FindFirstChild("Demonic Soul") or game:GetService("Workspace").Enemies:FindFirstChild("Posessed Mummy") then
+                    for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                        if v.Name == "Reborn Skeleton" or v.Name == "Living Zombie" or v.Name == "Demonic Soul" or v.Name == "Posessed Mummy" then
+                            if v.Humanoid.Health > 0 and v:FindFirstChild("HumanoidRootPart") and v.Parent and _G.Auto_Bone then
+                                repeat task.wait()
+                                    AutoHaki()
+                                    toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
                                     EquipWeapon(_G.SelectWeapon)
-								    BringMob(v.Name,v.HumanoidRootPart.CFrame)						
+                                    BringMob(v.Name,v.HumanoidRootPart.CFrame)
                                     v.HumanoidRootPart.CanCollide = false
-									v.Humanoid.WalkSpeed = 0
-									v.Head.CanCollide = false							
-								until not _G.Auto_Bone or not v.Parent or v.Humanoid.Health <= 0
-							end
-						end
-					end
-				else							
-					for i, v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do
-						if v.Name == "Reborn Skeleton" then
-							toTarget(v.HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
-						elseif v.Name == "Living Zombie" then
-							toTarget(v.HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
-						elseif v.Name == "Demonic Soul" then
-							toTarget(v.HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
-						elseif v.Name == "Posessed Mummy" then
-							toTarget(v.HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
-						end
-					end
-				end
-			end)
-		end
-	end
+                                    v.Humanoid.WalkSpeed = 0
+                                    v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+                                until v.Humanoid.Health <= 0 or not v.Parent or not v:FindFirstChild("HumanoidRootPart") or not _G.Auto_Bone
+                            end
+                        end
+                    end
+                else
+                    if game:GetService("ReplicatedStorage"):FindFirstChild(Reborn Skeleton) then
+                        Tween(game:GetService("ReplicatedStorage"):FindFirstChild(Reborn Skeleton).HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
+                    end
+                       if game:GetService("ReplicatedStorage"):FindFirstChild(Living Zombie) then
+                        Tween(game:GetService("ReplicatedStorage"):FindFirstChild(Living Zombie).HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
+                    end
+                       if game:GetService("ReplicatedStorage"):FindFirstChild(Reborn Skeleton) then
+                        Tween(game:GetService("ReplicatedStorage"):FindFirstChild(Reborn Skeleton).HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
+                    end
+                    if game:GetService("ReplicatedStorage"):FindFirstChild(Demonic Soul) then
+                        Tween(game:GetService("ReplicatedStorage"):FindFirstChild(Demonic Soul).HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
+                    end
+                       if game:GetService("ReplicatedStorage"):FindFirstChild(Posessed Mummy) then
+                        Tween(game:GetService("ReplicatedStorage"):FindFirstChild(Posessed Mummy).HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
+                    end                                                                     
+                end
+            end)
+        end
+    end
 end)
