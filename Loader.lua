@@ -1,4831 +1,4673 @@
-
-local ui = game:GetService("CoreGui"):FindFirstChild("FluxLib")
-if ui then
-	ui:Destroy()
-end
-	local args = {
-		[1] = "SetTeam",
-		[2] = "Pirates"
-	}
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args)) 
-
-local Flux = loadstring(game:HttpGet"https://pastebin.com/raw/XLCrin0T")()
-
-local win = Flux:Window("Mink x Hub", "BLOX FRUIT", Color3.fromRGB(255,13,13), Enum.KeyCode.RightControl)
-local tgls = win:Tab("Auto Farm", "")
-local VirtualUser = game:GetService("VirtualUser")
-Firstsea = false
-Secondsea = false
-Test = "Magnet"
-local MyLevel = game.Players.localPlayer.Data.Level.Value
-local placeId = game.PlaceId
-if placeId == 2753915549 then
-	Firstsea = true
-elseif placeId == 4442272183 then
-	Secondsea = true
-end
-function CheckQuest()
-	local MyLevel = game.Players.localPlayer.Data.Level.Value
-	if Firstsea then
-		if MyLevel == 1 or MyLevel <= 9 then -- Bandit
-			Ms = "Bandit [Lv. 5]"
-			NaemQuest = "BanditQuest1"
-			LevelQuest = 1
-			NameMon = "Bandit"
-			CFrameQuest = CFrame.new(1061.66699, 16.5166187, 1544.52905, -0.942978859, -3.33851502e-09, 0.332852632, 7.04340497e-09, 1, 2.99841325e-08, -0.332852632, 3.06188177e-08, -0.942978859)
-			CFrameMon = CFrame.new(1199.31287, 52.2717781, 1536.91516, -0.929782331, 6.60215846e-08, -0.368109822, 3.9077392e-08, 1, 8.06501603e-08, 0.368109822, 6.06023249e-08, -0.929782331)
-		elseif MyLevel == 10 or MyLevel <= 14 then -- Monkey
-			Ms = "Monkey [Lv. 14]"
-			NaemQuest = "JungleQuest"
-			LevelQuest = 1
-			NameMon = "Monkey"
-			CFrameQuest = CFrame.new(-1604.12012, 36.8521118, 154.23732, 0.0648873374, -4.70858913e-06, -0.997892559, 1.41431883e-07, 1, -4.70933674e-06, 0.997892559, 1.64442184e-07, 0.0648873374)
-			CFrameMon = CFrame.new(-1402.74609, 98.5633316, 90.6417007, 0.836947978, 0, 0.547282517, -0, 1, -0, -0.547282517, 0, 0.836947978)
-		elseif MyLevel == 15 or MyLevel <= 29 then -- Gorilla
-			Ms = "Gorilla [Lv. 20]"
-			NaemQuest = "JungleQuest"
-			LevelQuest = 2
-			NameMon = "Gorilla"
-			CFrameQuest = CFrame.new(-1604.12012, 36.8521118, 154.23732, 0.0648873374, -4.70858913e-06, -0.997892559, 1.41431883e-07, 1, -4.70933674e-06, 0.997892559, 1.64442184e-07, 0.0648873374)
-			CFrameMon = CFrame.new(-1223.52808, 6.27936459, -502.292664, 0.310949147, -5.66602516e-08, 0.950426519, -3.37275488e-08, 1, 7.06501808e-08, -0.950426519, -5.40241736e-08, 0.310949147)
-		elseif MyLevel == 30 or MyLevel <= 39 then -- Pirate
-			Ms = "Pirate [Lv. 35]"
-			NaemQuest = "BuggyQuest1"
-			LevelQuest = 1
-			NameMon = "Pirate"
-			CFrameQuest = CFrame.new(-1139.59717, 4.75205183, 3825.16211, -0.959730506, -7.5857054e-09, 0.280922383, -4.06310328e-08, 1, -1.11807175e-07, -0.280922383, -1.18718916e-07, -0.959730506)
-			CFrameMon = CFrame.new(-1219.32324, 4.75205183, 3915.63452, -0.966492832, -6.91238853e-08, 0.25669381, -5.21195496e-08, 1, 7.3047012e-08, -0.25669381, 5.72206496e-08, -0.966492832)
-		elseif MyLevel == 40 or MyLevel <= 59 then -- Brute
-			Ms = "Brute [Lv. 45]"
-			NaemQuest = "BuggyQuest1"
-			LevelQuest = 2
-			NameMon = "Brute"
-			CFrameQuest = CFrame.new(-1139.59717, 4.75205183, 3825.16211, -0.959730506, -7.5857054e-09, 0.280922383, -4.06310328e-08, 1, -1.11807175e-07, -0.280922383, -1.18718916e-07, -0.959730506)
-			CFrameMon = CFrame.new(-1146.49646, 96.0936813, 4312.1333, -0.978175163, -1.53222057e-08, 0.207781896, -3.33316912e-08, 1, -8.31738873e-08, -0.207781896, -8.82843523e-08, -0.978175163)
-		elseif MyLevel == 60 or MyLevel <= 74 then -- Desert Bandit
-			Ms = "Desert Bandit [Lv. 60]"
-			NaemQuest = "DesertQuest"
-			LevelQuest = 1
-			NameMon = "Desert Bandit"
-			CFrameQuest = CFrame.new(897.031128, 6.43846416, 4388.97168, -0.804044724, 3.68233266e-08, 0.594568789, 6.97835176e-08, 1, 3.24365246e-08, -0.594568789, 6.75715199e-08, -0.804044724)
-			CFrameMon = CFrame.new(932.788818, 6.4503746, 4488.24609, -0.998625934, 3.08948351e-08, 0.0524050146, 2.79967303e-08, 1, -5.60361286e-08, -0.0524050146, -5.44919629e-08, -0.998625934)
-		elseif MyLevel == 75 or MyLevel <= 89 then -- Desert Officre
-			Ms = "Desert Officer [Lv. 70]"
-			NaemQuest = "DesertQuest"
-			LevelQuest = 2
-			NameMon = "Desert Officer"
-			CFrameQuest = CFrame.new(897.031128, 6.43846416, 4388.97168, -0.804044724, 3.68233266e-08, 0.594568789, 6.97835176e-08, 1, 3.24365246e-08, -0.594568789, 6.75715199e-08, -0.804044724)
-			CFrameMon = CFrame.new(1580.03198, 4.61375761, 4366.86426, 0.135744005, -6.44280718e-08, -0.990743816, 4.35738308e-08, 1, -5.90598574e-08, 0.990743816, -3.51534837e-08, 0.135744005)
-		elseif MyLevel == 90 or MyLevel <= 99 then -- Snow Bandits
-			Ms = "Snow Bandit [Lv. 90]"
-			NaemQuest = "SnowQuest"
-			LevelQuest = 1
-			NameMon = "Snow Bandits"
-			CFrameQuest = CFrame.new(1384.14001, 87.272789, -1297.06482, 0.348555952, -2.53947841e-09, -0.937287986, 1.49860568e-08, 1, 2.86358204e-09, 0.937287986, -1.50443711e-08, 0.348555952)
-			CFrameMon = CFrame.new(1370.24316, 102.403511, -1411.52905, 0.980274439, -1.12995728e-08, 0.197641045, -9.57343449e-09, 1, 1.04655214e-07, -0.197641045, -1.04482936e-07, 0.980274439)
-		elseif MyLevel == 100 or MyLevel <= 119 then -- Snowman
-			Ms = "Snowman [Lv. 100]"
-			NaemQuest = "SnowQuest"
-			LevelQuest = 2
-			NameMon = "Snowman"
-			CFrameQuest = CFrame.new(1384.14001, 87.272789, -1297.06482, 0.348555952, -2.53947841e-09, -0.937287986, 1.49860568e-08, 1, 2.86358204e-09, 0.937287986, -1.50443711e-08, 0.348555952)
-			CFrameMon = CFrame.new(1370.24316, 102.403511, -1411.52905, 0.980274439, -1.12995728e-08, 0.197641045, -9.57343449e-09, 1, 1.04655214e-07, -0.197641045, -1.04482936e-07, 0.980274439)
-		elseif MyLevel == 120 or MyLevel <= 149 then -- Chief Petty Officer
-			Ms = "Chief Petty Officer [Lv. 120]"
-			NaemQuest = "MarineQuest2"
-			LevelQuest = 1
-			NameMon = "Chief Petty Officer"
-			CFrameQuest = CFrame.new(-5035.0835, 28.6520386, 4325.29443, 0.0243340395, -7.08064647e-08, 0.999703884, -6.36926814e-08, 1, 7.23777944e-08, -0.999703884, -6.54350671e-08, 0.0243340395)
-			CFrameMon = CFrame.new(-4882.8623, 22.6520386, 4255.53516, 0.273695946, -5.40380647e-08, -0.96181643, 4.37720793e-08, 1, -4.37274998e-08, 0.96181643, -3.01326679e-08, 0.273695946)
-		elseif MyLevel == 150 or MyLevel <= 174 then -- Sky Bandit
-			Ms = "Sky Bandit [Lv. 150]"
-			NaemQuest = "SkyQuest"
-			LevelQuest = 1
-			NameMon = "Sky Bandit"
-			CFrameQuest = CFrame.new(-4841.83447, 717.669617, -2623.96436, -0.875942111, 5.59710216e-08, -0.482416272, 3.04023082e-08, 1, 6.08195947e-08, 0.482416272, 3.86078725e-08, -0.875942111)
-			CFrameMon = CFrame.new(-4970.74219, 294.544342, -2890.11353, -0.994874597, -8.61311236e-08, -0.101116329, -9.10836206e-08, 1, 4.43614923e-08, 0.101116329, 5.33441664e-08, -0.994874597)
-		elseif MyLevel == 175 or MyLevel <= 224 then -- Dark Master
-			Ms = "Dark Master [Lv. 175]"
-			NaemQuest = "SkyQuest"
-			LevelQuest = 2
-			NameMon = "Dark Master"
-			CFrameQuest = CFrame.new(-4841.83447, 717.669617, -2623.96436, -0.875942111, 5.59710216e-08, -0.482416272, 3.04023082e-08, 1, 6.08195947e-08, 0.482416272, 3.86078725e-08, -0.875942111)
-			CFrameMon = CFrame.new(-5220.58594, 430.693298, -2278.17456, -0.925375521, 1.12086873e-08, 0.379051805, -1.05115507e-08, 1, -5.52320891e-08, -0.379051805, -5.50948407e-08, -0.925375521)
-		elseif MyLevel == 225 or MyLevel <= 274 then -- Toga Warrior
-			Ms = "Toga Warrior [Lv. 225]"
-			NaemQuest = "ColosseumQuest"
-			LevelQuest = 1
-			NameMon = "Toga Warrior"
-			CFrameQuest = CFrame.new(-1576.11743, 7.38933945, -2983.30762, 0.576966345, 1.22114863e-09, 0.816767931, -3.58496594e-10, 1, -1.24185606e-09, -0.816767931, 4.2370063e-10, 0.576966345)
-			CFrameMon = CFrame.new(-1779.97583, 44.6077499, -2736.35474, 0.984437346, 4.10396339e-08, 0.175734788, -3.62286876e-08, 1, -3.05844168e-08, -0.175734788, 2.3741821e-08, 0.984437346)
-		elseif MyLevel == 275 or MyLevel <= 299 then -- Gladiato
-			Ms = "Gladiator [Lv. 275]"
-			NaemQuest = "ColosseumQuest"
-			LevelQuest = 2
-			NameMon = "Gladiato"
-			CFrameQuest = CFrame.new(-1576.11743, 7.38933945, -2983.30762, 0.576966345, 1.22114863e-09, 0.816767931, -3.58496594e-10, 1, -1.24185606e-09, -0.816767931, 4.2370063e-10, 0.576966345)
-			CFrameMon = CFrame.new(-1274.75903, 58.1895943, -3188.16309, 0.464524001, 6.21005611e-08, 0.885560572, -4.80449414e-09, 1, -6.76054768e-08, -0.885560572, 2.71497012e-08, 0.464524001)
-		elseif MyLevel == 300 or MyLevel <= 329 then -- Military Soldier
-			Ms = "Military Soldier [Lv. 300]"
-			NaemQuest = "MagmaQuest"
-			LevelQuest = 1
-			NameMon = "Military Soldier"
-			CFrameQuest = CFrame.new(-5316.55859, 12.2370615, 8517.2998, 0.588437557, -1.37880001e-08, -0.808542669, -2.10116209e-08, 1, -3.23446478e-08, 0.808542669, 3.60215964e-08, 0.588437557)
-			CFrameMon = CFrame.new(-5363.01123, 41.5056877, 8548.47266, -0.578253984, -3.29503091e-10, 0.815856814, 9.11209668e-08, 1, 6.498761e-08, -0.815856814, 1.11920997e-07, -0.578253984)
-		elseif MyLevel == 300 or MyLevel <= 374 then -- Military Spy
-			Ms = "Military Spy [Lv. 330]"
-			NaemQuest = "MagmaQuest"
-			LevelQuest = 2
-			NameMon = "Military Spy"
-			CFrameQuest = CFrame.new(-5316.55859, 12.2370615, 8517.2998, 0.588437557, -1.37880001e-08, -0.808542669, -2.10116209e-08, 1, -3.23446478e-08, 0.808542669, 3.60215964e-08, 0.588437557)
-			CFrameMon = CFrame.new(-5787.99023, 120.864456, 8762.25293, -0.188358366, -1.84706277e-08, 0.982100308, -1.23782129e-07, 1, -4.93306951e-09, -0.982100308, -1.22495649e-07, -0.188358366)
-		elseif MyLevel == 375 or MyLevel <= 399 then -- Fishman Warrior
-			Ms = "Fishman Warrior [Lv. 375]"
-			NaemQuest = "FishmanQuest"
-			LevelQuest = 1
-			NameMon = "Fishman Warrior"
-			CFrameQuest = CFrame.new(61122.5625, 18.4716396, 1568.16504, 0.893533468, 3.95251609e-09, 0.448996574, -2.34327455e-08, 1, 3.78297464e-08, -0.448996574, -4.43233645e-08, 0.893533468)
-			CFrameMon = CFrame.new(60946.6094, 48.6735229, 1525.91687, -0.0817126185, 8.90751153e-08, 0.996655822, 2.00889794e-08, 1, -8.77269599e-08, -0.996655822, 1.28533992e-08, -0.0817126185)
-		elseif MyLevel == 400 or MyLevel <= 449 then -- Fishman Commando
-			Ms = "Fishman Commando [Lv. 400]"
-			NaemQuest = "FishmanQuest"
-			LevelQuest = 2
-			NameMon = "Fishman Commando"
-			CFrameQuest = CFrame.new(61122.5625, 18.4716396, 1568.16504, 0.893533468, 3.95251609e-09, 0.448996574, -2.34327455e-08, 1, 3.78297464e-08, -0.448996574, -4.43233645e-08, 0.893533468)
-			CFrameMon = CFrame.new(61885.5039, 18.4828243, 1504.17896, 0.577502489, 0, -0.816389024, -0, 1.00000012, -0, 0.816389024, 0, 0.577502489)
-		elseif MyLevel == 450 or MyLevel <= 474 then -- God's Guards
-			Ms = "God's Guard [Lv. 450]"
-			NaemQuest = "SkyExp1Quest"
-			LevelQuest = 1
-			NameMon = "God's Guards"
-			CFrameQuest = CFrame.new(-4721.71436, 845.277161, -1954.20105, -0.999277651, -5.56969759e-09, 0.0380011722, -4.14751478e-09, 1, 3.75035256e-08, -0.0380011722, 3.73188307e-08, -0.999277651)
-			CFrameMon = CFrame.new(-4716.95703, 853.089722, -1933.92542, -0.93441087, -6.77488776e-09, -0.356197298, 1.12145182e-08, 1, -4.84390199e-08, 0.356197298, -4.92565206e-08, -0.93441087)
-		elseif MyLevel == 475 or MyLevel <= 524 then -- Shandas
-			Ms = "Shanda [Lv. 475]"
-			NaemQuest = "SkyExp1Quest"
-			LevelQuest = 2
-			NameMon = "Shandas"
-			CFrameQuest = CFrame.new(-7863.63672, 5545.49316, -379.826324, 0.362120807, -1.98046344e-08, -0.93213129, 4.05822291e-08, 1, -5.48095125e-09, 0.93213129, -3.58431969e-08, 0.362120807)
-			CFrameMon = CFrame.new(-7685.12354, 5601.05127, -443.171509, 0.150056243, 1.79768236e-08, -0.988677442, 6.67798661e-09, 1, 1.91962481e-08, 0.988677442, -9.48289181e-09, 0.150056243)
-		elseif MyLevel == 525 or MyLevel <= 549 then -- Royal Squad
-			Ms = "Royal Squad [Lv. 525]"
-			NaemQuest = "SkyExp2Quest"
-			LevelQuest = 1
-			NameMon = "Royal Squad"
-			CFrameQuest = CFrame.new(-7902.66895, 5635.96387, -1411.71802, 0.0504222959, 2.5710392e-08, 0.998727977, 1.12541557e-07, 1, -3.14249675e-08, -0.998727977, 1.13982921e-07, 0.0504222959)
-			CFrameMon = CFrame.new(-7685.02051, 5606.87842, -1442.729, 0.561947823, 7.69527464e-09, -0.827172697, -4.24974544e-09, 1, 6.41599973e-09, 0.827172697, -9.01838604e-11, 0.561947823)
-		elseif MyLevel == 550 or MyLevel <= 624 then -- Royal Soldier
-			Ms = "Royal Soldier [Lv. 550]"
-			NaemQuest = "SkyExp2Quest"
-			LevelQuest = 2
-			NameMon = "Royal Soldier"
-			CFrameQuest = CFrame.new(-7902.66895, 5635.96387, -1411.71802, 0.0504222959, 2.5710392e-08, 0.998727977, 1.12541557e-07, 1, -3.14249675e-08, -0.998727977, 1.13982921e-07, 0.0504222959)
-			CFrameMon = CFrame.new(-7864.44775, 5661.94092, -1708.22351, 0.998389959, 2.28686137e-09, -0.0567218624, 1.99431383e-09, 1, 7.54200258e-08, 0.0567218624, -7.54117195e-08, 0.998389959)
-		elseif MyLevel == 625 or MyLevel <= 649 then -- Galley Pirate
-			Ms = "Galley Pirate [Lv. 625]"
-			NaemQuest = "FountainQuest"
-			LevelQuest = 1
-			NameMon = "Galley Pirate"
-			CFrameQuest = CFrame.new(5254.60156, 38.5011406, 4049.69678, -0.0504891425, -3.62066501e-08, -0.998724639, -9.87921389e-09, 1, -3.57534553e-08, 0.998724639, 8.06145284e-09, -0.0504891425)
-			CFrameMon = CFrame.new(5595.06982, 41.5013695, 3961.47095, -0.992138803, -2.11610267e-08, -0.125142589, -1.34249509e-08, 1, -6.26613996e-08, 0.125142589, -6.04887518e-08, -0.992138803)
-		elseif MyLevel >= 650 then -- Galley Captain
-			Ms = "Galley Captain [Lv. 650]"
-			NaemQuest = "FountainQuest"
-			LevelQuest = 2
-			NameMon = "Galley Captain"
-			CFrameQuest = CFrame.new(5254.60156, 38.5011406, 4049.69678, -0.0504891425, -3.62066501e-08, -0.998724639, -9.87921389e-09, 1, -3.57534553e-08, 0.998724639, 8.06145284e-09, -0.0504891425)
-			CFrameMon = CFrame.new(5658.5752, 38.5361786, 4928.93506, -0.996873081, 2.12391046e-06, -0.0790185928, 2.16989656e-06, 1, -4.96097414e-07, 0.0790185928, -6.66008248e-07, -0.996873081)
-		end
-	end
-	if Secondsea then
-		if MyLevel == 700 or MyLevel <= 724 then -- Raider [Lv. 700]
-			Ms = "Raider [Lv. 700]"
-			NaemQuest = "Area1Quest"
-			LevelQuest = 1
-			NameMon = "Raider"
-			CFrameQuest = CFrame.new(-424.080078, 73.0055847, 1836.91589, 0.253544956, -1.42165932e-08, 0.967323601, -6.00147771e-08, 1, 3.04272909e-08, -0.967323601, -6.5768397e-08, 0.253544956)
-			CFrameMon = CFrame.new(-737.026123, 39.1748352, 2392.57959, 0.272128761, 0, -0.962260842, -0, 1, -0, 0.962260842, 0, 0.272128761)
-		elseif MyLevel == 725 or MyLevel <= 774 then -- Mercenary [Lv. 725]
-			Ms = "Mercenary [Lv. 725]"
-			NaemQuest = "Area1Quest"
-			LevelQuest = 2
-			NameMon = "Mercenary"
-			CFrameQuest = CFrame.new(-424.080078, 73.0055847, 1836.91589, 0.253544956, -1.42165932e-08, 0.967323601, -6.00147771e-08, 1, 3.04272909e-08, -0.967323601, -6.5768397e-08, 0.253544956)
-			CFrameMon = CFrame.new(-973.731995, 95.8733215, 1836.46936, 0.999135971, 2.02326991e-08, -0.0415605344, -1.90767793e-08, 1, 2.82094952e-08, 0.0415605344, -2.73922804e-08, 0.999135971)
-		elseif MyLevel == 775 or MyLevel <= 799 then -- Swan Pirate [Lv. 775]
-			Ms = "Swan Pirate [Lv. 775]"
-			NaemQuest = "Area2Quest"
-			LevelQuest = 1
-			NameMon = "Swan Pirate"
-			CFrameQuest = CFrame.new(632.698608, 73.1055908, 918.666321, -0.0319722369, 8.96074881e-10, -0.999488771, 1.36326533e-10, 1, 8.92172336e-10, 0.999488771, -1.07732087e-10, -0.0319722369)
-			CFrameMon = CFrame.new(970.369446, 142.653198, 1217.3667, 0.162079468, -4.85452638e-08, -0.986777723, 1.03357589e-08, 1, -4.74980872e-08, 0.986777723, -2.50063148e-09, 0.162079468)
-		elseif MyLevel == 800 or MyLevel <= 874 then -- Factory Staff [Lv. 800]
-			Ms = "Factory Staff [Lv. 800]"
-			NaemQuest = "Area2Quest"
-			LevelQuest = 2
-			NameMon = "Factory Staff"
-			CFrameQuest = CFrame.new(632.698608, 73.1055908, 918.666321, -0.0319722369, 8.96074881e-10, -0.999488771, 1.36326533e-10, 1, 8.92172336e-10, 0.999488771, -1.07732087e-10, -0.0319722369)
-			CFrameMon = CFrame.new(296.786499, 72.9948196, -57.1298141, -0.876037002, -5.32364979e-08, 0.482243896, -3.87658332e-08, 1, 3.99718729e-08, -0.482243896, 1.63222538e-08, -0.876037002)
-		elseif MyLevel == 875 or MyLevel <= 899 then -- Marine Lieutenant [Lv. 875]
-			Ms = "Marine Lieutenant [Lv. 875]"
-			NaemQuest = "MarineQuest3"
-			LevelQuest = 1
-			NameMon = "Marine Lieutenant"
-			CFrameQuest = CFrame.new(-2442.65015, 73.0511475, -3219.11523, -0.873540044, 4.2329841e-08, -0.486752301, 5.64383384e-08, 1, -1.43220786e-08, 0.486752301, -3.99823996e-08, -0.873540044)
-			CFrameMon = CFrame.new(-2913.26367, 73.0011826, -2971.64282, 0.910507619, 0, 0.413492233, 0, 1.00000012, 0, -0.413492233, 0, 0.910507619)
-		elseif MyLevel == 900 or MyLevel <= 949 then -- Marine Captain [Lv. 900]
-			Ms = "Marine Captain [Lv. 900]"
-			NaemQuest = "MarineQuest3"
-			LevelQuest = 2
-			NameMon = "Marine Captain"
-			CFrameQuest = CFrame.new(-2442.65015, 73.0511475, -3219.11523, -0.873540044, 4.2329841e-08, -0.486752301, 5.64383384e-08, 1, -1.43220786e-08, 0.486752301, -3.99823996e-08, -0.873540044)
-			CFrameMon = CFrame.new(-1868.67688, 73.0011826, -3321.66333, -0.971402287, 1.06502087e-08, 0.237439692, 3.68856199e-08, 1, 1.06050372e-07, -0.237439692, 1.11775684e-07, -0.971402287)
-		elseif MyLevel == 950 or MyLevel <= 974 then -- Zombie [Lv. 950]
-			Ms = "Zombie [Lv. 950]"
-			NaemQuest = "ZombieQuest"
-			LevelQuest = 1
-			NameMon = "Zombie"
-			CFrameQuest = CFrame.new(-5492.79395, 48.5151672, -793.710571, 0.321800292, -6.24695815e-08, 0.946807742, 4.05616092e-08, 1, 5.21931227e-08, -0.946807742, 2.16082796e-08, 0.321800292)
-			CFrameMon = CFrame.new(-5634.83838, 126.067039, -697.665039, -0.992770672, 6.77618939e-09, 0.120025545, 1.65461245e-08, 1, 8.04023372e-08, -0.120025545, 8.18070234e-08, -0.992770672)
-		elseif MyLevel == 975 or MyLevel <= 999 then -- Vampire [Lv. 975]
-			Ms = "Vampire [Lv. 975]"
-			NaemQuest = "ZombieQuest"
-			LevelQuest = 2
-			NameMon = "Vampire"
-			CFrameQuest = CFrame.new(-5492.79395, 48.5151672, -793.710571, 0.321800292, -6.24695815e-08, 0.946807742, 4.05616092e-08, 1, 5.21931227e-08, -0.946807742, 2.16082796e-08, 0.321800292)
-			CFrameMon = CFrame.new(-6030.32031, 6.4377408, -1313.5564, -0.856965423, 3.9138893e-08, -0.515373945, -1.12178942e-08, 1, 9.45958547e-08, 0.515373945, 8.68467822e-08, -0.856965423)
-		elseif MyLevel == 1000 or MyLevel <= 1049 then -- Snow Trooper [Lv. 1000] **
-			Ms = "Snow Trooper [Lv. 1000]"
-			NaemQuest = "SnowMountainQuest"
-			LevelQuest = 1
-			NameMon = "Snow Trooper"
-			CFrameQuest = CFrame.new(604.964966, 401.457062, -5371.69287, 0.353063971, 1.89520435e-08, -0.935599446, -5.81846002e-08, 1, -1.70033754e-09, 0.935599446, 5.50377841e-08, 0.353063971)
-			CFrameMon = CFrame.new(535.893433, 401.457062, -5329.6958, -0.999524176, 0, 0.0308452044, 0, 1, -0, -0.0308452044, 0, -0.999524176)
-		elseif MyLevel == 1050 or MyLevel <= 1099 then -- Winter Warrior [Lv. 1050]
-			Ms = "Winter Warrior [Lv. 1050]"
-			NaemQuest = "SnowMountainQuest"
-			LevelQuest = 2
-			NameMon = "Winter Warrior"
-			CFrameQuest = CFrame.new(604.964966, 401.457062, -5371.69287, 0.353063971, 1.89520435e-08, -0.935599446, -5.81846002e-08, 1, -1.70033754e-09, 0.935599446, 5.50377841e-08, 0.353063971)
-			CFrameMon = CFrame.new(1223.7417, 454.575226, -5170.02148, 0.473996818, 2.56845354e-08, 0.880526543, -5.62456428e-08, 1, 1.10811016e-09, -0.880526543, -5.00510211e-08, 0.473996818)
-		elseif MyLevel == 1100 or MyLevel <= 1124 then -- Lab Subordinate [Lv. 1100]
-			Ms = "Lab Subordinate [Lv. 1100]"
-			NaemQuest = "IceSideQuest"
-			LevelQuest = 1
-			NameMon = "Lab Subordinate"
-			CFrameQuest = CFrame.new(-6060.10693, 15.9868021, -4904.7876, -0.411000341, -5.06538868e-07, 0.91163528, 1.26306062e-07, 1, 6.12581289e-07, -0.91163528, 3.66916197e-07, -0.411000341)
-			CFrameMon = CFrame.new(-5769.2041, 37.9288292, -4468.38721, -0.569419742, -2.49055017e-08, 0.822046936, -6.96206541e-08, 1, -1.79282633e-08, -0.822046936, -6.74401548e-08, -0.569419742)
-		elseif MyLevel == 1125 or MyLevel <= 1174 then -- Horned Warrior [Lv. 1125]
-			Ms = "Horned Warrior [Lv. 1125]"
-			NaemQuest = "IceSideQuest"
-			LevelQuest = 2
-			NameMon = "Horned Warrior"
-			CFrameQuest = CFrame.new(-6060.10693, 15.9868021, -4904.7876, -0.411000341, -5.06538868e-07, 0.91163528, 1.26306062e-07, 1, 6.12581289e-07, -0.91163528, 3.66916197e-07, -0.411000341)
-			CFrameMon = CFrame.new(-6400.85889, 24.7645149, -5818.63574, -0.964845479, 8.65926566e-08, -0.262817472, 3.98261392e-07, 1, -1.13260398e-06, 0.262817472, -1.19745812e-06, -0.964845479)
-		elseif MyLevel == 1175 or MyLevel <= 1199 then -- Magma Ninja [Lv. 1175]
-			Ms = "Magma Ninja [Lv. 1175]"
-			NaemQuest = "FireSideQuest"
-			LevelQuest = 1
-			NameMon = "Magma Ninja"
-			CFrameQuest = CFrame.new(-5431.09473, 15.9868021, -5296.53223, 0.831796765, 1.15322464e-07, -0.555080295, -1.10814341e-07, 1, 4.17010995e-08, 0.555080295, 2.68240168e-08, 0.831796765)
-			CFrameMon = CFrame.new(-5496.65576, 58.6890411, -5929.76855, -0.885073781, 0, -0.465450764, 0, 1.00000012, -0, 0.465450764, 0, -0.885073781)
-		elseif MyLevel == 1200 or MyLevel <= 1249 then -- Lava Pirate [Lv. 1200]
-			Ms = "Lava Pirate [Lv. 1200]"
-			NaemQuest = "FireSideQuest"
-			LevelQuest = 2
-			NameMon = "Lava Pirate"
-			CFrameQuest = CFrame.new(-5431.09473, 15.9868021, -5296.53223, 0.831796765, 1.15322464e-07, -0.555080295, -1.10814341e-07, 1, 4.17010995e-08, 0.555080295, 2.68240168e-08, 0.831796765)
-			CFrameMon = CFrame.new(-5169.71729, 34.1234779, -4669.73633, -0.196780294, 0, 0.98044765, 0, 1.00000012, -0, -0.98044765, 0, -0.196780294)
-		elseif MyLevel == 1250 or MyLevel <= 1274 then -- Ship Deckhand [Lv. 1250]
-			Ms = "Ship Deckhand [Lv. 1250]"
-			NaemQuest = "ShipQuest1"
-			LevelQuest = 1
-			NameMon = "Ship Deckhand"
-			CFrameQuest = CFrame.new(1037.80127, 125.092171, 32911.6016, -0.244533166, -0, -0.969640911, -0, 1.00000012, -0, 0.96964103, 0, -0.244533136)
-			CFrameMon = CFrame.new(1163.80872, 138.288452, 33058.4258, -0.998580813, 5.49076979e-08, -0.0532564968, 5.57436763e-08, 1, -1.42118655e-08, 0.0532564968, -1.71604082e-08, -0.998580813)
-		elseif MyLevel == 1275 or MyLevel <= 1299 then -- Ship Engineer [Lv. 1275]
-			Ms = "Ship Engineer [Lv. 1275]"
-			NaemQuest = "ShipQuest1"
-			LevelQuest = 2
-			NameMon = "Ship Engineer"
-			CFrameQuest = CFrame.new(1037.80127, 125.092171, 32911.6016, -0.244533166, -0, -0.969640911, -0, 1.00000012, -0, 0.96964103, 0, -0.244533136)
-			CFrameMon = CFrame.new(916.666504, 44.0920448, 32917.207, -0.99746871, -4.85034697e-08, -0.0711069331, -4.8925461e-08, 1, 4.19294288e-09, 0.0711069331, 7.66126895e-09, -0.99746871)
-		elseif MyLevel == 1300 or MyLevel <= 1324 then -- Ship Steward [Lv. 1300]
-			Ms = "Ship Steward [Lv. 1300]"
-			NaemQuest = "ShipQuest2"
-			LevelQuest = 1
-			NameMon = "Ship Steward"
-			CFrameQuest = CFrame.new(968.80957, 125.092171, 33244.125, -0.869560242, 1.51905191e-08, -0.493826836, 1.44108379e-08, 1, 5.38534195e-09, 0.493826836, -2.43357912e-09, -0.869560242)
-			CFrameMon = CFrame.new(918.743286, 129.591064, 33443.4609, -0.999792814, -1.7070947e-07, -0.020350717, -1.72559169e-07, 1, 8.91351277e-08, 0.020350717, 9.2628369e-08, -0.999792814)
-		elseif MyLevel == 1325 or MyLevel <= 1349 then -- Ship Officer [Lv. 1325]
-			Ms = "Ship Officer [Lv. 1325]"
-			NaemQuest = "ShipQuest2"
-			LevelQuest = 2
-			NameMon = "Ship Officer"
-			CFrameQuest = CFrame.new(968.80957, 125.092171, 33244.125, -0.869560242, 1.51905191e-08, -0.493826836, 1.44108379e-08, 1, 5.38534195e-09, 0.493826836, -2.43357912e-09, -0.869560242)
-			CFrameMon = CFrame.new(786.051941, 181.474106, 33303.2969, 0.999285698, -5.32193063e-08, 0.0377905183, 5.68968588e-08, 1, -9.62386864e-08, -0.0377905183, 9.83201005e-08, 0.999285698)
-		elseif MyLevel == 1350 or MyLevel <= 1374 then -- Arctic Warrior [Lv. 1350]
-			Ms = "Arctic Warrior [Lv. 1350]"
-			NaemQuest = "FrostQuest"
-			LevelQuest = 1
-			NameMon = "Arctic Warrior"
-			CFrameQuest = CFrame.new(5669.43506, 28.2117786, -6482.60107, 0.888092756, 1.02705066e-07, 0.459664226, -6.20391774e-08, 1, -1.03572376e-07, -0.459664226, 6.34646895e-08, 0.888092756)
-			CFrameMon = CFrame.new(5995.07471, 57.3188477, -6183.47314, 0.702747107, -1.53454167e-07, -0.711440146, -1.08168464e-07, 1, -3.22542007e-07, 0.711440146, 3.03620908e-07, 0.702747107)
-		elseif MyLevel == 1375 or MyLevel <= 1424 then -- Snow Lurker [Lv. 1375]
-			Ms = "Snow Lurker [Lv. 1375]"
-			NaemQuest = "FrostQuest"
-			LevelQuest = 2
-			NameMon = "Snow Lurker"
-			CFrameQuest = CFrame.new(5669.43506, 28.2117786, -6482.60107, 0.888092756, 1.02705066e-07, 0.459664226, -6.20391774e-08, 1, -1.03572376e-07, -0.459664226, 6.34646895e-08, 0.888092756)
-			CFrameMon = CFrame.new(5518.00684, 60.5559731, -6828.80518, -0.650781393, -3.64292951e-08, 0.759265184, -4.07668654e-09, 1, 4.44854642e-08, -0.759265184, 2.58550248e-08, -0.650781393)
-		elseif MyLevel == 1425 or MyLevel <= 1449 then -- Sea Soldier [Lv. 1425]
-			Ms = "Sea Soldier [Lv. 1425]"
-			NaemQuest = "ForgottenQuest"
-			LevelQuest = 1
-			NameMon = "Sea Soldier"
-			CFrameQuest = CFrame.new(-3052.99097, 236.881363, -10148.1943, -0.997911751, 4.42321983e-08, 0.064591676, 4.90968759e-08, 1, 7.37270085e-08, -0.064591676, 7.67442998e-08, -0.997911751)
-			CFrameMon = CFrame.new(-3029.78467, 66.944252, -9777.38184, -0.998552859, 1.09555076e-08, 0.0537791774, 7.79564235e-09, 1, -5.89660658e-08, -0.0537791774, -5.84614881e-08, -0.998552859)
-		elseif MyLevel >= 1450 then -- Water Fighter [Lv. 1450]
-			Ms = "Water Fighter [Lv. 1450]"
-			NaemQuest = "ForgottenQuest"
-			LevelQuest = 2
-			NameMon = "Water Fighter"
-			CFrameQuest = CFrame.new(-3052.99097, 236.881363, -10148.1943, -0.997911751, 4.42321983e-08, 0.064591676, 4.90968759e-08, 1, 7.37270085e-08, -0.064591676, 7.67442998e-08, -0.997911751)
-			CFrameMon = CFrame.new(-3262.00098, 298.699615, -10553.6943, -0.233570755, -4.57538185e-08, 0.972339869, -5.80986068e-08, 1, 3.30992194e-08, -0.972339869, -4.87605725e-08, -0.233570755)
-		end
-	end
-end
-tgls:Label("--AutoFarm--")
-tgls:Toggle("Auto Farm Level"," ",false,function(vu)
-	local args = {
-		[1] = "AbandonQuest"
-	}
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	_G.AutoFarm = vu
-	AFMMain = vu
-end)
-spawn(function()
-	while wait() do
-		if _G.AutoFarm then
-			autofarm()
-		end
-	end
-end)
-game:GetService("RunService").Heartbeat:Connect(
-function()
-	if _G.AutoFarm or _G.Observation or _G.AutoNew or _G.Factory or _G.Superhuman or _G.DeathStep or _G.FruitMastery or _G.GunMastery or FramBoss or FramAllBoss or _G.AutoBartilo or AutoNear or _G.AutoRengoku or _G.AutoSharkman or _G.AutoFramEctoplasm then
-		if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid") then
-			game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(11)
-		end
-	end
-end
-)
-local LocalPlayer = game:GetService("Players").LocalPlayer
-local VirtualUser = game:GetService('VirtualUser')
-function autofarm()
-	if _G.AutoFarm then
-		if LocalPlayer.PlayerGui.Main.Quest.Visible == false then
-			StatrMagnet = true
-			CheckQuest()
-			LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
-			wait(1.1)
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest", NaemQuest, LevelQuest)
-		elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
-			CheckQuest()
-			LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
-			if game:GetService("Workspace").Enemies:FindFirstChild(Ms) then
-				pcall(
-					function()
-						for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-							CheckQuest()  
-							if v.Name == Ms then
-								repeat wait()
-									EquipWeapon(SelectToolWeapon)
-									if game:GetService("Workspace").Enemies:FindFirstChild(Ms) then
-										if string.find(LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) then
-											if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-												local args = {
-													[1] = "Buso"
-												}
-												game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-											end
-											game:GetService'VirtualUser':CaptureController()
-											game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-											game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 0)
-											if HideHitBlox then
-												v.HumanoidRootPart.Transparency = 1
-											else
-												v.HumanoidRootPart.Transparency = 0.75
-											end
-											v.HumanoidRootPart.CanCollide = false
-											v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-											v.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
-											if Magnet then
-												if setsimulationradius then
-											 sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
-											    end
-												PosMon = v.HumanoidRootPart.CFrame
-												StatrMagnet = true
-											end
-											v.HumanoidRootPart.CanCollide = false
-											v.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
-										else
-											StatrMagnet = false
-											CheckQuest()
-											
-											LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
-											wait(.5)
-											game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest", NaemQuest, LevelQuest)
-										end  
-									else
-										CheckQuest() 
-										game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
-									end 
-								until not v.Parent or v.Humanoid.Health <= 0 or _G.AutoFarm == false or LocalPlayer.PlayerGui.Main.Quest.Visible == false
-								StatrMagnet = true
-								CheckQuest() 
-								game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
-							end
-						end
-					end
-				)
-			else
-				CheckQuest()
-				game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
-			end 
-		end
-	end
-end
-spawn(function()
-	while wait() do
-		if _G.AutoFarm then
-			autofarm()
-		end 
-	end
-end)
-spawn(function()
-	while wait() do
-		if _G.AutoFarm and game.Players.localPlayer.PlayerGui.Main.Quest.Visible == true then
-			EquipWeapon(SelectToolWeapon)
-		end
-	end
-end) 
-spawn(function()
-	while wait() do
-		if _G.AutoFarm then
-			autofarm()
-		end 
-	end
-end)
-spawn(function()
-	while wait() do
-		if _G.AutoFarm and game.Players.localPlayer.PlayerGui.Main.Quest.Visible == true then
-			EquipWeapon(SelectToolWeapon)
-		end
-	end
-end)
-
-CheckQuest()
-SelectToolWeapon = ""
-function EquipWeapon(ToolSe)
-	if game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe) then
-		local tool = game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe)
-		wait(.1)
-		game.Players.LocalPlayer.Character.Humanoid:EquipTool(tool)
-	end
-end
-tgls:Toggle("Auto New World"," ",false,function(vu)
-	_G.AutoNew = vu
-end)
-spawn(function()
-	while wait(.1) do
-		if _G.AutoNew then
-			local MyLevel = game.Players.localPlayer.Data.Level.Value
-			if MyLevel >= 700 and Firstsea then
-				_G.AutoFarm = false
-				SelectToolWeapon = "Key"
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4849.29883, 5.65138149, 719.611877)
-				wait(0.5)
-				local args = {
-					[1] = "DressrosaQuestProgress",
-					[2] = "Detective"
-				}
-				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-				wait(0.5)
-				if game.Players.LocalPlayer.Backpack:FindFirstChild("Key") then
-					local tool = game.Players.LocalPlayer.Backpack:FindFirstChild("Key")
-					wait(.4)
-					game.Players.LocalPlayer.Character.Humanoid:EquipTool(tool)
-				end
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1347.7124, 37.3751602, -1325.6488)
-				wait(0.5)
-				function click()
-					game:GetService'VirtualUser':CaptureController()
-					game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-				end
-				if game.Workspace.Enemies:FindFirstChild("Ice Admiral [Lv. 700] [Boss]") and game.Workspace.Map.Ice.Door.CanCollide == false and game.Workspace.Map.Ice.Door.Transparency == 1 then
-					CheckBoss = true
-					SelectToolWeapon = SelectToolWeaponOld
-					for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-						if CheckBoss and v:IsA("Model") and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and v.Name == "Ice Admiral [Lv. 700] [Boss]" then
-							repeat wait(.1)
-								pcall(function() 
-									v.HumanoidRootPart.Transparency = 0.5
-									v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
-									v.HumanoidRootPart.BrickColor = BrickColor.new("White")
-									v.HumanoidRootPart.CanCollide = false
-									game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame*CFrame.new(0, 10, 10)
-									click()
-								end)
-							until not CheckBoss or not v.Parent or v.Humanoid.Health <= 0
-						end
-					end
-					CheckBoss = false
-					wait(0.5)
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1166.23743, 7.65220165, 1728.36487)
-					wait(0.5)
-					local args = {
-						[1] = "TravelDressrosa" -- OLD WORLD to NEW WORLD
-					}
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-				else
-					if game.Players.LocalPlayer.Backpack:FindFirstChild("Key") then
-						local tool = game.Players.LocalPlayer.Backpack:FindFirstChild("Key")
-						wait(.4)
-						game.Players.LocalPlayer.Character.Humanoid:EquipTool(tool)
-					end
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1347.7124, 37.3751602, -1325.6488)
-				end 
-			end
-		end 
-	end
-end)
-tgls:Toggle("Auto Factory","",false,function(vu)
-	_G.Factory = vu
-	while Factory do wait()
-		if game.Workspace.Enemies:FindFirstChild("Core") then
-			Core = true
-			_G.AFM = false
-			for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-				if Core and v.Name == "Core" and v.Humanoid.Health > 0 then
-					repeat wait(.1)
-						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(448.46756, 199.356781, -441.389252)
-						EquipWeapon(SelectToolWeapon)
-						game:GetService'VirtualUser':CaptureController()
-						game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-					until not Core or v.Humanoid.Health <= 0  or _G.Factory == false
-				end
-			end
-		elseif game.ReplicatedStorage:FindFirstChild("Core") then
-			Core = true
-			_G.AutoFarm = false
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(448.46756, 199.356781, -441.389252)
-		elseif AFMMain then
-			Core = false
-			_G.AutoFarm = true
-		end
-	end
-end)
-tgls:Toggle("Auto Superhuman"," ",false,function(vu)
-	_G.Superhuman = vu
-end)
-tgls:Toggle("Auto DeathStep"," ",false,function(vu)
-	_G.DeathStep = vu
-end)
-spawn(function()
-	while wait(.1) do
-		if _G.Superhuman then
-			if game.Players.LocalPlayer.Backpack:FindFirstChild("Combat") or game.Players.LocalPlayer.Character:FindFirstChild("Combat") then
-				local args = {
-					[1] = "BuyBlackLeg"
-				}
-				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-			end   
-			if game.Players.LocalPlayer.Backpack:FindFirstChild("Black Leg") or game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") or game.Players.LocalPlayer.Backpack:FindFirstChild("Electro") or game.Players.LocalPlayer.Character:FindFirstChild("Electro") or game.Players.LocalPlayer.Backpack:FindFirstChild("Fishman Karate") or game.Players.LocalPlayer.Character:FindFirstChild("Fishman Karate") or game.Players.LocalPlayer.Backpack:FindFirstChild("Dragon Claw") or game.Players.LocalPlayer.Character:FindFirstChild("Dragon Claw") then
-				if game.Players.LocalPlayer.Backpack:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Backpack:FindFirstChild("Black Leg").Level.Value <= 299 then
-					SelectToolWeapon = "Black Leg"
-				end
-				if game.Players.LocalPlayer.Backpack:FindFirstChild("Electro") and game.Players.LocalPlayer.Backpack:FindFirstChild("Electro").Level.Value <= 299 then
-					SelectToolWeapon = "Electro"
-				end
-				if game.Players.LocalPlayer.Backpack:FindFirstChild("Fishman Karate") and game.Players.LocalPlayer.Backpack:FindFirstChild("Fishman Karate").Level.Value <= 299 then
-					SelectToolWeapon = "Fishman Karate"
-				end
-				if game.Players.LocalPlayer.Backpack:FindFirstChild("Dragon Claw") and game.Players.LocalPlayer.Backpack:FindFirstChild("Dragon Claw").Level.Value <= 299 then
-					SelectToolWeapon = "Dragon Claw"
-				end
-				if game.Players.LocalPlayer.Backpack:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Backpack:FindFirstChild("Black Leg").Level.Value >= 300 then
-					local args = {
-						[1] = "BuyElectro"
-					}
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-				end
-				if game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 300 then
-					local args = {
-						[1] = "BuyElectro"
-					}
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-				end
-				if game.Players.LocalPlayer.Backpack:FindFirstChild("Electro") and game.Players.LocalPlayer.Backpack:FindFirstChild("Electro").Level.Value >= 300 then
-					local args = {
-						[1] = "BuyFishmanKarate"
-					}
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-				end
-				if game.Players.LocalPlayer.Character:FindFirstChild("Electro") and game.Players.LocalPlayer.Character:FindFirstChild("Electro").Level.Value >= 300 then
-					local args = {
-						[1] = "BuyFishmanKarate"
-					}
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-				end
-				if game.Players.LocalPlayer.Backpack:FindFirstChild("Fishman Karate") and game.Players.LocalPlayer.Backpack:FindFirstChild("Fishman Karate").Level.Value >= 300 then
-					local args = {
-						[1] = "BlackbeardReward",
-						[2] = "DragonClaw",
-						[3] = "1"
-					}
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-					local args = {
-						[1] = "BlackbeardReward",
-						[2] = "DragonClaw",
-						[3] = "2"
-					}
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args)) 
-				end
-				if game.Players.LocalPlayer.Character:FindFirstChild("Fishman Karate") and game.Players.LocalPlayer.Character:FindFirstChild("Fishman Karate").Level.Value >= 300 then
-					local args = {
-						[1] = "BlackbeardReward",
-						[2] = "DragonClaw",
-						[3] = "1"
-					}
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-					local args = {
-						[1] = "BlackbeardReward",
-						[2] = "DragonClaw",
-						[3] = "2"
-					}
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args)) 
-				end
-				if game.Players.LocalPlayer.Backpack:FindFirstChild("Dragon Claw") and game.Players.LocalPlayer.Backpack:FindFirstChild("Dragon Claw").Level.Value >= 300 then
-					local args = {
-						[1] = "BuySuperhuman"
-					}
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-				end
-				if game.Players.LocalPlayer.Character:FindFirstChild("Dragon Claw") and game.Players.LocalPlayer.Character:FindFirstChild("Dragon Claw").Level.Value >= 300 then
-					local args = {
-						[1] = "BuySuperhuman"
-					}
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-				end
-			end
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if _G.DeathStep then
-			if game.Players.LocalPlayer.Backpack:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Backpack:FindFirstChild("Black Leg").Level.Value >= 450 then
-				local args = {
-					[1] = "BuyDeathStep"
-				}
-				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-			end  
-			if game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 450 then
-				local args = {
-					[1] = "BuyDeathStep"
-				}
-				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-			end  
-			if game.Players.LocalPlayer.Backpack:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Backpack:FindFirstChild("Black Leg").Level.Value <= 449 then
-				SelectToolWeapon = "Black Leg"
-			end   
-		end
-	end
-end)
-tgls:Toggle("Auto Saber","",false,function(Value)
-	_G.AutoOpenSaber = Value
-end)
-spawn(function()
-	while wait(.1) do
-		if _G.AutoOpenSaber then
-			local off = game:GetService("Workspace").Map.Jungle.Final:FindFirstChild("Part")
-			local MyLevel = game.Players.localPlayer.Data.Level.Value
-			if MyLevel >= 200 and AFM == true then
-				repeat wait(.1)
-					AFM = false
-					function accept1()
-						local string_1 = "ProQuestProgress";
-						local string2 = "SickMan";
-						local Target = game:GetService("ReplicatedStorage").Remotes["CommF"];
-						Target:InvokeServer(string_1, string_2);
-					end
-
-					function accept2()
-						local string_1 = "ProQuestProgress";
-						local string2 = "RichSon";
-						local Target = game:GetService("ReplicatedStorage").Remotes["CommF"];
-						Target:InvokeServer(string_1, string2);
-					end
-					function saber()
-						if game:GetService("Workspace").Enemies:FindFirstChild("Mob Leader [Lv. 120] [Boss]") then
-							for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-								if v.Name == "Mob Leader [Lv. 120] [Boss]" and v.Humanoid.Health > 0 and v:IsA("Model") and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") then
-									repeat wait()
-										pcall(function()
-											if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-												local args = {
-													[1] = "Buso"
-												}
-												game:GetService("ReplicatedStorage").Remotes.CommF:InvokeServer(unpack(args))
-											end
-											EquipWeapon(SelectToolWeapon)
-											v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
-											v.HumanoidRootPart.CanCollide = false
-											game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame*CFrame.new(0, 10, 10)
-											game:GetService'VirtualUser':CaptureController()
-											game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-										end)
-									until v.Humanoid.Health == 0
-								end
-							end
-						end
-
-						function accept3()
-							local string_1 = "ProQuestProgress";
-							local string2 = "RichSon";
-							local Target = game:GetService("ReplicatedStorage").Remotes["CommF"];
-							Target:InvokeServer(string_1, string_2);
-						end
-
-						wait(.1)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1421.87024, 55.4666862, 21.7750397)
-						wait(1)
-						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1647.19556, 29.1544189, 438.299408)
-						wait(1)
-						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1324.10144, 31.4560413, -461.404114)
-						wait(1)
-						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1152.38464, 9.74718285, -700.309875)
-						wait(1)
-						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1180.89563, 21.0007095, 187.861374)
-						wait(1)
-						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1610.00757, 11.5049858, 164.001587)
-						wait(2)
-						local tool = game.Players.LocalPlayer.Backpack:FindFirstChild("Torch")
-						wait(.4)
-						game.Players.LocalPlayer.Character.Humanoid:EquipTool(tool)
-						wait(.1)
-						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1114.55762, 4.9214654, 4349.2334, -0.618430376, -1.56903435e-09, 0.785839617, -5.04992048e-09, 1, -1.97748973e-09, -0.785839617, -5.19136734e-09, -0.618430376)
-						wait(5.5)
-						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1114.26721, 4.16943789, 4366.15332)
-						wait(1)
-						local tool = game.Players.LocalPlayer.Backpack:FindFirstChild("Cup")
-						wait(.4)
-						game.Players.LocalPlayer.Character.Humanoid:EquipTool(tool)
-						wait(1)
-						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1397.0614, 37.3480072, -1321.03955, -0.0699888021, -5.05999473e-08, 0.997547925, -7.48410045e-08, 1, 4.54734241e-08, -0.997547925, -7.14748296e-08, -0.0699888021)
-						wait(4.5)
-						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1457.87976, 88.2521744, -1390.39575)
-						wait(1.5)
-						accept1()
-						wait(1)
-						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-909.106689, 13.7520342, 4077.34888)
-						wait(1.1)
-						accept2()
-						wait(1)
-						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2852.90234, 7.56227827, 5367.72412)
-						wait(1.5)
-						EquipWeapon(SelectToolWeapon)
-						wait(1)
-						saber()
-						wait(2)
-						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-909.106689, 13.7520342, 4077.34888)
-						wait(1.1)
-						accept3()
-						wait(1)
-						local tool = game.Players.LocalPlayer.Backpack:FindFirstChild("Relic")
-						wait(.4)
-						game.Players.LocalPlayer.Character.Humanoid:EquipTool(tool)
-wait(1)
-						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1405.84094, 29.8519993, 5.05432224, 0.859020233, -4.18967083e-08, 0.511941671, 4.07572731e-09, 1, 7.49999103e-08, -0.511941671, -6.23399004e-08, 0.859020233)
-						wait(1)
-						if off.CanCollide == false then
-							_G.AutoOpenSaber = false
-							AFM = true
-						end
-					end
-				until _G.AutoOpenSaber == false or off.CanCollide == false or _G.AFM == true
-
-			elseif MyLevel >= 200 then
-				repeat wait(.1)
-					function accept1()
-						local string_1 = "ProQuestProgress";
-						local string2 = "SickMan";
-						local Target = game:GetService("ReplicatedStorage").Remotes["CommF"];
-						Target:InvokeServer(string_1, string_2);
-					end
-
-					function accept2()
-						local string_1 = "ProQuestProgress";
-						local string2 = "RichSon";
-						local Target = game:GetService("ReplicatedStorage").Remotes["CommF"];
-						Target:InvokeServer(string_1, string2);
-					end
-					function saber()
-						for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-							if v.Name == "Mob Leader [Lv. 120] [Boss]" then
-								repeat wait()
-									for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-										if v.Name == "Mob Leader [Lv. 120] [Boss]" then
-											if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-												local args = {
-													[1] = "Buso"
-												}
-												game:GetService("ReplicatedStorage").Remotes.CommF:InvokeServer(unpack(args))
-											end
-											EquipWeapon(SelectToolWeapon)
-											v.HumanoidRootPart.CanCollide = false
-											v.HumanoidRootPart.Size = Vector3.new(50,50,50)
-											game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,15,0)
-											game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(11)
-											game:GetService'VirtualUser':CaptureController()
-											game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-											game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(11)
-										end
-									end
-								until v.Humanoid.Health == 0
-							end
-						end
-					end
-
-					function accept3()
-local string_1 = "ProQuestProgress";
-						local string2 = "RichSon";
-						local Target = game:GetService("ReplicatedStorage").Remotes["CommF"];
-						Target:InvokeServer(string_1, string_2);
-					end
-
-					wait(.1)
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1421.87024, 55.4666862, 21.7750397)
-					wait(1)
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1647.19556, 29.1544189, 438.299408)
-					wait(1)
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1324.10144, 31.4560413, -461.404114)
-					wait(1)
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1152.38464, 9.74718285, -700.309875)
-					wait(1)
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1180.89563, 21.0007095, 187.861374)
-					wait(1)
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1610.00757, 11.5049858, 164.001587)
-					wait(2)
-					local tool = game.Players.LocalPlayer.Backpack:FindFirstChild("Torch")
-					wait(.4)
-					game.Players.LocalPlayer.Character.Humanoid:EquipTool(tool)
-					wait(.1)
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1114.55762, 4.9214654, 4349.2334, -0.618430376, -1.56903435e-09, 0.785839617, -5.04992048e-09, 1, -1.97748973e-09, -0.785839617, -5.19136734e-09, -0.618430376)
-					wait(5.5)
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1114.26721, 4.16943789, 4366.15332)
-					wait(1)
-					local tool = game.Players.LocalPlayer.Backpack:FindFirstChild("Cup")
-					wait(.4)
-					game.Players.LocalPlayer.Character.Humanoid:EquipTool(tool)
-					wait(1)
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1397.0614, 37.3480072, -1321.03955, -0.0699888021, -5.05999473e-08, 0.997547925, -7.48410045e-08, 1, 4.54734241e-08, -0.997547925, -7.14748296e-08, -0.0699888021)
-					wait(4.5)
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1457.87976, 88.2521744, -1390.39575)
-					wait(1.5)
-					accept1()
-					wait(1)
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-909.106689, 13.7520342, 4077.34888)
-					wait(1.1)
-					accept2()
-					wait(1)
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2852.90234, 7.56227827, 5367.72412)
-					wait(1.5)
-					EquipWeapon(SelectToolWeapon)
-					wait(1)
-					saber()
-					wait(2)
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-909.106689, 13.7520342, 4077.34888)
-					wait(1.1)
-					accept3()
-					wait(1)
-local tool = game.Players.LocalPlayer.Backpack:FindFirstChild("Relic")
-					wait(.4)
-					game.Players.LocalPlayer.Character.Humanoid:EquipTool(tool)
-					wait(1)
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1405.84094, 29.8519993, 5.05432224, 0.859020233, -4.18967083e-08, 0.511941671, 4.07572731e-09, 1, 7.49999103e-08, -0.511941671, -6.23399004e-08, 0.859020233)
-					wait(1)
-					if off.CanCollide == false then
-						_G.AutoOpenSaber = false
-					end
-				until G.AutoOpenSaber == false or off.CanCollide == false
-				if game:GetService("Workspace").Enemies:FindFirstChild("Saber Expert [Lv. 200] [Boss]") then
-					for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-						if v.Name == "Saber Expert [Lv. 200] [Boss]" and v.Humanoid.Health > 0 and v:IsA("Model") and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") then
-							repeat wait()
-								pcall(function()
-									if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-										local args = {
-											[1] = "Buso"
-										}
-										game:GetService("ReplicatedStorage").Remotes.CommF:InvokeServer(unpack(args))
-									end
-									EquipWeapon(SelectToolWeapon)
-									v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
-									v.HumanoidRootPart.CanCollide = false
-									game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame*CFrame.new(0, 15, 10)
-									game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(11)
-									game:GetService'VirtualUser':CaptureController()
-									game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-									game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(11)
-								end)
-							until _G.AutoOpenSaber == true or v.Humanoid.Health <= 0
-						end
-					end
-				end
-			end
-		end
-	end
-end)
-tgls:Toggle("Fast Attack"," ",false,function(value)
-	_G.fastAttack = value
-end)
-spawn(function()
-	while wait(.1) do
-		if _G.fastAttack then
-			game:GetService'VirtualUser':CaptureController()
-			game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if _G.fastAttack then
-			game:GetService'VirtualUser':CaptureController()
-			game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if _G.fastAttack then
-			game:GetService'VirtualUser':CaptureController()
-			game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if _G.fastAttack then
-			game:GetService'VirtualUser':CaptureController()
-			game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if _G.fastAttack then
-			game:GetService'VirtualUser':CaptureController()
-			game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if _G.fastAttack then
-			game:GetService'VirtualUser':CaptureController()
-			game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if _G.fastAttack then
-			game:GetService'VirtualUser':CaptureController()
-			game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-		end
-	end
-end)
-tgls:Toggle("Auto Click"," ",false,function(value)
-	_G.AuctoClick = value
-end)
-spawn(function()
-	while wait(.1) do
-		if _G.AuctoClick then
-			Click()
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if _G.AuctoClick then
-			Click()
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if _G.AuctoClick then
-			Click()
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if _G.AuctoClick then
-			Click()
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if _G.AuctoClick then
-			Click()
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if _G.AuctoClick then
-			Click()
-		end
-	end
-end)
-Wapon = {}
-for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do  
-	if v:IsA("Tool") then
-		table.insert(Wapon ,v.Name)
-	end
-end
-for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do  
-	if v:IsA("Tool") then
-		table.insert(Wapon, v.Name)
-	end
-end
-local SelectWeapona = tgls:Dropdown("Select Weapon",Wapon,function(Value)
-	SelectToolWeapon = Value
-	SelectToolWeaponOld = Value
-end)
-tgls:Button("Refresh Weapon","", function()
-	SelectWeapona:Clear()
-	Wapon = {}
-	for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do  
-		if v:IsA("Tool") then
-			SelectWeapona:Add(v.Name)
-		end
-	end
-	for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do  
-		if v:IsA("Tool") then
-			SelectWeapona:Add(v.Name)
-		end
-	end
-end)
-tgls:Line()
-tgls:Label("-- Auto Accessories --")
-WaponAccessories = {}
-for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do  
-   if v:IsA("Tool") then 
-	  if v.ToolTip == "Wear" then    
-		 table.insert(WaponAccessories, v.Name)
-	  end
-   end
-end
-SelectTooAccessories = ""
-tgls:Toggle("Auto Accessories","",false,function(Value)
-   if SelectTooAccessories == "" and Value then
-	  Flux:Notification("Select Accessories First", "Ok")
-   else
-	  AutoAccessories = Value 
-   end
-end)
-spawn(function()
-   while wait() do
-	  if AutoAccessories then
-		 CheckAccessories = game.Players.LocalPlayer.Character 
-		 if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health > 0 then
-			if CheckAccessories:FindFirstChild("CoolShades") or CheckAccessories:FindFirstChild("BlackSpikeyCape") or CheckAccessories:FindFirstChild("BlueSpikeyCape") or CheckAccessories:FindFirstChild("RedSpikeyCape") or CheckAccessories:FindFirstChild("Chopper") or CheckAccessories:FindFirstChild("MarineCape") or CheckAccessories:FindFirstChild("GhoulMask") or CheckAccessories:FindFirstChild("MarineCap") or CheckAccessories:FindFirstChild("PinkCape") or CheckAccessories:FindFirstChild("SaboTopHat") or CheckAccessories:FindFirstChild("SwanGlasses") or CheckAccessories:FindFirstChild("UsoapHat") or CheckAccessories:FindFirstChild("Corrida") or CheckAccessories:FindFirstChild("ZebraCap") or CheckAccessories:FindFirstChild("TomoeRing") or CheckAccessories:FindFirstChild("BlackCape") or CheckAccessories:FindFirstChild("SwordsmanHat") or CheckAccessories:FindFirstChild("SantaHat") or CheckAccessories:FindFirstChild("ElfHat") or CheckAccessories:FindFirstChild("DarkCoat") then
-			else
-			   EquipWeapon(SelectTooAccessories)
-			   wait(0.1)
-			   game:GetService'VirtualUser':CaptureController()
-			   game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-			   wait(0.1)
-			   if game.Players.LocalPlayer.Character:FindFirstChild(SelectTooAccessories) then
-				  game.Players.LocalPlayer.Character:FindFirstChild(SelectTooAccessories).Parent = game.Players.LocalPlayer:FindFirstChild("Backpack")
-			   end
-			   wait(1)
-			end
-		 end
-	  end
-   end
-end)
-local SelectAccessories = tgls:Dropdown("Select Accessories",WaponAccessories,function(Value)
-   SelectTooAccessories = Value
-end)
-tgls:Button("Refresh Accessories","", function()
-   SelectAccessories:Clear()
-   for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-	  if v:IsA("Tool") then 
-		 if v.ToolTip == "Wear" then    
-			SelectAccessories:Add(v.Name)
-		 end
-	  end
-   end
-   for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-	  if v:IsA("Tool") then 
-		 if v.ToolTip == "Wear" then    
-			SelectAccessories:Add(v.Name)
-		 end
-	  end
-   end
-end)
-tgls:Line()
-tgls:Label("--AutoRengoku--", true)
-function EquipWeaponRengoku(ToolSe)
-	if game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe) then
-		local tool = game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe)
-		wait(.4)
-		game.Players.LocalPlayer.Character.Humanoid:EquipTool(tool)
-	end
-end
-RengokuWeapon = ""
-tgls:Toggle("Auto Rengoku"," ",false,function(v)
-	if RengokuWeapon == "" and v then
-		Flux:Notification("Select Wapon!", "Alright")
-	else
-		_G.AutoRengoku = v
-	end 
-end)
-WaponRengoku = {}
-for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do  
-	if v:IsA("Tool") then
-		table.insert(WaponRengoku ,v.Name)
-	end
-end
-for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do  
-	if v:IsA("Tool") then
-		table.insert(WaponRengoku, v.Name)
-	end
-end
-local Rengoku = tgls:Dropdown("Select Weapon",WaponRengoku,function(Value)
-	RengokuWeapon = Value
-end)
-tgls:Button("Refresh Weapon","", function()
-	Rengoku:Clear()
-	Wapon = {}
-	for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do  
-		if v:IsA("Tool") then
-			Rengoku:Add(v.Name)
-		end
-	end
-	for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do  
-		if v:IsA("Tool") then
-			Rengoku:Add(v.Name)
-		end
-	end
-end)
-spawn(function()
-	while wait() do
-		if _G.AutoRengoku then
-			if game.Players.LocalPlayer.Backpack:FindFirstChild("Hidden Key") or  game.Players.LocalPlayer.Character:FindFirstChild("Hidden Key") then
-				EquipWeaponRengoku("Hidden Key")
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(6571.81885, 296.689758, -6966.76514, 0.825126112, 8.412257e-10, 0.564948559, -2.42370835e-08, 1, 3.39100339e-08, -0.564948559, -4.16727595e-08, 0.825126112)
-			elseif game.Workspace.Enemies:FindFirstChild("Snow Lurker [Lv. 1375]") then
-				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-					if v.Name == "Snow Lurker [Lv. 1375]" then
-						repeat wait()
-							EquipWeaponRengoku(RengokuWeapon)
-							game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(11)
-							VirtualUser:CaptureController()
-							VirtualUser:ClickButton1(Vector2.new(851, 158), game:GetService("Workspace").Camera.CFrame)
-							-- ยตร•ร รยง
-							if Test == "Magnet" then
-							end
-							game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0, 25, 0)
-							PosMon = v.HumanoidRootPart.CFrame
-							StatrMagnetRengoku = true
-						until game.Players.LocalPlayer.Backpack:FindFirstChild("Hidden Key") or _G.AutoRengoku == false or not v.Parent
-						StatrMagnetRengoku = false
-						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(5518.00684, 60.5559731, -6828.80518, -0.650781393, -3.64292951e-08, 0.759265184, -4.07668654e-09, 1, 4.44854642e-08, -0.759265184, 2.58550248e-08, -0.650781393)
-					end
-				end
-			else
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(5518.00684, 60.5559731, -6828.80518, -0.650781393, -3.64292951e-08, 0.759265184, -4.07668654e-09, 1, 4.44854642e-08, -0.759265184, 2.58550248e-08, -0.650781393)
-			end
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if Test == "Magnet" and _G.AutoRengoku and StatrMagnetRengoku then
-			pcall(
-				function()
-					repeat
-						for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-							if v.Name == "Snow Lurker [Lv. 1375]" then
-								wait(0.1)
-								if HideHitBlox then
-									v.HumanoidRootPart.Transparency = 1
-								else
-									v.HumanoidRootPart.Transparency = 0.75
-								end
-								v.HumanoidRootPart.CanCollide = false
-								v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-								v.HumanoidRootPart.CFrame = PosMon
-								sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
-							end
-						end
-					until LocalPlayer.PlayerGui.Main.Quest.Visible == false or _G.AutoRengoku == false or StatrMagnet == false
-				end
-			)
-		end 
-	end
-end)
-	while _G.AutoRengoku do wait()
-		if _G.AutoRengoku then
-			if game.Players.LocalPlayer.Backpack:FindFirstChild("Hidden Key") or  game.Players.LocalPlayer.Character:FindFirstChild("Hidden Key") then
-				EquipWeapon("Hidden Key")
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(6571.81885, 296.689758, -6966.76514, 0.825126112, 8.412257e-10, 0.564948559, -2.42370835e-08, 1, 3.39100339e-08, -0.564948559, -4.16727595e-08, 0.825126112)
-			elseif game.Workspace.Enemies:FindFirstChild("Snow Lurker [Lv. 1375]") then
-				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-					if v.Name == "Snow Lurker [Lv. 1375]" and v.Humanoid.Health > 0 then
-						repeat wait()
-							if game.Workspace.Enemies:FindFirstChild("Snow Lurker [Lv. 1375]") then
-								EquipWeapon(RengokuWeapon)
-								PosMonRengoku = v.HumanoidRootPart.CFrame
-								game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0, 15, 0)
-								game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(11)
-								VirtualUser:CaptureController()
-								VirtualUser:ClickButton1(Vector2.new(851, 158), game:GetService("Workspace").Camera.CFrame)
-								StatrMagnetRengoku = true
-							else
-								StatrMagnetRengoku = false
-								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(5518.00684, 60.5559731, -6828.80518, -0.650781393, -3.64292951e-08, 0.759265184, -4.07668654e-09, 1, 4.44854642e-08, -0.759265184, 2.58550248e-08, -0.650781393)
-							end
-						until game.Players.LocalPlayer.Backpack:FindFirstChild("Hidden Key") or _G.AutoRengoku == false or not v.Parent or v.Humanoid.Health <= 0
-						StatrMagnetRengoku = false
-						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(5518.00684, 60.5559731, -6828.80518, -0.650781393, -3.64292951e-08, 0.759265184, -4.07668654e-09, 1, 4.44854642e-08, -0.759265184, 2.58550248e-08, -0.650781393)
-					end
-				end
-			else
-				StatrMagnetRengoku = false
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(5518.00684, 60.5559731, -6828.80518, -0.650781393, -3.64292951e-08, 0.759265184, -4.07668654e-09, 1, 4.44854642e-08, -0.759265184, 2.58550248e-08, -0.650781393)
-			end
-		end
-	end
-tgls:Line()
-tgls:Label("--AutoFarmBoss--", true)
-tgls:Toggle("Auto Farm Boss","",false,function(Value)
-	wait(.1)
-	local args = {
-		[1] = "AbandonQuest"
-	}
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	FramBoss = Value
-end
-)
-spawn(function()
-	while wait(.1) do
-		if FramBoss then
-			EquipWeaponBoss()
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if FramBoss then
-			AutoFramBoss()
-		end 
-	end
-end)
-function CheckQuestBoss()
-	if SelectBoss == "Diamond [Lv. 750] [Boss]" then
-		MsBoss = "Diamond [Lv. 750] [Boss]"
-		NaemQuestBoss = "Area1Quest"
-		LevelQuestBoss = 3
-		CFrameQuestBoss = CFrame.new(-424.080078, 73.0055847, 1836.91589, 0.253544956, -1.42165932e-08, 0.967323601, -6.00147771e-08, 1, 3.04272909e-08, -0.967323601, -6.5768397e-08, 0.253544956)
-		CFrameBoss = CFrame.new(-1736.26587, 198.627731, -236.412857, -0.997808516, 0, -0.0661673471, 0, 1, 0, 0.0661673471, 0, -0.997808516)
-	elseif SelectBoss == "Jeremy [Lv. 850] [Boss]" then
-		MsBoss = "Jeremy [Lv. 850] [Boss]"
-		NaemQuestBoss = "Area2Quest"
-		LevelQuestBoss = 3
-		CFrameQuestBoss = CFrame.new(632.698608, 73.1055908, 918.666321, -0.0319722369, 8.96074881e-10, -0.999488771, 1.36326533e-10, 1, 8.92172336e-10, 0.999488771, -1.07732087e-10, -0.0319722369)
-		CFrameBoss = CFrame.new(2203.76953, 448.966034, 752.731079, -0.0217453763, 0, -0.999763548, 0, 1, 0, 0.999763548, 0, -0.0217453763)
-	elseif SelectBoss == "Fajita [Lv. 925] [Boss]" then
-		MsBoss = "Fajita [Lv. 925] [Boss]"
-		NaemQuestBoss = "MarineQuest3"
-		LevelQuestBoss = 3
-		CFrameQuestBoss = CFrame.new(-2442.65015, 73.0511475, -3219.11523, -0.873540044, 4.2329841e-08, -0.486752301, 5.64383384e-08, 1, -1.43220786e-08, 0.486752301, -3.99823996e-08, -0.873540044)
-		CFrameBoss = CFrame.new(-2297.40332, 115.449463, -3946.53833, 0.961227536, -1.46645796e-09, -0.275756449, -2.3212845e-09, 1, -1.34094433e-08, 0.275756449, 1.35296352e-08, 0.961227536)
-	elseif SelectBoss == "Don Swan [Lv. 1000] [Boss]" then
-		MsBoss = "Don Swan [Lv. 1000] [Boss]"
-		CFrameBoss = CFrame.new(2288.802, 15.1870775, 863.034607, 0.99974072, -8.41247214e-08, -0.0227668174, 8.4774733e-08, 1, 2.75850098e-08, 0.0227668174, -2.95079072e-08, 0.99974072)
-	elseif SelectBoss == "Smoke Admiral [Lv. 1150] [Boss]" then
-		MsBoss = "Smoke Admiral [Lv. 1150] [Boss]"
-		NaemQuestBoss = "IceSideQuest"
-		LevelQuestBoss = 3
-		CFrameQuestBoss = CFrame.new(-6059.96191, 15.9868021, -4904.7373, -0.444992423, -3.0874483e-09, 0.895534337, -3.64098796e-08, 1, -1.4644522e-08, -0.895534337, -3.91229982e-08, -0.444992423)
-		CFrameBoss = CFrame.new(-5115.72754, 23.7664986, -5338.2207, 0.251453817, 1.48345061e-08, -0.967869282, 4.02796978e-08, 1, 2.57916977e-08, 0.967869282, -4.54708946e-08, 0.251453817)
-	elseif SelectBoss == "Cursed Captain [Lv. 1325] [Raid Boss]" then
-		MsBoss = "Cursed Captain [Lv. 1325] [Raid Boss]"
-		CFrameBoss = CFrame.new(916.928589, 181.092773, 33422, -0.999505103, 9.26310495e-09, 0.0314563364, 8.42916226e-09, 1, -2.6643713e-08, -0.0314563364, -2.63653774e-08, -0.999505103)
-	elseif SelectBoss == "Awakened Ice Admiral [Lv. 1400] [Boss]" then
-		MsBoss = "Awakened Ice Admiral [Lv. 1400] [Boss]"
-		NaemQuestBoss = "FrostQuest"
-		LevelQuestBoss = 3
-		CFrameQuestBoss = CFrame.new(5669.33203, 28.2118053, -6481.55908, 0.921275556, -1.25320829e-08, 0.388910472, 4.72230788e-08, 1, -7.96414241e-08, -0.388910472, 9.17372489e-08, 0.921275556)
-		CFrameBoss = CFrame.new(6407.33936, 340.223785, -6892.521, 0.49051559, -5.25310213e-08, -0.871432424, -2.76146022e-08, 1, -7.58250565e-08, 0.871432424, 6.12576301e-08, 0.49051559)
-	elseif SelectBoss == "Tide Keeper [Lv. 1475] [Boss]" then
-		MsBoss = "Tide Keeper [Lv. 1475] [Boss]"
-		NaemQuestBoss = "ForgottenQuest"             
-		LevelQuestBoss = 3
-		CFrameQuestBoss = CFrame.new(-3053.89648, 236.881363, -10148.2324, -0.985987961, -3.58504737e-09, 0.16681771, -3.07832915e-09, 1, 3.29612559e-09, -0.16681771, 2.73641976e-09, -0.985987961)
-		CFrameBoss = CFrame.new(-3570.18652, 123.328949, -11555.9072, 0.465199202, -1.3857326e-08, 0.885206044, 4.0332897e-09, 1, 1.35347511e-08, -0.885206044, -2.72606271e-09, 0.465199202)
-		-- Old World
-	elseif SelectBoss == "Saber Expert [Lv. 200] [Boss]" then
-		MsBoss = "Saber Expert [Lv. 200] [Boss]"
-		CFrameBoss = CFrame.new(-1458.89502, 29.8870335, -50.633564, 0.858821094, 1.13848939e-08, 0.512275636, -4.85649254e-09, 1, -1.40823326e-08, -0.512275636, 9.6063415e-09, 0.858821094)
-	elseif SelectBoss == "The Gorilla King [Lv. 25] [Boss]" then
-		MsBoss = "The Gorilla King [Lv. 25] [Boss]"
-		NaemQuestBoss = "JungleQuest"
-		LevelQuestBoss = 3
-		CFrameQuestBoss = CFrame.new(-1604.12012, 36.8521118, 154.23732, 0.0648873374, -4.70858913e-06, -0.997892559, 1.41431883e-07, 1, -4.70933674e-06, 0.997892559, 1.64442184e-07, 0.0648873374)
-		CFrameBoss = CFrame.new(-1223.52808, 6.27936459, -502.292664, 0.310949147, -5.66602516e-08, 0.950426519, -3.37275488e-08, 1, 7.06501808e-08, -0.950426519, -5.40241736e-08, 0.310949147)
-	elseif SelectBoss == "Bobby [Lv. 55] [Boss]" then
-		MsBoss = "Bobby [Lv. 55] [Boss]"
-		NaemQuestBoss = "BuggyQuest1"
-		LevelQuestBoss = 3
-		CFrameQuestBoss = CFrame.new(-1139.59717, 4.75205183, 3825.16211, -0.959730506, -7.5857054e-09, 0.280922383, -4.06310328e-08, 1, -1.11807175e-07, -0.280922383, -1.18718916e-07, -0.959730506)
-		CFrameBoss = CFrame.new(-1147.65173, 32.5966301, 4156.02588, 0.956680477, -1.77109952e-10, -0.29113996, 5.16530874e-10, 1, 1.08897802e-09, 0.29113996, -1.19218679e-09, 0.956680477)
-	elseif SelectBoss == "Yeti [Lv. 110] [Boss]" then
-		MsBoss = "Yeti [Lv. 110] [Boss]"
-		NaemQuestBoss = "SnowQuest"
-		LevelQuestBoss = 3
-		CFrameQuestBoss = CFrame.new(1384.90247, 87.3078308, -1296.6825, 0.280209213, 2.72035177e-08, -0.959938943, -6.75690828e-08, 1, 8.6151708e-09, 0.959938943, 6.24481444e-08, 0.280209213)
-		CFrameBoss = CFrame.new(1221.7356, 138.046906, -1488.84082, 0.349343032, -9.49245944e-08, 0.936994851, 6.29478194e-08, 1, 7.7838429e-08, -0.936994851, 3.17894653e-08, 0.349343032)
-	elseif SelectBoss == "Mob Leader [Lv. 120] [Boss]" then
-		MsBoss = "Mob Leader [Lv. 120] [Boss]"
-		CFrameBoss = CFrame.new(-2848.59399, 7.4272871, 5342.44043, -0.928248107, -8.7248246e-08, 0.371961564, -7.61816636e-08, 1, 4.44474857e-08, -0.371961564, 1.29216433e-08, -0.928248107)
-		--The Gorilla King [Lv. 25] [Boss]
-	elseif SelectBoss == "Vice Admiral [Lv. 130] [Boss]" then
-		MsBoss = "Vice Admiral [Lv. 130] [Boss]"
-		NaemQuestBoss = "MarineQuest2"
-		LevelQuestBoss = 2
-		CFrameQuestBoss = CFrame.new(-5035.42285, 28.6520386, 4324.50293, -0.0611100644, -8.08395768e-08, 0.998130739, -1.57416586e-08, 1, 8.00271849e-08, -0.998130739, -1.08217701e-08, -0.0611100644)
-		CFrameBoss = CFrame.new(-5078.45898, 99.6520691, 4402.1665, -0.555574954, -9.88630566e-11, 0.831466436, -6.35508286e-08, 1, -4.23449258e-08, -0.831466436, -7.63661632e-08, -0.555574954)
-	elseif SelectBoss == "Warden [Lv. 175] [Boss]" then
-		MsBoss = "Warden [Lv. 175] [Boss]"
-		NaemQuestBoss = "ImpelQuest"
-		LevelQuestBoss = 1
-		CFrameQuestBoss = CFrame.new(4851.35059, 5.68744135, 743.251282, -0.538484037, -6.68303741e-08, -0.842635691, 1.38001752e-08, 1, -8.81300792e-08, 0.842635691, -5.90851599e-08, -0.538484037)
-		CFrameBoss = CFrame.new(5232.5625, 5.26856995, 747.506897, 0.943829298, -4.5439414e-08, 0.330433697, 3.47818627e-08, 1, 3.81658154e-08, -0.330433697, -2.45289105e-08, 0.943829298)
-	elseif SelectBoss == "Chief Warden [Lv. 200] [Boss]" then
-		MsBoss = "Chief Warden [Lv. 200] [Boss]"
-		NaemQuestBoss = "ImpelQuest"
-		LevelQuestBoss = 2
-		CFrameQuestBoss = CFrame.new(4851.35059, 5.68744135, 743.251282, -0.538484037, -6.68303741e-08, -0.842635691, 1.38001752e-08, 1, -8.81300792e-08, 0.842635691, -5.90851599e-08, -0.538484037)
-		CFrameBoss = CFrame.new(5232.5625, 5.26856995, 747.506897, 0.943829298, -4.5439414e-08, 0.330433697, 3.47818627e-08, 1, 3.81658154e-08, -0.330433697, -2.45289105e-08, 0.943829298)
-	elseif SelectBoss == "Flamingo [Lv. 225] [Boss]" then
-		MsBoss = "Flamingo [Lv. 225] [Boss]"
-		NaemQuestBoss = "ImpelQuest"
-		LevelQuestBoss = 3
-		CFrameQuestBoss = CFrame.new(4851.35059, 5.68744135, 743.251282, -0.538484037, -6.68303741e-08, -0.842635691, 1.38001752e-08, 1, -8.81300792e-08, 0.842635691, -5.90851599e-08, -0.538484037)
-		CFrameBoss = CFrame.new(5232.5625, 5.26856995, 747.506897, 0.943829298, -4.5439414e-08, 0.330433697, 3.47818627e-08, 1, 3.81658154e-08, -0.330433697, -2.45289105e-08, 0.943829298)
-	elseif SelectBoss == "Magma Admiral [Lv. 350] [Boss]" then
-		MsBoss = "Magma Admiral [Lv. 350] [Boss]"
-		NaemQuestBoss = "MagmaQuest"
-		LevelQuestBoss = 3
-		CFrameQuestBoss = CFrame.new(-5317.07666, 12.2721891, 8517.41699, 0.51175487, -2.65508806e-08, -0.859131515, -3.91131572e-08, 1, -5.42026761e-08, 0.859131515, 6.13418294e-08, 0.51175487)
-		CFrameBoss = CFrame.new(-5530.12646, 22.8769703, 8859.91309, 0.857838571, 2.23414389e-08, 0.513919294, 1.53689133e-08, 1, -6.91265853e-08, -0.513919294, 6.71978384e-08, 0.857838571)
-	elseif SelectBoss == "Fishman Lord [Lv. 425] [Boss]" then
-		MsBoss = "Fishman Lord [Lv. 425] [Boss]"
-		NaemQuestBoss = "FishmanQuest"
-		LevelQuestBoss = 3
-		CFrameQuestBoss = CFrame.new(61123.0859, 18.5066795, 1570.18018, 0.927145958, 1.0624845e-07, 0.374700129, -6.98219367e-08, 1, -1.10790765e-07, -0.374700129, 7.65569368e-08, 0.927145958)
-		CFrameBoss = CFrame.new(61351.7773, 31.0306778, 1113.31409, 0.999974668, 0, -0.00714713801, 0, 1.00000012, 0, 0.00714714266, 0, 0.999974549)
-	elseif SelectBoss == "Wysper [Lv. 500] [Boss]" then
-		MsBoss = "Wysper [Lv. 500] [Boss]"
-		NaemQuestBoss = "SkyExp1Quest"
-		LevelQuestBoss = 3
-		CFrameQuestBoss = CFrame.new(-7862.94629, 5545.52832, -379.833954, 0.462944925, 1.45838088e-08, -0.886386991, 1.0534996e-08, 1, 2.19553424e-08, 0.886386991, -1.95022007e-08, 0.462944925)
-		CFrameBoss = CFrame.new(-7925.48389, 5550.76074, -636.178345, 0.716468513, -1.22915289e-09, 0.697619379, 3.37381434e-09, 1, -1.70304748e-09, -0.697619379, 3.57381835e-09, 0.716468513)
-	elseif SelectBoss == "Thunder God [Lv. 575] [Boss]" then
-		MsBoss = "Thunder God [Lv. 575] [Boss]"
-		NaemQuestBoss = "SkyExp2Quest"
-		LevelQuestBoss = 3
-		CFrameQuestBoss = CFrame.new(-7902.78613, 5635.99902, -1411.98706, -0.0361216255, -1.16895912e-07, 0.999347389, 1.44533963e-09, 1, 1.17024491e-07, -0.999347389, 5.6715117e-09, -0.0361216255)
-		CFrameBoss = CFrame.new(-7917.53613, 5616.61377, -2277.78564, 0.965189934, 4.80563429e-08, -0.261550069, -6.73089886e-08, 1, -6.46515304e-08, 0.261550069, 8.00056768e-08, 0.965189934)
-	elseif SelectBoss == "Cyborg [Lv. 675] [Boss]" then
-		MsBoss = "Cyborg [Lv. 675] [Boss]"
-		NaemQuestBoss = "FountainQuest"
-		LevelQuestBoss = 3
-		CFrameQuestBoss = CFrame.new(5253.54834, 38.5361786, 4050.45166, -0.0112687312, -9.93677887e-08, -0.999936521, 2.55291371e-10, 1, -9.93769547e-08, 0.999936521, -1.37512213e-09, -0.0112687312)
-		CFrameBoss = CFrame.new(6041.82813, 52.7112198, 3907.45142, -0.563162148, 1.73805248e-09, -0.826346457, -5.94632716e-08, 1, 4.26280238e-08, 0.826346457, 7.31437524e-08, -0.563162148)
-	end
-end
-Don = false
-SelectToolWeaponBoss = ""
-function EquipWeaponBoss()
-	if game.Players.LocalPlayer.Backpack:FindFirstChild(SelectToolWeaponBoss) then
-		local tool = game.Players.LocalPlayer.Backpack:FindFirstChild(SelectToolWeaponBoss)
-		wait(.4)
-		game.Players.LocalPlayer.Character.Humanoid:EquipTool(tool)
-	end
-end
-local VirtualUser = game:GetService('VirtualUser')
-function AutoFramBoss()
-	CheckQuestBoss()
-	if SelectBoss == "Don Swan [Lv. 1000] [Boss]" or SelectBoss == "Cursed Captain [Lv. 1325] [Raid Boss]" or SelectBoss == "Saber Expert [Lv. 200] [Boss]" or SelectBoss == "Mob Leader [Lv. 120] [Boss]" or SelectBoss == "Darkbeard [Lv. 1000] [Raid Boss]" then
-		if game:GetService("Workspace").Enemies:FindFirstChild(SelectBoss) then
-			for i,v in pairs(game.Workspace.Enemies:GetDescendants()) do
-				if FramBoss and v:IsA("Model") and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and v.Name == MsBoss then
-					repeat
-						pcall(function() wait() 
-							if HideHitBlox then
-								v.HumanoidRootPart.Transparency = 1
-							else
-								v.HumanoidRootPart.Transparency = 0.75
-							end
-							v.HumanoidRootPart.CanCollide = false
-							v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-							game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0, 17, 5)
-							game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(11)
-							VirtualUser:CaptureController()
-							VirtualUser:ClickButton1(Vector2.new(851, 158), game:GetService("Workspace").Camera.CFrame)
-						end)
-					until not FramBoss or not v.Parent or v.Humanoid.Health <= 0
-				end
-			end
-		else
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameBoss
-		end
-	elseif SelectBoss == "Order [Lv. 1250] [Raid Boss]" then
-		if game:GetService("Workspace").Enemies:FindFirstChild(SelectBoss) then
-			for i,v in pairs(game.Workspace.Enemies:GetDescendants()) do
-				if FramBoss and v:IsA("Model") and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and v.Name == MsBoss then
-					repeat
-						pcall(function() wait() 
-							if HideHitBlox then
-								v.HumanoidRootPart.Transparency = 1
-							else
-								v.HumanoidRootPart.Transparency = 0.75
-							end
-							v.HumanoidRootPart.CanCollide = false
-							v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-							game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0, 25, 25)
-							game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(11)
-							VirtualUser:CaptureController()
-							VirtualUser:ClickButton1(Vector2.new(851, 158), game:GetService("Workspace").Camera.CFrame)
-						end)
-					until not FramBoss or not v.Parent or v.Humanoid.Health <= 0
-				end
-			end
-		else
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameBoss
-		end
-	else
-		if game:GetService("Workspace").Enemies:FindFirstChild(SelectBoss) or game:GetService("ReplicatedStorage"):FindFirstChild(SelectBoss) then
-			if game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == false then
-				CheckQuestBoss()
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuestBoss
-				wait(1.5)
-				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest", NaemQuestBoss, LevelQuestBoss)
-				wait(1)
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameBoss
-			elseif game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == true then
-				for i,v in pairs(game.Workspace.Enemies:GetDescendants()) do
-					if FramBoss and v:IsA("Model") and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and v.Name == MsBoss then
-						repeat
-							pcall(function() wait() 
-								if HideHitBlox then
-									v.HumanoidRootPart.Transparency = 1
-								else
-									v.HumanoidRootPart.Transparency = 0.75
-								end
-								v.HumanoidRootPart.CanCollide = false
-								v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-								game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0, 17, 5)
-								VirtualUser:CaptureController()
-								VirtualUser:ClickButton1(Vector2.new(851, 158), game:GetService("Workspace").Camera.CFrame)
-							end)
-						until not FramBoss or not v.Parent or v.Humanoid.Health <= 0 or game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == false
-					end
-				end
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameBoss
-			end
-		end
-	end
-end
-local Boss = {}
-for i, v in pairs(game.ReplicatedStorage:GetChildren()) do
-	if string.find(v.Name, "Boss") then
-		if v.Name == "Ice Admiral [Lv. 700] [Boss]" then
-		else
-			table.insert(Boss, v.Name)
-		end
-	end
-end
-for i, v in pairs(game.workspace.Enemies:GetChildren()) do
-	if string.find(v.Name, "Boss") then
-		if v.Name == "Ice Admiral [Lv. 700] [Boss]" then
-		else
-			table.insert(Boss, v.Name)
-		end
-	end
-end
-local BossName =
-	tgls:Dropdown(
-		"Select Boss",
-		Boss,
-		function(Value)
-		SelectBoss = Value
-		Don = false
-	end
-	)
-Wapon = {}
-for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-	if v:IsA("Tool") then
-		table.insert(Wapon, v.Name)
-	end
-end
-for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-	if v:IsA("Tool") then
-		table.insert(Wapon, v.Name)
-	end
-end
-local SelectWeaponBoss =
-	tgls:Dropdown(
-		"Select Weapon",
-		Wapon,
-		function(Value)
-		SelectToolWeaponBoss = Value
-	end
-	)
-tgls:Button("Refresh Weapon Boss","", function()
-	SelectWeaponBoss:Clear()
-	Wapon = {}
-	for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-		if v:IsA("Tool") then
-			SelectWeaponBoss:Add(v.Name)
-		end
-	end
-	for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-		if v:IsA("Tool") then
-			SelectWeaponBoss:Add(v.Name)
-		end
-	end
-end
-)
-tgls:Button("Refresh Boss","", function()
-	Boss = {}
-	BossName:Clear()
-	for i, v in pairs(game.ReplicatedStorage:GetChildren()) do
-		if string.find(v.Name, "Boss") then
-			if v.Name == "Ice Admiral [Lv. 700] [Boss]" then
-			else
-				BossName:Add(v.Name)
-			end
-		end
-	end
-	for i, v in pairs(game.workspace.Enemies:GetChildren()) do
-		if string.find(v.Name, "Boss") then
-			if v.Name == "Ice Admiral [Lv. 700] [Boss]" then
-			else
-				BossName:Add(v.Name)
-			end
-		end
-	end
-end)
-tgls:Line()
-tgls:Label("--AutoQuestLuccy--", true)
-WeaponBartilo = ""
-local args = {
-	[1] = "getInventoryWeapons"
-}
-game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-game:GetService("RunService").Heartbeat:Connect(
-function()
-	if _G.AutoBartilo then
-		game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
-	end
-end
-)
-tgls:Toggle("Auto Quest Bartilo"," ",false,function(v)
-	Bool = v
-	if game.Players.LocalPlayer.Backpack:FindFirstChild("Warrior Helmet") then
-		HaveWarriorHelmet = true
-	elseif game.Players.LocalPlayer.Character:FindFirstChild("Warrior Helmet") then
-		HaveWarriorHelmet = true
-	end
-	if HaveWarriorHelmet and Bool == true then
-		Flux:Notification("Quest Bartilo Successfully", "Alright")
-	elseif WeaponBartilo == "" and Bool == true then
-		Flux:Notification("Select Weapon", "Alright")
-	elseif game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BartiloQuestProgress","Bartilo") == 3 and Bool == true then
-		Flux:Notification("Quest Bartilo Successfully", "Alright")
-	else
-		_G.AutoBartilo = v
-	end
-    while _G.AutoBartilo do wait()
-       if _G.AutoBartilo then
-          if game.Players.LocalPlayer.Data.Level.Value >= 800 and game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BartiloQuestProgress","Bartilo") == 0 then
-             if string.find(game.Players.LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Swan Pirates") and string.find(game.Players.LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "50") and game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == true then 
-                if game.Workspace.Enemies:FindFirstChild("Swan Pirate [Lv. 775]") then
-                   Ms = "Swan Pirate [Lv. 775]"
-                   for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                       for i,k in pairs(game.Workspace.Enemies:GetChildren()) do
-                      if v.Name == Ms then
-                         pcall(function()
-                            repeat wait()
-                               if setsimulationradius then 
-								sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
-                               end
-                               if HideHitBlox then
-                                  v.HumanoidRootPart.Transparency = 1
-                               else
-                                  v.HumanoidRootPart.Transparency = 0.75
-                               end
-                               v.HumanoidRootPart.CanCollide = false
-                               v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
-                               v.HumanoidRootPart. CFrame = k.HumanoidRootPart.CFrame
-                               game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,15,0)
-                               PosMonBarto =  v.HumanoidRootPart.CFrame
-                               game:GetService'VirtualUser':CaptureController()
-                               game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                               AutoBartiloBring = true
-                            until not v.Parent or v.Humanoid.Health <= 0 or _G.AutoBartilo == false or game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == false
-                            AutoBartiloBring = false
-                         end)
-                      end
+if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam") then
+    repeat task.wait()
+        if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main").ChooseTeam.Visible == true then
+            if getgenv().Team == "Marines" then
+                for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container["Marines"].Frame.TextButton.Activated)) do
+                    for a, b in pairs(getconnections(game:GetService("UserInputService").TouchTapInWorld)) do
+                        b:Fire() 
                     end
-                  end
-                else
-                   CFramMon = CFrame.new(1057.92761, 137.614319, 1242.08069)
-                   game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFramMon
-                end
-             else
-                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-456.28952, 73.0200958, 299.895966)
-                wait(1.1)
-                local args = {
-                   [1] = "StartQuest",
-                   [2] = "BartiloQuest",
-                   [3] = 1
-                }
-                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-             end 
-          elseif game.Players.LocalPlayer.Data.Level.Value >= 800 and game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BartiloQuestProgress","Bartilo") == 1 then
-             if game.Workspace.Enemies:FindFirstChild("Jeremy [Lv. 850] [Boss]") then
-                Ms = "Jeremy [Lv. 850] [Boss]"
-                for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                   if v.Name == Ms then
-                      repeat wait()
-                         if setsimulationradius then 
-                            setsimulationradius(1e+1598, 1e+1599)
-                         end
-                         if HideHitBlox then
-                            v.HumanoidRootPart.Transparency = 1
-                         else
-                            v.HumanoidRootPart.Transparency = 0.75
-                         end
-                         v.HumanoidRootPart.CanCollide = false
-                         v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
-                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,15,0)
-                         game:GetService'VirtualUser':CaptureController()
-                         game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                      until not v.Parent or v.Humanoid.Health <= 0 or _G.AutoBartilo == false
-                   end
-                end
-             elseif game.ReplicatedStorage:FindFirstChild("Jeremy [Lv. 850] [Boss]") then
-                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-456.28952, 73.0200958, 299.895966)
-                wait(1.1)
-                local args = {
-                      [1] = "BartiloQuestProgress",
-                      [2] = "Bartilo"
-                }
-                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                wait(1)
-                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2099.88159, 448.931, 648.997375)
-                wait(2)
-             else
-                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2099.88159, 448.931, 648.997375)
-             end
-          elseif game.Players.LocalPlayer.Data.Level.Value >= 800 and game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BartiloQuestProgress","Bartilo") == 2 then
-             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1850.49329, 13.1789551, 1750.89685)
-             wait(1)
-             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1858.87305, 19.3777466, 1712.01807)
-             wait(1)
-             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1803.94324, 16.5789185, 1750.89685)
-             wait(1)
-             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1858.55835, 16.8604317, 1724.79541)
-             wait(1)
-             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1869.54224, 15.987854, 1681.00659)
-             wait(1)
-             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1800.0979, 16.4978027, 1684.52368)
-             wait(1)
-             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1819.26343, 14.795166, 1717.90625)
-             wait(1)
-             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1813.51843, 14.8604736, 1724.79541)
-          end
-       end 
-    end
- end)
-local BartiloWeapon = tgls:Dropdown("Select Weapon",Wapon,function(A)
-	WeaponBartilo = A
-end) 
-tgls:Button("Refresh Weapon","", function()
-	BartiloWeapon:Clear()
-	for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-		if v:IsA("Tool") then
-			BartiloWeapon:Add(v.Name)
-		end
-	end
-	for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-		if v:IsA("Tool") then
-			BartiloWeapon:Add(v.Name)
-		end
-	end
-end)
-tgls:Line()
-tgls:Label("--Auto Shark Man--", true)
-tgls:Toggle("Auto Sharkman Katate"," ",false,function(v)
-	if Firstsea then
-		Flux:Notification("Use in Second Sea", "Alright")
-	elseif SharkmanWeapon == "" and v then
-		Flux:Notification("Select Wapon!", "Alright")
-	else
-		local args = {
-			[1] = "BuyFishmanKarate"
-		}
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-		_G.AutoSharkman = v
-	end 
-	while _G.AutoSharkman do wait()
-		if _G.AutoSharkman then
-			if string.find(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate"), "keys") then  
-				if game.Players.LocalPlayer.Character:FindFirstChild("Water Key") or game.Players.LocalPlayer.Backpack:FindFirstChild("Water Key") then
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2604.6958, 239.432526, -10315.1982, 0.0425701365, 0, -0.999093413, 0, 1, 0, 0.999093413, 0, 0.0425701365)
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate")
-				elseif game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 400 then
-				else 
-					Ms = "Tide Keeper [Lv. 1475] [Boss]"
-					if game.Workspace.Enemies:FindFirstChild(Ms) then   
-						for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-							if v.Name == Ms then    
-								repeat wait()
-									EquipWeapon(SharkmanWeapon)
-									game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(11)
-									if setsimulationradius then 
-										setsimulationradius(1e+1598, 1e+1599)
-									end
-									if HideHitBlox then
-										v.HumanoidRootPart.Transparency = 1
-									else
-										v.HumanoidRootPart.Transparency = 0.75
-									end
-									v.HumanoidRootPart.CanCollide = false
-									v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
-									game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,15,0)
-									game:GetService'VirtualUser':CaptureController()
-									game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-								until not v.Parent or v.Humanoid.Health <= 0 or _G.AutoSharkman == false or game.Players.LocalPlayer.Character:FindFirstChild("Water Key") or game.Players.LocalPlayer.Backpack:FindFirstChild("Water Key")
-							end
-						end
-					else
-						CFrameBoss = CFrame.new(-3570.18652, 123.328949, -11555.9072, 0.465199202, -1.3857326e-08, 0.885206044, 4.0332897e-09, 1, 1.35347511e-08, -0.885206044, -2.72606271e-09, 0.465199202)
-						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameBoss
-					end
-				end
-			else 
-				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate")
-			end
-		end
-	end
-end)
-local Sharkman = tgls:Dropdown("Select Weapon",Wapon,function(Value)
-	SharkmanWeapon = Value
-end)
-tgls:Button("Refresh Weapon","", function()
-	Sharkman:Clear()
-	for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do  
-		if v:IsA("Tool") then
-			Sharkman:Add(v.Name)
-		end
-	end
-	for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do  
-		if v:IsA("Tool") then
-			Sharkman:Add(v.Name)
-		end
-	end
-end)
-tgls:Line()
-tgls:Label("--Auto Pole V.1--", true)
-function pole()
-    PUK = CFrame.new(-7911.14453, 5613.89795, -2272.67822, -0.585544586, -6.38371889e-09, 0.810640216, -2.4883267e-08, 1, -1.00988613e-08, -0.810640216, -2.60847095e-08, -0.585544586)
-end
-function hitbox()
-    for i,v in pairs (game:GetService("Workspace").Enemies:GetChildren()) do
-        if v.Name == "Thunder God [Lv. 575] [Boss]" then
-            v.HumanoidRootPart.Size = Vector3.new(40,40,40)
-            v.HumanoidRootPart.Transparency = 1
-        else
-            pole()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = PUK
+                    v.Function()
+                end 
+            else
+                for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container["Pirates"].Frame.TextButton.Activated)) do
+                    for a, b in pairs(getconnections(game:GetService("UserInputService").TouchTapInWorld)) do
+                        b:Fire() 
+                    end
+                    v.Function()
+                end 
             end
         end
+    until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
 end
-function atc()
-    game:GetService'VirtualUser':CaptureController()
-    game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-end
-tgls:Toggle("Auto Pole"," ",false,function(vu)
-    _G.Pole = vu
-end)
-spawn(function()
-    while wait() do
-        if _G.Pole then
-            pcall(function()
-            atc()
-            pole()
-            hitbox()
-            for i,v in pairs (game:GetService("Workspace").Enemies:GetChildren()) do
-    if v.Name == "Thunder God [Lv. 575] [Boss]" and v.Humanoid.Health == 0 then
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = PUK
-    
-    elseif v.Name == "Thunder God [Lv. 575] [Boss]"  then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,20,0)
-                        end
-end
-    end)
-        end
-    end
-end)
-spawn(function()
-    while wait() do
-        if _G.Pole then
-            EquipWeapon(polewapon)
-        end
-    end
-end)
-local pole = tgls:Dropdown("Select Weapon",Wapon,function(Value)
-	polewapon = Value
-end)
-tgls:Button("Refresh Weapon","", function()
-	pole:Clear()
-	for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do  
-		if v:IsA("Tool") then
-			pole:Add(v.Name)
-		end
-	end
-	for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do  
-		if v:IsA("Tool") then
-			pole:Add(v.Name)
-		end
-	end
-end)
-tgls:Line()
-tgls:Label("--Auto SwanGlasses--", true)
-function swan()
-    PUKPING = CFrame.new(2302.19019, 15.1778421, 663.811035)
-end
-function eiei()
-    for i,v in pairs (game:GetService("Workspace").Enemies:GetChildren()) do
-        if v.Name == "Don Swan [Lv. 1000] [Boss]" then
-            v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-            v.HumanoidRootPart.Transparency = 1
-        else
-            swan()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = PUKPING
-            end
-        end
-end
-tgls:Toggle("Auto SwanGlasses"," ",false,function(vu)
-    _G.SwanGlasses = vu
-end)
-spawn(function()
-    while wait() do
-        if _G.SwanGlasses then
-            pcall(function()
-            atc()
-            swan()
-            eiei()
-            for i,v in pairs (game:GetService("Workspace").Enemies:GetChildren()) do
-    if v.Name == "Don Swan [Lv. 1000] [Boss]" and v.Humanoid.Health == 0 then
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = PUKPING
-    
-    elseif v.Name == "Don Swan [Lv. 1000] [Boss]"  then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,20,0)
-                        end
-end
-    end)
-        end
-    end
-end)
-spawn(function()
-    while wait() do
-        if _G.SwanGlasses then
-            EquipWeapon(swanwapon)
-        end
-    end
-end)
-local swan = tgls:Dropdown("Select Weapon",Wapon,function(Value)
-	swanwapon = Value
-end)
-tgls:Button("Refresh Weapon","", function()
-	swan:Clear()
-	for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do  
-		if v:IsA("Tool") then
-			swan:Add(v.Name)
-		end
-	end
-	for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do  
-		if v:IsA("Tool") then
-			Secondsea:Add(v.Name)
-		end
-	end
-end)
-tgls:Line()
-tgls:Label("--AutoFarmEctoplasm--", true)
-tgls:Toggle("Auto Fram Ectoplasm"," ",false,function(A)
-	if Secondsea then
-		_G.AutoFramEctoplasm = A
-	else 
-		Flux:Notification("Use in Second Sea", "Alright")	
-	end
-	while _G.AutoFramEctoplasm do wait()
-		if _G.AutoFramEctoplasm then
-			if game.Workspace.Enemies:FindFirstChild("Ship Deckhand [Lv. 1250]") or game.Workspace.Enemies:FindFirstChild("Ship Engineer [Lv. 1275]") or game.Workspace.Enemies:FindFirstChild("Ship Steward [Lv. 1300]") or game.Workspace.Enemies:FindFirstChild("Ship Officer [Lv. 1325]") then
-				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-					if string.find(v.Name, "Ship") then
-						repeat wait()
-							if string.find(v.Name, "Ship") then
-								if setsimulationradius then 
-									sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
-								end
-								v.HumanoidRootPart.CFrame = x.HumanoidRootPart.CFrame
-								v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-								EquipWeapon(EctoplasmWeaponSelect)
-								game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(11)
-								VirtualUser:CaptureController()
-								VirtualUser:ClickButton1(Vector2.new(851, 158), game:GetService("Workspace").Camera.CFrame)
-								-- ยตร•ร รยง
-								PosMonEctoplasm = v.HumanoidRootPart.CFrame
-								game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0, 15, 0)
-								StatrMagnetEctoplasm = true
-							else
-								StatrMagnetEctoplasm = false
-								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(920.14447, 129.581833, 33442.168, -0.999913812, 0, -0.0131403487, 0, 1, 0, 0.0131403487, 0, -0.999913812)
-							end
-						until game.Players.LocalPlayer.Backpack:FindFirstChild("Hidden Key") or _G.AutoFramEctoplasm == false or not v.Parent or v.Humanoid.Health <= 0
-						StatrMagnetEctoplasm = false
-						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(920.14447, 129.581833, 33442.168, -0.999913812, 0, -0.0131403487, 0, 1, 0, 0.0131403487, 0, -0.999913812)
-					end
-				end
-			else
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(902.059143, 124.752518, 33071.8125)
-			end
-		end
-	end
-end)
-local EctoplasmWeapon = tgls:Dropdown("Select Weapon",Wapon,function(Value)
-	EctoplasmWeaponSelect = Value
-end)
-tgls:Button("Refresh Weapon","", function()
-	EctoplasmWeapon:Clear()
-	for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do  
-		if v:IsA("Tool") then
-			EctoplasmWeapon:Add(v.Name)
-		end
-	end
-	for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do  
-		if v:IsA("Tool") then
-			EctoplasmWeapon:Add(v.Name)
-		end
-	end
-end)
-tgls:Line()
-tgls:Label("--Auto Fram observhaki--", true)
-local ObservationVirtualUser = game:GetService('VirtualUser')
-tgls:Toggle("Auto Fram Observation"," ",false,function(a)
-	_G.Observation = a
-	if _G.Observation then
-		ObservationVirtualUser:CaptureController()
-		ObservationVirtualUser:SetKeyDown('0x65')
-		wait(2)
-		ObservationVirtualUser:SetKeyUp('0x65')
-	end
-	while _G.Observation do wait()
-		if Secondsea then
-			if game.Workspace.Enemies:FindFirstChild("Ship Engineer [Lv. 1275]") then
-				if game.Players.LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel") then
-					repeat wait()
-						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Enemies:FindFirstChild("Ship Engineer [Lv. 1275]").HumanoidRootPart.CFrame * CFrame.new(3,0,0)
-					until _G.Observation == false or not game.Players.LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel")
-				else
-					repeat wait()
-						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Enemies:FindFirstChild("Ship Engineer [Lv. 1275]").HumanoidRootPart.CFrame * CFrame.new(10,15,0)
-					until _G.Observation == false or game.Players.LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel")
-				end
-			else
-				game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(918.558777, 40.0827065, 32766.498)
-			end
-		elseif Firstsea then
-			if game.Workspace.Enemies:FindFirstChild("Galley Captain [Lv. 650]") then
-				if game.Players.LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel") then
-					repeat wait()
-						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Enemies:FindFirstChild("Galley Captain [Lv. 650]").HumanoidRootPart.CFrame * CFrame.new(3,0,0)
-					until _G.Observation == false or not game.Players.LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel")
-				else
-					repeat wait()
-						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Enemies:FindFirstChild("Galley Captain [Lv. 650]").HumanoidRootPart.CFrame * CFrame.new(10,15,0)
-					until _G.Observation == false or game.Players.LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel")
-				end
-			else
-				game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(5533.29785, 88.1079102, 4852.3916)
-			end
-		end
-	end
-end)
-spawn(function()
-	while wait() do wait(40)
-		pcall(function()
-			if _G.Observation and not game.Players.LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel") then
-				ObservationVirtualUser:CaptureController()
-				ObservationVirtualUser:SetKeyDown('0x65')
-				wait(2)
-				ObservationVirtualUser:SetKeyUp('0x65')
-			end
-		end)
-	end
-end)
-tgls:Button("Check Observation Haki level","", function()
-     Flux:Notification("Observation Haki Level = "..game.Players.LocalPlayer.VisionRadius.Value, "Alright") 
-end)
--- Magnet
-spawn(function()
-	while wait() do
-		if _G.AutoFarm and StatrMagnet and Magnet then
-			CheckQuest()
-			for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-				if v.Name == Ms and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
-					if v.Name == "Factory Staff [Lv. 800]" and (v.HumanoidRootPart.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 200 then
-						wait()
-						if HideHitBlox then
-							v.HumanoidRootPart.Transparency = 1
-						else
-							v.HumanoidRootPart.Transparency = 0.75
-						end
-						v.HumanoidRootPart.CanCollide = false
-						v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-						v.HumanoidRootPart.CFrame = PosMon
-					elseif v.Name == Ms and (v.HumanoidRootPart.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 400 then
-						wait()
-						if HideHitBlox then
-							v.HumanoidRootPart.Transparency = 1
-						else
-							v.HumanoidRootPart.Transparency = 0.75
-						end
-						v.HumanoidRootPart.CanCollide = false
-						v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-						v.HumanoidRootPart.CFrame = PosMon
-					end
-				end
-			end
-		end 
-		if Mastery and StatrMagnetDevilFruitMastery and Magnet then
-			for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-				CheckQuest()
-				if v.Name == Ms and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
-					if v.Name == "Factory Staff [Lv. 800]" and (v.HumanoidRootPart.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 200 then
-						wait()
-						v.HumanoidRootPart.CanCollide = false
-						if HideHitBlox then
-							v.HumanoidRootPart.Transparency = 1
-						else
-							v.HumanoidRootPart.Transparency = 0.75
-						end
-						if UseDF then
-							v.HumanoidRootPart.Size = Vector3.new(2, 2, 1)
-						elseif UseDF == false then
-							v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-						end   
-						v.HumanoidRootPart.CFrame = PosMon
-					elseif v.Name == Ms and (v.HumanoidRootPart.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 300 then
-						wait()
-						v.HumanoidRootPart.CanCollide = false
-						if HideHitBlox then
-							v.HumanoidRootPart.Transparency = 1
-						else
-							v.HumanoidRootPart.Transparency = 0.75
-						end
-						if UseDF then
-							v.HumanoidRootPart.Size = Vector3.new(2, 2, 1)
-						elseif UseDF == false then
-							v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-						end   
-						v.HumanoidRootPart.CFrame = PosMon
-					end
-				end
-			end
-		end
-		if _G.AutoBartilo and AutoBartiloBring and Magnet then
-			for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-				if v.Name == "Swan Pirate [Lv. 775]" and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
-					if v.Name == "Swan Pirate [Lv. 775]" then
-						if HideHitBlox then
-							v.HumanoidRootPart.Transparency = 1
-						else
-							v.HumanoidRootPart.Transparency = 0.75
-						end
-						v.HumanoidRootPart.CanCollide = false
-						v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
-						v.HumanoidRootPart.CFrame = PosMonBarto
-						sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
-					end
-				end
-			end
-		end
-		       if _G.AutoBartilo and AutoBartiloBring and Magnet then
-          for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-             if v.Name == "Swan Pirate [Lv. 775]" and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
-                if v.Name == "Swan Pirate [Lv. 775]" then
-                   if HideHitBlox then
-                      v.HumanoidRootPart.Transparency = 1
-                   else
-                      v.HumanoidRootPart.Transparency = 0.75
-                   end
-                   v.HumanoidRootPart.CanCollide = false
-                   v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
-                   v.HumanoidRootPart.CFrame = PosMonBarto
-				   sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
-                end
-             end
-          end
-       end
-		if _G.AutoRengoku and StatrMagnetRengoku and Magnet then
-			for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-				if v.Name ==  "Snow Lurker [Lv. 1375]" and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
-					if v.Name == "Snow Lurker [Lv. 1375]" then
-						if HideHitBlox then
-							v.HumanoidRootPart.Transparency = 1
-						else
-							v.HumanoidRootPart.Transparency = 0.75
-						end
-						v.HumanoidRootPart.CanCollide = false
-						v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
-						v.HumanoidRootPart.CFrame = PosMonRengoku
-						sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
-					end
-				end
-			end
-		end
-		
-		if _G.AutoFramEctoplasm and StatrMagnetEctoplasm and Magnet then
-			for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-				if string.find(v.Name, "Ship") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
-					if (v.HumanoidRootPart.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 300 then
-						if HideHitBlox then
-							v.HumanoidRootPart.Transparency = 1
-						else
-							v.HumanoidRootPart.Transparency = 0.75
-						end
-						v.HumanoidRootPart.CanCollide = false
-						v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
-						v.HumanoidRootPart.CFrame = PosMonEctoplasm
-						sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
-					end
-				end
-			end
-		end
-	end
-end)
-tgls:Line()
-tgls:Label("-- Auto Fram Mastery --")
-game:GetService("RunService").Heartbeat:Connect(
-function()
-	if _G.FruitMastery then
-		game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
-	end
-	if _G.GunMastery then
-		game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
-	end
-end
-)
-WeaponMastery = ""
-tgls:Toggle("Auto Fram Mastery  Fruit"," ",false,function(v)
-	if WeaponMastery == "" and v then
-		Flux:Notification("Select Wapon", "Alright")
-	else
-		CheckQuest()
-		local args = {
-			[1] = "AbandonQuest"
-		}
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-		_G.FruitMastery = v
-		Ms = ""
-	end	
-	while _G.FruitMastery do wait()
-		AutoDevilFruitMastery()
-	end
-end)
-function AutoDevilFruitMastery()
-    if _G.FruitMastery then
-       if LocalPlayer.PlayerGui.Main.Quest.Visible == false then
-          StatrMagnetDevilFruitMastery = false
-          CheckQuest()
-          LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
-          wait(1.1)
-          game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest", NaemQuest, LevelQuest)
-       elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
-          CheckQuest()
-          LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
-          if game:GetService("Workspace").Enemies:FindFirstChild(Ms) then
-             pcall(
-                function()
-                   for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                      CheckQuest()  
-                      if v.Name == Ms then
-                         repeat wait() CheckQuest()  
-                            if game:GetService("Workspace").Enemies:FindFirstChild(Ms) then
-                               if string.find(LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) then
-                                  if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                     local args = {
-                                           [1] = "Buso"
-                                     }
-                                     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                                  end
-                                  HealthMin = v.Humanoid.MaxHealth*Persen/100
-                                  PosMon = v.HumanoidRootPart.CFrame
-                                  if v.Humanoid.Health <= HealthMin then
-                                     UseDF = true
-                                     EquipWeapon(game.Players.LocalPlayer.Data.DevilFruit.Value)
-                                     v.HumanoidRootPart.CanCollide = false
-                                     v.HumanoidRootPart.Size = Vector3.new(2, 2, 1)
-                                     v.HumanoidRootPart.Transparency = 0.75
-                                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,15,0)
-                                     if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Dragon-Dragon") then
-                                        if SkillZ and v.Humanoid.Health <= HealthMin then
-                                           local args = {
-                                              [1] = v.HumanoidRootPart.Position
-                                           }
-                                           game:GetService("Players").LocalPlayer.Character["Dragon-Dragon"].RemoteEvent:FireServer(unpack(args))
-                                           local args = {
-                                              [1] = "Z",
-                                              [2] = Vector3.new(0,0,0)
-                                           }
-                                           game:GetService("Players").LocalPlayer.Character["Dragon-Dragon"].RemoteFunction:InvokeServer(unpack(args))
-                                        end
-                                        if SkillX and v.Humanoid.Health <= HealthMin then
-                                           local args = {
-                                              [1] = v.HumanoidRootPart.Position
-                                           }
-                                           game:GetService("Players").LocalPlayer.Character["Dragon-Dragon"].RemoteEvent:FireServer(unpack(args))
-                                           local args = {
-                                              [1] = "X"
-                                           }
-                                           game:GetService("Players").LocalPlayer.Character["Dragon-Dragon"].RemoteFunction:InvokeServer(unpack(args))
-                                        end   
-                                     elseif game:GetService("Players").LocalPlayer.Character:FindFirstChild(game.Players.LocalPlayer.Data.DevilFruit.Value) then
-                                        if SkillZ and v.Humanoid.Health <= HealthMin then
-                                           local args = {
-                                              [1] = v.HumanoidRootPart.Position
-                                           }
-                                           game:GetService("Players").LocalPlayer.Character[game.Players.LocalPlayer.Data.DevilFruit.Value].RemoteEvent:FireServer(unpack(args))
-                                           local args = {
-                                              [1] = "Z",
-                                              [2] = Vector3.new(0,0,0)
-                                           }
-                                           game:GetService("Players").LocalPlayer.Character[game.Players.LocalPlayer.Data.DevilFruit.Value].RemoteFunction:InvokeServer(unpack(args))
-                                        end
-                                        if SkillX and v.Humanoid.Health <= HealthMin then
-                                           local args = {
-                                              [1] = v.HumanoidRootPart.Position
-                                           }
-                                           game:GetService("Players").LocalPlayer.Character[game.Players.LocalPlayer.Data.DevilFruit.Value].RemoteEvent:FireServer(unpack(args))
-                                           local args = {
-                                              [1] = "X",
-                                              [2] = Vector3.new(0,0,0)
-                                           }
-                                           
-                                           game:GetService("Players").LocalPlayer.Character[game.Players.LocalPlayer.Data.DevilFruit.Value].RemoteFunction:InvokeServer(unpack(args))
-                                        end
-                                        if SkillC and v.Humanoid.Health <= HealthMin then
-                                           local args = {
-                                              [1] = v.HumanoidRootPart.Position
-                                           }
-                                           game:GetService("Players").LocalPlayer.Character[game.Players.LocalPlayer.Data.DevilFruit.Value].RemoteEvent:FireServer(unpack(args))
-                                           local args = {
-                                              [1] = "C",
-                                              [2] = Vector3.new(0,0,0)
-                                           }
-                                           game:GetService("Players").LocalPlayer.Character[game.Players.LocalPlayer.Data.DevilFruit.Value].RemoteFunction:InvokeServer(unpack(args))
-                                        end
-                                        if SkillV and v.Humanoid.Health <= HealthMin then
-                                           local args = {
-                                              [1] = v.HumanoidRootPart.Position
-                                           }
-                                           game:GetService("Players").LocalPlayer.Character[game.Players.LocalPlayer.Data.DevilFruit.Value].RemoteEvent:FireServer(unpack(args))
-                                           local args = {
-                                              [1] = "V",
-                                              [2] = Vector3.new(0,0,0)
-                                           }
-                                           game:GetService("Players").LocalPlayer.Character[game.Players.LocalPlayer.Data.DevilFruit.Value].RemoteFunction:InvokeServer(unpack(args))
-                                        end
-                                     end   
-                                  else
-                                     UseDF = false
-                                     EquipWeapon(WeaponMastery)
-                                     if HideHitBlox then
-                                        v.HumanoidRootPart.Transparency = 1
-                                     else
-                                        v.HumanoidRootPart.Transparency = 0.75
-                                     end
-                                     v.HumanoidRootPart.CanCollide = false
-                                     v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
-                                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,15,0)
-                                     game:GetService'VirtualUser':CaptureController()
-                                     game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))  
-                                  end
-                                  StatrMagnetDevilFruitMastery = true 
-                               else
-                                  StatrMagnet = false
-                                  CheckQuest()
-                          
-                                  LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
-                                  wait(1.5)
-                                  game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest", NaemQuest, LevelQuest)
-                               end  
-                            else
-                               CheckQuest() 
-                               game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
-                            end 
-                         until not v.Parent or v.Humanoid.Health <= 0 or _G.AutoFarm == false or LocalPlayer.PlayerGui.Main.Quest.Visible == false
-                         StatrMagnetDevilFruitMastery = false
-                         CheckQuest() 
-                         game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
-                      end
-                   end
-                end
-             )
-          else
-             CheckQuest()
-             game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
-          end 
-       end
-    end
- end
- spawn(function()
-    while wait() do
-       for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do  
-          if v:IsA("Tool") then
-             if v:FindFirstChild("RemoteFunctionShoot") then 
-                SelectToolWeaponGun = v.Name
-             end
-          end
-       end
-    end
- end)
-tgls:Toggle("Auto Fram Gun Mastery"," ",false,function(v)
-	if WeaponMastery == "" and v then
-		Flux:Notification("Select Wapon!", "Alright")
-	else 
-		CheckQuest()
 
-		_G.GunMastery = v
-		Ms = ""
-	end	
-	while _G.GunMastery do wait()
-		AutoGunMastery()
-	end
-end)
-function AutoGunMastery()
-	if game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == false then  
-		CheckQuest()
-		LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
-		wait(1.1)
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest", NaemQuest, LevelQuest)
-		wait(0.5)
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
-	elseif game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == true then  
-		for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-			CheckQuest()
-			pcall(function()
-				if game.Workspace.Enemies:FindFirstChild(Ms) then
-					if _G.GunMastery and v.Name == Ms then
-						if setsimulationradius then 
-							sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
-						end
-						repeat wait()
-							pcall(function()
-								if game.Workspace.Enemies:FindFirstChild(Ms) then
-									if string.find(LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) then
-										HealthMin = v.Humanoid.MaxHealth*Persen/100
-										PosMon = v.HumanoidRootPart.CFrame
-										if v.Humanoid.Health <= HealthMin then
-											EquipWeapon(SelectToolWeaponGun)
-											v.HumanoidRootPart.CanCollide = false
-											v.HumanoidRootPart.Size = Vector3.new(2, 2, 1)
-											v.HumanoidRootPart.Transparency = 0.75
-											game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,15,0)
-											local args = {
-												[1] = v.HumanoidRootPart.Position,
-												[2] = v.HumanoidRootPart
-											}
-											game:GetService("Players").LocalPlayer.Character[SelectToolWeaponGun].RemoteFunctionShoot:InvokeServer(unpack(args))
-										else
-											EquipWeapon(WeaponMastery)
-											if HideHitBlox then
-												v.HumanoidRootPart.Transparency = 1
-											else
-												v.HumanoidRootPart.Transparency = 0.75
-											end
-											v.HumanoidRootPart.CanCollide = false
-											v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
-											game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,15,0)
-											game:GetService'VirtualUser':CaptureController()
-											game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-										end 
-										StatrMagnet = true
-									else
-										CheckQuest()
-										
-										LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
-										wait(1.1)
+local Fluent = loadstring(game:HttpGet("https://pastebin.com/raw/gwvyBF34"))()
 
-										wait(0.5)
-										game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
-									end
-								else
-									CheckQuest()
-									game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
-								end
-							end)
-						until game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == false or _G.GunMastery == false or v.Humanoid.Health <= 0 or not v.Parent or v.Humanoid.Health <= 0
-					end
-				else
-					CheckQuest()
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
-				end
-			end)
-		end
-	end
-end
-Persen = 15
-tgls:Slider("Health %", "", 1, 100,Persen,function(v)
-	Persen = v
-end)
-local AMS = tgls:Dropdown("Select Weapon",Wapon,function(v)
-	WeaponMastery = v
-	WeaponOldMastery = v
-end)
-tgls:Button("Refresh Weapon","", function()
-	AMS:Clear()
-	for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do  
-		if v:IsA("Tool") then
-			AMS:Add(v.Name)
-		end
-	end
-	for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do  
-		if v:IsA("Tool") then
-			AMS:Add(v.Name)
-		end
-	end
-end)
-tgls:Line()
-tgls:Label("--AutoBuyItem--")
-tgls:Toggle("Auto Legendary Sword"," ",false,function(Value)
-	_G.LegebdarySword = Value    
-end)
-spawn(function()
-	while wait(.1) do
-		if _G.LegebdarySword then
-			local args = {
-				[1] = "LegendarySwordDealer",
-				[2] = "1"
-			}
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-		end 
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if _G.LegebdarySword then
-			local args = {
-				[1] = "LegendarySwordDealer",
-				[2] = "2"
-			}
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-		end 
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if _G.LegebdarySword then
-			local args = {
-				[1] = "LegendarySwordDealer",
-				[2] = "3"
-			}
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-		end 
-	end
-end)
+local InterfaceManager = loadstring(game:HttpGet("https://pastebin.com/raw/UnKuYx8S"))()
 
-tgls:Toggle("Auto Haki Color"," ",false,function(Value)
-	_G.Enhancement = Value    
-end)
-spawn(function()
-	while wait(.1) do
-		if _G.Enhancement then
-			local args = {
-				[1] = "ColorsDealer",
-				[2] = "2"
-			}
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-		end 
-	end
-end)
-local args = {
-	[1] = "getInventoryWeapons"
+local Window = Fluent:CreateWindow({
+Title = "Danny Hub | Blox Fruit - "..os.date("%A, %B %dth, %Y."),
+TabWidth = 160,
+Size = UDim2.fromOffset(490, 300),
+Acrylic = false,
+Theme = "Light",
+MinimizeKey = Enum.KeyCode.LeftControl
+})
+
+local Tabs = {
+GeneralTab = Window:AddTab({ Title = "General", Icon = "home" }),
+AutomaticTab = Window:AddTab({ Title = "Automatic", Icon = "air-vent" }),
+RacePuzzleTab = Window:AddTab({ Title = "Race Puzzle", Icon = "cloud-moon-rain" }),
+SeaEventTab = Window:AddTab({ Title = "Sea Event", Icon = "sailboat" }),
+Raiding = Window:AddTab({ Title = "Raiding", Icon = "swords" }),
+ShoppingTab = Window:AddTab({ Title = "Shopping", Icon = "shopping-cart" }),
+MiscellaneousTab = Window:AddTab({ Title = "Miscellaneous", Icon = "archive" }),
+Settings = Window:AddTab({ Title = "Interface", Icon = "align-vertical-distribute-center" })
 }
-game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-for i,v in pairs(game.Players.LocalPlayer.PlayerGui.Main.Inventory.Container:GetDescendants()) do
-	if v.Name == "Ghoul Mask" then
-		AssGhoulMask = true
-	end
-	if v.Name == "Midnight Blade" then
-		AssMidnightBlade = true
-	end
-	if v.Name == "Bizarre Rifle" then
-		AssBizarreRifle = true
-	end
+
+local Options = Fluent.Options
+do
 end
-tgls:Toggle("Auto Buy Bizarre Rifle"," ",false,function(A)
-	if Secondsea then
-		AutoBuyBizarreRifle = A
-		while AutoBuyBizarreRifle do wait()
-			if AssBizarreRifle then
-			else
-				local args = {
-					[1] = "Ectoplasm",
-					[2] = "Buy",
-					[3] = 1
-				}
-				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-			end
-		end
-	end
-end)
-tgls:Toggle("Auto Buy Ghoul Mask"," ",false,function(A)
-	if Secondsea then
-		AutoBuyGhoulMask = A
-		while AutoBuyGhoulMask do wait()
-			if AssGhoulMask then
 
-			else
-				local args = {
-					[1] = "Ectoplasm",
-					[2] = "Buy",
-					[3] = 2
-				}
-				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-			end
-		end
-	end
-end)
-tgls:Toggle("Auto Buy Midnight Blade"," ",false,function(A)
-	if Secondsea then
-		AutoBuyMidnightBlade = A
-		while AutoBuyMidnightBlade do wait()
-			if AssMidnightBlade then
+InterfaceManager:SetLibrary(Fluent)
 
-			else
-				local args = {
-					[1] = "Ectoplasm",
-					[2] = "Buy",
-					[3] = 3
-				}
-				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-			end
-		end
-	end
-end)
-local Stats = win:Tab("Stats", "")
-_G.Melee = false
-Stats:Toggle("Melee"," ",false,function(Value)
-	_G.Melee = Value    
-end)
-_G.Defense = false
-Stats:Toggle("Defense"," ",false,function(value)
-	_G.Defense = value
-end)
-_G.Sword = false
-Stats:Toggle("Sword"," ",false,function(value)
-	_G.Sword = value
-end)
-_G.Gun = false
-Stats:Toggle("Gun"," ",false,function(value)
-	_G.Gun = value
-end)
-_G.Fruit = false
-Stats:Toggle("Devil Fruit"," ",false,function(value)
-	_G.Fruit = value
-end)
-PointStats = 1
-Stats:Slider("Point", "", 1, 100,PointStats,function(a)
-	PointStats = a
-end)
+InterfaceManager:SetFolder("Danny_Hub_Theme")
+
+InterfaceManager:BuildInterfaceSection(Tabs.Settings)
+
+Window:SelectTab(1)
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local SoundService = game:GetService("SoundService")
+local TweenService = game:GetService("TweenService")
+
+local soundId = "rbxassetid://9128519965"
+local sound = Instance.new("Sound")
+sound.Name = "ButtonClickSound"
+sound.SoundId = soundId
+sound.Parent = ReplicatedStorage
+
+local MainScreenGui = Instance.new("ScreenGui")
+local ButtonScreenGui = Instance.new("ScreenGui")
+local ImageButton = Instance.new("ImageButton")
+local UICorner = Instance.new("UICorner")
+local UIStroke = Instance.new("UIStroke")
+
+MainScreenGui.Name = "MainScreenGui"
+MainScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+ButtonScreenGui.Name = "ButtonScreenGui"
+ButtonScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+ImageButton.Parent = ButtonScreenGui
+ImageButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ImageButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ImageButton.BorderSizePixel = 0
+ImageButton.Position = UDim2.new(0.1, 10, 0, 10) 
+ImageButton.AnchorPoint = Vector2.new(0.5, 0) 
+ImageButton.Size = UDim2.new(0, 40, 0, 40)
+ImageButton.Image = ""
+
+UICorner.CornerRadius = UDim.new(1, 0) 
+UICorner.Parent = ImageButton
+
+UIStroke.Color = Color3.fromRGB(30, 20, 20)
+UIStroke.Parent = ImageButton
+
+local colors = {
+    Color3.fromRGB(30, 20, 20),
+    Color3.fromRGB(30, 20, 20),
+    Color3.fromRGB(30, 20, 20),
+    Color3.fromRGB(30, 20, 20),
+    Color3.fromRGB(30, 20, 20),
+    Color3.fromRGB(30, 20, 20),
+    Color3.fromRGB(30, 20, 20)
+}
+
+local index = 1
+
 spawn(function()
-	while wait() do
-		if game.Players.localPlayer.Data.Points.Value >= PointStats then
-			if _G.Melee then
-				local args = {
-					[1] = "AddPoint",
-					[2] = "Melee",
-					[3] = PointStats
-				}
-				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-			end 
-			if _G.Defense then
-				local args = {
-					[1] = "AddPoint",
-					[2] = "Defense",
-					[3] = PointStats
-				}
-				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-			end 
-			if _G.Sword then
-				local args = {
-					[1] = "AddPoint",
-					[2] = "Sword",
-					[3] = PointStats
-				}
-				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-			end 
-			if _G.Gun then
-				local args = {
-					[1] = "AddPoint",
-					[2] = "Gun",
-					[3] = PointStats
-				}
-				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-			end 
-			if _G.Fruit then
-				local args = {
-					[1] = "AddPoint",
-					[2] = "Demon Fruit",
-					[3] = PointStats
-				}
-				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-			end
-		end
-	end
+    while true do
+        UIStroke.Color = colors[index]
+        index = index % #colors + 1 
+        wait(0.5) 
+    end
 end)
-local Players = win:Tab("Players", "")
-local SelectedPly = Players:Label("Selected Player : nil")
-PlayerName = {}
-for i,v in pairs(game.Players:GetChildren()) do  
-   table.insert(PlayerName ,v.Name)
+
+local function toggleUI()
+    MainScreenGui.Enabled = not MainScreenGui.Enabled
 end
-SelectedKillPlayer = ""
-local Player = Players:Dropdown("Selected Player",PlayerName,function(plys) --true/false, replaces the current title "Dropdown" with the option that t
-   SelectedKillPlayer = plys
-   SelectedPly:Refresh("Selected Player : "..SelectedKillPlayer)
+
+ImageButton.MouseButton1Click:Connect(function()
+    
+    local goal = {Rotation = 360} 
+    local tweenInfo = TweenInfo.new(1, Enum.EasingStyle.Back) 
+    local tween = TweenService:Create(ImageButton, tweenInfo, goal)
+
+    tween:Play()
+    tween.Completed:Connect(function()
+        ImageButton.Rotation = 0 
+        toggleUI() 
+    end)
+
+    local clickSound = sound:Clone()
+    clickSound.Parent = SoundService
+    clickSound:Play()
+    
+    game:GetService("VirtualInputManager"):SendKeyEvent(true,"LeftControl",false,game.Players.LocalPlayer.Character.HumanoidRootPart)	game:GetService("VirtualInputManager"):SendKeyEvent(false,"LeftControl",false,game.Players.LocalPlayer.Character.HumanoidRootPart)
 end)
-Players:Button("Refrsh Player","",function()
-   PlayerName = {}
-   Player:Clear()
-   for i,v in pairs(game.Players:GetChildren()) do  
-	  Player:Add(v.Name)
-   end
-end)
-game:GetService("RunService").Heartbeat:Connect(
-   function()
-	  if KillPlayer then
-		 game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(11)
-	  end
-   end)
-Players:Toggle("Kill Player Over","",false,function(bool)
-   KillPlayer = bool
-   if KillPlayer == false then
-	  game.Players:FindFirstChild(SelectedKillPlayer).Character.HumanoidRootPart.Size = Vector3.new(2, 2, 1)
-   end
-   while KillPlayer do wait()
-	  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players:FindFirstChild(SelectedKillPlayer).Character.HumanoidRootPart.CFrame * CFrame.new(0,15,0)
-	  game.Players:FindFirstChild(SelectedKillPlayer).Character.HumanoidRootPart.Size = Vector3.new(60,60,60)
-	  game:GetService'VirtualUser':CaptureController()
-	  game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-   end
-end)
-Players:Toggle("Kill Player Under","",false,function(bool)
-   KillPlayer = bool
-   if KillPlayer == false then
-	  game.Players:FindFirstChild(SelectedKillPlayer).Character.HumanoidRootPart.Size = Vector3.new(2, 2, 1)
-   end
-   while KillPlayer do wait()
-	  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players:FindFirstChild(SelectedKillPlayer).Character.HumanoidRootPart.CFrame * CFrame.new(0,15,0)
-	  game.Players:FindFirstChild(SelectedKillPlayer).Character.HumanoidRootPart.Size = Vector3.new(60,60,60)
-	  game:GetService'VirtualUser':CaptureController()
-	  game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-   end
-end)
+
+local https = game.HttpService
+local filename = 'Danny_Hub_Script_' .. game.Players.LocalPlayer.Name .. ".json"
+function loadconfig()
+if (readfile and isfile and isfile('Danny_Hub_Script/' .. filename)) then
+_G.Config = https:JSONDecode(readfile('Danny_Hub_Script/' .. filename))
+end end
+    
+if not _G.Config then
+loadconfig()
+end
+    
+function Saveconfig()
+local json;
+if isfolder("Danny_Hub_Script") == false then
+makefolder("Danny_Hub_Script")
+end
+if (writefile) then
+local json = https:JSONEncode(_G.Config)
+writefile('Danny_Hub_Script/' .. filename,json)
+end end
+    
+if not _G.Config then
+_G.Config = {
+  ["Main"] = {
+    ["Auto Farm Level"] = false,
+    ["Auto Second Sea"] = false,
+    ["Auto Third Sea"] = false,
+  },
+  ["Boss"] = {
+    ["Select Boss"] = "nil",
+    ["Auto Farm Boss"] = false,
+  },
+  ["Mob"] = {
+    ["Distance"] = 2500,
+    ["Mob Aura"] = false,
+  },
+  ["Mastery"] = {
+    ["Auto Farm Mastery Fruit"] = false,
+    ["Auto Farm Mastery Gun"] = false,
+  },
+  ["Distance"] = {
+    ["Pos X"] = 10,
+    ["Pos Y"] = 30,
+    ["Pos Z"] = 10,
+  },
+  ["Setting"] = {
+    ["Select Weapon"] = "Melee",
+    ["Instant Attack"] = true,
+    ["Fast Teleport"] = true,
+    ["Enable Active Race V4"] = false,
+    ["Tween Speed"] = 250,
+  },
+  ["Code"] = {
+    ["Select Level"] = 1,
+    ["Auto Redeem Code"] = false,
+  },
+  ["Skill"] = {
+    ["Skill Z"] = true,
+    ["Skill X"] = true,
+    ["Skill C"] = true,
+    ["Skill V"] = true,
+    ["Skill F"] = false,
+  },
+  ["Stats"] = {
+    ["Select Stats"] = "nil",
+    ["Enable"] = false,
+    ["Point Stats"] = 3,
+  },
+  ["Sword"] = {
+    ["Select Sword"] = "nil",
+    ["Auto Farm Sword"] = false,
+  },
+  ["Chest"] = {
+    ["Auto Farm Chest"] = false,
+    ["Auto Farm Chest Hop"] = false,
+  },
+  ["Weapon"] = {
+    ["Select Weapon"] = "",
+    ["Auto Fully Weapon"] = false,
+  },
+  ["DoughKing"] = {
+    ["Auto Dough King"] = false,
+    ["Auto Dough King Hop"] = false,
+  },
+   ["Bones"] = {
+    ["Auto Farm Bones"] = false,
+  },
+}
+end
+
+if game.PlaceId == 2753915549 then
+    World1 = true
+elseif game.PlaceId == 4442272183 then
+    World2 = true
+elseif game.PlaceId == 7449423635 then
+    World3 = true
+end
+_G.AutoRejoin = true
+spawn(
+    function()
+        while wait() do
+            if _G.AutoRejoin then
+                _G.AutoRejoin =
+                    game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(
+                    function(child)
+                        if
+                            child.Name == "ErrorPrompt" and child:FindFirstChild("MessageArea") and
+                                child.MessageArea:FindFirstChild("ErrorFrame")
+                         then
+                            game:GetService("TeleportService"):Teleport(game.PlaceId)
+                        end
+                    end
+                )
+            end
+        end
+    end
+)
+
+if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Death") then
+        game:GetService("ReplicatedStorage").Effect.Container.Death:Destroy()
+    end
+    if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Respawn") then
+        game:GetService("ReplicatedStorage").Effect.Container.Respawn:Destroy()
+end
+
+function CheckQuest() 
+    MyLevel = game:GetService("Players").LocalPlayer.Data.Level.Value
+    if World1 then
+        if MyLevel == 1 or MyLevel <= 9 then
+            Mon = "Bandit"
+            LevelQuest = 1
+            NameQuest = "BanditQuest1"
+            NameMon = "Bandit"
+            CFrameQuest = CFrame.new(1059.37195, 15.4495068, 1550.4231, 0.939700544, -0, -0.341998369, 0, 1, -0, 0.341998369, 0, 0.939700544)             
+        elseif MyLevel == 10 or MyLevel <= 14 then
+            Mon = "Monkey"
+            LevelQuest = 1
+            NameQuest = "JungleQuest"
+            NameMon = "Monkey"
+            CFrameQuest = CFrame.new(-1598.08911, 35.5501175, 153.377838, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+            CFrameMon = CFrame.new(-1448.51806640625, 67.85301208496094, 11.46579647064209)
+        elseif MyLevel == 15 or MyLevel <= 29 then
+            Mon = "Gorilla"
+            LevelQuest = 2
+            NameQuest = "JungleQuest"
+            NameMon = "Gorilla"
+            CFrameQuest = CFrame.new(-1598.08911, 35.5501175, 153.377838, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+            CFrameMon = CFrame.new(-1129.8836669921875, 40.46354675292969, -525.4237060546875)
+        elseif MyLevel == 30 or MyLevel <= 39 then
+            Mon = "Pirate"
+            LevelQuest = 1
+            NameQuest = "BuggyQuest1"
+            NameMon = "Pirate"
+            CFrameQuest = CFrame.new(-1141.07483, 4.10001802, 3831.5498, 0.965929627, -0, -0.258804798, 0, 1, -0, 0.258804798, 0, 0.965929627)
+            CFrameMon = CFrame.new(-1103.513427734375, 13.752052307128906, 3896.091064453125)
+        elseif MyLevel == 40 or MyLevel <= 59 then
+            Mon = "Brute"
+            LevelQuest = 2
+            NameQuest = "BuggyQuest1"
+            NameMon = "Brute"
+            CFrameQuest = CFrame.new(-1141.07483, 4.10001802, 3831.5498, 0.965929627, -0, -0.258804798, 0, 1, -0, 0.258804798, 0, 0.965929627)
+            CFrameMon = CFrame.new(-1140.083740234375, 14.809885025024414, 4322.92138671875)
+        elseif MyLevel == 60 or MyLevel <= 74 then
+            Mon = "Desert Bandit"
+            LevelQuest = 1
+            NameQuest = "DesertQuest"
+            NameMon = "Desert Bandit"
+            CFrameQuest = CFrame.new(894.488647, 5.14000702, 4392.43359, 0.819155693, -0, -0.573571265, 0, 1, -0, 0.573571265, 0, 0.819155693)
+            CFrameMon = CFrame.new(924.7998046875, 6.44867467880249, 4481.5859375)
+        elseif MyLevel == 75 or MyLevel <= 89 then
+            Mon = "Desert Officer"
+            LevelQuest = 2
+            NameQuest = "DesertQuest"
+            NameMon = "Desert Officer"
+            CFrameQuest = CFrame.new(894.488647, 5.14000702, 4392.43359, 0.819155693, -0, -0.573571265, 0, 1, -0, 0.573571265, 0, 0.819155693)
+            CFrameMon = CFrame.new(1608.2822265625, 8.614224433898926, 4371.00732421875)
+        elseif MyLevel == 90 or MyLevel <= 99 then
+            Mon = "Snow Bandit"
+            LevelQuest = 1
+            NameQuest = "SnowQuest"
+            NameMon = "Snow Bandit"
+            CFrameQuest = CFrame.new(1389.74451, 88.1519318, -1298.90796, -0.342042685, 0, 0.939684391, 0, 1, 0, -0.939684391, 0, -0.342042685)
+            CFrameMon = CFrame.new(1354.347900390625, 87.27277374267578, -1393.946533203125)
+        elseif MyLevel == 100 or MyLevel <= 119 then
+            Mon = "Snowman"
+            LevelQuest = 2
+            NameQuest = "SnowQuest"
+            NameMon = "Snowman"
+            CFrameQuest = CFrame.new(1389.74451, 88.1519318, -1298.90796, -0.342042685, 0, 0.939684391, 0, 1, 0, -0.939684391, 0, -0.342042685)
+            CFrameMon = CFrame.new(1201.6412353515625, 144.57958984375, -1550.0670166015625)
+        elseif MyLevel == 120 or MyLevel <= 149 then
+            Mon = "Chief Petty Officer"
+            LevelQuest = 1
+            NameQuest = "MarineQuest2"
+            NameMon = "Chief Petty Officer"
+            CFrameQuest = CFrame.new(-5039.58643, 27.3500385, 4324.68018, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+            CFrameMon = CFrame.new(-4881.23095703125, 22.65204429626465, 4273.75244140625)
+        elseif MyLevel == 150 or MyLevel <= 174 then
+            Mon = "Sky Bandit"
+            LevelQuest = 1
+            NameQuest = "SkyQuest"
+            NameMon = "Sky Bandit"
+            CFrameQuest = CFrame.new(-4839.53027, 716.368591, -2619.44165, 0.866007268, 0, 0.500031412, 0, 1, 0, -0.500031412, 0, 0.866007268)
+            CFrameMon = CFrame.new(-4953.20703125, 295.74420166015625, -2899.22900390625)
+        elseif MyLevel == 175 or MyLevel <= 189 then
+            Mon = "Dark Master"
+            LevelQuest = 2
+            NameQuest = "SkyQuest"
+            NameMon = "Dark Master"
+            CFrameQuest = CFrame.new(-4839.53027, 716.368591, -2619.44165, 0.866007268, 0, 0.500031412, 0, 1, 0, -0.500031412, 0, 0.866007268)
+            CFrameMon = CFrame.new(-5259.8447265625, 391.3976745605469, -2229.035400390625)
+        elseif MyLevel == 190 or MyLevel <= 209 then
+            Mon = "Prisoner"
+            LevelQuest = 1
+            NameQuest = "PrisonerQuest"
+            NameMon = "Prisoner"
+            CFrameQuest = CFrame.new(5308.93115, 1.65517521, 475.120514, -0.0894274712, -5.00292918e-09, -0.995993316, 1.60817859e-09, 1, -5.16744869e-09, 0.995993316, -2.06384709e-09, -0.0894274712)
+            CFrameMon = CFrame.new(5098.9736328125, -0.3204058110713959, 474.2373352050781)
+        elseif MyLevel == 210 or MyLevel <= 249 then
+            Mon = "Dangerous Prisoner"
+            LevelQuest = 2
+            NameQuest = "PrisonerQuest"
+            NameMon = "Dangerous Prisoner"
+            CFrameQuest = CFrame.new(5308.93115, 1.65517521, 475.120514, -0.0894274712, -5.00292918e-09, -0.995993316, 1.60817859e-09, 1, -5.16744869e-09, 0.995993316, -2.06384709e-09, -0.0894274712)
+            CFrameMon = CFrame.new(5654.5634765625, 15.633401870727539, 866.2991943359375)
+        elseif MyLevel == 250 or MyLevel <= 274 then
+            Mon = "Toga Warrior"
+            LevelQuest = 1
+            NameQuest = "ColosseumQuest"
+            NameMon = "Toga Warrior"
+            CFrameQuest = CFrame.new(-1580.04663, 6.35000277, -2986.47534, -0.515037298, 0, -0.857167721, 0, 1, 0, 0.857167721, 0, -0.515037298)
+            CFrameMon = CFrame.new(-1820.21484375, 51.68385696411133, -2740.6650390625)
+        elseif MyLevel == 275 or MyLevel <= 299 then
+            Mon = "Gladiator"
+            LevelQuest = 2
+            NameQuest = "ColosseumQuest"
+            NameMon = "Gladiator"
+            CFrameQuest = CFrame.new(-1580.04663, 6.35000277, -2986.47534, -0.515037298, 0, -0.857167721, 0, 1, 0, 0.857167721, 0, -0.515037298)
+            CFrameMon = CFrame.new(-1292.838134765625, 56.380882263183594, -3339.031494140625)
+        elseif MyLevel == 300 or MyLevel <= 324 then
+            Mon = "Military Soldier"
+            LevelQuest = 1
+            NameQuest = "MagmaQuest"
+            NameMon = "Military Soldier"
+            CFrameQuest = CFrame.new(-5313.37012, 10.9500084, 8515.29395, -0.499959469, 0, 0.866048813, 0, 1, 0, -0.866048813, 0, -0.499959469)
+            CFrameMon = CFrame.new(-5411.16455078125, 11.081554412841797, 8454.29296875)
+        elseif MyLevel == 325 or MyLevel <= 374 then
+            Mon = "Military Spy"
+            LevelQuest = 2
+            NameQuest = "MagmaQuest"
+            NameMon = "Military Spy"
+            CFrameQuest = CFrame.new(-5313.37012, 10.9500084, 8515.29395, -0.499959469, 0, 0.866048813, 0, 1, 0, -0.866048813, 0, -0.499959469)
+            CFrameMon = CFrame.new(-5802.8681640625, 86.26241302490234, 8828.859375)
+        elseif MyLevel == 375 or MyLevel <= 399 then
+            Mon = "Fishman Warrior"
+            LevelQuest = 1
+            NameQuest = "FishmanQuest"
+            NameMon = "Fishman Warrior"
+            CFrameQuest = CFrame.new(61122.65234375, 18.497442245483, 1569.3997802734)
+            CFrameMon = CFrame.new(60878.30078125, 18.482830047607422, 1543.7574462890625)
+            if _G.AutoFarm and (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 10000 then
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
+            end
+        elseif MyLevel == 400 or MyLevel <= 449 then
+            Mon = "Fishman Commando"
+            LevelQuest = 2
+            NameQuest = "FishmanQuest"
+            NameMon = "Fishman Commando"
+            CFrameQuest = CFrame.new(61122.65234375, 18.497442245483, 1569.3997802734)
+            CFrameMon = CFrame.new(61922.6328125, 18.482830047607422, 1493.934326171875)
+            if _G.AutoFarm and (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 10000 then
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
+            end
+        elseif MyLevel == 450 or MyLevel <= 474 then
+            Mon = "God's Guard"
+            LevelQuest = 1
+            NameQuest = "SkyExp1Quest"
+            NameMon = "God's Guard"
+            CFrameQuest = CFrame.new(-4721.88867, 843.874695, -1949.96643, 0.996191859, -0, -0.0871884301, 0, 1, -0, 0.0871884301, 0, 0.996191859)
+            CFrameMon = CFrame.new(-4710.04296875, 845.2769775390625, -1927.3079833984375)
+            if _G.AutoFarm and (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 10000 then
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-4607.82275, 872.54248, -1667.55688))
+            end
+        elseif MyLevel == 475 or MyLevel <= 524 then
+            Mon = "Shanda"
+            LevelQuest = 2
+            NameQuest = "SkyExp1Quest"
+            NameMon = "Shanda"
+            CFrameQuest = CFrame.new(-7859.09814, 5544.19043, -381.476196, -0.422592998, 0, 0.906319618, 0, 1, 0, -0.906319618, 0, -0.422592998)
+            CFrameMon = CFrame.new(-7678.48974609375, 5566.40380859375, -497.2156066894531)
+            if _G.AutoFarm and (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 10000 then
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047))
+            end
+        elseif MyLevel == 525 or MyLevel <= 549 then
+            Mon = "Royal Squad"
+            LevelQuest = 1
+            NameQuest = "SkyExp2Quest"
+            NameMon = "Royal Squad"
+            CFrameQuest = CFrame.new(-7906.81592, 5634.6626, -1411.99194, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+            CFrameMon = CFrame.new(-7624.25244140625, 5658.13330078125, -1467.354248046875)
+        elseif MyLevel == 550 or MyLevel <= 624 then
+            Mon = "Royal Soldier"
+            LevelQuest = 2
+            NameQuest = "SkyExp2Quest"
+            NameMon = "Royal Soldier"
+            CFrameQuest = CFrame.new(-7906.81592, 5634.6626, -1411.99194, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+            CFrameMon = CFrame.new(-7836.75341796875, 5645.6640625, -1790.6236572265625)
+        elseif MyLevel == 625 or MyLevel <= 649 then
+            Mon = "Galley Pirate"
+            LevelQuest = 1
+            NameQuest = "FountainQuest"
+            NameMon = "Galley Pirate"
+            CFrameQuest = CFrame.new(5259.81982, 37.3500175, 4050.0293, 0.087131381, 0, 0.996196866, 0, 1, 0, -0.996196866, 0, 0.087131381)
+            CFrameMon = CFrame.new(5551.02197265625, 78.90135192871094, 3930.412841796875)
+        elseif MyLevel >= 650 then
+            Mon = "Galley Captain"
+            LevelQuest = 2
+            NameQuest = "FountainQuest"
+            NameMon = "Galley Captain"
+            CFrameQuest = CFrame.new(5259.81982, 37.3500175, 4050.0293, 0.087131381, 0, 0.996196866, 0, 1, 0, -0.996196866, 0, 0.087131381)
+            CFrameMon = CFrame.new(5441.95166015625, 42.50205993652344, 4950.09375)
+        end
+    elseif World2 then
+        if MyLevel == 700 or MyLevel <= 724 then
+            Mon = "Raider"
+            LevelQuest = 1
+            NameQuest = "Area1Quest"
+            NameMon = "Raider"
+            CFrameQuest = CFrame.new(-429.543518, 71.7699966, 1836.18188, -0.22495985, 0, -0.974368095, 0, 1, 0, 0.974368095, 0, -0.22495985)
+            CFrameMon = CFrame.new(-728.3267211914062, 52.779319763183594, 2345.7705078125)
+        elseif MyLevel == 725 or MyLevel <= 774 then
+            Mon = "Mercenary"
+            LevelQuest = 2
+            NameQuest = "Area1Quest"
+            NameMon = "Mercenary"
+            CFrameQuest = CFrame.new(-429.543518, 71.7699966, 1836.18188, -0.22495985, 0, -0.974368095, 0, 1, 0, 0.974368095, 0, -0.22495985)
+            CFrameMon = CFrame.new(-1004.3244018554688, 80.15886688232422, 1424.619384765625)
+        elseif MyLevel == 775 or MyLevel <= 799 then
+            Mon = "Swan Pirate"
+            LevelQuest = 1
+            NameQuest = "Area2Quest"
+            NameMon = "Swan Pirate"
+            CFrameQuest = CFrame.new(638.43811, 71.769989, 918.282898, 0.139203906, 0, 0.99026376, 0, 1, 0, -0.99026376, 0, 0.139203906)
+            CFrameMon = CFrame.new(1068.664306640625, 137.61428833007812, 1322.1060791015625)
+        elseif MyLevel == 800 or MyLevel <= 874 then
+            Mon = "Factory Staff"
+            NameQuest = "Area2Quest"
+            LevelQuest = 2
+            NameMon = "Factory Staff"
+            CFrameQuest = CFrame.new(632.698608, 73.1055908, 918.666321, -0.0319722369, 8.96074881e-10, -0.999488771, 1.36326533e-10, 1, 8.92172336e-10, 0.999488771, -1.07732087e-10, -0.0319722369)
+            CFrameMon = CFrame.new(73.07867431640625, 81.86344146728516, -27.470672607421875)
+        elseif MyLevel == 875 or MyLevel <= 899 then
+            Mon = "Marine Lieutenant"
+            LevelQuest = 1
+            NameQuest = "MarineQuest3"
+            NameMon = "Marine Lieutenant"
+            CFrameQuest = CFrame.new(-2440.79639, 71.7140732, -3216.06812, 0.866007268, 0, 0.500031412, 0, 1, 0, -0.500031412, 0, 0.866007268)
+            CFrameMon = CFrame.new(-2821.372314453125, 75.89727783203125, -3070.089111328125)
+        elseif MyLevel == 900 or MyLevel <= 949 then
+            Mon = "Marine Captain"
+            LevelQuest = 2
+            NameQuest = "MarineQuest3"
+            NameMon = "Marine Captain"
+            CFrameQuest = CFrame.new(-2440.79639, 71.7140732, -3216.06812, 0.866007268, 0, 0.500031412, 0, 1, 0, -0.500031412, 0, 0.866007268)
+            CFrameMon = CFrame.new(-1861.2310791015625, 80.17658233642578, -3254.697509765625)
+        elseif MyLevel == 950 or MyLevel <= 974 then
+            Mon = "Zombie"
+            LevelQuest = 1
+            NameQuest = "ZombieQuest"
+            NameMon = "Zombie"
+            CFrameQuest = CFrame.new(-5497.06152, 47.5923004, -795.237061, -0.29242146, 0, -0.95628953, 0, 1, 0, 0.95628953, 0, -0.29242146)
+            CFrameMon = CFrame.new(-5657.77685546875, 78.96973419189453, -928.68701171875)
+        elseif MyLevel == 975 or MyLevel <= 999 then
+            Mon = "Vampire"
+            LevelQuest = 2
+            NameQuest = "ZombieQuest"
+            NameMon = "Vampire"
+            CFrameQuest = CFrame.new(-5497.06152, 47.5923004, -795.237061, -0.29242146, 0, -0.95628953, 0, 1, 0, 0.95628953, 0, -0.29242146)
+            CFrameMon = CFrame.new(-6037.66796875, 32.18463897705078, -1340.6597900390625)
+        elseif MyLevel == 1000 or MyLevel <= 1049 then
+            Mon = "Snow Trooper"
+            LevelQuest = 1
+            NameQuest = "SnowMountainQuest"
+            NameMon = "Snow Trooper"
+            CFrameQuest = CFrame.new(609.858826, 400.119904, -5372.25928, -0.374604106, 0, 0.92718488, 0, 1, 0, -0.92718488, 0, -0.374604106)
+            CFrameMon = CFrame.new(549.1473388671875, 427.3870544433594, -5563.69873046875)
+        elseif MyLevel == 1050 or MyLevel <= 1099 then
+            Mon = "Winter Warrior"
+            LevelQuest = 2
+            NameQuest = "SnowMountainQuest"
+            NameMon = "Winter Warrior"
+            CFrameQuest = CFrame.new(609.858826, 400.119904, -5372.25928, -0.374604106, 0, 0.92718488, 0, 1, 0, -0.92718488, 0, -0.374604106)
+            CFrameMon = CFrame.new(1142.7451171875, 475.6398010253906, -5199.41650390625)
+        elseif MyLevel == 1100 or MyLevel <= 1124 then
+            Mon = "Lab Subordinate"
+            LevelQuest = 1
+            NameQuest = "IceSideQuest"
+            NameMon = "Lab Subordinate"
+            CFrameQuest = CFrame.new(-6064.06885, 15.2422857, -4902.97852, 0.453972578, -0, -0.891015649, 0, 1, -0, 0.891015649, 0, 0.453972578)
+            CFrameMon = CFrame.new(-5707.4716796875, 15.951709747314453, -4513.39208984375)
+        elseif MyLevel == 1125 or MyLevel <= 1174 then
+            Mon = "Horned Warrior"
+            LevelQuest = 2
+            NameQuest = "IceSideQuest"
+            NameMon = "Horned Warrior"
+            CFrameQuest = CFrame.new(-6064.06885, 15.2422857, -4902.97852, 0.453972578, -0, -0.891015649, 0, 1, -0, 0.891015649, 0, 0.453972578)
+            CFrameMon = CFrame.new(-6341.36669921875, 15.951770782470703, -5723.162109375)
+        elseif MyLevel == 1175 or MyLevel <= 1199 then
+            Mon = "Magma Ninja"
+            LevelQuest = 1
+            NameQuest = "FireSideQuest"
+            NameMon = "Magma Ninja"
+            CFrameQuest = CFrame.new(-5428.03174, 15.0622921, -5299.43457, -0.882952213, 0, 0.469463557, 0, 1, 0, -0.469463557, 0, -0.882952213)
+            CFrameMon = CFrame.new(-5449.6728515625, 76.65874481201172, -5808.20068359375)
+        elseif MyLevel == 1200 or MyLevel <= 1249 then
+            Mon = "Lava Pirate"
+            LevelQuest = 2
+            NameQuest = "FireSideQuest"
+            NameMon = "Lava Pirate"
+            CFrameQuest = CFrame.new(-5428.03174, 15.0622921, -5299.43457, -0.882952213, 0, 0.469463557, 0, 1, 0, -0.469463557, 0, -0.882952213)
+            CFrameMon = CFrame.new(-5213.33154296875, 49.73788070678711, -4701.451171875)
+        elseif MyLevel == 1250 or MyLevel <= 1274 then
+            Mon = "Ship Deckhand"
+            LevelQuest = 1
+            NameQuest = "ShipQuest1"
+            NameMon = "Ship Deckhand"
+            CFrameQuest = CFrame.new(1037.80127, 125.092171, 32911.6016)         
+            CFrameMon = CFrame.new(1212.0111083984375, 150.79205322265625, 33059.24609375)    
+            if _G.AutoFarm and (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 10000 then
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
+            end
+        elseif MyLevel == 1275 or MyLevel <= 1299 then
+            Mon = "Ship Engineer"
+            LevelQuest = 2
+            NameQuest = "ShipQuest1"
+            NameMon = "Ship Engineer"
+            CFrameQuest = CFrame.new(1037.80127, 125.092171, 32911.6016)   
+            CFrameMon = CFrame.new(919.4786376953125, 43.54401397705078, 32779.96875)   
+            if _G.AutoFarm and (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 10000 then
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
+            end             
+        elseif MyLevel == 1300 or MyLevel <= 1324 then
+            Mon = "Ship Steward"
+            LevelQuest = 1
+            NameQuest = "ShipQuest2"
+            NameMon = "Ship Steward"
+            CFrameQuest = CFrame.new(968.80957, 125.092171, 33244.125)         
+            CFrameMon = CFrame.new(919.4385375976562, 129.55599975585938, 33436.03515625)      
+            if _G.AutoFarm and (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 10000 then
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
+            end
+        elseif MyLevel == 1325 or MyLevel <= 1349 then
+            Mon = "Ship Officer"
+            LevelQuest = 2
+            NameQuest = "ShipQuest2"
+            NameMon = "Ship Officer"
+            CFrameQuest = CFrame.new(968.80957, 125.092171, 33244.125)
+            CFrameMon = CFrame.new(1036.0179443359375, 181.4390411376953, 33315.7265625)
+            if _G.AutoFarm and (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 10000 then
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
+            end
+        elseif MyLevel == 1350 or MyLevel <= 1374 then
+            Mon = "Arctic Warrior"
+            LevelQuest = 1
+            NameQuest = "FrostQuest"
+            NameMon = "Arctic Warrior"
+            CFrameQuest = CFrame.new(5667.6582, 26.7997818, -6486.08984, -0.933587909, 0, -0.358349502, 0, 1, 0, 0.358349502, 0, -0.933587909)
+            CFrameMon = CFrame.new(5966.24609375, 62.97002029418945, -6179.3828125)
+            if _G.AutoFarm and (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 10000 then
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 5000.034996032715, -132.83953857422))
+            end
+        elseif MyLevel == 1375 or MyLevel <= 1424 then
+            Mon = "Snow Lurker"
+            LevelQuest = 2
+            NameQuest = "FrostQuest"
+            NameMon = "Snow Lurker"
+            CFrameQuest = CFrame.new(5667.6582, 26.7997818, -6486.08984, -0.933587909, 0, -0.358349502, 0, 1, 0, 0.358349502, 0, -0.933587909)
+            CFrameMon = CFrame.new(5407.07373046875, 69.19437408447266, -6880.88037109375)
+        elseif MyLevel == 1425 or MyLevel <= 1449 then
+            Mon = "Sea Soldier"
+            LevelQuest = 1
+            NameQuest = "ForgottenQuest"
+            NameMon = "Sea Soldier"
+            CFrameQuest = CFrame.new(-3054.44458, 235.544281, -10142.8193, 0.990270376, -0, -0.13915664, 0, 1, -0, 0.13915664, 0, 0.990270376)
+            CFrameMon = CFrame.new(-3028.2236328125, 64.67451477050781, -9775.4267578125)
+        elseif MyLevel >= 1450 then
+            Mon = "Water Fighter"
+            LevelQuest = 2
+            NameQuest = "ForgottenQuest"
+            NameMon = "Water Fighter"
+            CFrameQuest = CFrame.new(-3054.44458, 235.544281, -10142.8193, 0.990270376, -0, -0.13915664, 0, 1, -0, 0.13915664, 0, 0.990270376)
+            CFrameMon = CFrame.new(-3352.9013671875, 285.01556396484375, -10534.841796875)
+        end
+    elseif World3 then
+        if MyLevel == 1500 or MyLevel <= 1524 then
+            Mon = "Pirate Millionaire"
+            LevelQuest = 1
+            NameQuest = "PiratePortQuest"
+            NameMon = "Pirate Millionaire"
+            CFrameQuest = CFrame.new(-290.074677, 42.9034653, 5581.58984, 0.965929627, -0, -0.258804798, 0, 1, -0, 0.258804798, 0, 0.965929627)
+            CFrameMon = CFrame.new(-245.9963836669922, 47.30615234375, 5584.1005859375)
+        elseif MyLevel == 1525 or MyLevel <= 1574 then
+            Mon = "Pistol Billionaire"
+            LevelQuest = 2
+            NameQuest = "PiratePortQuest"
+            NameMon = "Pistol Billionaire"
+            CFrameQuest = CFrame.new(-290.074677, 42.9034653, 5581.58984, 0.965929627, -0, -0.258804798, 0, 1, -0, 0.258804798, 0, 0.965929627)
+            CFrameMon = CFrame.new(-187.3301544189453, 86.23987579345703, 6013.513671875)
+        elseif MyLevel == 1575 or MyLevel <= 1599 then
+            Mon = "Dragon Crew Warrior"
+            LevelQuest = 1
+            NameQuest = "AmazonQuest"
+            NameMon = "Dragon Crew Warrior"
+            CFrameQuest = CFrame.new(5832.83594, 51.6806107, -1101.51563, 0.898790359, -0, -0.438378751, 0, 1, -0, 0.438378751, 0, 0.898790359)
+            CFrameMon = CFrame.new(6141.140625, 51.35136413574219, -1340.738525390625)
+        elseif MyLevel == 1600 or MyLevel <= 1624 then 
+            Mon = "Dragon Crew Archer"
+            NameQuest = "AmazonQuest"
+            LevelQuest = 2
+            NameMon = "Dragon Crew Archer"
+            CFrameQuest = CFrame.new(5833.1147460938, 51.60498046875, -1103.0693359375)
+            CFrameMon = CFrame.new(6616.41748046875, 441.7670593261719, 446.0469970703125)
+        elseif MyLevel == 1625 or MyLevel <= 1649 then
+            Mon = "Female Islander"
+            NameQuest = "AmazonQuest2"
+            LevelQuest = 1
+            NameMon = "Female Islander"
+            CFrameQuest = CFrame.new(5446.8793945313, 601.62945556641, 749.45672607422)
+            CFrameMon = CFrame.new(4685.25830078125, 735.8078002929688, 815.3425903320312)
+        elseif MyLevel == 1650 or MyLevel <= 1699 then 
+            Mon = "Giant Islander"
+            NameQuest = "AmazonQuest2"
+            LevelQuest = 2
+            NameMon = "Giant Islander"
+            CFrameQuest = CFrame.new(5446.8793945313, 601.62945556641, 749.45672607422)
+            CFrameMon = CFrame.new(4729.09423828125, 590.436767578125, -36.97627639770508)
+        elseif MyLevel == 1700 or MyLevel <= 1724 then
+            Mon = "Marine Commodore"
+            LevelQuest = 1
+            NameQuest = "MarineTreeIsland"
+            NameMon = "Marine Commodore"
+            CFrameQuest = CFrame.new(2180.54126, 27.8156815, -6741.5498, -0.965929747, 0, 0.258804798, 0, 1, 0, -0.258804798, 0, -0.965929747)
+            CFrameMon = CFrame.new(2286.0078125, 73.13391876220703, -7159.80908203125)
+        elseif MyLevel == 1725 or MyLevel <= 1774 then
+            Mon = "Marine Rear Admiral"
+            NameMon = "Marine Rear Admiral"
+            NameQuest = "MarineTreeIsland"
+            LevelQuest = 2
+            CFrameQuest = CFrame.new(2179.98828125, 28.731239318848, -6740.0551757813)
+            CFrameMon = CFrame.new(3656.773681640625, 160.52406311035156, -7001.5986328125)
+        elseif MyLevel == 1775 or MyLevel <= 1799 then
+            Mon = "Fishman Raider"
+            LevelQuest = 1
+            NameQuest = "DeepForestIsland3"
+            NameMon = "Fishman Raider"
+            CFrameQuest = CFrame.new(-10581.6563, 330.872955, -8761.18652, -0.882952213, 0, 0.469463557, 0, 1, 0, -0.469463557, 0, -0.882952213)   
+            CFrameMon = CFrame.new(-10407.5263671875, 331.76263427734375, -8368.5166015625)
+        elseif MyLevel == 1800 or MyLevel <= 1824 then
+            Mon = "Fishman Captain"
+            LevelQuest = 2
+            NameQuest = "DeepForestIsland3"
+            NameMon = "Fishman Captain"
+            CFrameQuest = CFrame.new(-10581.6563, 330.872955, -8761.18652, -0.882952213, 0, 0.469463557, 0, 1, 0, -0.469463557, 0, -0.882952213)   
+            CFrameMon = CFrame.new(-10994.701171875, 352.38140869140625, -9002.1103515625) 
+        elseif MyLevel == 1825 or MyLevel <= 1849 then
+            Mon = "Forest Pirate"
+            LevelQuest = 1
+            NameQuest = "DeepForestIsland"
+            NameMon = "Forest Pirate"
+            CFrameQuest = CFrame.new(-13234.04, 331.488495, -7625.40137, 0.707134247, -0, -0.707079291, 0, 1, -0, 0.707079291, 0, 0.707134247)
+            CFrameMon = CFrame.new(-13274.478515625, 332.3781433105469, -7769.58056640625)
+        elseif MyLevel == 1850 or MyLevel <= 1899 then
+            Mon = "Mythological Pirate"
+            LevelQuest = 2
+            NameQuest = "DeepForestIsland"
+            NameMon = "Mythological Pirate"
+            CFrameQuest = CFrame.new(-13234.04, 331.488495, -7625.40137, 0.707134247, -0, -0.707079291, 0, 1, -0, 0.707079291, 0, 0.707134247)   
+            CFrameMon = CFrame.new(-13680.607421875, 501.08154296875, -6991.189453125)
+        elseif MyLevel == 1900 or MyLevel <= 1924 then
+            Mon = "Jungle Pirate"
+            LevelQuest = 1
+            NameQuest = "DeepForestIsland2"
+            NameMon = "Jungle Pirate"
+            CFrameQuest = CFrame.new(-12680.3818, 389.971039, -9902.01953, -0.0871315002, 0, 0.996196866, 0, 1, 0, -0.996196866, 0, -0.0871315002)
+            CFrameMon = CFrame.new(-12256.16015625, 331.73828125, -10485.8369140625)
+        elseif MyLevel == 1925 or MyLevel <= 1974 then
+            Mon = "Musketeer Pirate"
+            LevelQuest = 2
+            NameQuest = "DeepForestIsland2"
+            NameMon = "Musketeer Pirate"
+            CFrameQuest = CFrame.new(-12680.3818, 389.971039, -9902.01953, -0.0871315002, 0, 0.996196866, 0, 1, 0, -0.996196866, 0, -0.0871315002)
+            CFrameMon = CFrame.new(-13457.904296875, 391.545654296875, -9859.177734375)
+        elseif MyLevel == 1975 or MyLevel <= 1999 then
+            Mon = "Reborn Skeleton"
+            LevelQuest = 1
+            NameQuest = "HauntedQuest1"
+            NameMon = "Reborn Skeleton"
+            CFrameQuest = CFrame.new(-9479.2168, 141.215088, 5566.09277, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+            CFrameMon = CFrame.new(-8763.7236328125, 165.72299194335938, 6159.86181640625)
+        elseif MyLevel == 2000 or MyLevel <= 2024 then
+            Mon = "Living Zombie"
+            LevelQuest = 2
+            NameQuest = "HauntedQuest1"
+            NameMon = "Living Zombie"
+            CFrameQuest = CFrame.new(-9479.2168, 141.215088, 5566.09277, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+            CFrameMon = CFrame.new(-10144.1318359375, 138.62667846679688, 5838.0888671875)
+        elseif MyLevel == 2025 or MyLevel <= 2049 then
+            Mon = "Demonic Soul"
+            LevelQuest = 1
+            NameQuest = "HauntedQuest2"
+            NameMon = "Demonic Soul"
+            CFrameQuest = CFrame.new(-9516.99316, 172.017181, 6078.46533, 0, 0, -1, 0, 1, 0, 1, 0, 0) 
+            CFrameMon = CFrame.new(-9505.8720703125, 172.10482788085938, 6158.9931640625)
+        elseif MyLevel == 2050 or MyLevel <= 2074 then
+            Mon = "Posessed Mummy"
+            LevelQuest = 2
+            NameQuest = "HauntedQuest2"
+            NameMon = "Posessed Mummy"
+            CFrameQuest = CFrame.new(-9516.99316, 172.017181, 6078.46533, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+            CFrameMon = CFrame.new(-9582.0224609375, 6.251527309417725, 6205.478515625)
+        elseif MyLevel == 2075 or MyLevel <= 2099 then
+            Mon = "Peanut Scout"
+            LevelQuest = 1
+            NameQuest = "NutsIslandQuest"
+            NameMon = "Peanut Scout"
+            CFrameQuest = CFrame.new(-2104.3908691406, 38.104167938232, -10194.21875, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+            CFrameMon = CFrame.new(-2143.241943359375, 47.72198486328125, -10029.9951171875)
+        elseif MyLevel == 2100 or MyLevel <= 2124 then
+            Mon = "Peanut President"
+            LevelQuest = 2
+            NameQuest = "NutsIslandQuest"
+            NameMon = "Peanut President"
+            CFrameQuest = CFrame.new(-2104.3908691406, 38.104167938232, -10194.21875, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+            CFrameMon = CFrame.new(-1859.35400390625, 38.10316848754883, -10422.4296875)
+        elseif MyLevel == 2125 or MyLevel <= 2149 then
+            Mon = "Ice Cream Chef"
+            LevelQuest = 1
+            NameQuest = "IceCreamIslandQuest"
+            NameMon = "Ice Cream Chef"
+            CFrameQuest = CFrame.new(-820.64825439453, 65.819526672363, -10965.795898438, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+            CFrameMon = CFrame.new(-872.24658203125, 65.81957244873047, -10919.95703125)
+        elseif MyLevel == 2150 or MyLevel <= 2199 then
+            Mon = "Ice Cream Commander"
+            LevelQuest = 2
+            NameQuest = "IceCreamIslandQuest"
+            NameMon = "Ice Cream Commander"
+            CFrameQuest = CFrame.new(-820.64825439453, 65.819526672363, -10965.795898438, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+            CFrameMon = CFrame.new(-558.06103515625, 112.04895782470703, -11290.7744140625)
+        elseif MyLevel == 2200 or MyLevel <= 2224 then
+            Mon = "Cookie Crafter"
+            LevelQuest = 1
+            NameQuest = "CakeQuest1"
+            NameMon = "Cookie Crafter"
+            CFrameQuest = CFrame.new(-2021.32007, 37.7982254, -12028.7295, 0.957576931, -8.80302053e-08, 0.288177818, 6.9301187e-08, 1, 7.51931211e-08, -0.288177818, -5.2032135e-08, 0.957576931)
+            CFrameMon = CFrame.new(-2374.13671875, 37.79826354980469, -12125.30859375)
+        elseif MyLevel == 2225 or MyLevel <= 2249 then
+            Mon = "Cake Guard"
+            LevelQuest = 2
+            NameQuest = "CakeQuest1"
+            NameMon = "Cake Guard"
+            CFrameQuest = CFrame.new(-2021.32007, 37.7982254, -12028.7295, 0.957576931, -8.80302053e-08, 0.288177818, 6.9301187e-08, 1, 7.51931211e-08, -0.288177818, -5.2032135e-08, 0.957576931)
+            CFrameMon = CFrame.new(-1598.3070068359375, 43.773197174072266, -12244.5810546875)
+        elseif MyLevel == 2250 or MyLevel <= 2274 then
+            Mon = "Baking Staff"
+            LevelQuest = 1
+            NameQuest = "CakeQuest2"
+            NameMon = "Baking Staff"
+            CFrameQuest = CFrame.new(-1927.91602, 37.7981339, -12842.5391, -0.96804446, 4.22142143e-08, 0.250778586, 4.74911062e-08, 1, 1.49904711e-08, -0.250778586, 2.64211941e-08, -0.96804446)
+            CFrameMon = CFrame.new(-1887.8099365234375, 77.6185073852539, -12998.3505859375)
+        elseif MyLevel == 2275 or MyLevel <= 2299 then
+            Mon = "Head Baker"
+            LevelQuest = 2
+            NameQuest = "CakeQuest2"
+            NameMon = "Head Baker"
+            CFrameQuest = CFrame.new(-1927.91602, 37.7981339, -12842.5391, -0.96804446, 4.22142143e-08, 0.250778586, 4.74911062e-08, 1, 1.49904711e-08, -0.250778586, 2.64211941e-08, -0.96804446)
+            CFrameMon = CFrame.new(-2216.188232421875, 82.884521484375, -12869.2939453125)
+        elseif MyLevel == 2300 or MyLevel <= 2324 then
+            Mon = "Cocoa Warrior"
+            LevelQuest = 1
+            NameQuest = "ChocQuest1"
+            NameMon = "Cocoa Warrior"
+            CFrameQuest = CFrame.new(233.22836303710938, 29.876001358032227, -12201.2333984375)
+            CFrameMon = CFrame.new(-21.55328369140625, 80.57499694824219, -12352.3876953125)
+        elseif MyLevel == 2325 or MyLevel <= 2349 then
+            Mon = "Chocolate Bar Battler"
+            LevelQuest = 2
+            NameQuest = "ChocQuest1"
+            NameMon = "Chocolate Bar Battler"
+            CFrameQuest = CFrame.new(233.22836303710938, 29.876001358032227, -12201.2333984375)
+            CFrameMon = CFrame.new(582.590576171875, 77.18809509277344, -12463.162109375)
+        elseif MyLevel == 2350 or MyLevel <= 2374 then
+            Mon = "Sweet Thief"
+            LevelQuest = 1
+            NameQuest = "ChocQuest2"
+            NameMon = "Sweet Thief"
+            CFrameQuest = CFrame.new(150.5066375732422, 30.693693161010742, -12774.5029296875)
+            CFrameMon = CFrame.new(165.1884765625, 76.05885314941406, -12600.8369140625)
+        elseif MyLevel == 2375 or MyLevel <= 2399 then
+            Mon = "Candy Rebel"
+            LevelQuest = 2
+            NameQuest = "ChocQuest2"
+            NameMon = "Candy Rebel"
+            CFrameQuest = CFrame.new(150.5066375732422, 30.693693161010742, -12774.5029296875)
+            CFrameMon = CFrame.new(134.86563110351562, 77.2476806640625, -12876.5478515625)
+        elseif MyLevel == 2400 or MyLevel <= 2424 then
+            Mon = "Candy Pirate"
+            LevelQuest = 1
+            NameQuest = "CandyQuest1"
+            NameMon = "Candy Pirate"
+            CFrameQuest = CFrame.new(-1150.0400390625, 20.378934860229492, -14446.3349609375)
+            CFrameMon = CFrame.new(-1310.5003662109375, 26.016523361206055, -14562.404296875)
+        elseif MyLevel == 2425 or MyLevel <= 2449 then
+            Mon = "Snow Demon"
+            LevelQuest = 2
+            NameQuest = "CandyQuest1"
+            NameMon = "Snow Demon"
+            CFrameQuest = CFrame.new(-1150.0400390625, 20.378934860229492, -14446.3349609375)
+            CFrameMon = CFrame.new(-880.2006225585938, 71.24776458740234, -14538.609375)
+        elseif MyLevel == 2450 or MyLevel <= 2474 then
+            Mon = "Isle Outlaw"
+            LevelQuest = 1
+            NameQuest = "TikiQuest1"
+            NameMon = "Isle Outlaw"
+            CFrameQuest = CFrame.new(-16547.748046875, 61.13533401489258, -173.41360473632812)
+            CFrameMon = CFrame.new(-16442.814453125, 116.13899993896484, -264.4637756347656)
+        elseif MyLevel == 2475 or MyLevel <= 2499 then
+            Mon = "Island Boy"
+            LevelQuest = 2
+            NameQuest = "TikiQuest1"
+            NameMon = "Island Boy"
+            CFrameQuest = CFrame.new(-16547.748046875, 61.13533401489258, -173.41360473632812)
+            CFrameMon = CFrame.new(-16901.26171875, 84.06756591796875, -192.88906860351562)
+        elseif MyLevel == 2500 or MyLevel <= 2524 then
+            Mon = "Sun-kissed Warrior"
+            LevelQuest = 1
+            NameQuest = "TikiQuest2"
+            NameMon = "kissed"
+            CFrameQuest = CFrame.new(-16539.078125, 55.68632888793945, 1051.5738525390625)
+            CFrameMon = CFrame.new(-16349.8779296875, 92.0808334350586, 1123.4169921875)
+        elseif MyLevel == 2525 or MyLevel <= 2550 then
+            Mon = "Isle Champion"
+            LevelQuest = 2
+            NameQuest = "TikiQuest2"
+            NameMon = "Isle Champion"
+            CFrameQuest = CFrame.new(-16539.078125, 55.68632888793945, 1051.5738525390625)
+            CFrameMon = CFrame.new(-16347.4150390625, 92.09503936767578, 1122.335205078125)
+        end
+    end
+end
+
+function Hop()
+    local PlaceID = game.PlaceId
+    local AllIDs = {}
+    local foundAnything = ""
+    local actualHour = os.date("!*t").hour
+    local Deleted = false
+    function TPReturner()
+        local Site;
+        if foundAnything == "" then
+            Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
+        else
+            Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
+        end
+        local ID = ""
+        if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
+            foundAnything = Site.nextPageCursor
+        end
+        local num = 0;
+        for i,v in pairs(Site.data) do
+            local Possible = true
+            ID = tostring(v.id)
+            if tonumber(v.maxPlayers) > tonumber(v.playing) then
+                for _,Existing in pairs(AllIDs) do
+                    if num ~= 0 then
+                        if ID == tostring(Existing) then
+                            Possible = false
+                        end
+                    else
+                        if tonumber(actualHour) ~= tonumber(Existing) then
+                            local delFile = pcall(function()
+                                AllIDs = {}
+                                table.insert(AllIDs, actualHour)
+                            end)
+                        end
+                    end
+                    num = num + 1
+                end
+                if Possible == true then
+                    table.insert(AllIDs, ID)
+                    wait()
+                    pcall(function()
+                        wait()
+                        game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
+                    end)
+                    wait(4)
+                end
+            end
+        end
+    end
+
+local CbFw = debug.getupvalues(require(plr.PlayerScripts.CombatFramework))
+local CbFw2 = CbFw[2]
+
+function GetCurrentBlade() 
+    local p13 = CbFw2.activeController
+    local ret = p13.blades[1]
+    if not ret then return end
+    while ret.Parent~=game.Players.LocalPlayer.Character do ret=ret.Parent end
+    return ret
+end
+
+function AttackNoCD() 
+    local AC = CbFw2.activeController
+    for i = 1, 1 do 
+        local bladehit = require(game.ReplicatedStorage.CombatFramework.RigLib).getBladeHits(
+            plr.Character,
+            {plr.Character.HumanoidRootPart},
+            60
+        )
+        local cac = {}
+        local hash = {}
+        for k, v in pairs(bladehit) do
+            if v.Parent:FindFirstChild("HumanoidRootPart") and not hash[v.Parent] then
+                table.insert(cac, v.Parent.HumanoidRootPart)
+                hash[v.Parent] = true
+            end
+        end
+        bladehit = cac
+        if #bladehit > 0 then
+            local u8 = debug.getupvalue(AC.attack, 5)
+            local u9 = debug.getupvalue(AC.attack, 6)
+            local u7 = debug.getupvalue(AC.attack, 4)
+            local u10 = debug.getupvalue(AC.attack, 7)
+            local u12 = (u8 * 798405 + u7 * 727595) % u9
+            local u13 = u7 * 798405
+            (function()
+                u12 = (u12 * u9 + u13) % 1099511627776
+                u8 = math.floor(u12 / u9)
+                u7 = u12 - u8 * u9
+            end)()
+            u10 = u10 + 1
+            debug.setupvalue(AC.attack, 5, u8)
+            debug.setupvalue(AC.attack, 6, u9)
+            debug.setupvalue(AC.attack, 4, u7)
+            debug.setupvalue(AC.attack, 7, u10)
+            pcall(function()
+                for k, v in pairs(AC.animator.anims.basic) do
+                    v:Play()
+                end                  
+            end)
+            if plr.Character:FindFirstChildOfClass("Tool") and AC.blades and AC.blades[1] then 
+                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(GetCurrentBlade()))
+                game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(u12 / 1099511627776 * 16777215), u10)
+             game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, i, "")
+            end
+        end
+    end
+end
+
 spawn(function()
     while wait(.1) do
-        if KillPlayer then
-            EquipWeapon(SelectToolWeapon)
+        if _G.AttackKillP then
+            pcall(function()
+                repeat task.wait(0.01)
+                    AttackNoCD()
+                until not _G.AttackKillP
+            end)
         end
     end
 end)
-local A = Players:Dropdown("Select Weapon",Wapon,function(Value)
-	SelectToolWeapon = Value
-	SelectToolWeaponOld = Value
-end)
-Players:Button("Refresh Weapon","", function()
-	A:Clear()
-	Wapon = {}
-	for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do  
-		if v:IsA("Tool") then
-			A:Add(v.Name)
-		end
-	end
-	for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do  
-		if v:IsA("Tool") then
-			A:Add(v.Name)
-		end
-	end
-end)
 
-Players:Toggle("Spectate Player","",false,function(bool)
-   Sp = bool
-   local plr1 = game.Players.LocalPlayer.Character.Humanoid
-   local plr2 = game.Players:FindFirstChild(SelectedKillPlayer)
-   repeat wait(.1)
-	  game.Workspace.Camera.CameraSubject = plr2.Character.Humanoid
-   until Sp == false 
-   game.Workspace.Camera.CameraSubject = game.Players.LocalPlayer.Character.Humanoid
-end)
-Players:Line()
-Players:Label("Click to Player")
-Players:Button("Teleport Player","", function()
-   local plr1 = game.Players.LocalPlayer.Character
-   local plr2 = game.Players:FindFirstChild(SelectedKillPlayer)
-   plr1.HumanoidRootPart.CFrame = plr2.Character.HumanoidRootPart.CFrame
-end)
- Players:Button("copy Pant and Shirt","", function()
- local plr1 = game.Players.LocalPlayer.Character
-  local plr2 = game.Players:FindFirstChild(SelectedKillPlayer)
-  plr1.Shirt.ShirtTemplate = plr2.Character.Shirt.ShirtTemplate
-  plr1.Pants.PantsTemplate = plr2.Character.Pants.PantsTemplate
-end)
-Players:Line()
-Players:Label("--AIMBOT--")
-Players:Toggle("Aimbot Gun","",false,function(bool)
-   if SelectedKillPlayer == "" and bool then
-	  Flux:Notification("Select Player to Aim", "Alright")
-   else
-	  Aimbot = bool
-   end
-end)
-local lp = game:GetService('Players').LocalPlayer
-local mouse = lp:GetMouse()
-mouse.Button1Down:Connect(function()
-   if Aimbot and game.Players.LocalPlayer.Character:FindFirstChild(SelectToolWeaponGun) then
-	  local args = {
-		 [1] = game:GetService("Players"):FindFirstChild(SelectedKillPlayer).Character.HumanoidRootPart.Position,
-		 [2] = game:GetService("Players"):FindFirstChild(SelectedKillPlayer).Character.HumanoidRootPart
-	  }
-	  game:GetService("Players").LocalPlayer.Character[SelectToolWeaponGun].RemoteFunctionShoot:InvokeServer(unpack(args))
-   end 
-end)
-Players:Toggle("Aimbot Skill","",false,function(bool)
-   AimbotSkill = bool
-   while AimbotSkill do wait()
-	  pcall(function()
-		 if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and game.Players.LocalPlayer.Character[game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Name]:FindFirstChild("MousePos") then
-			local args = {
-			[1] = game:GetService("Players"):FindFirstChild(SelectedKillPlayer).Character.HumanoidRootPart.Position
-			}
-			game:GetService("Players").LocalPlayer.Character[game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Name].RemoteEvent:FireServer(unpack(args))
-		 end
-	  end)
-   end
-end)
-Players:Line()
-SpeesPlayer = 16
-Players:Toggle("Use Speed"," ",false,function(a)
-	local name = game.Players.LocalPlayer.Name
-	game.Workspace.Characters[name].Movement.Disabled = true
-	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 36
-	speed = a
-end)
-Players:Slider("Speed", "", 36, 100000,36,function(t)
-	sspeed = t
-end)
-
-spawn(function()
-	while wait() do
-		if speed then
-			local name = game.Players.LocalPlayer.Name
-			game.Workspace.Characters[name].Movement.Disabled = true
-			game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = sspeed
-		end
-	end
-end)
-Players:Button("Set Speed","", function()
-	Speed:Change(36)
-end)
-Players:Toggle("Clone Players Is Lag Sever","",false,function(vu)
-	Lag = vu
-	while Lag do wait()
-		if Lag then
-			spawn(function()
-				local args = {
-				   [1] = "SetTeam",
-				   [2] = "Pirates"
-				}
-				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args)) 
-				local args = {
-				   [1] = "BartiloQuestProgress"
-				}
-				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-				local args = {
-				   [1] = "Buso"
-				}
-				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-			 end)
-		end
-	end
-	end)
-local Teleport = win:Tab("Teleport", "")
-Teleport:Toggle("Ctrl + Click = TP"," ",false,function(vu)
-	CTRL = vu
-end)
-local Plr = game:GetService("Players").LocalPlayer
-local Mouse = Plr:GetMouse()
-Mouse.Button1Down:connect(
-	function()
-		if not game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.LeftControl) then
-			return
-		end
-		if not Mouse.Target then
-			return
-		end
-		if CTRL then
-			Plr.Character:MoveTo(Mouse.Hit.p)
-		end
-	end)
-if Secondsea then
-	Teleport:Button("Teleport To Old World","", function()
-		local args = {
-			[1] = "TravelMain" -- OLD WORLD to NEW WORLD
-		}
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	end)
-else
-	Teleport:Button("Teleport To NewWorld","", function()
-		local args = {
-			[1] = "TravelDressrosa" -- NEW WORLD to OLD WORLD
-		}
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	end)
+    function Teleport() 
+        while wait() do
+            pcall(function()
+                TPReturner()
+                if foundAnything ~= "" then
+                    TPReturner()
+                end
+            end)
+        end
+    end
+    Teleport()
+end       
+function UpdateIslandESP() 
+    for i,v in pairs(game:GetService("Workspace")["_WorldOrigin"].Locations:GetChildren()) do
+        pcall(function()
+            if IslandESP then 
+                if v.Name ~= "Sea" then
+                    if not v:FindFirstChild('NameEsp') then
+                        local bill = Instance.new('BillboardGui',v)
+                        bill.Name = 'NameEsp'
+                        bill.ExtentsOffset = Vector3.new(0, 1, 0)
+                        bill.Size = UDim2.new(1,200,1,30)
+                        bill.Adornee = v
+                        bill.AlwaysOnTop = true
+                        local name = Instance.new('TextLabel',bill)
+                        name.Font = "GothamBold"
+                        name.FontSize = "Size14"
+                        name.TextWrapped = true
+                        name.Size = UDim2.new(1,0,1,0)
+                        name.TextYAlignment = 'Top'
+                        name.BackgroundTransparency = 1
+                        name.TextStrokeTransparency = 0.5
+                        name.TextColor3 = Color3.fromRGB(7, 236, 240)
+                    else
+                        v['NameEsp'].TextLabel.Text = (v.Name ..'   \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' Distance')
+                    end
+                end
+            else
+                if v:FindFirstChild('NameEsp') then
+                    v:FindFirstChild('NameEsp'):Destroy()
+                end
+            end
+        end)
+    end
 end
-Teleport:Button("Teleport to SeaBeasts","", function()
-	for i,v in pairs(game.Workspace.SeaBeasts:GetChildren()) do
-		if v:FindFirstChild("HumanoidRootPart") then
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,100,0)
-		end
-	end
-end)
-Teleport:Line()
-if Secondsea then
-	Teleport:Button("First Spot","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(82.9490662, 18.0710983, 2834.98779)
-	end)
-	Teleport:Button("Cafe","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-385.250916, 73.0458984, 297.388397)
-	end)
-	Teleport:Button("Kingdom of Rose","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = game.Workspace["_WorldOrigin"].Locations["Kingdom of Rose"].CFrame
-	end)
-	Teleport:Button("Factroy","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(430.42569, 210.019623, -432.504791)
-	end)
-	Teleport:Button("Swan Mansion","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-390.096313, 331.886475, 673.464966)
-	end)
-	Teleport:Button("Swan Room","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2302.19019, 15.1778421, 663.811035)
-	end)
-	Teleport:Button("Dark Arena","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = game.Workspace["_WorldOrigin"].Locations["Dark Arena"].CFrame
-	end)
-	Teleport:Button("Green bit","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2372.14697, 72.9919434, -3166.51416)
-	end)
-	Teleport:Button("Colosseum","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1836.58191, 44.5890656, 1360.30652)
-	end)
-	Teleport:Button("Ghost Island","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5571.84424, 195.182297, -795.432922)
-	end)
-	Teleport:Button("Ghost Island 2nd","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5931.77979, 5.19706631, -1189.6908)
-	end)
-	Teleport:Button("Snow Mountain","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1384.68298, 453.569031, -4990.09766)
-	end)
-	Teleport:Button("Cold Island","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-6026.96484, 14.7461271, -5071.96338)
-	end)
-	Teleport:Button("Magma Island","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5478.39209, 15.9775667, -5246.9126)
-	end)
-	Teleport:Button("Cursed Ship","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(902.059143, 124.752518, 33071.8125)
-	end)
-	Teleport:Button("Ice Castle","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(5400.40381, 28.21698, -6236.99219)
-	end)
-	Teleport:Button("Forgotten Island","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3043.31543, 238.881271, -10191.5791)
-	end)
-	Teleport:Button("Usoapp Island","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4748.78857, 8.35370827, 2849.57959)
-	end)
-	Teleport:Button("Minisky Island","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-260.358917, 49325.7031, -35259.3008)
-	end)
-	Teleport:Button("Secret room","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2128.38867, 149.874435, -95.2233658, -0.190948173, 1.07975268e-07, -0.981599987, 2.93935e-06, 1, -4.61784907e-07, 0.981599987, -2.97344309e-06, -0.190948173)
-	end)
-else
-	Teleport:Button("Start Island","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1071.2832, 16.3085976, 1426.86792)
-	end)
-	Teleport:Button("Marine Start","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2573.3374, 6.88881969, 2046.99817)
-	end)
-	Teleport:Button("Middle Town","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-655.824158, 7.88708115, 1436.67908)
-	end)
-	Teleport:Button("Jungle","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1249.77222, 11.8870859, 341.356476)
-	end)
-	Teleport:Button("Pirate Village","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1122.34998, 4.78708982, 3855.91992)
-	end)
-	Teleport:Button("Desert","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1094.14587, 6.47350502, 4192.88721)
-	end)
-	Teleport:Button("Frozen Village","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1198.00928, 27.0074959, -1211.73376)
-	end)
-	Teleport:Button("MarineFord","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-4505.375, 20.687294, 4260.55908)
-	end)
-	Teleport:Button("Colosseum","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1428.35474, 7.38933945, -3014.37305)
-	end)
-	Teleport:Button("Sky 1st Floor","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-4970.21875, 717.707275, -2622.35449)
-	end)
-	Teleport:Button("Sky 2st Floor","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-4813.0249, 903.708557, -1912.69055)
-	end)
-	Teleport:Button("Sky 3st Floor","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-7952.31006, 5545.52832, -320.704956)
-	end)
-	Teleport:Button("Prison","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4874.8125, 5.6519904136658, 735.57012939453)
-	end)
-	Teleport:Button("Magma Village","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5231.75879, 8.61593437, 8467.87695)
-	end)
-	Teleport:Button("UndeyWater City","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(61163.8516, 11.7796879, 1819.78418)
-	end)
-	Teleport:Button("Fountain City","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(5132.7124, 4.53632832, 4037.8562)
-	end)
-	Teleport:Button("House Cyborg's","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(6262.72559, 71.3003616, 3998.23047)
-	end)
-	Teleport:Button("Shank's Room","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1442.16553, 29.8788261, -28.3547478)
-	end)
-	Teleport:Button("Mob Island","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2850.20068, 7.39224768, 5354.99268)
-	end)
-
-	Teleport:Label("--TelePort NPC--", true)
-	Teleport:Button("Sword Dealer","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(895.941956, 14.9845877, 1412.76782, -0.939700961, 0, -0.341998369, 0, 1, 0, 0.341998369, 0, -0.939700961)
-	end)
-	Teleport:Button("Weapon Dealer","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-700.12005615234, 7.8522434234619, 1512.2841796875)
-	end)
-	Teleport:Button("NPC randomfruit","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1441.53357, 61.1999283, 7.7518611, 0.499959469, -0, -0.866048813, 0, 1, -0, 0.866048813, 0, 0.499959469)
-	end)
-	Teleport:Button("Sword Dealer of the West","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1279.0747070313, 13.752041816711, 3990.2504882813)
-	end)
-	Teleport:Button("darkleg teacher","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-983.618103, 12.450016, 3990.46265, 0.358573437, 0, 0.933501542, 0, 1, 0, -0.933501542, 0, 0.358573437)
-	end)
-	Teleport:Button("Hasan","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1322.017578125, 15.891534805298, 4486.0834960938)
-	end)
-	Teleport:Button("ability teacher","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1488.6115722656, 37.829216003418, -1412.5043945313)
-	end)
-	Teleport:Button("Sick man","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1460.7014160156, 88.573440551758, -1392.4689941406)
-	end)
-	Teleport:Button("Sword dealer of the east","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1431.3474121094, 87.752792358398, -1388.0727539063)
-	end)
-	Teleport:Button("Advance Weapon Dealer","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-4997.841796875, 41.252048492432, 4403.181640625)
-	end)
-	Teleport:Button("parlus","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-4929.2255859375, 96.839538574219, 3868.7917480469)
-	end)
-	Teleport:Button("master sword dealer","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-4750.6059570313, 717.65997314453, -2654.2487792969)
-	end)
-	Teleport:Button("usoap","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-8036.05859375, 5756.033203125, -1934.3215332031)
-	end)
-	Teleport:Button("Remove Fruit","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(5665.552734375, 64.651931762695, 868.56658935547)
-	end)
-	Teleport:Button("caption to newworld","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1164.2852783203, 8.2123336791992, 1727.9249267578)
-	end)
-	Teleport:Button("Kung fu teacher","", function()
-		game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(61581.54296875, 18.870784759521, 985.88067626953)
-	end)
-end
-local pppp = win:Tab("Misc", "")
-pppp:Line()
-pppp:Button("Open Inventory","", function()
-	local args = {
-		[1] = "getInventoryWeapons"
-	}
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	game.Players.localPlayer.PlayerGui.Main.Inventory.Visible = true
-end)
-pppp:Button("Open Devil Shop","", function()
-	local args = {
-		[1] = "GetFruits"
-	}
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	game.Players.localPlayer.PlayerGui.Main.FruitShop.Visible = true
-end)
-pppp:Button("Open Color Haki","", function()
-	game.Players.localPlayer.PlayerGui.Main.Colors.Visible = true
-end)
-pppp:Button("Open Title Name","", function()
-	local args = {
-		[1] = "getTitles"
-	}
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	game.Players.localPlayer.PlayerGui.Main.Titles.Visible = true
-end)
-pppp:Line()
-pppp:Button("Join Pirates Team","", function()
-	local args = {
-		[1] = "SetTeam",
-		[2] = "Pirates"
-	}
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args)) 
-	local args = {
-		[1] = "BartiloQuestProgress"
-	}
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	local args = {
-		[1] = "Buso"
-	}
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-end)
-
-pppp:Button("Join Marines Team","", function()
-	local args = {
-		[1] = "SetTeam",
-		[2] = "Marines"
-	}
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	local args = {
-		[1] = "BartiloQuestProgress"
-	}
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	local args = {
-		[1] = "Buso"
-	}
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-end)
-pppp:Line()
-pppp:Label("--ESP--", true)
 function isnil(thing)
-	return (thing == nil)
+return (thing == nil)
 end
 local function round(n)
-	return math.floor(tonumber(n) + 0.5)
+return math.floor(tonumber(n) + 0.5)
 end
 Number = math.random(1, 1000000)
 function UpdatePlayerChams()
-	for i,v in pairs(game:GetService'Players':GetChildren()) do
-		pcall(function()
-			if not isnil(v.Character) then
-				if ESPPlayer then
-					if not isnil(v.Character.Head) and not v.Character.Head:FindFirstChild('NameEsp'..Number) then
-						local bill = Instance.new('BillboardGui',v.Character.Head)
-						bill.Name = 'NameEsp'..Number
-						bill.ExtentsOffset = Vector3.new(0, 1, 0)
-						bill.Size = UDim2.new(1,200,1,30)
-						bill.Adornee = v.Character.Head
-						bill.AlwaysOnTop = true
-						local name = Instance.new('TextLabel',bill)
-						name.Font = "GothamBold"
-						name.FontSize = "Size14"
-						name.TextWrapped = true
-						name.Text = (v.Name ..' \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Character.Head.Position).Magnitude/3) ..' M')
-						name.Size = UDim2.new(1,0,1,0)
-						name.TextYAlignment = 'Top'
-						name.BackgroundTransparency = 1
-						name.TextStrokeTransparency = 0.5
-						if v.Team == game.Players.LocalPlayer.Team then
-							name.TextColor3 = Color3.new(255, 255 ,255)
-						else
-							name.TextColor3 = Color3.new(255, 255 ,255)
-						end
-					else
-						v.Character.Head['NameEsp'..Number].TextLabel.Text = (v.Name ..'   \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Character.Head.Position).Magnitude/3) ..' M')
-					end
-				else
-					if v.Character.Head:FindFirstChild('NameEsp'..Number) then
-						v.Character.Head:FindFirstChild('NameEsp'..Number):Destroy()
-					end
-				end
-			end
-		end)
-	end
+for i,v in pairs(game:GetService'Players':GetChildren()) do
+    pcall(function()
+        if not isnil(v.Character) then
+            if ESPPlayer then
+                if not isnil(v.Character.Head) and not v.Character.Head:FindFirstChild('NameEsp'..Number) then
+                    local bill = Instance.new('BillboardGui',v.Character.Head)
+                    bill.Name = 'NameEsp'..Number
+                    bill.ExtentsOffset = Vector3.new(0, 1, 0)
+                    bill.Size = UDim2.new(1,200,1,30)
+                    bill.Adornee = v.Character.Head
+                    bill.AlwaysOnTop = true
+                    local name = Instance.new('TextLabel',bill)
+                    name.Font = Enum.Font.GothamSemibold
+                    name.FontSize = "Size14"
+                    name.TextWrapped = true
+                    name.Text = (v.Name ..' \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Character.Head.Position).Magnitude/3) ..' Distance')
+                    name.Size = UDim2.new(1,0,1,0)
+                    name.TextYAlignment = 'Top'
+                    name.BackgroundTransparency = 1
+                    name.TextStrokeTransparency = 0.5
+                    if v.Team == game.Players.LocalPlayer.Team then
+                        name.TextColor3 = Color3.new(0,255,0)
+                    else
+                        name.TextColor3 = Color3.new(255,0,0)
+                    end
+                else
+                    v.Character.Head['NameEsp'..Number].TextLabel.Text = (v.Name ..' | '.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Character.Head.Position).Magnitude/3) ..' Distance\nHealth : ' .. round(v.Character.Humanoid.Health*100/v.Character.Humanoid.MaxHealth) .. '%')
+                end
+            else
+                if v.Character.Head:FindFirstChild('NameEsp'..Number) then
+                    v.Character.Head:FindFirstChild('NameEsp'..Number):Destroy()
+                end
+            end
+        end
+    end)
+end
 end
 function UpdateChestChams() 
-	for i,v in pairs(game.Workspace:GetChildren()) do
-		pcall(function()
-			if string.find(v.Name,"Chest") then
-				if ChestESP then
-					if string.find(v.Name,"Chest") then
-						if not v:FindFirstChild('NameEsp'..Number) then
-							local bill = Instance.new('BillboardGui',v)
-							bill.Name = 'NameEsp'..Number
-							bill.ExtentsOffset = Vector3.new(0, 1, 0)
-							bill.Size = UDim2.new(1,200,1,30)
-							bill.Adornee = v
-							bill.AlwaysOnTop = true
-							local name = Instance.new('TextLabel',bill)
-							name.Font = "GothamBold"
-							name.FontSize = "Size14"
-							name.TextWrapped = true
-							name.Size = UDim2.new(1,0,1,0)
-							name.TextYAlignment = 'Top'
-							name.BackgroundTransparency = 1
-							name.TextStrokeTransparency = 0.5
-							if v.Name == "Chest1" then
-								name.TextColor3 = Color3.fromRGB(255, 255, 255)
-								name.Text = ("Chest 1" ..' \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' M')
-							end
-							if v.Name == "Chest2" then
-								name.TextColor3 = Color3.fromRGB(255, 255, 255)
-								name.Text = ("Chest 2" ..' \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' M')
-							end
-							if v.Name == "Chest3" then
-								name.TextColor3 = Color3.fromRGB(255, 255 ,255)
-								name.Text = ("Chest 3" ..' \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' M')
-							end
-						else
-							v['NameEsp'..Number].TextLabel.Text = (v.Name ..'   \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' M')
-						end
-					end
-				else
-					if v:FindFirstChild('NameEsp'..Number) then
-						v:FindFirstChild('NameEsp'..Number):Destroy()
-					end
-				end
-			end
-		end)
-	end
+for i,v in pairs(game.Workspace:GetChildren()) do
+    pcall(function()
+        if string.find(v.Name,"Chest") then
+            if ChestESP then
+                if string.find(v.Name,"Chest") then
+                    if not v:FindFirstChild('NameEsp'..Number) then
+                        local bill = Instance.new('BillboardGui',v)
+                        bill.Name = 'NameEsp'..Number
+                        bill.ExtentsOffset = Vector3.new(0, 1, 0)
+                        bill.Size = UDim2.new(1,200,1,30)
+                        bill.Adornee = v
+                        bill.AlwaysOnTop = true
+                        local name = Instance.new('TextLabel',bill)
+                        name.Font = Enum.Font.GothamSemibold
+                        name.FontSize = "Size14"
+                        name.TextWrapped = true
+                        name.Size = UDim2.new(1,0,1,0)
+                        name.TextYAlignment = 'Top'
+                        name.BackgroundTransparency = 1
+                        name.TextStrokeTransparency = 0.5
+                        if v.Name == "Chest1" then
+                            name.TextColor3 = Color3.fromRGB(109, 109, 109)
+                            name.Text = ("Chest 1" ..' \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' Distance')
+                        end
+                        if v.Name == "Chest2" then
+                            name.TextColor3 = Color3.fromRGB(173, 158, 21)
+                            name.Text = ("Chest 2" ..' \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' Distance')
+                        end
+                        if v.Name == "Chest3" then
+                            name.TextColor3 = Color3.fromRGB(85, 255, 255)
+                            name.Text = ("Chest 3" ..' \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' Distance')
+                        end
+                    else
+                        v['NameEsp'..Number].TextLabel.Text = (v.Name ..'   \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' Distance')
+                    end
+                end
+            else
+                if v:FindFirstChild('NameEsp'..Number) then
+                    v:FindFirstChild('NameEsp'..Number):Destroy()
+                end
+            end
+        end
+    end)
+end
 end
 function UpdateDevilChams() 
-	for i,v in pairs(game.Workspace:GetChildren()) do
-		pcall(function()
-			if DevilFruitESP then
-				if string.find(v.Name, "Fruit") then   
-					if not v.Handle:FindFirstChild('NameEsp'..Number) then
-						local bill = Instance.new('BillboardGui',v.Handle)
-						bill.Name = 'NameEsp'..Number
-						bill.ExtentsOffset = Vector3.new(0, 1, 0)
-						bill.Size = UDim2.new(1,200,1,30)
-						bill.Adornee = v.Handle
-						bill.AlwaysOnTop = true
-						local name = Instance.new('TextLabel',bill)
-						name.Font = "GothamBold"
-						name.FontSize = "Size14"
-						name.TextWrapped = true
-						name.Size = UDim2.new(1,0,1,0)
-						name.TextYAlignment = 'Top'
-						name.BackgroundTransparency = 1
-						name.TextStrokeTransparency = 0.5
-						name.TextColor3 = Color3.fromRGB(255, 255 ,255)
-						name.Text = (v.Name ..' \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Handle.Position).Magnitude/3) ..' M')
-					else
-						v.Handle['NameEsp'..Number].TextLabel.Text = (v.Name ..'   \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Handle.Position).Magnitude/3) ..' M')
-					end
-				end
-			else
-				if v.Handle:FindFirstChild('NameEsp'..Number) then
-					v.Handle:FindFirstChild('NameEsp'..Number):Destroy()
-				end
-			end
-		end)
-	end
+for i,v in pairs(game.Workspace:GetChildren()) do
+    pcall(function()
+        if DevilFruitESP then
+            if string.find(v.Name, "Fruit") then   
+                if not v.Handle:FindFirstChild('NameEsp'..Number) then
+                    local bill = Instance.new('BillboardGui',v.Handle)
+                    bill.Name = 'NameEsp'..Number
+                    bill.ExtentsOffset = Vector3.new(0, 1, 0)
+                    bill.Size = UDim2.new(1,200,1,30)
+                    bill.Adornee = v.Handle
+                    bill.AlwaysOnTop = true
+                    local name = Instance.new('TextLabel',bill)
+                    name.Font = Enum.Font.GothamSemibold
+                    name.FontSize = "Size14"
+                    name.TextWrapped = true
+                    name.Size = UDim2.new(1,0,1,0)
+                    name.TextYAlignment = 'Top'
+                    name.BackgroundTransparency = 1
+                    name.TextStrokeTransparency = 0.5
+                    name.TextColor3 = Color3.fromRGB(255, 255, 255)
+                    name.Text = (v.Name ..' \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Handle.Position).Magnitude/3) ..' Distance')
+                else
+                    v.Handle['NameEsp'..Number].TextLabel.Text = (v.Name ..'   \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Handle.Position).Magnitude/3) ..' Distance')
+                end
+            end
+        else
+            if v.Handle:FindFirstChild('NameEsp'..Number) then
+                v.Handle:FindFirstChild('NameEsp'..Number):Destroy()
+            end
+        end
+    end)
+end
 end
 function UpdateFlowerChams() 
-	for i,v in pairs(game.Workspace:GetChildren()) do
-		pcall(function()
-			if v.Name == "Flower2" or v.Name == "Flower1" then
-				if FlowerESP then 
-					if not v:FindFirstChild('NameEsp'..Number) then
-						local bill = Instance.new('BillboardGui',v)
-						bill.Name = 'NameEsp'..Number
-						bill.ExtentsOffset = Vector3.new(0, 1, 0)
-						bill.Size = UDim2.new(1,200,1,30)
-						bill.Adornee = v
-						bill.AlwaysOnTop = true
-						local name = Instance.new('TextLabel',bill)
-						name.Font = "GothamBold"
-						name.FontSize = "Size14"
-						name.TextWrapped = true
-						name.Size = UDim2.new(1,0,1,0)
-						name.TextYAlignment = 'Top'
-						name.BackgroundTransparency = 1
-						name.TextStrokeTransparency = 0.5
-						name.TextColor3 = Color3.fromRGB(255, 255 ,255)
-						if v.Name == "Flower1" then 
-							name.Text = ("Blue Flower" ..' \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' M')
-							name.TextColor3 = Color3.fromRGB(255, 255 ,255)
-						end
-						if v.Name == "Flower2" then
-							name.Text = ("Red Flower" ..' \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' M')
-							name.TextColor3 = Color3.fromRGB(255, 255 ,255)
-						end
-					else
-						v['NameEsp'..Number].TextLabel.Text = (v.Name ..'   \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' M')
-					end
-				else
-					if v:FindFirstChild('NameEsp'..Number) then
-						v:FindFirstChild('NameEsp'..Number):Destroy()
-					end
-				end
-			end   
-		end)
-	end
+for i,v in pairs(game.Workspace:GetChildren()) do
+    pcall(function()
+        if v.Name == "Flower2" or v.Name == "Flower1" then
+            if FlowerESP then 
+                if not v:FindFirstChild('NameEsp'..Number) then
+                    local bill = Instance.new('BillboardGui',v)
+                    bill.Name = 'NameEsp'..Number
+                    bill.ExtentsOffset = Vector3.new(0, 1, 0)
+                    bill.Size = UDim2.new(1,200,1,30)
+                    bill.Adornee = v
+                    bill.AlwaysOnTop = true
+                    local name = Instance.new('TextLabel',bill)
+                    name.Font = Enum.Font.GothamSemibold
+                    name.FontSize = "Size14"
+                    name.TextWrapped = true
+                    name.Size = UDim2.new(1,0,1,0)
+                    name.TextYAlignment = 'Top'
+                    name.BackgroundTransparency = 1
+                    name.TextStrokeTransparency = 0.5
+                    name.TextColor3 = Color3.fromRGB(255, 0, 0)
+                    if v.Name == "Flower1" then 
+                        name.Text = ("Blue Flower" ..' \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' Distance')
+                        name.TextColor3 = Color3.fromRGB(0, 0, 255)
+                    end
+                    if v.Name == "Flower2" then
+                        name.Text = ("Red Flower" ..' \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' Distance')
+                        name.TextColor3 = Color3.fromRGB(255, 0, 0)
+                    end
+                else
+                    v['NameEsp'..Number].TextLabel.Text = (v.Name ..'   \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' Distance')
+                end
+            else
+                if v:FindFirstChild('NameEsp'..Number) then
+                v:FindFirstChild('NameEsp'..Number):Destroy()
+                end
+            end
+        end   
+    end)
 end
-pppp:Toggle("ESP Player"," ",false,function(a)
-	ESPPlayer = a
-	while ESPPlayer do wait()
-		UpdatePlayerChams()
-	end
-end)
-pppp:Toggle("ESP Chest"," ",false,function(a)
-	ChestESP = a
-	while ChestESP do wait()
-		UpdateChestChams() 
-	end
-end)
-pppp:Toggle("ESP Devil Fruit"," ",false,function(a)
-	DevilFruitESP = a
-	while DevilFruitESP do wait()
-		UpdateDevilChams() 
-	end
-end)
-pppp:Toggle("ESP Flower"," ",false,function(a)
-	FlowerESP = a
-	while FlowerESP do wait()
-		UpdateFlowerChams() 
-	end
-end)
-pppp:Line()
-pppp:Label("--Character--", true)
-pppp:Toggle("Dodge No Cooldown"," ",false,function(value)
-	nododgecool = Value
-	NoDodgeCool()
-end)
-
-
-nododgecool = false
-function NoDodgeCool()
-	if nododgecool then
-		for i,v in next, getgc() do
-			if game.Players.LocalPlayer.Character.Dodge then
-				if typeof(v) == "function" and getfenv(v).script == game.Players.LocalPlayer.Character.Dodge then
-					for i2,v2 in next, getupvalues(v) do
-						if tostring(v2) == "0.4" then
-							repeat wait(.1)
-								setupvalue(v,i2,0)
-							until not nododgecool
-						end
-					end
-				end
-			end
-		end
-	end
 end
-pppp:Toggle("Infinits Energy"," ",false,function(value)
-	InfinitsEnergy = value
-	originalstam = LocalPlayer.Character.Energy.Value
-end)
+function UpdateRealFruitChams() 
+for i,v in pairs(game.Workspace.AppleSpawner:GetChildren()) do
+    if v:IsA("Tool") then
+        if RealFruitESP then 
+            if not v.Handle:FindFirstChild('NameEsp'..Number) then
+                local bill = Instance.new('BillboardGui',v.Handle)
+                bill.Name = 'NameEsp'..Number
+                bill.ExtentsOffset = Vector3.new(0, 1, 0)
+                bill.Size = UDim2.new(1,200,1,30)
+                bill.Adornee = v.Handle
+                bill.AlwaysOnTop = true
+                local name = Instance.new('TextLabel',bill)
+                name.Font = Enum.Font.GothamSemibold
+                name.FontSize = "Size14"
+                name.TextWrapped = true
+                name.Size = UDim2.new(1,0,1,0)
+                name.TextYAlignment = 'Top'
+                name.BackgroundTransparency = 1
+                name.TextStrokeTransparency = 0.5
+                name.TextColor3 = Color3.fromRGB(255, 0, 0)
+                name.Text = (v.Name ..' \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Handle.Position).Magnitude/3) ..' Distance')
+            else
+                v.Handle['NameEsp'..Number].TextLabel.Text = (v.Name ..' '.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Handle.Position).Magnitude/3) ..' Distance')
+            end
+        else
+            if v.Handle:FindFirstChild('NameEsp'..Number) then
+                v.Handle:FindFirstChild('NameEsp'..Number):Destroy()
+            end
+        end 
+    end
+end
+for i,v in pairs(game.Workspace.PineappleSpawner:GetChildren()) do
+    if v:IsA("Tool") then
+        if RealFruitESP then 
+            if not v.Handle:FindFirstChild('NameEsp'..Number) then
+                local bill = Instance.new('BillboardGui',v.Handle)
+                bill.Name = 'NameEsp'..Number
+                bill.ExtentsOffset = Vector3.new(0, 1, 0)
+                bill.Size = UDim2.new(1,200,1,30)
+                bill.Adornee = v.Handle
+                bill.AlwaysOnTop = true
+                local name = Instance.new('TextLabel',bill)
+                name.Font = Enum.Font.GothamSemibold
+                name.FontSize = "Size14"
+                name.TextWrapped = true
+                name.Size = UDim2.new(1,0,1,0)
+                name.TextYAlignment = 'Top'
+                name.BackgroundTransparency = 1
+                name.TextStrokeTransparency = 0.5
+                name.TextColor3 = Color3.fromRGB(255, 174, 0)
+                name.Text = (v.Name ..' \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Handle.Position).Magnitude/3) ..' Distance')
+            else
+                v.Handle['NameEsp'..Number].TextLabel.Text = (v.Name ..' '.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Handle.Position).Magnitude/3) ..' Distance')
+            end
+        else
+            if v.Handle:FindFirstChild('NameEsp'..Number) then
+                v.Handle:FindFirstChild('NameEsp'..Number):Destroy()
+            end
+        end 
+    end
+end
+for i,v in pairs(game.Workspace.BananaSpawner:GetChildren()) do
+    if v:IsA("Tool") then
+        if RealFruitESP then 
+            if not v.Handle:FindFirstChild('NameEsp'..Number) then
+                local bill = Instance.new('BillboardGui',v.Handle)
+                bill.Name = 'NameEsp'..Number
+                bill.ExtentsOffset = Vector3.new(0, 1, 0)
+                bill.Size = UDim2.new(1,200,1,30)
+                bill.Adornee = v.Handle
+                bill.AlwaysOnTop = true
+                local name = Instance.new('TextLabel',bill)
+                name.Font = Enum.Font.GothamSemibold
+                name.FontSize = "Size14"
+                name.TextWrapped = true
+                name.Size = UDim2.new(1,0,1,0)
+                name.TextYAlignment = 'Top'
+                name.BackgroundTransparency = 1
+                name.TextStrokeTransparency = 0.5
+                name.TextColor3 = Color3.fromRGB(251, 255, 0)
+                name.Text = (v.Name ..' \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Handle.Position).Magnitude/3) ..' Distance')
+            else
+                v.Handle['NameEsp'..Number].TextLabel.Text = (v.Name ..' '.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Handle.Position).Magnitude/3) ..' Distance')
+            end
+        else
+            if v.Handle:FindFirstChild('NameEsp'..Number) then
+                v.Handle:FindFirstChild('NameEsp'..Number):Destroy()
+            end
+        end 
+    end
+end
+end
+function UpdateIslandESP() 
+    for i,v in pairs(game:GetService("Workspace")["_WorldOrigin"].Locations:GetChildren()) do
+        pcall(function()
+            if IslandESP then 
+                if v.Name ~= "Sea" then
+                    if not v:FindFirstChild('NameEsp') then
+                        local bill = Instance.new('BillboardGui',v)
+                        bill.Name = 'NameEsp'
+                        bill.ExtentsOffset = Vector3.new(0, 1, 0)
+                        bill.Size = UDim2.new(1,200,1,30)
+                        bill.Adornee = v
+                        bill.AlwaysOnTop = true
+                        local name = Instance.new('TextLabel',bill)
+                        name.Font = "GothamBold"
+                        name.FontSize = "Size14"
+                        name.TextWrapped = true
+                        name.Size = UDim2.new(1,0,1,0)
+                        name.TextYAlignment = 'Top'
+                        name.BackgroundTransparency = 1
+                        name.TextStrokeTransparency = 0.5
+                        name.TextColor3 = Color3.fromRGB(7, 236, 240)
+                    else
+                        v['NameEsp'].TextLabel.Text = (v.Name ..'   \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' Distance')
+                    end
+                end
+            else
+                if v:FindFirstChild('NameEsp') then
+                    v:FindFirstChild('NameEsp'):Destroy()
+                end
+            end
+        end)
+    end
+end
+function isnil(thing)
+return (thing == nil)
+end
+local function round(n)
+return math.floor(tonumber(n) + 0.5)
+end
+Number = math.random(1, 1000000)
+function UpdatePlayerChams()
+for i,v in pairs(game:GetService'Players':GetChildren()) do
+    pcall(function()
+        if not isnil(v.Character) then
+            if ESPPlayer then
+                if not isnil(v.Character.Head) and not v.Character.Head:FindFirstChild('NameEsp'..Number) then
+                    local bill = Instance.new('BillboardGui',v.Character.Head)
+                    bill.Name = 'NameEsp'..Number
+                    bill.ExtentsOffset = Vector3.new(0, 1, 0)
+                    bill.Size = UDim2.new(1,200,1,30)
+                    bill.Adornee = v.Character.Head
+                    bill.AlwaysOnTop = true
+                    local name = Instance.new('TextLabel',bill)
+                    name.Font = Enum.Font.GothamSemibold
+                    name.FontSize = "Size14"
+                    name.TextWrapped = true
+                    name.Text = (v.Name ..' \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Character.Head.Position).Magnitude/3) ..' Distance')
+                    name.Size = UDim2.new(1,0,1,0)
+                    name.TextYAlignment = 'Top'
+                    name.BackgroundTransparency = 1
+                    name.TextStrokeTransparency = 0.5
+                    if v.Team == game.Players.LocalPlayer.Team then
+                        name.TextColor3 = Color3.new(0,255,0)
+                    else
+                        name.TextColor3 = Color3.new(255,0,0)
+                    end
+                else
+                    v.Character.Head['NameEsp'..Number].TextLabel.Text = (v.Name ..' | '.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Character.Head.Position).Magnitude/3) ..' Distance\nHealth : ' .. round(v.Character.Humanoid.Health*100/v.Character.Humanoid.MaxHealth) .. '%')
+                end
+            else
+                if v.Character.Head:FindFirstChild('NameEsp'..Number) then
+                    v.Character.Head:FindFirstChild('NameEsp'..Number):Destroy()
+                end
+            end
+        end
+    end)
+end
+end
+function UpdateChestChams() 
+for i,v in pairs(game.Workspace:GetChildren()) do
+    pcall(function()
+        if string.find(v.Name,"Chest") then
+            if ChestESP then
+                if string.find(v.Name,"Chest") then
+                    if not v:FindFirstChild('NameEsp'..Number) then
+                        local bill = Instance.new('BillboardGui',v)
+                        bill.Name = 'NameEsp'..Number
+                        bill.ExtentsOffset = Vector3.new(0, 1, 0)
+                        bill.Size = UDim2.new(1,200,1,30)
+                        bill.Adornee = v
+                        bill.AlwaysOnTop = true
+                        local name = Instance.new('TextLabel',bill)
+                        name.Font = Enum.Font.GothamSemibold
+                        name.FontSize = "Size14"
+                        name.TextWrapped = true
+                        name.Size = UDim2.new(1,0,1,0)
+                        name.TextYAlignment = 'Top'
+                        name.BackgroundTransparency = 1
+                        name.TextStrokeTransparency = 0.5
+                        if v.Name == "Chest1" then
+                            name.TextColor3 = Color3.fromRGB(109, 109, 109)
+                            name.Text = ("Chest 1" ..' \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' Distance')
+                        end
+                        if v.Name == "Chest2" then
+                            name.TextColor3 = Color3.fromRGB(173, 158, 21)
+                            name.Text = ("Chest 2" ..' \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' Distance')
+                        end
+                        if v.Name == "Chest3" then
+                            name.TextColor3 = Color3.fromRGB(85, 255, 255)
+                            name.Text = ("Chest 3" ..' \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' Distance')
+                        end
+                    else
+                        v['NameEsp'..Number].TextLabel.Text = (v.Name ..'   \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' Distance')
+                    end
+                end
+            else
+                if v:FindFirstChild('NameEsp'..Number) then
+                    v:FindFirstChild('NameEsp'..Number):Destroy()
+                end
+            end
+        end
+    end)
+end
+end
+function UpdateDevilChams() 
+for i,v in pairs(game.Workspace:GetChildren()) do
+    pcall(function()
+        if DevilFruitESP then
+            if string.find(v.Name, "Fruit") then   
+                if not v.Handle:FindFirstChild('NameEsp'..Number) then
+                    local bill = Instance.new('BillboardGui',v.Handle)
+                    bill.Name = 'NameEsp'..Number
+                    bill.ExtentsOffset = Vector3.new(0, 1, 0)
+                    bill.Size = UDim2.new(1,200,1,30)
+                    bill.Adornee = v.Handle
+                    bill.AlwaysOnTop = true
+                    local name = Instance.new('TextLabel',bill)
+                    name.Font = Enum.Font.GothamSemibold
+                    name.FontSize = "Size14"
+                    name.TextWrapped = true
+                    name.Size = UDim2.new(1,0,1,0)
+                    name.TextYAlignment = 'Top'
+                    name.BackgroundTransparency = 1
+                    name.TextStrokeTransparency = 0.5
+                    name.TextColor3 = Color3.fromRGB(255, 255, 255)
+                    name.Text = (v.Name ..' \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Handle.Position).Magnitude/3) ..' Distance')
+                else
+                    v.Handle['NameEsp'..Number].TextLabel.Text = (v.Name ..'   \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Handle.Position).Magnitude/3) ..' Distance')
+                end
+            end
+        else
+            if v.Handle:FindFirstChild('NameEsp'..Number) then
+                v.Handle:FindFirstChild('NameEsp'..Number):Destroy()
+            end
+        end
+    end)
+end
+end
+function UpdateFlowerChams() 
+for i,v in pairs(game.Workspace:GetChildren()) do
+    pcall(function()
+        if v.Name == "Flower2" or v.Name == "Flower1" then
+            if FlowerESP then 
+                if not v:FindFirstChild('NameEsp'..Number) then
+                    local bill = Instance.new('BillboardGui',v)
+                    bill.Name = 'NameEsp'..Number
+                    bill.ExtentsOffset = Vector3.new(0, 1, 0)
+                    bill.Size = UDim2.new(1,200,1,30)
+                    bill.Adornee = v
+                    bill.AlwaysOnTop = true
+                    local name = Instance.new('TextLabel',bill)
+                    name.Font = Enum.Font.GothamSemibold
+                    name.FontSize = "Size14"
+                    name.TextWrapped = true
+                    name.Size = UDim2.new(1,0,1,0)
+                    name.TextYAlignment = 'Top'
+                    name.BackgroundTransparency = 1
+                    name.TextStrokeTransparency = 0.5
+                    name.TextColor3 = Color3.fromRGB(255, 0, 0)
+                    if v.Name == "Flower1" then 
+                        name.Text = ("Blue Flower" ..' \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' Distance')
+                        name.TextColor3 = Color3.fromRGB(0, 0, 255)
+                    end
+                    if v.Name == "Flower2" then
+                        name.Text = ("Red Flower" ..' \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' Distance')
+                        name.TextColor3 = Color3.fromRGB(255, 0, 0)
+                    end
+                else
+                    v['NameEsp'..Number].TextLabel.Text = (v.Name ..'   \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' Distance')
+                end
+            else
+                if v:FindFirstChild('NameEsp'..Number) then
+                v:FindFirstChild('NameEsp'..Number):Destroy()
+                end
+            end
+        end   
+    end)
+end
+end
+function UpdateRealFruitChams() 
+for i,v in pairs(game.Workspace.AppleSpawner:GetChildren()) do
+    if v:IsA("Tool") then
+        if RealFruitESP then 
+            if not v.Handle:FindFirstChild('NameEsp'..Number) then
+                local bill = Instance.new('BillboardGui',v.Handle)
+                bill.Name = 'NameEsp'..Number
+                bill.ExtentsOffset = Vector3.new(0, 1, 0)
+                bill.Size = UDim2.new(1,200,1,30)
+                bill.Adornee = v.Handle
+                bill.AlwaysOnTop = true
+                local name = Instance.new('TextLabel',bill)
+                name.Font = Enum.Font.GothamSemibold
+                name.FontSize = "Size14"
+                name.TextWrapped = true
+                name.Size = UDim2.new(1,0,1,0)
+                name.TextYAlignment = 'Top'
+                name.BackgroundTransparency = 1
+                name.TextStrokeTransparency = 0.5
+                name.TextColor3 = Color3.fromRGB(255, 0, 0)
+                name.Text = (v.Name ..' \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Handle.Position).Magnitude/3) ..' Distance')
+            else
+                v.Handle['NameEsp'..Number].TextLabel.Text = (v.Name ..' '.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Handle.Position).Magnitude/3) ..' Distance')
+            end
+        else
+            if v.Handle:FindFirstChild('NameEsp'..Number) then
+                v.Handle:FindFirstChild('NameEsp'..Number):Destroy()
+            end
+        end 
+    end
+end
+for i,v in pairs(game.Workspace.PineappleSpawner:GetChildren()) do
+    if v:IsA("Tool") then
+        if RealFruitESP then 
+            if not v.Handle:FindFirstChild('NameEsp'..Number) then
+                local bill = Instance.new('BillboardGui',v.Handle)
+                bill.Name = 'NameEsp'..Number
+                bill.ExtentsOffset = Vector3.new(0, 1, 0)
+                bill.Size = UDim2.new(1,200,1,30)
+                bill.Adornee = v.Handle
+                bill.AlwaysOnTop = true
+                local name = Instance.new('TextLabel',bill)
+                name.Font = Enum.Font.GothamSemibold
+                name.FontSize = "Size14"
+                name.TextWrapped = true
+                name.Size = UDim2.new(1,0,1,0)
+                name.TextYAlignment = 'Top'
+                name.BackgroundTransparency = 1
+                name.TextStrokeTransparency = 0.5
+                name.TextColor3 = Color3.fromRGB(255, 174, 0)
+                name.Text = (v.Name ..' \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Handle.Position).Magnitude/3) ..' Distance')
+            else
+                v.Handle['NameEsp'..Number].TextLabel.Text = (v.Name ..' '.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Handle.Position).Magnitude/3) ..' Distance')
+            end
+        else
+            if v.Handle:FindFirstChild('NameEsp'..Number) then
+                v.Handle:FindFirstChild('NameEsp'..Number):Destroy()
+            end
+        end 
+    end
+end
+for i,v in pairs(game.Workspace.BananaSpawner:GetChildren()) do
+    if v:IsA("Tool") then
+        if RealFruitESP then 
+            if not v.Handle:FindFirstChild('NameEsp'..Number) then
+                local bill = Instance.new('BillboardGui',v.Handle)
+                bill.Name = 'NameEsp'..Number
+                bill.ExtentsOffset = Vector3.new(0, 1, 0)
+                bill.Size = UDim2.new(1,200,1,30)
+                bill.Adornee = v.Handle
+                bill.AlwaysOnTop = true
+                local name = Instance.new('TextLabel',bill)
+                name.Font = Enum.Font.GothamSemibold
+                name.FontSize = "Size14"
+                name.TextWrapped = true
+                name.Size = UDim2.new(1,0,1,0)
+                name.TextYAlignment = 'Top'
+                name.BackgroundTransparency = 1
+                name.TextStrokeTransparency = 0.5
+                name.TextColor3 = Color3.fromRGB(251, 255, 0)
+                name.Text = (v.Name ..' \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Handle.Position).Magnitude/3) ..' Distance')
+            else
+                v.Handle['NameEsp'..Number].TextLabel.Text = (v.Name ..' '.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Handle.Position).Magnitude/3) ..' Distance')
+            end
+        else
+            if v.Handle:FindFirstChild('NameEsp'..Number) then
+                v.Handle:FindFirstChild('NameEsp'..Number):Destroy()
+            end
+        end 
+    end
+end
+end
+function isnil(thing)
+return (thing == nil)
+end
+local function round(n)
+return math.floor(tonumber(n) + 0.5)
+end
+Number = math.random(1, 1000000)
+function UpdateIslandMirageESP() 
+for i,v in pairs(game:GetService("Workspace")["_WorldOrigin"].Locations:GetChildren()) do
+    pcall(function()
+        if MirageIslandESP then 
+            if v.Name == "Mirage Island" then
+                if not v:FindFirstChild('NameEsp') then
+                    local bill = Instance.new('BillboardGui',v)
+                    bill.Name = 'NameEsp'
+                    bill.ExtentsOffset = Vector3.new(0, 1, 0)
+                    bill.Size = UDim2.new(1,200,1,30)
+                    bill.Adornee = v
+                    bill.AlwaysOnTop = true
+                    local name = Instance.new('TextLabel',bill)
+                    name.Font = "Code"
+                    name.FontSize = "Size14"
+                    name.TextWrapped = true
+                    name.Size = UDim2.new(1,0,1,0)
+                    name.TextYAlignment = 'Top'
+                    name.BackgroundTransparency = 1
+                    name.TextStrokeTransparency = 0.5
+                    name.TextColor3 = Color3.fromRGB(80, 245, 245)
+                else
+                    v['NameEsp'].TextLabel.Text = (v.Name ..'   \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' M')
+                end
+            end
+        else
+            if v:FindFirstChild('NameEsp') then
+                v:FindFirstChild('NameEsp'):Destroy()
+            end
+        end
+    end)
+end
+end
+function isnil(thing)
+return (thing == nil)
+end
+local function round(n)
+return math.floor(tonumber(n) + 0.5)
+end
+Number = math.random(1, 1000000)
+function UpdateAfdESP() 
+for i,v in pairs(game:GetService("Workspace").NPCs:GetChildren()) do
+    pcall(function()
+        if AfdESP then 
+            if v.Name == "Advanced Fruit Dealer" then
+                if not v:FindFirstChild('NameEsp') then
+                    local bill = Instance.new('BillboardGui',v)
+                    bill.Name = 'NameEsp'
+                    bill.ExtentsOffset = Vector3.new(0, 1, 0)
+                    bill.Size = UDim2.new(1,200,1,30)
+                    bill.Adornee = v
+                    bill.AlwaysOnTop = true
+                    local name = Instance.new('TextLabel',bill)
+                    name.Font = "Code"
+                    name.FontSize = "Size14"
+                    name.TextWrapped = true
+                    name.Size = UDim2.new(1,0,1,0)
+                    name.TextYAlignment = 'Top'
+                    name.BackgroundTransparency = 1
+                    name.TextStrokeTransparency = 0.5
+                    name.TextColor3 = Color3.fromRGB(80, 245, 245)
+                else
+                    v['NameEsp'].TextLabel.Text = (v.Name ..'   \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' M')
+                end
+            end
+        else
+            if v:FindFirstChild('NameEsp') then
+                v:FindFirstChild('NameEsp'):Destroy()
+            end
+        end
+    end)
+end
+end
+function UpdateAuraESP() 
+for i,v in pairs(game:GetService("Workspace").NPCs:GetChildren()) do
+    pcall(function()
+        if AuraESP then 
+            if v.Name == "Master of Enhancement" then
+                if not v:FindFirstChild('NameEsp') then
+                    local bill = Instance.new('BillboardGui',v)
+                    bill.Name = 'NameEsp'
+                    bill.ExtentsOffset = Vector3.new(0, 1, 0)
+                    bill.Size = UDim2.new(1,200,1,30)
+                    bill.Adornee = v
+                    bill.AlwaysOnTop = true
+                    local name = Instance.new('TextLabel',bill)
+                    name.Font = "Code"
+                    name.FontSize = "Size14"
+                    name.TextWrapped = true
+                    name.Size = UDim2.new(1,0,1,0)
+                    name.TextYAlignment = 'Top'
+                    name.BackgroundTransparency = 1
+                    name.TextStrokeTransparency = 0.5
+                    name.TextColor3 = Color3.fromRGB(80, 245, 245)
+                else
+                    v['NameEsp'].TextLabel.Text = (v.Name ..'   \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' M')
+                end
+            end
+        else
+            if v:FindFirstChild('NameEsp') then
+                v:FindFirstChild('NameEsp'):Destroy()
+            end
+        end
+    end)
+end
+end
+function UpdateLSDESP() 
+for i,v in pairs(game:GetService("Workspace").NPCs:GetChildren()) do
+    pcall(function()
+        if LADESP then 
+            if v.Name == "Legendary Sword Dealer" then
+                if not v:FindFirstChild('NameEsp') then
+                    local bill = Instance.new('BillboardGui',v)
+                    bill.Name = 'NameEsp'
+                    bill.ExtentsOffset = Vector3.new(0, 1, 0)
+                    bill.Size = UDim2.new(1,200,1,30)
+                    bill.Adornee = v
+                    bill.AlwaysOnTop = true
+                    local name = Instance.new('TextLabel',bill)
+                    name.Font = "Code"
+                    name.FontSize = "Size14"
+                    name.TextWrapped = true
+                    name.Size = UDim2.new(1,0,1,0)
+                    name.TextYAlignment = 'Top'
+                    name.BackgroundTransparency = 1
+                    name.TextStrokeTransparency = 0.5
+                    name.TextColor3 = Color3.fromRGB(80, 245, 245)
+                else
+                    v['NameEsp'].TextLabel.Text = (v.Name ..'   \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' M')
+                end
+            end
+        else
+            if v:FindFirstChild('NameEsp') then
+                v:FindFirstChild('NameEsp'):Destroy()
+            end
+        end
+    end)
+end
+end
+function UpdateGeaESP() 
+for i,v in pairs(game:GetService("Workspace").Map.MysticIsland:GetChildren()) do 
+    pcall(function()
+        if GearESP then 
+            if v.Name == "MeshPart" then
+                if not v:FindFirstChild('NameEsp') then
+                    local bill = Instance.new('BillboardGui',v)
+                    bill.Name = 'NameEsp'
+                    bill.ExtentsOffset = Vector3.new(0, 1, 0)
+                    bill.Size = UDim2.new(1,200,1,30)
+                    bill.Adornee = v
+                    bill.AlwaysOnTop = true
+                    local name = Instance.new('TextLabel',bill)
+                    name.Font = "Code"
+                    name.FontSize = "Size14"
+                    name.TextWrapped = true
+                    name.Size = UDim2.new(1,0,1,0)
+                    name.TextYAlignment = 'Top'
+                    name.BackgroundTransparency = 1
+                    name.TextStrokeTransparency = 0.5
+                    name.TextColor3 = Color3.fromRGB(80, 245, 245)
+                else
+                    v['NameEsp'].TextLabel.Text = (v.Name ..'   \n'.. round((game:GetService('Players').LocalPlayer.Character.Head.Position - v.Position).Magnitude/3) ..' M')
+                end
+            end
+        else
+            if v:FindFirstChild('NameEsp') then
+                v:FindFirstChild('NameEsp'):Destroy()
+            end
+        end
+    end)
+end
+end
+function InfAb()
+    if InfAbility then
+        if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("Agility") then
+            local inf = Instance.new("ParticleEmitter")
+            inf.Acceleration = Vector3.new(0,0,0)
+            inf.Archivable = true
+            inf.Drag = 20
+            inf.EmissionDirection = Enum.NormalId.Top
+            inf.Enabled = true
+            inf.Lifetime = NumberRange.new(0,0)
+            inf.LightInfluence = 0
+            inf.LockedToPart = true
+            inf.Name = "Agility"
+            inf.Rate = 500
+            local numberKeypoints2 = {
+                NumberSequenceKeypoint.new(0, 0);
+                NumberSequenceKeypoint.new(1, 4); 
+            }
+            inf.Size = NumberSequence.new(numberKeypoints2)
+            inf.RotSpeed = NumberRange.new(9999, 99999)
+            inf.Rotation = NumberRange.new(0, 0)
+            inf.Speed = NumberRange.new(30, 30)
+            inf.SpreadAngle = Vector2.new(0,0,0,0)
+            inf.Texture = ""
+            inf.VelocityInheritance = 0
+            inf.ZOffset = 2
+            inf.Transparency = NumberSequence.new(0)
+            inf.Color = ColorSequence.new(Color3.fromRGB(0,0,0),Color3.fromRGB(0,0,0))
+            inf.Parent = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+        end
+    else
+        if game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("Agility") then
+            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("Agility"):Destroy()
+        end
+    end
+end
 local LocalPlayer = game:GetService'Players'.LocalPlayer
 local originalstam = LocalPlayer.Character.Energy.Value
 function infinitestam()
-	LocalPlayer.Character.Energy.Changed:connect(function()
-		if InfinitsEnergy then
-			LocalPlayer.Character.Energy.Value = originalstam
-		end
-	end)
+    LocalPlayer.Character.Energy.Changed:connect(function()
+        if InfiniteEnergy then
+            LocalPlayer.Character.Energy.Value = originalstam
+        end 
+    end)
 end
 spawn(function()
-	while wait(.1) do
-		if InfinitsEnergy then
-			wait(0.3)
-			originalstam = LocalPlayer.Character.Energy.Value
-			infinitestam()
-		end
-	end
-end)
-pppp:Toggle("Auto Click"," ",false,function(value)
-	AuctoClick = value
-end)
-spawn(function()
-	while wait(.1) do
-		if AuctoClick then
-			Click()
-		end
-	end
-end)
-Fly = false
-function activatefly()
-	local mouse=game.Players.LocalPlayer:GetMouse''
-	localplayer=game.Players.LocalPlayer
-	game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
-	local torso = game.Players.LocalPlayer.Character.HumanoidRootPart
-	local speed=180
-	local keys={a=false,d=false,w=false,s=false}
-	local e1
-	local e2
-	local function start()
-		local pos = Instance.new("BodyPosition",torso)
-		local gyro = Instance.new("BodyGyro",torso)
-		pos.Name="EPIXPOS"
-		pos.maxForce = Vector3.new(math.huge, math.huge, math.huge)
-		pos.position = torso.Position
-		gyro.maxTorque = Vector3.new(9e9, 9e9, 9e9)
-		gyro.cframe = torso.CFrame
-		repeat
-			wait()
-			localplayer.Character.Humanoid.PlatformStand=true
-			local new=gyro.cframe - gyro.cframe.p + pos.position
-			if not keys.w and not keys.s and not keys.a and not keys.d then
-				speed=3
-			end
-			if keys.w then
-				new = new + workspace.CurrentCamera.CoordinateFrame.lookVector * speed
-				speed=speed+9.02
-			end
-			if keys.s then
-				new = new - workspace.CurrentCamera.CoordinateFrame.lookVector * speed
-				speed=speed+4.02
-			end
-			if keys.d then
-				new = new * CFrame.new(speed,0,0)
-				speed=speed+2.02
-			end
-			if keys.a then
-				new = new * CFrame.new(-speed,0,0)
-				speed=speed+3.02
-			end
-			if speed>5 then
-				speed=9.5
-			end
-			pos.position=new.p
-			if keys.w then
-				gyro.cframe = workspace.CurrentCamera.CoordinateFrame*CFrame.Angles(-math.rad(speed*15),0,0)
-			elseif keys.s then
-				gyro.cframe = workspace.CurrentCamera.CoordinateFrame*CFrame.Angles(math.rad(speed*15),0,0)
-			else
-				gyro.cframe = workspace.CurrentCamera.CoordinateFrame
-			end
-		until not Fly
-		if gyro then
-			gyro:Destroy()
-		end
-		if pos then
-			pos:Destroy()
-		end
-		flying=false
-		localplayer.Character.Humanoid.PlatformStand=false
-		speed=5
-	end
-	e1=mouse.KeyDown:connect(function(key)
-		if not torso or not torso.Parent then
-			flying=false e1:disconnect() e2:disconnect() return
-		end
-		if key=="w" then
-			keys.w=true
-		elseif key=="s" then
-			keys.s=true
-		elseif key=="a" then
-			keys.a=true
-		elseif key=="d" then
-			keys.d=true
-		end
-	end)
-	e2=mouse.KeyUp:connect(function(key)
-		if key=="w" then
-			keys.w=false
-		elseif key=="s" then
-			keys.s=false
-		elseif key=="a" then
-			keys.a=false
-		elseif key=="d" then
-			keys.d=false
-		end
-	end)
-	start()
-end
-pppp:Toggle("Fly"," ",false,function(Value)
-	Fly = Value
-	activatefly()
-end)
-pppp:Toggle("No Clip"," ",false,function(value)
-	NoClip = value
-end)
-game:GetService("RunService").Heartbeat:Connect(
-function()
-	if NoClip or _G.Pole or _G.SwanGlasses then
-		game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(11)
-	end
-end)
-pppp:Line()
-pppp:Label("Fake ")
-pppp:Textbox("Fake Beli", "", true, function(FakeBeli)
-	game:GetService("Players")["LocalPlayer"].Data.Beli.Value = FakeBeli
-end)
-pppp:Textbox("Fake Level", "", true, function(FakeLevel)
-	game:GetService("Players")["LocalPlayer"].Data.Level.Value = FakeLevel
-end)
-pppp:Textbox("Fake Exp ", "", true, function(FakeExp)
-	game:GetService("Players")["LocalPlayer"].Data.Exp.Value = FakeExp
-end)
-pppp:Textbox("Fake Fragments", "", true, function(FakeFragments)
-	game:GetService("Players")["Localplayer"].Data.Fragments.Value = FakeFragments
-end)
-pppp:Line()
-pppp:Label("Fake Stats")
-pppp:Textbox("Fake Melee", "", true, function(FakeMelee)
-	game:GetService("Players")["LocalPlayer"].Data.Stats.Melee.Level.Value = FakeMelee
-end)
-pppp:Textbox("Fake Defense", "", true, function(FakeDefense)
-	game:GetService("Players")["localPlayer"].Data.Stats.Defense.Level.Value = FakeDefense
-end)
-pppp:Textbox("Fake Sword", "", true, function(FakeSword)
-	game:GetService("Players")["LocalPlayer"].Data.Stats.Sword.Level.Value = FakeSword
-end)
-pppp:Textbox("Fake Gun", "", true, function(FakeGun)
-	game:GetService("Players")["LocalPlayer"].Data.Stats.Gun.Level.Value = FakeGun
-end)
-pppp:Textbox("Fake Fruit", "", true, function(FakeFruit)
-	game:GetService("Players")["LocalPlayer"].Data.Stats["Demon Fruit"].Level.Value = FakeFruit
-end)
-pppp:Line()
-pppp:Label("Haki Stage Select")
-pppp:Button("Stage 0","", function()
-	local args = {
-		[1] = "ChangeBusoStage",
-		[2] = 0
-	}
-
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-end)
-pppp:Button("Stage 1","", function()
-	local args = {
-		[1] = "ChangeBusoStage",
-		[2] = 1
-	}
-
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-end)
-pppp:Button("Stage 2","", function()
-	local args = {
-		[1] = "ChangeBusoStage",
-		[2] = 2
-	}
-
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-end)
-pppp:Button("Stage 3","", function()
-	local args = {
-		[1] = "ChangeBusoStage",
-		[2] = 3
-	}
-
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-end)
-pppp:Button("Stage 4","", function()
-	local args = {
-		[1] = "ChangeBusoStage",
-		[2] = 4
-	}
-
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-end)
-pppp:Button("Stage 5","", function()
-	local args = {
-		[1] = "ChangeBusoStage",
-		[2] = 5
-	}
-
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-end)
-pppp:Line()
-pppp:Button("Redeem All Code","", function()
-	function UseCode(Text)
-		game:GetService("ReplicatedStorage").Remotes.Redeem:InvokeServer(Text)
-	end
-	UseCode("FUDD10")
-	UseCode("BIGNEWS")
-	UseCode("THEGREATACE")
-	UseCode("SUB2NOOBMASTER123")
-	UseCode("Sub2Daigrock")
-	UseCode("Axiore")
-	UseCode("TantaiGaming")
-	UseCode("STRAWHATMAINE")
-	UseCode("Sub2OfficialNoobie")
-end)
-pppp:Line()
-local vu = game:GetService("VirtualUser")
-game:GetService("Players").LocalPlayer.Idled:connect(function()
-	vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-	wait(1)
-	vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-end)
-pppp:Button("Remove Lave","", function()
-	for i,v in pairs(game.Workspace:GetDescendants()) do
-		if v.Name == "Lava" then
-			v:Destroy()
-		end
-	end
-	for i,v in pairs(game.ReplicatedStorage:GetDescendants()) do
-		if v.Name == "Lava" then
-			v:Destroy()
-		end
-	end
-end)
-pppp:Button("FPS Boost","", function()
-	local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
-	local g = game
-	local w = g.Workspace
-	local l = g.Lighting
-	local t = w.Terrain
-	t.WaterWaveSize = 0
-	t.WaterWaveSpeed = 0
-	t.WaterReflectance = 0
-	t.WaterTransparency = 0
-	l.GlobalShadows = false
-	l.FogEnd = 9e9
-	l.Brightness = 0
-	settings().Rendering.QualityLevel = "Level01"
-	for i, v in pairs(g:GetDescendants()) do
-		if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then 
-			v.Material = "Plastic"
-			v.Reflectance = 0
-		elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
-			v.Transparency = 1
-		elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
-			v.Lifetime = NumberRange.new(0)
-		elseif v:IsA("Explosion") then
-			v.BlastPressure = 1
-			v.BlastRadius = 1
-		elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
-			v.Enabled = false
-		elseif v:IsA("MeshPart") then
-			v.Material = "Plastic"
-			v.Reflectance = 0
-			v.TextureID = 10385902758728957
-		end
-	end
-	for i, e in pairs(l:GetChildren()) do
-		if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
-			e.Enabled = false
-		end
-	end
-end)
-pppp:Button("Super FPS Boost","", function()
-	for i,v in pairs(game.Workspace.Map:GetDescendants()) do
-		if v.Name == "Tavern" or v.Name == "SmileFactory" or v.Name == "Tree" or v.Name == "Rocks" or v.Name == "PartHouse" or v.Name == "Hotel" or v.Name == "WallPiece" or v.Name == "MiddlePillars" or v.Name == "Cloud" or v.Name == "PluginGrass" or v.Name == "BigHouse" or v.Name == "SmallHouse" or v.Name == "Detail" then
-			v:Destroy()
-		end
-	end 
-	for i,v in pairs(game.ReplicatedStorage.Unloaded:GetDescendants()) do
-		if v.Name == "Tavern" or v.Name == "SmileFactory" or v.Name == "Tree" or v.Name == "Rocks" or v.Name == "PartHouse" or v.Name == "Hotel" or v.Name == "WallPiece" or v.Name == "MiddlePillars" or v.Name == "Cloud" or v.Name == "PluginGrass" or v.Name == "BigHouse" or v.Name == "SmallHouse" or v.Name == "Detail" then
-			v:Destroy()
-		end
-	end
-	for i,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-		if v:IsA("Accessory") or v.Name == "Pants" or v.Name == "Shirt" then
-			v:Destroy()
-		end
-	end
-	local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
-	local g = game
-	local w = g.Workspace
-	local l = g.Lighting
-	local t = w.Terrain
-	t.WaterWaveSize = 0
-	t.WaterWaveSpeed = 0
-	t.WaterReflectance = 0
-	t.WaterTransparency = 0
-	l.GlobalShadows = false
-	l.FogEnd = 9e9
-	l.Brightness = 0
-	settings().Rendering.QualityLevel = "Level01"
-	for i, v in pairs(g:GetDescendants()) do
-		if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
-			v.Material = "Plastic"
-			v.Reflectance = 0
-		elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
-			v.Transparency = 1
-		elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
-			v.Lifetime = NumberRange.new(0)
-		elseif v:IsA("Explosion") then
-			v.BlastPressure = 1
-			v.BlastRadius = 1
-		elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
-			v.Enabled = false
-		elseif v:IsA("MeshPart") then
-			v.Material = "Plastic"
-			v.Reflectance = 0
-			v.TextureID = 10385902758728957
-		end
-	end
-	for i, e in pairs(l:GetChildren()) do
-		if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
-			e.Enabled = false
-		end
-	end
-end)
-pppp:Line()
-pppp:Label("Auto Farm Level Lock")
-LockLevelValue = 1525
-OldLevel = game.Players.localPlayer.Data.Level.Value
-pppp:Slider("Select Level Lock", "", 1, LockLevelValue,LockLevelValue,function(value)
-	LockLevelValue = value
-end)
-pppp:Toggle("Lock Level"," ",false,function(value)
-	LockLevel = value
-end)
-spawn(function()
-	while wait(.1) do
-		if LockLevel then
-			if game.Players.localPlayer.Data.Level.Value >= LockLevelValue then
-				game.Players.localPlayer:Kick("\n Auto Fram Completed Level : "..game.Players.localPlayer.Data.Level.Value.."\n Old Level : "..OldLevel.."\nUsername : "..game.Players.LocalPlayer.Name)
-			end
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if AuctoClick then
-			game:GetService'VirtualUser':CaptureController()
-			game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if _G.AutoFarm then
-			game:GetService'VirtualUser':CaptureController()
-			game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if _G.AutoFarm then
-			game:GetService'VirtualUser':CaptureController()
-			game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if _G.AutoFarm then
-			game:GetService'VirtualUser':CaptureController()
-			game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-		end
-	end
-end)
-local btns = win:Tab("Dunguen", "")
-btns:Line()
-btns:Label("AutoRaid")
-btns:Toggle("Auto Raid","",false,function(t)
-  _G.autoraid = t
-end)
-game:GetService("RunService").RenderStepped:Connect(function()
-    if _G.autoraid then
-    game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
-    end
-  end)
-
-  spawn(function()
-    while wait(.1) do
-        if _G.autoraid then
-          for i,v in pairs(game.Workspace:GetChildren()) do
-             if string.find(v.Name, "Fruit") then
-             v.Handle.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame
-             end
-          end
-          if game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Timer.Visible == false then
-          if not game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 1")  then
-                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("RaidsNpc", "Select", selectchip)
-          end
-             if not game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 1") and game.Players.LocalPlayer.Backpack:FindFirstChild("Special Microchip") or  game.Players.LocalPlayer.Character:FindFirstChild("Special Microchip")  then
-                fireclickdetector(game:GetService("Workspace").Map.CircleIsland.RaidSummon2.Button.Main.ClickDetector)
-             end
-          end
-            for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-             if _G.autoraid and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500 then
-                pcall(function()
-                   repeat wait(.1)
-                      if setsimulationradius then
-                         setsimulationradius(1e+1598, 1e+1599)
-                      end
-                      v.HumanoidRootPart.Transparency = 0.75
-                      v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
-                      v.HumanoidRootPart.CanCollide = false
-                      v.Humanoid.Health = 0
-                   until not _G.autoraid or not v.Parent or v.Humanoid.Health <= 0
-                end)
-             end
-          end
-          if game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 5") or game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 4") or game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 3") or game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 2") or game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 1") then
-             if game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 5") then
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 5").CFrame*CFrame.new(0,10,0)
-             elseif game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 4") then
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 4").CFrame*CFrame.new(0,10,0)
-             elseif game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 3") then
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 3").CFrame*CFrame.new(0,10,0)
-             elseif game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 2") then
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 2").CFrame*CFrame.new(0,10,0)
-             elseif game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 1") then
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 1").CFrame*CFrame.new(0,10,0)
-             end
-          else
-             game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-6438.73535, 250.645355, -4501.50684)
-          end
-          local args = {
-             [1] = "Awakener",
-             [2] = "Check"
-          }
-          game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-          local args = {
-             [1] = "Awakener",
-             [2] = "Awaken"
-          }
-          game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-          end
-    end
-  end)
-btns:Dropdown("Select Microchip To Auto Raid",{"Flame","Ice","Quake","Light","Dark","String","Rumble"},function(t)
-    selectchip = t
-end)
-btns:Line()
-btns:Label("Raid")
-      btns:Toggle("Kill Aura"," ",false,function(t)
-         _G.Killaura = t
-     while _G.Killaura or _G.autoraid do
-         wait()
-     for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-     if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                                 pcall(function()
-                                     repeat wait()
-                                         v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-                                         v.HumanoidRootPart.Transparency = 0.75
-                                         v.Humanoid.Health = 0
-                                     until not _G.Killaura or not v.Parent or v.Humanoid.Health <= 0
-              end)
-           end
+    pcall(function()
+        while wait(.1) do
+            if InfiniteEnergy then
+                wait(0.1)
+                originalstam = LocalPlayer.Character.Energy.Value
+                infinitestam()
+            end
         end
-     end
-      end)
-btns:Toggle("Auto Next Island"," ",false,function(value)
-	NextIsland = value
+    end)
 end)
-btns:Toggle("Auto Awakener"," ",false,function(value)
-	Awakener = value
-end)
-btns:Button("Labbatle","", function()
-	game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-6438.73535, 250.645355, -4501.50684)
-end)
-btns:Button("Awakening Room","", function()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(266.227783, 1.39509034, 1857.00732)
-end)
-
-
-spawn(function()
-	while wait(.1) do
-		if Awakener then
-			local args = {
-				[1] = "Awakener",
-				[2] = "Check"
-			}
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-			local args = {
-				[1] = "Awakener",
-				[2] = "Awaken"
-			}
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if NextIsland then
-			game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(11)
-			if game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 5") or game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 4") or game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 3") or game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 2") or game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 1") then
-				if game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 5") then
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 5").CFrame*CFrame.new(0,40,0)
-				elseif game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 4") then
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 4").CFrame*CFrame.new(0,40,0)
-				elseif game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 3") then
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 3").CFrame*CFrame.new(0,40,0)
-				elseif game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 2") then
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 2").CFrame*CFrame.new(0,40,0)
-				elseif game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 1") then
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Island 1").CFrame*CFrame.new(0,40,0)
-				end
-			else
-				game.Players.localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-6480.84473, 252.764435, -4532.41748, -0.807500541, -1.05677671e-08, 0.589866817, -2.50809293e-08, 1, -1.64191238e-08, -0.589866817, -2.80528596e-08, -0.807500541)
-			end
-		end
-	end
-end)
-game:GetService("RunService").Heartbeat:Connect(
-function()
-	if NextIsland then
-		game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(11)
-	end
-end)
-btns:Line()
-btns:Label("--Buy Microchip--", true)
-btns:Button("chip flame","", function()
-	local A_1 = "RaidsNpc"
-	local A_2 = "Select"
-	local A_3 = "Flame"
-	local Event = game:GetService("ReplicatedStorage").Remotes["CommF_"]
-	Event:InvokeServer(A_1, A_2, A_3)
-end)
-btns:Button("chip Ice","", function()
-	local A_1 = "RaidsNpc"
-	local A_2 = "Select"
-	local A_3 = "Ice"
-	local Event = game:GetService("ReplicatedStorage").Remotes["CommF_"]
-	Event:InvokeServer(A_1, A_2, A_3)
-end)
-btns:Button("chip Quake","", function()
-	local A_1 = "RaidsNpc"
-	local A_2 = "Select"
-	local A_3 = "Quake"
-	local Event = game:GetService("ReplicatedStorage").Remotes["CommF_"]
-	Event:InvokeServer(A_1, A_2, A_3)
-end)
-btns:Button("chip Light","", function()
-	local A_1 = "RaidsNpc"
-	local A_2 = "Select"
-	local A_3 = "Light"
-	local Event = game:GetService("ReplicatedStorage").Remotes["CommF_"]
-	Event:InvokeServer(A_1, A_2, A_3)
-end)
-btns:Button("chip Dark","", function()
-	local A_1 = "RaidsNpc"
-	local A_2 = "Select"
-	local A_3 = "Dark"
-	local Event = game:GetService("ReplicatedStorage").Remotes["CommF_"]
-	Event:InvokeServer(A_1, A_2, A_3)
-end)
-btns:Button("chip Sting","", function()
-	local A_1 = "RaidsNpc"
-	local A_2 = "Select"
-	local A_3 = "String"
-	local Event = game:GetService("ReplicatedStorage").Remotes["CommF_"]
-	Event:InvokeServer(A_1, A_2, A_3)
-end)
-btns:Button("chip Rumble","", function()
-	local A_1 = "RaidsNpc"
-	local A_2 = "Select"
-	local A_3 = "Rumble"
-	local Event = game:GetService("ReplicatedStorage").Remotes["CommF_"]
-	Event:InvokeServer(A_1, A_2, A_3)
-end)
-local BuyItem = win:Tab("BuyItem", "")
-BuyItem:Line()
-BuyItem:Label("--abilytys--", true)
-BuyItem:Button("Skyjump","", function()
-	local args = {
-		[1] = "BuyHaki",
-		[2] = "Geppo"
-	}
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-end)
-BuyItem:Button("Buso Haki","", function()
-	local args = {
-		[1] = "BuyHaki",
-		[2] = "Buso"
-	}
-
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-end)
-BuyItem:Button("Soru","", function()
-	local args = {
-		[1] = "BuyHaki",
-		[2] = "Soru"
-	}
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-end)
-BuyItem:Line()
-BuyItem:Label("--Fightingstyle--", true)
-BuyItem:Button("Black Leg","", function()
-	local args = {
-		[1] = "BuyBlackLeg"
-	}
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-end)
-BuyItem:Button("Electro","", function()
-	local args = {
-		[1] = "BuyElectro"
-	}
-
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-end)
-BuyItem:Button("Fishman Karate","", function()
-	local args = {
-		[1] = "BuyFishmanKarate"
-	}
-
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-end)
-BuyItem:Button("Dragon Claw","", function()
-	local args = {
-		[1] = "BlackbeardReward",
-		[2] = "DragonClaw",
-		[3] = "1"
-	}
-
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	local args = {
-		[1] = "BlackbeardReward",
-		[2] = "DragonClaw",
-		[3] = "2"
-	}
-
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-end)
-BuyItem:Button("Superhuman","", function()
-	local args = {
-		[1] = "BuySuperhuman"
-	}
-
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-end)
-BuyItem:Button("Death Step","", function()
-	local args = {
-		[1] = "BuyDeathStep"
-	}
-
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-end)
-BuyItem:Button("Sharkman Karate","", function()
-	local args = {
-		[1] = "BuySharkmanKarate",
-		[2] = true
-	}
-
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	local args = {
-		[1] = "BuySharkmanKarate"
-	}
-
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-end)
-BuyItem:Line()
-BuyItem:Label("--random race--", true)
-BuyItem:Button("random race","", function()
-	local A_1 = "BlackbeardReward"
-	local A_2 = "Reroll"
-	local A_3 = "2"
-	local Event = game:GetService("ReplicatedStorage").Remotes["CommF_"]
-	Event:InvokeServer(A_1, A_2, A_3)
-end)
-BuyItem:Button("buy Stat refound","", function()
-	local A_1 = "BlackbeardReward"
-	local A_2 = "Refund"
-	local A_3 = "2"
-	local Event = game:GetService("ReplicatedStorage").Remotes["CommF_"]
-	Event:InvokeServer(A_1, A_2, A_3)
-end)
-BuyItem:Button("Race Ghoul","", function()
-	local args = {
-		[1] = "Ectoplasm",
-		[2] = "BuyCheck",
-		[3] = 4
-	}
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-	local args = {
-		[1] = "Ectoplasm",
-		[2] = "Change",
-		[3] = 4
-	}
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-end)
-BuyItem:Button("Race Cyborg","", function()
-	local args = {
-		[1] = "CyborgTrainer",
-		[2] = "Buy"
-	}
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-end)
-BuyItem:Line()
-BuyItem:Label("--Buy Sword--", true)
-BuyItem:Button("katana","", function()
-	-- Script generated by R2Sv2
-	-- R2Sv2 developed by Luckyxero
-
-	local A_1 = "BuyItem"
-	local A_2 = "Katana"
-	local Event = game:GetService("ReplicatedStorage").Remotes["CommF_"]
-	Event:InvokeServer(A_1, A_2)
-	-- Script generated by R2Sv2
-	-- R2Sv2 developed by Luckyxero
-
-	local A_1 = "BuyItem"
-	local A_2 = "Katana"
-	local Event = game:GetService("ReplicatedStorage").Remotes["CommF_"]
-	Event:InvokeServer(A_1, A_2)
-end)
-BuyItem:Button("Cutlass","", function()
-	-- Script generated by R2Sv2
-	-- R2Sv2 developed by Luckyxero
-
-	local A_1 = "BuyItem"
-	local A_2 = "Cutlass"
-	local Event = game:GetService("ReplicatedStorage").Remotes["CommF_"]
-	Event:InvokeServer(A_1, A_2)
-	-- Script generated by R2Sv2
-	-- R2Sv2 developed by Luckyxero
-
-	local A_1 = "BuyItem"
-	local A_2 = "Cutlass"
-	local Event = game:GetService("ReplicatedStorage").Remotes["CommF_"]
-	Event:InvokeServer(A_1, A_2)
-end)
-BuyItem:Button("MidnightBlade","", function()
-	-- Script generated by R2Sv2
-	-- R2Sv2 developed by Luckyxero
-
-	local A_1 = "Ectoplasm"
-	local A_2 = "Buy"
-	local A_3 = 3
-	local Event = game:GetService("ReplicatedStorage").Remotes["CommF_"]
-	Event:InvokeServer(A_1, A_2, A_3)
-	-- Script generated by R2Sv2
-	-- R2Sv2 developed by Luckyxero
-
-	local A_1 = "Ectoplasm"
-	local A_2 = "Buy"
-	local A_3 = 3
-	local Event = game:GetService("ReplicatedStorage").Remotes["CommF_"]
-	Event:InvokeServer(A_1, A_2, A_3)
-end)
-BuyItem:Button("Dualkatana","", function()
-	-- Script generated by R2Sv2
-	-- R2Sv2 developed by Luckyxero
-
-	local A_1 = "BuyItem"
-	local A_2 = "Dual Katana"
-	local Event = game:GetService("ReplicatedStorage").Remotes["CommF_"]
-	Event:InvokeServer(A_1, A_2)
-end)
-BuyItem:Button("iron mace","", function()
-	-- Script generated by R2Sv2
-	-- R2Sv2 developed by Luckyxero
-
-	local A_1 = "BuyItem"
-	local A_2 = "Iron Mace"
-	local Event = game:GetService("ReplicatedStorage").Remotes["CommF_"]
-	Event:InvokeServer(A_1, A_2)
-end)
-BuyItem:Line()
-BuyItem:Label("--Buy gun--", true)
-BuyItem:Button("Bizarre Rifle","", function()
-	-- Script generated by R2Sv2
-	-- R2Sv2 developed by Luckyxero
-
-	local A_1 = "Ectoplasm"
-	local A_2 = "Buy"
-	local A_3 = 1
-	local Event = game:GetService("ReplicatedStorage").Remotes["CommF_"]
-	Event:InvokeServer(A_1, A_2, A_3)
-	-- Script generated by R2Sv2
-	-- R2Sv2 developed by Luckyxero
-
-	local A_1 = "Ectoplasm"
-	local A_2 = "Buy"
-	local A_3 = 1
-	local Event = game:GetService("ReplicatedStorage").Remotes["CommF_"]
-	Event:InvokeServer(A_1, A_2, A_3)
-end)
-BuyItem:Button("Sling shot","", function()
-	-- Script generated by R2Sv2
-	-- R2Sv2 developed by Luckyxero
-
-	local A_1 = "BuyItem"
-	local A_2 = "Slingshot"
-	local Event = game:GetService("ReplicatedStorage").Remotes["CommF_"]
-	Event:InvokeServer(A_1, A_2)
-end)
-BuyItem:Button("Musket","", function()
-	-- Script generated by R2Sv2
-	-- R2Sv2 developed by Luckyxero
-
-	local A_1 = "BuyItem"
-	local A_2 = "Musket"
-	local Event = game:GetService("ReplicatedStorage").Remotes["CommF_"]
-	Event:InvokeServer(A_1, A_2)
-end)
-BuyItem:Button("Flintlock","", function()
-	-- Script generated by R2Sv2
-	-- R2Sv2 developed by Luckyxero
-
-	local A_1 = "BuyItem"
-	local A_2 = "Flintlock"
-	local Event = game:GetService("ReplicatedStorage").Remotes["CommF_"]
-	Event:InvokeServer(A_1, A_2)
-end)
-if Secondsea then
+  --Attack Mastery
+    function NormalAttack()
+        if not _G.NormalAttack then
+            local Module = require(game.Players.LocalPlayer.PlayerScripts.CombatFramework)
+            local CombatFramework = debug.getupvalues(Module)[2]
+            local CamShake = require(game.ReplicatedStorage.Util.CameraShaker)
+            CamShake:Stop()
+            CombatFramework.activeController.attacking = false
+            CombatFramework.activeController.timeToNextAttack = 0
+            CombatFramework.activeController.hitboxMagnitude = 180
+            game:GetService "VirtualUser":CaptureController()
+            game:GetService "VirtualUser":Button1Down(Vector2.new(1280, 672))
+        end
+    end
+function Click()
+    game:GetService'VirtualUser':CaptureController()
+    game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
 end
-local k = win:Tab("Setting", "")
-k:Line()
-k:Label("--Setting--", true)
-k:Toggle("Anit AFK"," ",true,function(vu)
-	local vu = game:GetService("VirtualUser")
-	game:GetService("Players").LocalPlayer.Idled:connect(function()
-		vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-		wait(1)
-		vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-	end)
-end)
-AUTOHAKI = true
-k:Toggle("Auto Haki"," ",true,function(Value)
-	AUTOHAKI = Value
-end)
-spawn(function()
-	while wait(.1) do
-		if AUTOHAKI then
-			if game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+function AutoHaki()
+    if not game:GetService("Players").LocalPlayer.Character:FindFirstChild("HasBuso") then
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+    end
+end
+function UnEquipWeapon(Weapon)
+    if game.Players.LocalPlayer.Character:FindFirstChild(Weapon) then
+        _G.NotAutoEquip = true
+        wait(.5)
+        game.Players.LocalPlayer.Character:FindFirstChild(Weapon).Parent = game.Players.LocalPlayer.Backpack
+        wait(.1)
+        _G.NotAutoEquip = false
+    end
+end
+function EquipWeapon(ToolSe)
+    if not _G.NotAutoEquip then
+        if game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe) then
+            Tool = game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe)
+            wait(.1)
+            game.Players.LocalPlayer.Character.Humanoid:EquipTool(Tool)
+        end
+    end
+end
 
-			else
-				local args = {
-					[1] = "Buso"
-				}
-				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-			end
-		end
-		if AUTOHAKIObs then
-			if game.Players.LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel") then
-
-			else wait(1)
-				local virtualUser = game:GetService('VirtualUser')
-				virtualUser:CaptureController()
-
-				virtualUser:SetKeyDown('0x65')
-				wait(2)
-				virtualUser:SetKeyUp('0x65')
-			end
-		end
-	end
-end)
-HideHitBlox = true
-k:Toggle("Hide HitBlox"," ",true,function(Value)
-	HideHitBlox = Value  
-end)
-local LocalPlayer = game:GetService("Players").LocalPlayer
-local VirtualUser = game:GetService('VirtualUser')
-function autofarm()
-	if LocalPlayer.PlayerGui.Main.Quest.Visible == false then
-		StatrMagnet = true
-		CheckQuest()
-		LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
-
-		wait(1.1)
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest", NaemQuest, LevelQuest)
-	elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
-		CheckQuest()
-		LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
-		if game:GetService("Workspace").Enemies:FindFirstChild(Ms) then
-			pcall(
-				function()
-					for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-						CheckQuest()  
-						if v.Name == Ms then
-							repeat wait()
-								if game:GetService("Workspace").Enemies:FindFirstChild(Ms) then
-									if string.find(LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) then
-										game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(11)
-										VirtualUser:CaptureController()
-										VirtualUser:ClickButton1(Vector2.new(851, 158), game:GetService("Workspace").Camera.CFrame)
-										-- ยตร•ร รยง
-										if Test == "Magnet" then
-											game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 0)
-
-											StatrMagnet = true
-										else
-											game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 0)
-										end
-										PosMon = v.HumanoidRootPart.CFrame
-										v.HumanoidRootPart.CanCollide = false
-									else
-										StatrMagnet = true
-										CheckQuest()
-										LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
-										wait(1.5)
-										game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest", NaemQuest, LevelQuest)
-									end  
-								else
-									CheckQuest() 
-									game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
-								end 
-							until not v.Parent or v.Humanoid.Health <= 0 or _G.AutoFarm == false or LocalPlayer.PlayerGui.Main.Quest.Visible == false
-							CheckQuest() 
-							game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
-						end
+	local function CheckItem(matname)
+		for i,v in pairs(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("getInventory")) do
+			if type(v) == "table" then
+				if v.Type == "Material" then
+					if v.Name == matname then
+						return v.Count
 					end
 				end
-			)
-		else
-			CheckQuest()
-			game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
-		end 
-	end
+			end
+		end
+		return 0
+		end
+
+if World3 then
+	distbyp = 5000;
+	island = {
+		["Port Town"] = CFrame.new( -290.7376708984375, 6.729952812194824, 5343.5537109375),
+		["Hydra Island"] = CFrame.new(5749.7861328125 + 50 , 611.9736938476562, -276.2497863769531),
+		Mansion = CFrame.new( -12471.169921875 + 50 , 374.94024658203, -7551.677734375),
+		["Castle On The Sea"] = CFrame.new( -5085.23681640625 + 50 , 316.5072021484375, -3156.202880859375),
+		["Haunted Island"] = CFrame.new( -9547.5703125, 141.0137481689453, 5535.16162109375),
+		["Great Tree"] = CFrame.new(2681.2736816406, 1682.8092041016, -7190.9853515625),
+		["Candy Island"] = CFrame.new( -1106.076416015625, 13.016114234924316, -14231.9990234375),
+		["Cake Island"] = CFrame.new( -1903.6856689453125, 36.70722579956055, -11857.265625),
+		["Loaf Island"] = CFrame.new( -889.8325805664062, 64.72842407226562, -10895.8876953125),
+		["Peanut Island"] = CFrame.new( -1943.59716796875, 37.012996673583984, -10288.01171875),
+		["Cocoa Island"] = CFrame.new(147.35205078125, 23.642955780029297, -12030.5498046875),
+		["Tiki Outpost"] = CFrame.new( -16234, 9, 416)
+	};
+elseif World2 then
+	distbyp = 3500;
+	island = {
+		A = CFrame.new(753.14288330078, 408.23559570313, -5274.6147460938),
+		B = CFrame.new( -5622.033203125, 492.19604492188, -781.78552246094),
+		C = CFrame.new( -11.311455726624, 29.276733398438, 2771.5224609375),
+		D = CFrame.new( -2448.5300292969, 73.016105651855, -3210.6306152344),
+		E = CFrame.new( -380.47927856445, 77.220390319824, 255.82550048828),
+		F = CFrame.new( -3032.7641601563, 317.89672851563, -10075.373046875),
+		G = CFrame.new(6148.4116210938, 294.38687133789, -6741.1166992188),
+		H = CFrame.new(923.40197753906, 125.05712890625, 32885.875),
+		I = CFrame.new( -6127.654296875, 15.951762199402, -5040.2861328125)
+	};
+elseif World1 then
+	distbyp = 1500;
+	island = {
+		A = CFrame.new(979.79895019531, 16.516613006592, 1429.0466308594),
+		B = CFrame.new( -2566.4296875, 6.8556680679321, 2045.2561035156),
+		C = CFrame.new(944.15789794922, 20.919729232788, 4373.3002929688),
+		D = CFrame.new( -1181.3093261719, 4.7514905929565, 3803.5456542969),
+		E = CFrame.new( -1612.7957763672, 36.852081298828, 149.12843322754),
+		F = CFrame.new( -690.33081054688, 15.09425163269, 1582.2380371094),
+		G = CFrame.new( -4607.82275, 872.54248, -1667.55688),
+		H = CFrame.new( -7952.31006, 5545.52832, -320.704956),
+		I = CFrame.new( -4914.8212890625, 50.963626861572, 4281.0278320313),
+		J = CFrame.new( -1427.6203613281, 7.2881078720093, -2792.7722167969),
+		K = CFrame.new(1347.8067626953, 104.66806030273, -1319.7370605469),
+		l = CFrame.new(5127.1284179688, 59.501365661621, 4105.4458007813),
+		M = CFrame.new(61163.8515625, 11.6796875, 1819.7841796875),
+		N = CFrame.new( -5247.7163085938, 12.883934020996, 8504.96875),
+		O = CFrame.new(4875.330078125, 5.6519818305969, 734.85021972656),
+		P = CFrame.new( -4813.0249, 903.708557, -1912.69055),
+		Q = CFrame.new( -4970.21875, 717.707275, -2622.35449)
+	};
 end
-spawn(function()
-	while wait(.1) do
-		if Test == "Magnet" and _G.AutoFarm and StatrMagnet then
-			CheckQuest()
-			pcall(
-				function()
-					repeat
-						wait(.1)
-						for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-							if v.Name == Ms then
-								wait()
-								if HideHitBlox then
-									v.HumanoidRootPart.Transparency = 1
-								else
-									v.HumanoidRootPart.Transparency = 0.75
-								end
-								v.HumanoidRootPart.CanCollide = false
-								v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-								v.HumanoidRootPart.CFrame = PosMon
-								PosMon = v.HumanoidRootPart.CFrame
-							end
-						end
-					until LocalPlayer.PlayerGui.Main.Quest.Visible == false or _G.AutoFarm == false or StatrMagnet == false
+local v36 = game.Players;
+local v37 = v36.LocalPlayer;
+local v38 = game:GetService("RunService");
+local v39 = v38.Heartbeat;
+local v40 = v38.RenderStepped;
+local v41 = {};
+getgenv().weapon = nil;
+getgenv().targ = nil;
+getgenv().lasttarrget = nil;
+getgenv().checked = {};
+getgenv().pl = v36:GetPlayers();
+wait(1);
+function bypass(v314)
+	if (v37.Character:FindFirstChild("Head") and v37.Character:FindFirstChild("HumanoidRootPart") and v37.Character:FindFirstChild("Humanoid")) then
+		dist = math.huge;
+		is = nil;
+		for v1638, v1639 in pairs(island) do
+			if ((v314.Position - v1639.Position).magnitude < dist) then
+				is = v1639;
+				dist = (v314.Position - v1639.Position).magnitude;
+			end
+		end
+		if (is == nil) then
+			return;
+		end
+		if (v37:DistanceFromCharacter(v314.Position) > distbyp) then
+			if ((v37.Character.Head.Position - v314.Position).magnitude > (is.Position - v314.Position).magnitude) then
+				if tween then
+					tween:Destroy();
 				end
-			)
-		end 
+				if (((is.X == 61163.8515625) and (is.Y == 11.6796875) and (is.Z == 1819.7841796875)) or (is == CFrame.new( -12471.169921875 + 50 , 374.94024658203, -7551.677734375)) or (is == CFrame.new( -5085.23681640625 + 50 , 316.5072021484375, -3156.202880859375)) or (is == CFrame.new(5749.7861328125 + 50 , 611.9736938476562, -276.2497863769531))) then
+					if tween then
+						tween:Cancel();
+					end
+					repeat
+						task.wait();
+						v37.Character.HumanoidRootPart.CFrame = is;
+					until v37.Character.PrimaryPart.CFrame == is
+					task.wait(0.1);
+					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetSpawnPoint");
+				elseif  not stopbypass then
+					if tween then
+						tween:Cancel();
+					end
+					repeat
+						task.wait();
+						v37.Character.HumanoidRootPart.CFrame = is;
+					until v37.Character.PrimaryPart.CFrame == is
+					game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid"):ChangeState(15);
+					v37.Character:SetPrimaryPartCFrame(is);
+					wait(0.1);
+					v37.Character.Head:Destroy();
+					wait(0.5);
+					repeat
+						task.wait();
+						v37.Character.PrimaryPart.CFrame = is;
+					until v37.Character:FindFirstChild("Humanoid").Health > 0
+					task.wait(0.5);
+				end
+			end
+		end
 	end
-end)
-k:Line()
-k:Label("--Auto Skill Farm mastery--", true)
-k:Toggle("Skill Z"," ",true,function(a)
-	SkillZ = a
-end)
-k:Toggle("Skill X"," ",true,function(a)
-	SkillX = a
-end)
-k:Toggle("Skill C"," ",true,function(a)
-	SkillC = a
-end)
-k:Toggle("Skill V"," ",true,function(a)
-	SkillV = a
-end)
-k:Line()
-k:Button("Destroy GUI","", function()
-	local ui = game.CoreGui:FindFirstChild("FluxLib")
-	if ui then
-		ui:Destroy()
-	end
-end)
-k:Line()
-k:Button("Rejoin","", function()
-	local ts = game:GetService("TeleportService")
-	local p = game:GetService("Players").LocalPlayer
-	ts:Teleport(game.PlaceId, p)
-end)
-local function HttpGet(url)
-	return game:GetService("HttpService"):JSONDecode(htgetf(url))
 end
-k:Button("Server Hop","", function()
-	local PlaceID = game.PlaceId
-	local AllIDs = {}
-	local foundAnything = ""
-	local actualHour = os.date("!*t").hour
-	local Deleted = false
-	function TPReturner()
-		local Site;
-		if foundAnything == "" then
-			Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
-		else
-			Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
+local v47 = false;
+function WaitHRP(v315)
+	if  not v315 then
+		return;
+	end
+	return v315.Character:WaitForChild("HumanoidRootPart", 9);
+end
+function CheckNearestTeleporter(v316)
+	local v317 = v316.Position;
+	local v318 = math.huge;
+	local v319 = nil;
+	local v320 = game.PlaceId;
+	local v321 = {};
+	if (v320 == 2753915549) then
+		v321 = {
+			Sky3 = Vector3.new( -7894, 5547, -380),
+			Sky3Exit = Vector3.new( -4607, 874, -1667),
+			UnderWater = Vector3.new(61163, 11, 1819),
+			UnderwaterExit = Vector3.new(4050, -1, -1814)
+		};
+	elseif (v320 == 4442272183) then
+		v321 = {
+			["Swan Mansion"] = Vector3.new( -390, 332, 673),
+			["Swan Room"] = Vector3.new(2285, 15, 905),
+			["Cursed Ship"] = Vector3.new(923, 126, 32852),
+			["Zombie Island"] = Vector3.new( -6509, 83, -133)
+		};
+	elseif (v320 == 7449423635) then
+		v321 = {
+			["Floating Turtle"] = Vector3.new( -12462, 375, -7552),
+			["Hydra Island"] = Vector3.new(5745, 610, -267),
+			Mansion = Vector3.new( -12462, 375, -7552),
+			Castle = Vector3.new( -5036, 315, -3179),
+			["Beautiful Pirate"] = Vector3.new(5319, 23, -93),
+			["Beautiful Room"] = Vector3.new(5314.58203, 22.5364361, -125.942276, 1, 2.1476277e-8, -1.9911115e-13, -2.1476277e-8, 1, -3.0510602e-8, 1.984559e-13, 3.0510602e-8, 1),
+			["Temple of Time"] = Vector3.new(28286, 14897, 103)
+		};
+	end
+	for v764, v765 in pairs(v321) do
+		local v766 = (v765 - v317).Magnitude;
+		if (v766 < v318) then
+			v318 = v766;
+			v319 = v765;
 		end
-		local ID = ""
-		if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
-			foundAnything = Site.nextPageCursor
+	end
+	local v322 = game.Players.LocalPlayer.Character.HumanoidRootPart.Position;
+	if (v318 <= (v317 - v322).Magnitude) then
+		return v319;
+	end
+end
+function requestEntrance(v323)
+	game.ReplicatedStorage.Remotes.CommF_:InvokeServer("requestEntrance", v323);
+	local v324 = game.Players.LocalPlayer.Character.HumanoidRootPart;
+	v324.CFrame = v324.CFrame + Vector3.new(0, 50, 0) ;
+	task.wait(0.5);
+end
+local v48 = false;
+function toTarget(v326)
+	local v327 = game.Players.LocalPlayer;
+	if (v327.Character and (v327.Character.Humanoid.Health > 0) and v327.Character:FindFirstChild("HumanoidRootPart")) then
+		if  not v326 then
+			return;
 		end
-		local num = 0;
-		for i,v in pairs(Site.data) do
-			local Possible = true
-			ID = tostring(v.id)
-			if tonumber(v.maxPlayers) > tonumber(v.playing) then
-				for _,Existing in pairs(AllIDs) do
-					if num ~= 0 then
-						if ID == tostring(Existing) then
-							Possible = false
+		local v1379 = (v326.Position - v327.Character.HumanoidRootPart.Position).Magnitude;
+		local v1380 = CheckNearestTeleporter(v326);
+		if v1380 then
+			requestEntrance(v1380);
+		end
+		if  not v327.Character:FindFirstChild("PartTele") then
+			local v1714 = Instance.new("Part", v327.Character);
+			v1714.Size = Vector3.new(10, 1, 10);
+			v1714.Name = "PartTele";
+			v1714.Anchored = true;
+			v1714.Transparency = 1;
+			v1714.CanCollide = true;
+			v1714.CFrame = WaitHRP(v327).CFrame;
+			v1714:GetPropertyChangedSignal("CFrame"):Connect(function()
+				if  not v47 then
+					return;
+				end
+				task.wait();
+				if (v327.Character and v327.Character:FindFirstChild("HumanoidRootPart")) then
+					local v2051 = v1714.CFrame;
+					WaitHRP(v327).CFrame = CFrame.new(v2051.Position.X, v326.Position.Y, v2051.Position.Z);
+				end
+			end);
+		end
+		if (v48 and (v1379 > distbyp)) then
+	    wait(1)
+			bypass(v326);
+		end
+		v47 = true;
+		local v1381 = CFrame.new(v326.Position.X, v326.Position.Y, v326.Position.Z);
+		local v1382 = game:GetService("TweenService"):Create(v327.Character.PartTele, TweenInfo.new(v1379 / getgenv().TweenSpeed , Enum.EasingStyle.Linear), {
+			CFrame = v326
+		});
+		v1382:Play();
+		v1382.Completed:Connect(function(v1640)
+			if (v1640 == Enum.PlaybackState.Completed) then
+				if v327.Character:FindFirstChild("PartTele") then
+					v327.Character.PartTele:Destroy();
+				end
+				v47 = false;
+			end
+		end);
+	end
+end
+
+function Tween(v326)
+	local v327 = game.Players.LocalPlayer;
+	if (v327.Character and (v327.Character.Humanoid.Health > 0) and v327.Character:FindFirstChild("HumanoidRootPart")) then
+		if  not v326 then
+			return;
+		end
+		local v1379 = (v326.Position - v327.Character.HumanoidRootPart.Position).Magnitude;
+		local v1380 = CheckNearestTeleporter(v326);
+		if v1380 then
+			requestEntrance(v1380);
+		end
+		if  not v327.Character:FindFirstChild("PartTele") then
+			local v1714 = Instance.new("Part", v327.Character);
+			v1714.Size = Vector3.new(10, 1, 10);
+			v1714.Name = "PartTele";
+			v1714.Anchored = true;
+			v1714.Transparency = 1;
+			v1714.CanCollide = true;
+			v1714.CFrame = WaitHRP(v327).CFrame;
+			v1714:GetPropertyChangedSignal("CFrame"):Connect(function()
+				if  not v47 then
+					return;
+				end
+				task.wait();
+				if (v327.Character and v327.Character:FindFirstChild("HumanoidRootPart")) then
+					local v2051 = v1714.CFrame;
+					WaitHRP(v327).CFrame = CFrame.new(v2051.Position.X, v326.Position.Y, v2051.Position.Z);
+				end
+			end);
+		end
+		v47 = true;
+		local v1381 = CFrame.new(v326.Position.X, v326.Position.Y, v326.Position.Z);
+		local v1382 = game:GetService("TweenService"):Create(v327.Character.PartTele, TweenInfo.new(v1379 / getgenv().TweenSpeed , Enum.EasingStyle.Linear), {
+			CFrame = v326
+		});
+		v1382:Play();
+		v1382.Completed:Connect(function(v1640)
+			if (v1640 == Enum.PlaybackState.Completed) then
+				if v327.Character:FindFirstChild("PartTele") then
+					v327.Character.PartTele:Destroy();
+				end
+				v47 = false;
+			end
+		end);
+	end
+end
+
+spawn(function()
+    while task.wait() do
+        pcall(function()
+            if game.Players.LocalPlayer.Character.Humanoid.Health <= 0 or not plr.Character:FindFirstChild("HumanoidRootPart") then
+                if game.Players.LocalPlayer.Character:FindFirstChild("PartTele") then
+                    game.Players.LocalPlayer.Character:FindFirstChild("PartTele"):Destroy()
+                end
+            end
+        end)
+    end
+end)
+spawn(function()
+    while task.wait() do
+        pcall(function()
+            if game.Players.LocalPlayer.Character:FindFirstChild("PartTele") then
+                if (plr.Character.HumanoidRootPart.Position - plr.Character:FindFirstChild("PartTele").Position).Magnitude >= 100 then
+                    game.Players.LocalPlayer.Character:FindFirstChild("PartTele"):Destroy()
+                end
+            end
+        end)
+    end
+end)
+
+local function StopTween()
+    if _G.StopTween then
+        return
+    end
+    
+    _G.StopTween = true
+    wait()
+    local player = game.Players.LocalPlayer
+    local character = player.Character
+    if character and character:IsDescendantOf(game.Workspace) then
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+        if humanoidRootPart then
+            humanoidRootPart.CFrame = humanoidRootPart.CFrame
+        end
+    end
+    wait()    
+    if character:FindFirstChild("BodyClip") then
+        character.BodyClip:Destroy()
+    end
+    if character:FindFirstChild("PartTele") then
+        character.PartTele:Destroy()
+    end
+    _G.StopTween = false
+end
+
+spawn(function()
+        pcall(function()
+            while wait() do
+                if _G.AutoAdvanceDungeon or _G.AutoDoughtBoss or _G.Auto_DungeonMobAura or _G.AutoFarmChest or _G.AutoFactory or _G.AutoFarmBossHallow or _G.AutoFarmSwanGlasses or _G.AutoLongSword or _G.AutoBlackSpikeycoat or _G.AutoElectricClaw or _G.AutoFarmGunMastery or _G.AutoHolyTorch or _G.AutoLawRaid or _G.AutoFarmBoss or _G.AutoTwinHooks or _G.AutoOpenSwanDoor or _G.AutoDragon_Trident or _G.AutoSaber or _G.NOCLIP or _G.AutoFarmFruitMastery or _G.AutoFarmGunMastery or _G.TeleportIsland or _G.Auto_EvoRace or _G.AutoFarmAllMsBypassType or _G.AutoObservationv2 or _G.AutoMusketeerHat or _G.AutoEctoplasm or _G.AutoRengoku or _G.Auto_Rainbow_Haki or _G.AutoObservation or _G.AutoDarkDagger or _G.Safe_Mode or _G.MasteryFruit or _G.AutoBudySword or _G.AutoOderSword or _G.AutoBounty or _G.AutoAllBoss or _G.Auto_Bounty or _G.AutoSharkman or _G.Auto_Mastery_Fruit or _G.Auto_Mastery_Gun or _G.Auto_Dungeon or _G.Auto_Cavender or _G.Auto_Pole or _G.Auto_Kill_Ply or _G.Auto_Factory or _G.AutoSecondSea or _G.TeleportPly or _G.AutoBartilo or _G.Auto_DarkBoss or _G.GrabChest or _G.AutoFarmBounty or _G.Holy_Torch or _G.AutoFarm or _G.Clip or _G.AutoElitehunter or _G.AutoThirdSea or _G.Auto_Bone or _G.Autoheart or _G.Autodoughking or _G.AutoFarmMaterial or _G.AutoNevaSoulGuitar or _G.Auto_Dragon_Trident or _G.Autotushita or _G.d or _G.Autowaden or _G.Autogay or _G.Autopole or _G.Autosaw or _G.AutoObservationHakiV2 or _G.AutoFarmNearest or AutoFarmChest or _G.AutoCarvender or _G.AutoTwinHook or AutoMobAura or _G.Tweenfruit or _G.AutoKai or _G.TeleportNPC or _G.Leather or _G.Auto_Wing or _G.Umm or _G.Makori_gay or Radioactive or Fish or Gunpowder or Dragon_Scale or Cocoafarm or Scrap or MiniHee or _G.AutoFarmSeabaest or _G.Auto_Cursed_Dual_Katana or _G.AutoFarmMob or _G.AutoMysticIsland or _G.AutoFarmDungeon or _G.AutoRaidPirate or _G.AutoQuestRace or _G.TweenMGear or getgenv().AutoFarm or _G.AutoPlayerHunter or _G.AutoFactory or Grab_Chest or _G.Namfon or _G.AutoSwordMastery or _G.AutoSeaBest or _G.AutoKillTial or _G.Auto_Saber or _G.Position_Spawn or _G.Farmfast or _G.AutoRace or _G.RaidPirate or Open_Color_Haki or _G.KillSaber or FarmMasterySword or _G.AutoTrueTripleKatana or _G.Farmfast2 or _G.Farmfast3 or _G.AutoFullySword or _G.KatakuriV2 or Auto_Dark_Coat then
+                    if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
+	            		local Highlight = Instance.new("Highlight")           
+                   	Highlight.FillColor = Color3.fromRGB(24, 255, 24)
+	            		Highlight.OutlineColor = Color3.fromRGB(24,255,24)         		
+                  Highlight.Parent = game.Players.LocalPlayer.Character
+                    end
+                end
+            end
+        end)
+    end)
+
+    spawn(function()
+			while task.wait() do
+				pcall(function()
+					if _G.AutoAdvanceDungeon or _G.AutoDoughtBoss or _G.Auto_DungeonMobAura or _G.AutoFarmChest or _G.AutoFactory or _G.AutoFarmBossHallow or _G.AutoFarmSwanGlasses or _G.AutoLongSword or _G.AutoBlackSpikeycoat or _G.AutoElectricClaw or _G.AutoFarmGunMastery or _G.AutoHolyTorch or _G.AutoLawRaid or _G.AutoFarmBoss or _G.AutoTwinHooks or _G.AutoOpenSwanDoor or _G.AutoDragon_Trident or _G.AutoSaber or _G.NOCLIP or _G.AutoFarmFruitMastery or _G.AutoFarmGunMastery or _G.TeleportIsland or _G.Auto_EvoRace or _G.AutoFarmAllMsBypassType or _G.AutoObservationv2 or _G.AutoMusketeerHat or _G.AutoEctoplasm or _G.AutoRengoku or _G.Auto_Rainbow_Haki or _G.AutoObservation or _G.AutoDarkDagger or _G.Safe_Mode or _G.MasteryFruit or _G.AutoBudySword or _G.AutoOderSword or _G.AutoBounty or _G.AutoAllBoss or _G.Auto_Bounty or _G.AutoSharkman or _G.Auto_Mastery_Fruit or _G.Auto_Mastery_Gun or _G.Auto_Dungeon or _G.Auto_Cavender or _G.Auto_Pole or _G.Auto_Kill_Ply or _G.Auto_Factory or _G.AutoSecondSea or _G.TeleportPly or _G.AutoBartilo or _G.Auto_DarkBoss or _G.GrabChest or _G.AutoFarmBounty or _G.Holy_Torch or _G.AutoFarm or _G.Clip or _G.AutoElitehunter or _G.AutoThirdSea or _G.Auto_Bone or _G.Autoheart or _G.Autodoughking or _G.AutoFarmMaterial or _G.AutoNevaSoulGuitar or _G.Auto_Dragon_Trident or _G.Autotushita or _G.d or _G.Autowaden or _G.Autogay or _G.Autopole or _G.Autosaw or _G.AutoObservationHakiV2 or _G.AutoFarmNearest or AutoFarmChest or _G.AutoCarvender or _G.AutoTwinHook or AutoMobAura or _G.Tweenfruit or _G.AutoKai or _G.TeleportNPC or _G.Leather or _G.Auto_Wing or _G.Umm or _G.Makori_gay or Radioactive or Fish or Gunpowder or Dragon_Scale or Cocoafarm or Scrap or MiniHee or _G.AutoFarmSeabaest or _G.Auto_Cursed_Dual_Katana or _G.AutoFarmMob or _G.AutoMysticIsland or _G.AutoFarmDungeon or _G.AutoRaidPirate or _G.AutoQuestRace or _G.TweenMGear or getgenv().AutoFarm or _G.AutoPlayerHunter or _G.AutoFactory or Grab_Chest or _G.Namfon or _G.AutoSwordMastery or _G.AutoSeaBest or _G.AutoKillTial or _G.Auto_Saber or _G.Position_Spawn or _G.Farmfast or _G.AutoRace or _G.RaidPirate or Open_Color_Haki or _G.KillSaber or FarmMasterySword or _G.AutoTrueTripleKatana or _G.Farmfast2 or _G.Farmfast3 or _G.AutoFullySword or _G.KatakuriV2 or Auto_Dark_Coat then
+						if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+							local Noclip = Instance.new("BodyVelocity")
+							Noclip.Name = "BodyClip"
+							Noclip.Parent = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+							Noclip.MaxForce = Vector3.new(100000,100000,100000)
+							Noclip.Velocity = Vector3.new(0,0,0)
 						end
 					else
-						if tonumber(actualHour) ~= tonumber(Existing) then
-							local delFile = pcall(function()
-								-- delfile("NotSameServers.json")
-								AllIDs = {}
-								table.insert(AllIDs, actualHour)
-							end)
-						end
+						game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
+
+game.Players.LocalPlayer.Character:FindFirstChild('Highlight'):Destroy()
+
+StopTween()
+
 					end
-					num = num + 1
-				end
-				if Possible == true then
-					table.insert(AllIDs, ID)
-					wait()
-					pcall(function()
-						-- writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
-						wait()
-						game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
-					end)
-					wait(.1)
-				end
+				end)
+			end
+		end)
+
+spawn(function()
+  pcall(function() game:GetService("RunService").Stepped:Connect(function()
+      if _G.AutoAdvanceDungeon or _G.AutoDoughtBoss or _G.Auto_DungeonMobAura or _G.AutoFarmChest or _G.AutoFactory or _G.AutoFarmBossHallow or _G.AutoFarmSwanGlasses or _G.AutoLongSword or _G.AutoBlackSpikeycoat or _G.AutoElectricClaw or _G.AutoFarmGunMastery or _G.AutoHolyTorch or _G.AutoLawRaid or _G.AutoFarmBoss or _G.AutoTwinHooks or _G.AutoOpenSwanDoor or _G.AutoDragon_Trident or _G.AutoSaber or _G.NOCLIP or _G.AutoFarmFruitMastery or _G.AutoFarmGunMastery or _G.TeleportIsland or _G.Auto_EvoRace or _G.AutoFarmAllMsBypassType or _G.AutoObservationv2 or _G.AutoMusketeerHat or _G.AutoEctoplasm or _G.AutoRengoku or _G.Auto_Rainbow_Haki or _G.AutoObservation or _G.AutoDarkDagger or _G.Safe_Mode or _G.MasteryFruit or _G.AutoBudySword or _G.AutoOderSword or _G.AutoBounty or _G.AutoAllBoss or _G.Auto_Bounty or _G.AutoSharkman or _G.Auto_Mastery_Fruit or _G.Auto_Mastery_Gun or _G.Auto_Dungeon or _G.Auto_Cavender or _G.Auto_Pole or _G.Auto_Kill_Ply or _G.Auto_Factory or _G.AutoSecondSea or _G.TeleportPly or _G.AutoBartilo or _G.Auto_DarkBoss or _G.GrabChest or _G.AutoFarmBounty or _G.Holy_Torch or _G.AutoFarm or _G.Clip or _G.AutoElitehunter or _G.AutoThirdSea or _G.Auto_Bone or _G.Autoheart or _G.Autodoughking or _G.AutoFarmMaterial or _G.AutoNevaSoulGuitar or _G.Auto_Dragon_Trident or _G.Autotushita or _G.d or _G.Autowaden or _G.Autogay or _G.Autopole or _G.Autosaw or _G.AutoObservationHakiV2 or _G.AutoFarmNearest or AutoFarmChest or _G.AutoCarvender or _G.AutoTwinHook or AutoMobAura or _G.Tweenfruit or _G.AutoKai or _G.TeleportNPC or _G.Leather or _G.Auto_Wing or _G.Umm or _G.Makori_gay or Radioactive or Fish or Gunpowder or Dragon_Scale or Cocoafarm or Scrap or MiniHee or _G.AutoFarmSeabaest or _G.Auto_Cursed_Dual_Katana or _G.AutoFarmMob or _G.AutoMysticIsland or _G.AutoFarmDungeon or _G.AutoRaidPirate or _G.AutoQuestRace or _G.TweenMGear or getgenv().AutoFarm or _G.AutoPlayerHunter or _G.AutoFactory or Grab_Chest or _G.Namfon or _G.AutoSwordMastery or _G.AutoSeaBest or _G.AutoKillTial or _G.Auto_Saber or _G.Position_Spawn or _G.Farmfast or _G.AutoRace or _G.RaidPirate or Open_Color_Haki or _G.KillSaber or FarmMasterySword or _G.AutoTrueTripleKatana or _G.Farmfast2 or _G.Farmfast3 or _G.AutoFullySword or _G.KatakuriV2 or Auto_Dark_Coat then
+      for i,v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
+      if v:IsA("BasePart") then
+      v.CanCollide = false
+      end
+      end
+      end
+      end)
+    end)
+  end)
+
+   spawn(function()
+    game:GetService("RunService").Heartbeat:Connect(function()
+        if _G.AutoAdvanceDungeon or _G.AutoDoughtBoss or _G.Auto_DungeonMobAura or _G.AutoFarmChest or _G.AutoFactory or _G.AutoFarmBossHallow or _G.AutoFarmSwanGlasses or _G.AutoLongSword or _G.AutoBlackSpikeycoat or _G.AutoElectricClaw or _G.AutoFarmGunMastery or _G.AutoHolyTorch or _G.AutoLawRaid or _G.AutoFarmBoss or _G.AutoTwinHooks or _G.AutoOpenSwanDoor or _G.AutoDragon_Trident or _G.AutoSaber or _G.NOCLIP or _G.AutoFarmFruitMastery or _G.AutoFarmGunMastery or _G.TeleportIsland or _G.Auto_EvoRace or _G.AutoFarmAllMsBypassType or _G.AutoObservationv2 or _G.AutoMusketeerHat or _G.AutoEctoplasm or _G.AutoRengoku or _G.Auto_Rainbow_Haki or _G.AutoObservation or _G.AutoDarkDagger or _G.Safe_Mode or _G.MasteryFruit or _G.AutoBudySword or _G.AutoOderSword or _G.AutoBounty or _G.AutoAllBoss or _G.Auto_Bounty or _G.AutoSharkman or _G.Auto_Mastery_Fruit or _G.Auto_Mastery_Gun or _G.Auto_Dungeon or _G.Auto_Cavender or _G.Auto_Pole or _G.Auto_Kill_Ply or _G.Auto_Factory or _G.AutoSecondSea or _G.TeleportPly or _G.AutoBartilo or _G.Auto_DarkBoss or _G.GrabChest or _G.AutoFarmBounty or _G.Holy_Torch or _G.AutoFarm or _G.Clip or _G.AutoElitehunter or _G.AutoThirdSea or _G.Auto_Bone or _G.Autoheart or _G.Autodoughking or _G.AutoFarmMaterial or _G.AutoNevaSoulGuitar or _G.Auto_Dragon_Trident or _G.Autotushita or _G.d or _G.Autowaden or _G.Autogay or _G.Autopole or _G.Autosaw or _G.AutoObservationHakiV2 or _G.AutoFarmNearest or AutoFarmChest or _G.AutoCarvender or _G.AutoTwinHook or AutoMobAura or _G.Tweenfruit or _G.AutoKai or _G.TeleportNPC or _G.Leather or _G.Auto_Wing or _G.Umm or _G.Makori_gay or Radioactive or Fish or Gunpowder or Dragon_Scale or Cocoafarm or Scrap or MiniHee or _G.AutoFarmSeabaest or _G.Auto_Cursed_Dual_Katana or _G.AutoFarmMob or _G.AutoMysticIsland or _G.AutoFarmDungeon or _G.AutoRaidPirate or _G.AutoQuestRace or _G.TweenMGear or getgenv().AutoFarm or _G.AutoPlayerHunter or _G.AutoFactory or Grab_Chest or _G.Namfon or _G.AutoSwordMastery or _G.AutoSeaBest or _G.AutoKillTial or _G.Auto_Saber or _G.Position_Spawn or _G.Farmfast or _G.AutoRace or _G.RaidPirate or Open_Color_Haki or _G.KillSaber or FarmMasterySword or _G.AutoTrueTripleKatana or _G.Farmfast2 or _G.Farmfast3 or _G.AutoFullySword or _G.KatakuriV2 or Auto_Dark_Coat then
+            if not game:GetService("Workspace"):FindFirstChild("LOL") then
+                local LOL = Instance.new("Part")
+                LOL.Name = "LOL"
+                LOL.Parent = game.Workspace
+                LOL.Anchored = true
+                LOL.Transparency = 1
+                LOL.Size = Vector3.new(5,2,5)
+            elseif game:GetService("Workspace"):FindFirstChild("LOL") then
+                game.Workspace["LOL"].CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, -3.6, 0)
+            end
+        else
+            if game:GetService("Workspace"):FindFirstChild("LOL") then
+                game:GetService("Workspace"):FindFirstChild("LOL"):Destroy()
+            end
+        end
+    end)
+  end)
+
+spawn(function()
+game:GetService("RunService").RenderStepped:Connect(function()
+    if _G.AutoClick then
+         pcall(function()
+            game:GetService'VirtualUser':CaptureController()
+            game:GetService'VirtualUser':Button1Down(Vector2.new(0,1,0,1))
+        end)
+    end
+end)
+end)
+
+spawn(function()
+    pcall(function()
+        while wait() do
+            for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do  
+                if v:IsA("Tool") then
+                    if v:FindFirstChild("RemoteFunctionShoot") then 
+                        SelectWeaponGun = v.Name
+                    end
+                end
+            end
+        end
+    end)
+end)
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+    game:GetService("VirtualUser"):Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    wait(1)
+    game:GetService("VirtualUser"):Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+end)
+
+function EquipAllWeapon()
+	pcall(function()
+		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+			if v:IsA('Tool') and not (v.Name == "Summon Sea Beast" or v.Name == "Water Body" or v.Name == "Awakening") then
+				local ToolHumanoid = game.Players.LocalPlayer.Backpack:FindFirstChild(v.Name) 
+				game.Players.LocalPlayer.Character.Humanoid:EquipTool(ToolHumanoid) 
+                wait(1)
 			end
 		end
-	end
-	function Teleport() 
-		while wait() do
-			pcall(function()
-				TPReturner()
-				if foundAnything ~= "" then
-					TPReturner()
+	end)
+end
+
+Tabs.GeneralTab:AddSection("\\\\ Farming //")
+
+Tabs.GeneralTab:AddToggle("", {Title = "Auto Farm Level", Default = _G.Config["Main"]["Auto Farm Level"],Description = "- If you click this Button, You Will auto farm level until you reach the level max !" }):OnChanged(function(Value)
+_G.AutoFarm = Value
+_G.Farmfast = Value
+_G.Farmfast2 = Value
+_G.Farmfast3 = Value
+_G.AutoPlayerHunter = Value
+_G.Config["Main"]["Auto Farm Level"] =  Value
+Saveconfig()
+end)
+
+if World1 then
+Tabs.GeneralTab:AddToggle("", {Title = "Auto Unlock Next Sea", Default = _G.Config["Main"]["Auto Second Sea"],Description = "- If you click this Button, You Will auto travel dressrosa and auto travel Zou !" }):OnChanged(function(Value)
+_G.AutoSecondSea =  Value
+_G.Config["Main"]["Auto Second Sea"] =  Value
+Saveconfig()
+end) end
+
+if World2 then
+Tabs.GeneralTab:AddToggle("", {Title = "Auto Unlock Next Sea", Default = _G.Config["Main"]["Auto Third Sea"],Description = "- If you click this Button, You Will auto second sea and third sea !" }):OnChanged(function(Value)
+_G.AutoThirdSea = Value
+_G.Config["Main"]["Auto Third Sea"] =  Value
+Saveconfig()
+end) end
+
+if World3 then
+Tabs.GeneralTab:AddToggle("", {Title = "Auto Unlock Next Sea", Default = _G.Config["Main"]["Auto Second Sea"],Description = "- If you click this Button, You Will auto second sea and third sea !" }):OnChanged(function(Value)
+_G.AutoSecondSea = Value
+_G.Config["Main"]["Auto Second Sea"] =  Value
+Saveconfig()
+end) end
+
+spawn(function()
+		pcall(function()
+			while wait() do
+				if _G.Farmfast and World1 and game.Players.LocalPlayer.Data.Level.Value >= 10 and game.Players.LocalPlayer.Data.Level.Value <= 40 then
+					if game.Players.LocalPlayer.Data.Level.Value >= 10 and game.Players.LocalPlayer.Data.Level.Value <= 40 then
+					    _G.AutoFarm = false
+					    _G.Farmfast = true
+					end
+				end
+			end
+		end)
+	end)
+
+CfarmFast11 = CFrame.new(-4848.3408203125, 886.6272583007812, -1843.90771484375)
+	
+    spawn(function()
+        while wait() do
+            if _G.Farmfast and World1 and game.Players.LocalPlayer.Data.Level.Value >= 10 and game.Players.LocalPlayer.Data.Level.Value <= 40  then
+                pcall(function()               
+                if game:GetService("Workspace").Enemies:FindFirstChild("God's Guard") then          
+                        for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                            if v.Name == "God's Guard" then
+                                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                    repeat task.wait()
+                                        AutoHaki()
+
+BringMob(v.Name,v.HumanoidRootPart.CFrame)
+
+toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+                                        EquipWeapon(_G.SelectWeapon)
+                                        v.HumanoidRootPart.CanCollide = false
+                                        v.Humanoid.WalkSpeed = 0
+                                         v.HumanoidRootPart.Size = Vector3.new(80,80,80)                                                                    
+                                    until not _G.Farmfast or not v.Parent or v.Humanoid.Health <= 0                                                
+                                end
+                            end
+                        end
+                    else                 
+                   toTarget(CfarmFast11)                 
+					if game:GetService("ReplicatedStorage"):FindFirstChild("God's Guard") then
+						toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("God's Guard").HumanoidRootPart.CFrame * CFrame.new(5,10,2))
+					end
 				end
 			end)
 		end
 	end
-	Teleport()
 end)
-local Fruit = win:Tab("Devil Fruit", "")
-Fruit:Button("Buy Random Devil Fruit","", function()
-	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Cousin","Buy")
-end)
-Fruit:Toggle("Auto Buy Random Devil Fruit"," ",false,function(v)
-	DevilAutoBuy = v
-end)
-spawn(function()
-	while wait() do
-		if DevilAutoBuy then wait()
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Cousin","Buy")
+
+CfarmFast21 = CFrame.new(-7678.48974609375, 5566.40380859375, -497.2156066894531)
+	
+    spawn(function()
+        while wait() do
+            if _G.Farmfast2 and World1 and game.Players.LocalPlayer.Data.Level.Value >= 40 and game.Players.LocalPlayer.Data.Level.Value <= 69  then
+                pcall(function()               
+                if game:GetService("Workspace").Enemies:FindFirstChild("Shanda") then          
+                        for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                            if v.Name == "Shanda" then
+                                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                    repeat task.wait()
+                                        AutoHaki()
+
+BringMob(v.Name,v.HumanoidRootPart.CFrame)
+
+toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+                                        EquipWeapon(_G.SelectWeapon)
+                                        v.HumanoidRootPart.CanCollide = false
+                                        v.Humanoid.WalkSpeed = 0
+                                         v.HumanoidRootPart.Size = Vector3.new(80,80,80)                                                                    
+                                    until not _G.Farmfast2 or not v.Parent or v.Humanoid.Health <= 0                                                     
+                                end
+                            end
+                        end
+                    else                 
+                   toTarget(CfarmFast21)                 
+					if game:GetService("ReplicatedStorage"):FindFirstChild("Shanda") then
+						toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Shanda").HumanoidRootPart.CFrame * CFrame.new(5,10,2))
+					end
+				end
+			end)
 		end
 	end
 end)
-Fruit:Toggle("Teleport Devil Fruit"," ",false,function(value)
-	TeleportDF = value
+
+spawn(function()
+		pcall(function()
+			while wait() do
+				if _G.Farmfast2 and World1 and game.Players.LocalPlayer.Data.Level.Value >= 40 and game.Players.LocalPlayer.Data.Level.Value <= 55 then
+					if game.Players.LocalPlayer.Data.Level.Value >= 40 and game.Players.LocalPlayer.Data.Level.Value <= 55 then
+               _G.Farmfast2 = true
+					    _G.AutoFarm = false
+					    _G.Farmfast = false
+					end
+				end
+			end
+		end)
+	end)
+
+spawn(function()
+		pcall(function()
+			while wait() do
+				if _G.Farmfast3 and World1 and game.Players.LocalPlayer.Data.Level.Value >= 55 and game.Players.LocalPlayer.Data.Level.Value <= 70 then
+					if game.Players.LocalPlayer.Data.Level.Value >= 55 and game.Players.LocalPlayer.Data.Level.Value <= 70 then
+               _G.Farmfast3 = true
+               _G.Farmfast2 = false
+					    _G.AutoFarm = false
+					    _G.Farmfast = false
+					end
+				end
+			end
+		end)
+	end)
+
+CfarmFast31 = CFrame.new(-7624.25244140625, 5658.13330078125, -1467.354248046875)
+	
+    spawn(function()
+        while wait() do
+            if _G.Farmfast3 and World1 and game.Players.LocalPlayer.Data.Level.Value >= 55 and game.Players.LocalPlayer.Data.Level.Value <= 69  then
+                pcall(function()               
+                if game:GetService("Workspace").Enemies:FindFirstChild("Royal Squad") then          
+                        for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                            if v.Name == "Royal Squad" then
+                                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                    repeat task.wait()
+                                        AutoHaki()
+
+BringMob(v.Name,v.HumanoidRootPart.CFrame)
+
+toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+                                        EquipWeapon(_G.SelectWeapon)
+                                        v.HumanoidRootPart.CanCollide = false
+                                        v.Humanoid.WalkSpeed = 0
+                                         v.HumanoidRootPart.Size = Vector3.new(80,80,80)                                                                    
+                                    until not _G.Farmfast3 or not v.Parent or v.Humanoid.Health <= 0                                                       
+                                end
+                            end
+                        end
+                    else                 
+                   toTarget(CfarmFast31)                 
+					if game:GetService("ReplicatedStorage"):FindFirstChild("Royal Squad") then
+						toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Royal Squad").HumanoidRootPart.CFrame * CFrame.new(5,10,2))
+					end
+				end
+			end)
+		end
+	end
+end)
+	
+	spawn(function()
+		pcall(function()
+			while wait() do
+				if _G.Farmfast3 and World1 and game.Players.LocalPlayer.Data.Level.Value >= 70 and game.Players.LocalPlayer.Data.Level.Value <= 309 then
+					if game.Players.LocalPlayer.Data.Level.Value >= 70 and game.Players.LocalPlayer.Data.Level.Value <= 309 then
+						_G.Farmfast = false
+						_G.AutoPlayerHunter = true
+					end
+				end
+			end
+		end)
+	end)
+spawn(function()
+		pcall(function()
+			while wait() do
+				if _G.AutoPlayerHunter and World1 and game.Players.LocalPlayer.Data.Level.Value >= 85 then
+					if game.Players.LocalPlayer.Data.Level.Value >= 85 then
+				    	_G.AutoFarm = true
+						_G.AutoPlayerHunter = false
+					end
+				end
+			end
+		end)
+	end)
+
+_G.ChackPlayer = 0
+_G.ChackPlayer2 = _G.ChackPlayer
+_G.GoGat = true
+function StartFast()
+    local PlayersAll = game.Players:GetPlayers()
+    local PlayerLevel = game.Players.LocalPlayer.Data.Level.Value
+    local quest = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text
+    local Player = string.split(quest," ")[2]
+    getgenv().SelectPly = string.split(quest," ")[2]
+    pcall(function()
+        local MyLevel = game.Players.LocalPlayer.Data.Level.Value
+        local Quest = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
+if MyLevel >= 70 and MyLevel <= 309 then
+            if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("PlayerHunter")
+            end
+            if Quest.Visible == false then
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("PlayerHunter")
+            elseif Quest.Visible == true then
+                if string.find(quest,"Defeat") then
+                    if game.Players[getgenv().SelectPly].Data.Level.Value >= 20 and game.Players[getgenv().SelectPly].Data.Level.Value <= MyLevel + 50 then
+                        repeat task.wait()
+                            if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                            end
+                            if game:GetService("Players").LocalPlayer.PlayerGui.Main.PvpDisabled.Visible == true then
+                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("EnablePvp")
+                            end                                                   
+                           toTarget(game:GetService("Players")[getgenv().SelectPly].Character.HumanoidRootPart.CFrame)
+                            
+                            game:GetService("Players")[getgenv().SelectPly].Character.HumanoidRootPart.Size = Vector3.new(120,120,120)
+
+_G.AttackKillP = true
+
+EquipWeapon(_G.SelectWeapon)
+
+NormalAttack()
+                            game:service('VirtualInputManager'):SendKeyEvent(true, "X", false, game)
+                            game:service('VirtualInputManager'):SendKeyEvent(false, "X", false, game)
+
+                            game:service('VirtualInputManager'):SendKeyEvent(true, "Z", false, game)
+                            game:service('VirtualInputManager'):SendKeyEvent(false, "Z", false, game)
+
+                            if not _G.InstantAttack or _G.AutoFarm then
+                                game:GetService("VirtualUser"):CaptureController()
+                                game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+                            end
+                        until game.Players[getgenv().SelectPly].Character.Humanoid.Health <= 0 or not game.Players[getgenv().SelectPly].Character.Humanoid.Health or not StartFast()
+                        _G.AttackKillP = false
+                        _G.GoGat = false
+                        _G.KillPlayerQ = true
+                        if not game.Players:FindFirstChild(Player) then
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("PlayerHunter")
+                        end
+                    else
+                        for i,v in pairs(PlayersAll) do
+                            if v.Data.Level.Value >= 20 and v.Data.Level.Value <= PlayerLevel + 2 then
+                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("PlayerHunter")
+                                print(v)
+                            else
+                                _G.ChackPlayer = _G.ChackPlayer + 1
+                                if _G.ChackPlayer >= 12 then
+                                    _G.GoGat = false
+                                else
+                                    if _G.ChackPlayer2 >= 13 then 
+                                        _G.GoGat = false
+                                    end
+                                    print("Chack Player ".._G.ChackPlayer)
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end)
+end
+
+spawn(function()
+    while wait(.1) do
+        if _G.AutoPlayerHunter then
+            pcall(function()
+                repeat task.wait(0.01)
+                    StartFast()
+                until not _G.AutoPlayerHunter
+            end)
+        end
+    end
+end)
+
+spawn(function()
+    while wait(.1) do
+        if _G.AutoFarm and game.Players.LocalPlayer.Data.Level.Value >= 1 and game.Players.LocalPlayer.Data.Level.Value <= 9 then
+            pcall(function()
+                repeat task.wait(0.01)
+                    CheckQuest()
+                until not _G.AutoFarm
+            end)
+        end
+    end
+end)
+
+spawn(function()
+    while wait(.1) do
+        if _G.AutoFarm and game.Players.LocalPlayer.Data.Level.Value >= 85 and game.Players.LocalPlayer.Data.Level.Value <= 2550 then
+            pcall(function()
+                repeat task.wait(0.01)
+                    CheckQuest()
+                until not _G.AutoFarm
+            end)
+        end
+    end
+end)
+
+task.spawn(function()
+ while wait() do
+    if _G.AutoFarm then
+    pcall(function()      
+        if not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,Mon) then
+             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
+           end
+        if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
+         toTarget(CFrameQuest)
+         if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 30 then
+             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest",NameQuest,LevelQuest)
+         end
+        else 
+CheckQuest()   
+         if game.Workspace.Enemies:FindFirstChild(NameMon) then 
+             for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                if v.Name == NameMon then
+                 pcall(function()
+                 repeat task.wait()
+
+AutoHaki()
+
+EquipWeapon(_G.SelectWeapon)
+                 toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,20,0))            
+
+pcall(function()BringMob(v.Name,v.HumanoidRootPart.CFrame )end)
+                 if v.Humanoid.Health == 0 then
+                     v:Destroy()
+                 end
+                 until not _G.AutoFarm or not v.Parent or not game.Workspace.Enemies:FindFirstChild(Mon) or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
+             end)
+             end
+             end
+             toTarget(CFrameMon)
+             wait(0.03)     
+             toTarget(CFrameMon * CFrame.new(0,200,0))
+         else                        
+             for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                 if v.Name == NameMon then
+                  repeat task.wait()
+
+AutoHaki()
+
+EquipWeapon(_G.SelectWeapon)
+                 toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,20,0))            
+
+pcall(function()BringMob(v.Name,v.HumanoidRootPart.CFrame )end)
+                  if v.Humanoid.Health == 0 then
+                      v:Destroy()
+                  end
+                  until _G.AutoFarm or not v.Parent or not game.Workspace.Enemies:FindFirstChild(Mon) or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
+              end
+              end
+         end
+        end
+    end)
+  end
+ end
+end)
+
+function BringMob(name,CFrameMon)
+    for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                if v.name == name and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 450 then
+                    v.Humanoid.WalkSpeed = 0
+                    v.Humanoid.JumpPower = 0
+                    v.HumanoidRootPart.CanCollide = false
+                    v.HumanoidRootPart.CFrame = CFrameMon
+                    v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+                    if v.Humanoid:FindFirstChild('Animator') then
+                        v.Humanoid.Animator:Destroy()
+                    end
+                    v.Humanoid:ChangeState(11)
+                    v.Humanoid:ChangeState(14)
+                    sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
+                    end
+        end
+end
+
+task.spawn(function()
+	if game.Players.LocalPlayer.Character:FindFirstChild("Stun") then
+		game.Players.LocalPlayer.Character.Stun.Changed:connect(function()
+			pcall(function()
+				if game.Players.LocalPlayer.Character:FindFirstChild("Stun") then
+					game.Players.LocalPlayer.Character.Stun.Value = 0
+				end
+			end)
+		end)
+	end
+end)
+
+task.spawn(
+    function()
+        while wait() do
+            if _G.AutoSecondSea then
+                pcall(
+                    function()
+                        if game:GetService("Players").LocalPlayer.Data.Level.Value >= 700 then                          
+                            if game:GetService("Workspace").Map.Ice.Door.Transparency == 1 then
+                                if game:GetService("Workspace").Enemies:FindFirstChild("Ice Admiral") then
+                                    for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                        if v.Name == "Ice Admiral" then
+                                            if
+                                                v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and
+                                                    v.Humanoid.Health > 0
+                                             then
+                                                repeat
+                                                    task.wait()
+                                                    AutoHaki()
+                                                    EquipWeapon(_G.SelectWeapon)
+                                                    v.HumanoidRootPart.CanCollide = false
+                                                    v.Humanoid.WalkSpeed = 0
+                                                    v.Head.CanCollide = false
+                                                    toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))                                               
+                                                    sethiddenproperty(
+                                                        game:GetService("Players").LocalPlayer,
+                                                        "SimulationRadius",
+                                                        math.huge
+                                                    )
+                                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(
+                                                        "TravelDressrosa"
+                                                    )
+                                                until not _G.AutoSecondSea or not v.Parent or v.Humanoid.Health <= 0
+                                            end
+                                        end
+                                    end
+                                else
+                                    if
+                                        game:GetService("ReplicatedStorage"):FindFirstChild(
+                                            "Ice Admiral"
+                                        )
+                                     then
+                                        toTarget(
+                                            game:GetService("ReplicatedStorage"):FindFirstChild(
+                                                "Ice Admiral"
+                                            ).HumanoidRootPart.CFrame * CFrame.new(0, 40, 0)
+                                        )
+                                    end
+                                end
+                            else
+                                toTarget(CFrame.new(4851.732421875, 5.651424884796143, 718.1107788085938))
+                                wait(1.1)
+                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(
+                                    "DressrosaQuestProgress",
+                                    "Detective"
+                                )
+                                wait(.5)
+                                EquipWeapon("Key")
+                                toTarget(CFrame.new(1348.487060546875, 37.34933853149414, -1326.12158203125))
+
+game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelDressrosa")
+
+                            end
+                        end
+                    end)
+            end
+        end
+    end)
+
+
+       spawn(function()
+            while wait() do
+                if _G.AutoThirdSea then
+                    pcall(function()
+                        if game:GetService("Players").LocalPlayer.Data.Level.Value >= 1500 and World2 then
+                            _G.AutoFarm = false
+                            if game:GetService("ReplicatedStorage").Remotes["CommF_"]:InvokeServer("ZQuestProgress", "General") == 0 then
+                                toTarget(CFrame.new(-1926.3221435547, 12.819851875305, 1738.3092041016))
+                                if (CFrame.new(-1926.3221435547, 12.819851875305, 1738.3092041016).Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
+                                    wait(1.5)
+                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ZQuestProgress","Begin")
+                                end
+                                wait(1.8)
+                                if game:GetService("Workspace").Enemies:FindFirstChild("rip_indra") then
+                                    for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                        if v.Name == "rip_indra" then                                       
+                      repeat task.wait()
+                                                
+AutoHaki()
+                                                EquipWeapon(_G.SelectWeapon)
+                                                toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))                                             
+                                                v.HumanoidRootPart.Size = Vector3.new(70,70,70)
+                                                v.HumanoidRootPart.CanCollide = false
+                                                v.Humanoid.WalkSpeed = 0
+                                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelZou")
+                                                sethiddenproperty(game:GetService("Players").LocalPlayer,"SimulationRadius",math.huge)
+                                            until _G.AutoThirdSea == false or v.Humanoid.Health <= 0 or not v.Parent
+                                        end
+                                    end
+                                elseif not game:GetService("Workspace").Enemies:FindFirstChild("rip_indra") and (CFrame.new(-26880.93359375, 22.848554611206, 473.18951416016).Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1000 then
+                                    toTarget(CFrame.new(-26880.93359375, 22.848554611206, 473.18951416016))
+                                end
+                            end
+                        end
+                    end)
+                end
+            end
+        end)
+
+Tabs.GeneralTab:AddSection("\\\\ Setting - Farming //")
+
+Tabs.GeneralTab:AddDropdown('', {Values = {"Melee","Sword","Gun","Fruit"},Default = _G.Config["Setting"]["Select Weapon"],Title = "Select Weapon / Combat",Description = "- If you click this Button, Choose weapon for farming !"}):OnChanged(function(Value)
+_G.TypeWeapon = Value
+_G.Config["Setting"]["Select Weapon"] = Value
+Saveconfig()
+end)
+
+task.spawn(function()
+	while wait() do
+		pcall(function()
+			if _G.TypeWeapon == "Melee" then
+				for i ,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+					if v.ToolTip == "Melee" then
+						if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
+							_G.SelectWeapon = v.Name
+						end
+					end
+				end
+			elseif _G.TypeWeapon == "Sword" then
+				for i ,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+					if v.ToolTip == "Sword" then
+						if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
+							_G.SelectWeapon = v.Name
+						end
+					end
+				end
+			elseif _G.TypeWeapon == "Gun" then
+				for i ,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+					if v.ToolTip == "Gun" then
+						if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
+							_G.SelectWeapon = v.Name
+						end
+					end
+				end
+			elseif _G.TypeWeapon == "Fruit" then
+				for i ,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+					if v.ToolTip == "Blox Fruit" then
+						if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
+							_G.SelectWeapon = v.Name
+						end
+					end
+				end
+			end
+		end)
+	end
+end)
+
+Tabs.GeneralTab:AddToggle("", {Title = "Instant Attack", Default = _G.Config["Setting"]["Instant Attack"],Description = "- If you click this Button, You Will enabled fastest attacking !" }):OnChanged(function(Value)
+_G.InstantAttack = Value
+_G.Config["Setting"]["Instant Attack"] =  Value
+Saveconfig()
+end)
+
+local CombatFramework = require(game:GetService("Players").LocalPlayer.PlayerScripts:WaitForChild("CombatFramework"))
+local CombatFrameworkR = getupvalues(CombatFramework)[2]
+local RigController = require(game:GetService("Players")["LocalPlayer"].PlayerScripts.CombatFramework.RigController)
+local RigControllerR = getupvalues(RigController)[2]
+
+function CurrentWeapon()
+	local ac = CombatFrameworkR.activeController
+	local ret = ac.blades[1]
+	if not ret then return game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Name end
 	pcall(function()
-		while TeleportDF do wait()
-			for i,v in pairs(game.Workspace:GetChildren()) do
-				if string.find(v.Name, "Fruit") then 
-					v.Handle.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame
+		while ret.Parent~=game.Players.LocalPlayer.Character do ret=ret.Parent end
+	end)
+	if not ret then return game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Name end
+	return ret
+end
+
+function getAllBladeHitsPlayers(Sizes)
+	local Hits = {}
+	local Client = game.Players.LocalPlayer
+	local Characters = game:GetService("Workspace").Characters:GetChildren()
+	for i=1,#Characters do local v = Characters[i]
+		local Human = v:FindFirstChildOfClass("Humanoid")
+		if v.Name ~= game.Players.LocalPlayer.Name and Human and Human.RootPart and Human.Health > 0 and Client:DistanceFromCharacter(Human.RootPart.Position) < Sizes+5 then
+			table.insert(Hits,Human.RootPart)
+		end
+	end
+	return Hits
+end
+
+function getAllBladeHits(Sizes)
+	local Hits = {}
+	local Client = game.Players.LocalPlayer
+	local Enemies = game:GetService("Workspace").Enemies:GetChildren()
+	for i=1,#Enemies do local v = Enemies[i]
+		local Human = v:FindFirstChildOfClass("Humanoid")
+		if Human and Human.RootPart and Human.Health > 0 and Client:DistanceFromCharacter(Human.RootPart.Position) < Sizes+5 then
+			table.insert(Hits,Human.RootPart)
+		end
+	end
+	return Hits
+end
+
+function AttackFunction()
+	local ac = CombatFrameworkR.activeController
+	if ac and ac.equipped then
+		for indexincrement = 1, 1 do
+			local bladehit = getAllBladeHits(60)
+			if #bladehit > 0 then
+				local AcAttack8 = debug.getupvalue(ac.attack, 5)
+				local AcAttack9 = debug.getupvalue(ac.attack, 6)
+				local AcAttack7 = debug.getupvalue(ac.attack, 4)
+				local AcAttack10 = debug.getupvalue(ac.attack, 7)
+				local NumberAc12 = (AcAttack8 * 798405 + AcAttack7 * 727595) % AcAttack9
+				local NumberAc13 = AcAttack7 * 798405
+				(function()
+					NumberAc12 = (NumberAc12 * AcAttack9 + NumberAc13) % 1099511627776
+					AcAttack8 = math.floor(NumberAc12 / AcAttack9)
+					AcAttack7 = NumberAc12 - AcAttack8 * AcAttack9
+				end)()
+				AcAttack10 = AcAttack10 + 1 
+				debug.setupvalue(ac.attack, 5, AcAttack8)
+				debug.setupvalue(ac.attack, 6, AcAttack9)
+				debug.setupvalue(ac.attack, 4, AcAttack7)
+				debug.setupvalue(ac.attack, 7, AcAttack10)
+				for k, v in pairs(ac.animator.anims.basic) do
+					v:Play(0.01,0.01,0.01)
+				end                 
+				if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and ac.blades and ac.blades[1] then 
+					game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(CurrentWeapon()))
+					game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(NumberAc12 / 1099511627776 * 16777215), AcAttack10)
+                    game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, indexincrement, "")
+				end
+			end
+		end
+	end
+end
+
+task.spawn(function()
+    pcall(function()
+    while task.wait(0.01) do
+        if _G.InstantAttack then
+            AttackFunction()
+           end
+        end
+    end)
+end)
+
+Tabs.GeneralTab:AddToggle("", {Title = "Fast Teleport", Default = _G.Config["Setting"]["Fast Teleport"],Description = "- If you click this Button, You Will reset character to island !" }):OnChanged(function(Value)
+v48 = Value
+_G.Config["Setting"]["Fast Teleport"] =  Value
+Saveconfig()
+end)
+
+Tabs.GeneralTab:AddToggle("", {Title = "Enable Active Race V4", Default = _G.Config["Setting"]["Enable Active Race V4"],Description = "- If you click this Button, You Will true race transformed v4 !" }):OnChanged(function(Value)
+AwakeningV4 = Value
+_G.Config["Setting"]["Enable Active Race V4"] =  Value
+Saveconfig()
+end)
+
+task.spawn(
+    function()
+	while task.wait() do
+		task.wait()
+		if AwakeningV4 then
+			if
+                game.Players.LocalPlayer.Character:FindFirstChild("RaceEnergy") and
+                game.Players.LocalPlayer.Character.RaceEnergy.Value >= 1 and
+                not game.Players.LocalPlayer.Character.RaceTransformed.Value
+                then
+				local Transformed = game:service("VirtualInputManager")
+			 Transformed:SendKeyEvent(true, "Y", false, game)
+				task.wait()
+				Transformed:SendKeyEvent(false, "Y", false, game)
+			end
+		end
+	end
+end)
+
+Tabs.GeneralTab:AddSlider("", {Title = "Tween Speed",Default = _G.Config["Setting"]["Tween Speed"],Min = 0,Max = 350,Rounding = 1,Description = "- If you pos this slider, Choose flight speed !"}):OnChanged(function(Value)
+getgenv().TweenSpeed = Value
+_G.Config["Setting"]["Tween Speed"] = Value
+Saveconfig()
+end)
+getgenv().TweenSpeed = 250
+
+Tabs.GeneralTab:AddButton({
+        Title = "Boots Fps",
+        Description = "- If you click this Button, Use texture low !",
+        Callback = function()
+            Window:Dialog({
+                Title = "Confirm Dialog",
+                Content = "Use Texture Low ?",
+                Buttons = {
+                    {
+                        Title = "Confirm",
+                        Callback = function()
+        local function FPSBooster()
+            local decalsyeeted = true
+            local g = game
+            local w = g.Workspace
+            local l = g.Lighting
+            local t = w.Terrain
+            
+            sethiddenproperty(l, "Technology", Enum.Technology.Compatibility)
+            sethiddenproperty(t, "Decoration", false)
+            
+            t.WaterWaveSize = 0
+            t.WaterWaveSpeed = 0
+            t.WaterReflectance = 0
+            t.WaterTransparency = 0
+            
+            l.GlobalShadows = false
+            l.FogEnd = 9e9
+            l.Brightness = 0
+            
+            settings().Rendering.QualityLevel = Enum.QualityLevel.Level01
+            
+            for _, v in pairs(g:GetDescendants()) do
+                if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
+                    v.Material = Enum.Material.Plastic
+                    v.Reflectance = 0
+                elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
+                    v.Transparency = 1
+                elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+                    v.Lifetime = NumberRange.new(0)
+                elseif v:IsA("Explosion") then
+                    v.BlastPressure = 1
+                    v.BlastRadius = 1
+                elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+                    v.Enabled = false
+                elseif v:IsA("MeshPart") then
+                    v.Material = Enum.Material.Plastic
+                    v.Reflectance = 0
+                    v.TextureID = 10385902758728957 -- You might want to verify this TextureID
+                end
+            end
+            
+            for _, e in pairs(l:GetChildren()) do
+                if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+                    e.Enabled = false
+                end
+            end
+        end
+        
+        FPSBooster()
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                        end
+                    }
+                }
+            })
+        end
+    })
+
+Tabs.GeneralTab:AddSlider("", {Title = "Select Level",Default = _G.Config["Code"]["Select Level"],Min = 0,Max = 10,Rounding = 1,Description = "- If you pos this slider, Choose level for wear code !"}):OnChanged(function(Value)
+_G.SelectLevel = Value
+_G.Config["Code"]["Select Level"] = Value
+Saveconfig()
+end)
+_G.SelectLevel = 1
+
+Tabs.GeneralTab:AddToggle("", {Title = "Auto Redeem Code", Default = _G.Config["Code"]["Auto Redeem Code"],Description = "- If you click this Button, You Will wear redeem code !" }):OnChanged(function(Value)
+_G.AutoRedeemCode = Value
+_G.Config["Code"]["Auto Redeem Code"] =  Value
+Saveconfig()
+end)
+
+local CodeApi = {
+"Sub2CaptainMaui",
+"CODE_SERVICIO",
+"CINCODEMAYO_BOOST",
+"15B_BESTBROTHERS",
+"DEVSCOOKING",
+"GAMERROBOT_YT",
+"ADMINGIVEAWAY",
+"GAMER_ROBOT_1M",
+"TY_FOR_WATCHING",
+"kittgaming",
+"Sub2Fer999",
+"Enyu_is_Pro",
+"Magicbus",
+"JCWK",
+"Starcodeheo",
+"Bluxxy",
+"fudd10_v2",
+"FUDD10",
+"BIGNEWS",
+"THEGREATACE",
+"SUB2GAMERROBOT_EXP1",
+"Sub2OfficialNoobie",
+"StrawHatMaine",
+"SUB2NOOBMASTER123",
+"Sub2Daigrock",
+"Axiore",
+"TantaiGaming",
+"KITT_RESET",
+"SUB2GAMERROBOT_RESET1",
+"Sub2UncleKizaru"
+}
+
+task.spawn(function()
+	while wait() do
+		pcall(function()
+			local MyLevel = game.Players.LocalPlayer.Data.Level.Value
+			if _G.AutoRedeemCode then
+				if _G.SelectLevel then
+					function RedeemAll(Value)
+						game:GetService("ReplicatedStorage").Remotes.Redeem:InvokeServer(Value)
+					end
+					for i,v in pairs(CodeApi) do
+						RedeemAll(v)
+					end
+					wait(3)
+					_G.AutoRedeemCode = false
+				end
+			end
+		end)
+	end
+end)
+
+Tabs.GeneralTab:AddSection("\\\\ Boss Farm //")
+
+local DoBoss = Tabs.GeneralTab:AddParagraph({
+Title = "- If you this checking, Status Select Boss !",
+Content = ""
+})
+
+	spawn(function()
+		while wait() do
+			pcall(function()
+				if game:GetService("ReplicatedStorage"):FindFirstChild(_G.SelectBoss) or game:GetService("Workspace").Enemies:FindFirstChild(_G.SelectBoss) then
+					DoBoss:SetDesc("Task : Boss Spawning")	
+				else
+					DoBoss:SetDesc("Task : Not Found Boss")	
+				end
+			end)
+		end
+	end)
+
+    if World1 then
+	tableBoss = {"The Gorilla King","Bobby","Yeti","Mob Leader","Vice Admiral","Warden","Chief Warden","Swan","Magma Admiral","Fishman Lord","Wysper","Thunder God","Cyborg","Saber Expert"}
+elseif World2 then
+	tableBoss = {"Diamond","Jeremy","Fajita","Don Swan","Smoke Admiral","Cursed Captain","Darkbeard","Order","Awakened Ice Admiral","Tide Keeper"}
+elseif World3 then
+	tableBoss = {"Stone","Island Empress","Kilo Admiral","Captain Elephant","Beautiful Pirate","rip_indra True Form","Longma","Soul Reaper","Cake Queen"}
+end
+
+Tabs.GeneralTab:AddDropdown('', {Values = tableBoss,Default = _G.Config["Boss"]["Select Boss"],Title = "Select Boss",Description = "- If you click this Button, Choose boss for farming !"}):OnChanged(function(Value)
+_G.SelectBoss = Value
+_G.Config["Boss"]["Select Boss"] = Value
+Saveconfig()
+end)
+
+Tabs.GeneralTab:AddToggle("", {Title = "Auto Farm Boss", Default = _G.Config["Boss"]["Auto Farm Boss"],Description = "- If you click this Button, You Will killing boss !" }):OnChanged(function(Value)
+_G.AutoFarmBoss = Value
+_G.Config["Boss"]["Auto Farm Boss"] =  Value
+Saveconfig()
+end)
+
+spawn(function()
+    while wait() do
+        if _G.AutoFarmBoss then
+            pcall(function()
+                if game:GetService("Workspace").Enemies:FindFirstChild(_G.SelectBoss) then
+                    for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                        if v.Name == _G.SelectBoss then
+                            if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                repeat task.wait()
+                                    AutoHaki()
+
+toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+                                    EquipWeapon(_G.SelectWeapon)
+                                    v.HumanoidRootPart.CanCollide = false
+                                    v.Humanoid.WalkSpeed = 0
+                                    v.HumanoidRootPart.Size = Vector3.new(80,80,80)                                                                                   
+                                until not _G.AutoFarmBoss or not v.Parent or v.Humanoid.Health <= 0
+                            end
+                        end
+                    end
+                else
+                    if game:GetService("ReplicatedStorage"):FindFirstChild(_G.SelectBoss) then
+                        toTarget(game:GetService("ReplicatedStorage"):FindFirstChild(_G.SelectBoss).HumanoidRootPart.CFrame * CFrame.new(5,10,7))
+                    end
+                end
+            end)
+        end
+    end
+end)
+
+Tabs.GeneralTab:AddSection("\\\\ Mastery Farm //")
+
+Tabs.GeneralTab:AddToggle("", {Title = "Auto Farm Mastery Fruit", Default = _G.Config["Mastery"]["Auto Farm Mastery Fruit"],Description = "- If you click this Button, You Will auto value mastery !" }):OnChanged(function(Value)
+AutoFarmMasDevilFruit = Value
+_G.Config["Mastery"]["Auto Farm Mastery Fruit"] =  Value
+Saveconfig()
+end)
+
+Tabs.GeneralTab:AddToggle("", {Title = "Auto Farm Mastery Gun", Default = _G.Config["Mastery"]["Auto Farm Mastery Gun"],Description = "- If you click this Button, You Will auto value mastery !" }):OnChanged(function(Value)
+AutoFarmMasGun = Value
+_G.Config["Mastery"]["Auto Farm Mastery Gun"] =  Value
+Saveconfig()
+end)
+
+  KillPercent = 25
+    
+spawn(function()
+    pcall(function()
+        while wait() do
+            if AutoFarmMasGun then
+                CheckQuest()
+                local QuestTitle = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text
+                if not string.find(QuestTitle, NameMon) then                     
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
+                end
+                if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
+                    CheckQuest()
+                        if BypassTP then
+                            if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - CFrameQuest.Position).Magnitude > 1500 then
+                                BTP(CFrameQuest)
+                            elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - CFrameQuest.Position).Magnitude <= 1500 then
+                                toTarget(CFrameQuest)
+                            else
+                                toTarget(CFrameQuest)
+                            end
+                        else
+                            toTarget(CFrameQuest)
+                        end
+                    if (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
+                        wait(1.2)
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest", NameQuest, LevelQuest)
+                    end
+                elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
+                    CheckQuest()
+                    if game:GetService("Workspace").Enemies:FindFirstChild(Mon) then
+                        pcall(function()
+                            for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                if v.Name == Mon then
+                                    repeat task.wait()
+                                        if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) then
+                                            if v.Humanoid.Health <= v.Humanoid.MaxHealth * KillPercent / 100 then                                                
+                                                EquipWeapon(SelectWeaponGun)
+                                                toTarget(v.HumanoidRootPart.CFrame * CFrame.new(posX, posY, posZ))
+
+BringMob(v.Name,v.HumanoidRootPart.CFrame)
+                                                v.Humanoid.WalkSpeed = 0
+                                                v.HumanoidRootPart.CanCollide = false
+                                                v.HumanoidRootPart.Size = Vector3.new(2,2,1)
+                                                v.Head.CanCollide = false                                                
+                                                local args = {
+                                                    [1] = v.HumanoidRootPart.Position,
+                                                    [2] = v.HumanoidRootPart
+                                                }
+                                                game:GetService("Players").LocalPlayer.Character[SelectWeaponGun].RemoteFunctionShoot:InvokeServer(unpack(args))
+                                                wait(.2)
+                                                game:GetService("VirtualInputManager"):SendKeyEvent(true,122,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+                                                game:GetService("VirtualInputManager"):SendKeyEvent(false,122,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+                                                wait(.2)
+                                                game:GetService("VirtualInputManager"):SendKeyEvent(true,120,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+                                                game:GetService("VirtualInputManager"):SendKeyEvent(false,120,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+                                            else
+                                                AutoHaki()
+                                                EquipWeapon(_G.SelectWeapon)
+
+toTarget(v.HumanoidRootPart.CFrame * CFrame.new(posX, posY, posZ))
+
+_G.InstantAttack = true
+
+NormalAttack()
+
+BringMob(v.Name,v.HumanoidRootPart.CFrame)
+                                                v.Humanoid.WalkSpeed = 0
+                                                v.HumanoidRootPart.CanCollide = false
+                                                v.Head.CanCollide = false               
+                                                v.HumanoidRootPart.Size = Vector3.new(50,50,50)                                            
+                                            end                                         
+                                        else                                                                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
+                                        end
+                                    until v.Humanoid.Health <= 0 or not AutoFarmMasGun or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false                 
+                                end
+                            end
+                        end)
+                    else
+toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,200,0))
+                        local Mob = game:GetService("ReplicatedStorage"):FindFirstChild(Mon) 
+                        if Mob then
+                            toTarget(v.HumanoidRootPart.CFrame * CFrame.new(posX, posY, posZ))
+                        else
+                            if game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame.Y <= 1 then
+                                game:GetService("Players").LocalPlayer.Character.Humanoid.Jump = true
+                                task.wait()
+                                game:GetService("Players").LocalPlayer.Character.Humanoid.Jump = false
+_G.InstantAttack = true
+                            end
+                        end
+                    end 
+                end
+            end
+        end
+    end)
+end)
+
+spawn(function()
+    pcall(function()
+        if _G.AutoFarmGunMastery then
+            while wait() do
+                for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                    if v:IsA("Tool") then
+                        if v:FindFirstChild("RemoteFunctionShoot") then
+                            SelectWeaponGun = v.Name
+                        end
+                    end
+                end
+            end
+        end
+    end)
+end)
+
+spawn(function()
+while task.wait(1) do
+if _G.UseSkill then
+pcall(function()
+  if _G.UseSkill then
+  for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+  if v.Name == MonFarm and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health <= v.Humanoid.MaxHealth * KillPercent / 100 then
+  repeat game:GetService("RunService").Heartbeat:wait()
+  EquipWeapon(game.Players.LocalPlayer.Data.DevilFruit.Value)
+  toTarget(v.HumanoidRootPart.CFrame * CFrame.new(posX, posY, posZ))
+  PositionSkillMasteryDevilFruit = v.HumanoidRootPart.Position
+  if game:GetService("Players").LocalPlayer.Character:FindFirstChild(game.Players.LocalPlayer.Data.DevilFruit.Value) then
+  game:GetService("Players").LocalPlayer.Character:FindFirstChild(game.Players.LocalPlayer.Data.DevilFruit.Value).MousePos.Value = PositionSkillMasteryDevilFruit
+  local DevilFruitMastery = game:GetService("Players").LocalPlayer.Character:FindFirstChild(game.Players.LocalPlayer.Data.DevilFruit.Value).Level.Value
+  if SkillZ and DevilFruitMastery >= 1 then
+  game:service('VirtualInputManager'):SendKeyEvent(true, "Z", false, game)
+  wait(.1)
+  game:service('VirtualInputManager'):SendKeyEvent(false, "Z", false, game)
+  end
+  if SkillX and DevilFruitMastery >= 2 then
+  game:service('VirtualInputManager'):SendKeyEvent(true, "X", false, game)
+  wait(.2)
+  game:service('VirtualInputManager'):SendKeyEvent(false, "X", false, game)
+  end
+  if SkillC and DevilFruitMastery >= 3 then
+  game:service('VirtualInputManager'):SendKeyEvent(true, "C", false, game)
+  wait(.3)
+  game:service('VirtualInputManager'):SendKeyEvent(false, "C", false, game)
+  end
+  if SkillV and DevilFruitMastery >= 4 then
+  game:service('VirtualInputManager'):SendKeyEvent(true, "V", false, game)
+  wait(.4)
+  game:service('VirtualInputManager'):SendKeyEvent(false, "V", false, game)
+  end
+  if SkillF and DevilFruitMastery >= 5 then
+  game:GetService("VirtualInputManager"):SendKeyEvent(true, "F", false, game)
+  wait(.5)
+  game:GetService("VirtualInputManager"):SendKeyEvent(false, "F", false, game)
+  end
+  end
+  until not AutoFarmMasDevilFruit or not _G.UseSkill or v.Humanoid.Health == 0
+  end
+  end
+  end
+  end)
+end
+end
+end)
+spawn(function()
+    while task.wait(.1) do
+    if AutoFarmMasDevilFruit then
+    pcall(function()
+      CheckQuest()
+      if not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
+      game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
+      if BypassTP then
+        if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - CFrameQuest.Position).Magnitude > 2500 then
+        BTP(CFrameQuest)
+        wait(0.2)
+        elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - CFrameQuest.Position).Magnitude < 2500 then
+        toTarget(CFrameQuest)
+        end
+        else
+          toTarget(CFrameQuest)
+        end
+      if (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5 then
+      game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest",NameQuest,LevelQuest)
+      end
+      elseif string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
+      for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+      if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") then
+      if v.Name == Mon then
+      repeat game:GetService("RunService").Heartbeat:wait()
+      if v.Humanoid.Health <= v.Humanoid.MaxHealth * KillPercent / 100 then
+      _G.UseSkill = true
+      else
+    _G.UseSkill = false
+	   AutoHaki()
+BringMob(v.Name,v.HumanoidRootPart.CFrame)
+      EquipWeapon(_G.SelectWeapon)
+       _G.InstantAttack = false
+       NormalAttack()
+      toTarget(v.HumanoidRootPart.CFrame * CFrame.new(posX, posY, posZ))
+      v.HumanoidRootPart.Size = Vector3.new(1, 1, 1)
+      v.HumanoidRootPart.Transparency = 1
+      v.Humanoid.JumpPower = 0
+      v.Humanoid.WalkSpeed = 0
+      v.HumanoidRootPart.CanCollide = false
+MonFarm = v.Name
+      end
+      until not AutoFarmMasDevilFruit or not v.Parent or v.Humanoid.Health == 0 or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false or not game:GetService("Workspace").Enemies:FindFirstChild(v.Name) or not TypeMastery == 'Level'
+      _G.UseSkill = false
+      _G.InstantAttack = true
+      end
+      end
+      end
+      end
+      end)
+---------Near Mas
+    elseif AutoFarmMasDevilFruit and TypeMastery == 'Near Mob' then
+    pcall(function()
+      for i,v in pairs (game.Workspace.Enemies:GetChildren()) do
+      if v.Name and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") then
+      if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v:FindFirstChild("HumanoidRootPart").Position).Magnitude <= 2000 then
+      repeat game:GetService("RunService").Heartbeat:wait()
+      if v.Humanoid.Health <= v.Humanoid.MaxHealth * KillPercent / 100 then
+      _G.UseSkill = true
+      else
+        _G.UseSkill = false
+		AutoHaki()
+BringMob(v.Name,v.HumanoidRootPart.CFrame)
+      EquipWeapon(_G.SelectWeapon)
+      _G.InstantAttack = false
+      NormalAttack()
+      toTarget(v.HumanoidRootPart.CFrame * CFrame.new(posX, posY, posZ))
+      v.HumanoidRootPart.Size = Vector3.new(1, 1, 1)
+      v.HumanoidRootPart.Transparency = 1
+      v.Humanoid.JumpPower = 0
+      v.Humanoid.WalkSpeed = 0
+      v.HumanoidRootPart.CanCollide = false
+MonFarm = v.Name
+      end
+      until not AutoFarmMasDevilFruit or not MasteryType == 'Near Mob' or not v.Parent or v.Humanoid.Health == 0 or not TypeMastery == 'Near Mob'
+      _G.UseSkill = false
+      _G.InstantAttack = true
+    end
+end
+end
+end)
+end
+end
+end)
+
+Tabs.GeneralTab:AddSection("\\\\ Mastery - Setting //")
+
+Tabs.GeneralTab:AddSlider("", {Title = "Pos X",Default = _G.Config["Distance"]["Pos X"],Min = 0,Max = 60,Rounding = 1,Description = "- If you pos this slider, Choose pos distance !"}):OnChanged(function(Value)
+posX = Value
+_G.Config["Distance"]["Pos X"] = Value
+Saveconfig()
+end)
+
+Tabs.GeneralTab:AddSlider("", {Title = "Pos Y",Default = _G.Config["Distance"]["Pos Y"],Min = 0,Max = 60,Rounding = 1,Description = "- If you pos this slider, Choose pos distance !"}):OnChanged(function(Value)
+posY = Value
+_G.Config["Distance"]["Pos Y"] = Value
+Saveconfig()
+end)
+
+Tabs.GeneralTab:AddSlider("", {Title = "Pos Z",Default = _G.Config["Distance"]["Pos Z"],Min = 0,Max = 60,Rounding = 1,Description = "- If you pos this slider, Choose pos distance !"}):OnChanged(function(Value)
+posZ = Value
+_G.Config["Distance"]["Pos Z"] = Value
+Saveconfig()
+end)
+
+Tabs.GeneralTab:AddParagraph({
+Title = "        - If you this press, Skill value mastery !",
+Content = ""
+})
+
+Tabs.GeneralTab:AddToggle("", {Title = "Skill Z", Default = _G.Config["Skill"]["Skill Z"],Description = "- If you click this Button, You will auto click skill value mastery !" }):OnChanged(function(Value)
+SkillZ = Value
+_G.Config["Skill"]["Skill Z"] =  Value
+Saveconfig()
+end)
+
+Tabs.GeneralTab:AddToggle("", {Title = "Skill X", Default = _G.Config["Skill"]["Skill X"],Description = "- If you click this Button, You will auto click skill value mastery !" }):OnChanged(function(Value)
+SkillX = Value
+_G.Config["Skill"]["Skill X"] =  Value
+Saveconfig()
+end)
+
+Tabs.GeneralTab:AddToggle("", {Title = "Skill C", Default = _G.Config["Skill"]["Skill C"],Description = "- If you click this Button, You will auto click skill value mastery !" }):OnChanged(function(Value)
+SkillC = Value
+_G.Config["Skill"]["Skill C"] =  Value
+Saveconfig()
+end)
+
+Tabs.GeneralTab:AddToggle("", {Title = "Skill V", Default = _G.Config["Skill"]["Skill V"],Description = "- If you click this Button, You will auto click skill value mastery !" }):OnChanged(function(Value)
+SkillV = Value
+_G.Config["Skill"]["Skill V"] =  Value
+Saveconfig()
+end)
+
+Tabs.GeneralTab:AddToggle("", {Title = "Skill F", Default = _G.Config["Skill"]["Skill F"],Description = "- If you click this Button, You will auto click skill value mastery !" }):OnChanged(function(Value)
+SkillF = Value
+_G.Config["Skill"]["Skill F"] =  Value
+Saveconfig()
+end)
+
+Tabs.GeneralTab:AddSection("\\\\ Player Stats //")
+
+Tabs.GeneralTab:AddDropdown('', {Values = {"Melee","Defense","Sword","Gun","Fruit"},Default = _G.Config["Stats"]["Select Stats"],Title = "Select Stats",Description = "- If you click this Button, Choose stats for update !"}):OnChanged(function(Value)
+_G.SelectStats = Value
+_G.Config["Stats"]["Select Stats"] = Value
+Saveconfig()
+end)
+
+Tabs.GeneralTab:AddToggle("", {Title = "Enable", Default = _G.Config["Stats"]["Enable"],Description = "- If you click this Button, You will auto update stats !" }):OnChanged(function(Value)
+_G.UpStats = Value
+_G.Config["Stats"]["Enable"] =  Value
+Saveconfig()
+end)
+
+Tabs.GeneralTab:AddSlider("", {Title = "Point Stats",Default = _G.Config["Stats"]["Point Stats"],Min = 0,Max = 2550,Rounding = 1,Description = "- If you pos this slider, Choose distance for update stats !"}):OnChanged(function(Value)
+PointStats = Value
+_G.Config["Stats"]["Point Stats"] = Value
+Saveconfig()
+end)
+PointStats = 3
+
+spawn(function()
+    while wait() do
+        stat = game.Players.localPlayer.Data.Points.Value
+        if stat >= PointStats then
+            if _G.SelectStats == "Melee" and _G.UpStats then
+                spawn(function()
+                    local args = {
+                        [1] = "AddPoint",
+                        [2] = "Melee",
+                        [3] = PointStats
+                    }
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                end)
+            end 
+            if _G.SelectStats == "Defense" and _G.UpStats then
+                spawn(function()
+                    local args = {
+                        [1] = "AddPoint",
+                        [2] = "Defense",
+                        [3] = PointStats
+                    }
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                end)
+            end 
+             if _G.SelectStats == "Sword" and _G.UpStats then
+                spawn(function()
+                    local args = {
+                        [1] = "AddPoint",
+                        [2] = "Sword",
+                        [3] = PointStats
+                    }
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                end)
+            end 
+            if _G.SelectStats == "Gun" and _G.UpStats then
+                spawn(function()
+                    local args = {
+                        [1] = "AddPoint",
+                        [2] = "Gun",
+                        [3] = PointStats
+                    }
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                end)
+            end 
+            if _G.SelectStats == "Fruit" and _G.UpStats then
+                spawn(function()
+                    local args = {
+                        [1] = "AddPoint",
+                        [2] = "Demon Fruit",
+                        [3] = PointStats
+                    }
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                end)
+            end
+        end
+    end
+end)
+
+Tabs.AutomaticTab:AddSection("\\\\ Mobs //")
+
+Tabs.AutomaticTab:AddSlider("", {Title = "Distance",Default = _G.Config["Mob"]["Distance"],Min = 0,Max = 5000,Rounding = 1,Description = "- If you pos this slider, Choose mob on the island !"}):OnChanged(function(Value)
+_G.Distance = Value
+_G.Config["Mob"]["Distance"] = Value
+Saveconfig()
+end)
+_G.Distance = 2500
+Tabs.AutomaticTab:AddToggle("", {Title = "Mob Aura", Default = _G.Config["Mob"]["Mob Aura"],Description = "- If you click this Button, You will auto Killing mob on the island !" }):OnChanged(function(Value)
+_G.AutoFarmNearest = Value
+_G.Config["Mob"]["Mob Aura"] =  Value
+Saveconfig()
+end)
+
+		do
+		task = task or getrenv().task;
+		fastSpawn,fastWait,delay = task.spawn,task.wait,task.delay
+	end
+	spawn(function()
+		while wait() do
+			if _G.AutoFarmNearest then
+				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+					if _G.AutoFarmNearest and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= _G.Distance then
+						repeat wait()
+              AutoHaki()
+
+BringMob(v.Name,v.HumanoidRootPart.CFrame)
+							
+EquipWeapon(_G.SelectWeapon)
+							toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))                            
+							if delay then
+								delay(1,function()							
+								end)
+							end 
+						until not _G.AutoFarmNearest or not v.Parent or v.Humanoid.Health <= 0
+					end
+				end
+			end
+		end
+	end)
+
+Tabs.AutomaticTab:AddSection("\\\\ Sword //")
+
+local AllSwordInInventroy = {};
+pcall(function()
+	for i, v in pairs(game:GetService("ReplicatedStorage").Remotes['CommF_']:InvokeServer("getInventoryWeapons")) do
+		if (type(v) ~= "table") then
+		elseif (v.Type == "Sword") then
+			table.insert(AllSwordInInventroy, v.Name);
+		end
+	end
+end)
+
+Tabs.AutomaticTab:AddDropdown('', {Values = AllSwordInInventroy,Default = _G.Config["Sword"]["Select Sword"],Title = "Select Sword",Description = "- If you click this Button, Choose Sword for farming !"}):OnChanged(function(Value)
+SelectSword = Value
+_G.Config["Sword"]["Select Sword"] = Value
+Saveconfig()
+end)
+
+Tabs.AutomaticTab:AddToggle("", {Title = "Auto Farm Sword", Default = _G.Config["Sword"]["Auto Farm Sword"],Description = "- If you click this Button, You will auto farm kill sword on farm bone !" }):OnChanged(function(Value)
+_G.Config["Sword"]["Auto Farm Sword"] = Value
+Saveconfig()
+FarmMasterySword = Value
+if FarmMasterySword then game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LoadItem",SelectSword)
+end
+
+        task.spawn(function()
+                    while wait() do
+                        pcall(function()
+						if FarmMasterySword and World3 then
+if World3 then
+							if game:GetService("Workspace").Enemies:FindFirstChild("Reborn Skeleton") or game:GetService("Workspace").Enemies:FindFirstChild("Living Zombie") or game:GetService("Workspace").Enemies:FindFirstChild("Demonic Soul") or game:GetService("Workspace").Enemies:FindFirstChild("Posessed Mummy") then
+								for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+									if v.Name == "Reborn Skeleton" or v.Name == "Living Zombie" or v.Name == "Demonic Soul" or v.Name == "Posessed Mummy" then
+										if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+											repeat wait()					
+                         AutoHaki()
+
+toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,30,0))
+
+BringMob(v.Name,v.HumanoidRootPart.CFrame)
+							
+EquipWeaponSword()
+											    
+v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+												
+v.Humanoid.JumpPower = 0
+												
+v.Humanoid.WalkSpeed = 0
+												v.HumanoidRootPart.CanCollide = false
+												v.Humanoid:ChangeState(11)											
+											until not FarmMasterySword or v.Humanoid.Health <= 0 or not v.Parent or v.Humanoid.Health <= 0					
+										end
+									end
+								end
+							else
+								toTarget(CFrame.new(-9504.8564453125, 172.14292907714844, 6057.259765625))
+							end
+							else						    
+						    end
+                     end
+                            
+                            
+                        end)
+                    end
+end)
+end)
+
+function EquipWeaponSword()
+	pcall(function()
+		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+			if v.ToolTip == "Sword" and v:IsA('Tool') then
+				local ToolHumanoid = game.Players.LocalPlayer.Backpack:FindFirstChild(v.Name) 
+				game.Players.LocalPlayer.Character.Humanoid:EquipTool(ToolHumanoid) 
+			end
+		end
+	end)
+end
+
+Tabs.AutomaticTab:AddSection("\\\\ Chest //")
+
+local DoChest = Tabs.AutomaticTab:AddParagraph({
+Title = "- If you this checking, Status Count Chest !",
+Content = ""
+})
+
+spawn(function()
+	while wait() do
+		local count10 = 0
+		local count = 0
+		for i,v in pairs(game.workspace:GetChildren()) do
+			if string.find(v.Name,"Chest") and v:IsA("Part") then
+				count10 = count10 + 1
+			end
+		end
+		DoChest:SetDesc("Task : "..count10)
+		wait(5)
+	end
+end)
+
+Tabs.AutomaticTab:AddToggle("", {Title = "Auto Collect Chest", Default = _G.Config["Chest"]["Auto Farm Chest"],Description = "- If you click this Button, You will tween find chest !" }):OnChanged(function(Value)
+Grab_Chest = Value
+_G.Config["Chest"]["Auto Farm Chest"] = Value
+Saveconfig()
+end)
+
+Tabs.AutomaticTab:AddToggle("", {Title = "Auto Collect Chest Hop", Default = _G.Config["Chest"]["Auto Farm Chest Hop"],Description = "- If you click this Button, You will change server find chest !" }):OnChanged(function(Value)
+_G.AutoFarmChestHop = Value
+_G.Config["Chest"]["Auto Farm Chest Hop"] = Value
+Saveconfig()
+end)
+
+spawn(function()
+    while wait(.2) do
+        pcall(function()
+            if Grab_Chest then
+            if Grab_ChestStop then
+                    if game.Players.LocalPlayer.Backpack:FindFirstChild("Fist of Darkness") or game.Players.LocalPlayer.Character:FindFirstChild("Fist of Darkness") then
+                        Tween(CFrame.new(-379.70889282227, 73.0458984375, 304.84692382813))                      
+						game:GetService'VirtualUser':Button1Down(Vector2.new(1280,600))
+                        wait(3)
+                    else
+						_G.Chest_100 = nil
+						_G.Chest_500 = nil
+						_G.Chest_1000 = nil
+						_G.Chest_1500 = nil
+						_G.Chest_2000 = nil
+						_G.Chest_2500 = nil
+						_G.Chest_3500 = nil
+						_G.Chest_4500 = nil
+						_G.Chest_5500 = nil
+						_G.Chest_6500 = nil
+						_G.Chest_7500 = nil
+						_G.Chest_9500 = nil
+						_G.Chest_10500 = nil
+						_G.Chest_12500 = nil
+						_G.Chest_15500 = nil
+						_G.Chest_17500 = nil
+						Chest_100()
+						Chest_500()
+						Chest_1000()
+						Chest_1500()
+						Chest_2000()
+						Chest_2500()
+						Chest_3500()
+						Chest_4500()
+						Chest_5500()
+						Chest_6500()
+						Chest_7500()
+						Chest_9500()
+						Chest_10500()
+						Chest_12500()
+						Chest_15500()
+						Chest_17500()
+						if _G.Chest_100 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_100.CFrame)
+							until not _G.Chest_100.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1
+							end
+						elseif _G.Chest_500 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_500.CFrame)
+							until not _G.Chest_500.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1							
+							end
+						elseif _G.Chest_1000 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_1000.CFrame)
+							until not _G.Chest_1000.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1							
+							end
+						elseif _G.Chest_1500 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_1500.CFrame)
+							until not _G.Chest_1500.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1							
+							end
+						elseif _G.Chest_2000 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_2000.CFrame)
+							until not _G.Chest_2000.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1							
+							end
+						elseif _G.Chest_2500 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_2500.CFrame)
+							until not _G.Chest_2500.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1							
+							end
+						elseif _G.Chest_3500 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_3500.CFrame)
+							until not _G.Chest_3500.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1						
+							end
+						elseif _G.Chest_4500 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_4500.CFrame)
+							until not _G.Chest_4500.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1							
+							end
+						elseif _G.Chest_5500 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_5500.CFrame)
+							until not _G.Chest_5500.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1						
+							end
+						elseif _G.Chest_6500 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_6500.CFrame)
+							until not _G.Chest_6500.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1							
+							end
+						elseif _G.Chest_7500 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_7500.CFrame)
+							until not _G.Chest_7500.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1							
+							end
+						elseif _G.Chest_9500 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_9500.CFrame)
+							until not _G.Chest_9500.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1							
+							end
+						elseif _G.Chest_10500 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_10500.CFrame)
+							until not _G.Chest_10500.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1							
+							end
+						elseif _G.Chest_12500 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_12500.CFrame)
+							until not _G.Chest_12500.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1
+							end
+						elseif _G.Chest_15500 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_15500.CFrame)
+							until not _G.Chest_15500.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1							
+							end
+						elseif _G.Chest_17500 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_17500.CFrame)
+							until not _G.Chest_17500.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1								
+							end
+						end
+                    end
+                else
+                    _G.Chest_100 = nil
+						_G.Chest_500 = nil
+						_G.Chest_1000 = nil
+						_G.Chest_1500 = nil
+						_G.Chest_2000 = nil
+						_G.Chest_2500 = nil
+						_G.Chest_3500 = nil
+						_G.Chest_4500 = nil
+						_G.Chest_5500 = nil
+						_G.Chest_6500 = nil
+						_G.Chest_7500 = nil
+						_G.Chest_9500 = nil
+						_G.Chest_10500 = nil
+						_G.Chest_12500 = nil
+						_G.Chest_15500 = nil
+						_G.Chest_17500 = nil
+						Chest_100()
+						Chest_500()
+						Chest_1000()
+						Chest_1500()
+						Chest_2000()
+						Chest_2500()
+						Chest_3500()
+						Chest_4500()
+						Chest_5500()
+						Chest_6500()
+						Chest_7500()
+						Chest_9500()
+						Chest_10500()
+						Chest_12500()
+						Chest_15500()
+						Chest_17500()
+						if _G.Chest_100 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_100.CFrame)
+							until not _G.Chest_100.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1
+							end
+						elseif _G.Chest_500 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_500.CFrame)
+							until not _G.Chest_500.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1
+							end
+						elseif _G.Chest_1000 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_1000.CFrame)
+							until not _G.Chest_1000.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1						
+							end
+						elseif _G.Chest_1500 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_1500.CFrame)
+							until not _G.Chest_1500.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1							
+							end
+						elseif _G.Chest_2000 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_2000.CFrame)
+							until not _G.Chest_2000.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1						
+							end
+						elseif _G.Chest_2500 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_2500.CFrame)
+							until not _G.Chest_2500.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1							
+							end
+						elseif _G.Chest_3500 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_3500.CFrame)
+							until not _G.Chest_3500.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1						
+							end
+						elseif _G.Chest_4500 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_4500.CFrame)
+							until not _G.Chest_4500.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1							
+							end
+						elseif _G.Chest_5500 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_5500.CFrame)
+							until not _G.Chest_5500.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1							
+							end
+						elseif _G.Chest_6500 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_6500.CFrame)
+							until not _G.Chest_6500.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1						
+							end
+						elseif _G.Chest_7500 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_7500.CFrame)
+							until not _G.Chest_7500.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1							
+							end
+						elseif _G.Chest_9500 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_9500.CFrame)
+							until not _G.Chest_9500.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1							
+							end
+						elseif _G.Chest_10500 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_10500.CFrame)
+							until not _G.Chest_10500.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1							
+							end
+						elseif _G.Chest_12500 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_12500.CFrame)
+							until not _G.Chest_12500.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1							
+							end
+						elseif _G.Chest_15500 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_15500.CFrame)
+							until not _G.Chest_15500.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1							
+							end
+						elseif _G.Chest_17500 ~= nil then
+							repeat wait(.3)
+								Tween(_G.Chest_17500.CFrame)
+							until not _G.Chest_17500.Parent or not Grab_Chest
+							if Grab_Chest then
+								K_CH = K_CH + 1							
+							end
+                end
+						end
+            end
+        end)
+    end
+end)
+
+function Chest_100()
+	for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+		if v.Name == "Chest1" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 100 then
+			_G.Chest_100 = v
+			return
+		elseif v.Name == "Chest2" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 100 then
+			_G.Chest_100 = v
+			return
+		end
+	end
+end
+function Chest_500()
+	for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+		if v.Name == "Chest1" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 500 then
+			_G.Chest_500 = v
+			return
+		elseif v.Name == "Chest2" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 500 then
+			_G.Chest_500 = v
+			return
+		end
+	end
+end
+function Chest_1000()
+	for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+		if v.Name == "Chest1" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1000 then
+			_G.Chest_1000 = v
+			return
+		elseif v.Name == "Chest2" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1000 then
+			_G.Chest_1000 = v
+			return
+		end
+	end
+end
+function Chest_1500()
+	for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+		if v.Name == "Chest1" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1500 then
+			_G.Chest_1500 = v
+			return
+		elseif v.Name == "Chest2" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1500 then
+			_G.Chest_1500 = v
+			return
+		end
+	end
+end
+function Chest_2000()
+	for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+		if v.Name == "Chest1" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2000 then
+			_G.Chest_2000 = v
+			return
+		elseif v.Name == "Chest2" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2000 then
+			_G.Chest_2000 = v
+			return
+		end
+	end
+end
+function Chest_2500()
+	for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+		if v.Name == "Chest1" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2500 then
+			_G.Chest_2500 = v
+			return
+		elseif v.Name == "Chest2" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2500 then
+			_G.Chest_2500 = v
+			return
+		end
+	end
+end
+function Chest_3500()
+	for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+		if v.Name == "Chest1" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3500 then
+			_G.Chest_3500 = v
+			return
+		elseif v.Name == "Chest2" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3500 then
+			_G.Chest_3500 = v
+			return
+		end
+	end
+end
+function Chest_4500()
+	for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+		if v.Name == "Chest1" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 4500 then
+			_G.Chest_4500 = v
+			return
+		elseif v.Name == "Chest2" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 4500 then
+			_G.Chest_4500 = v
+			return
+		end
+	end
+end
+function Chest_5500()
+	for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+		if v.Name == "Chest1" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5500 then
+			_G.Chest_5500 = v
+			return
+		elseif v.Name == "Chest2" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5500 then
+			_G.Chest_5500 = v
+			return
+		end
+	end
+end
+function Chest_6500()
+	for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+		if v.Name == "Chest1" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 6500 then
+			_G.Chest_6500 = v
+			return
+		elseif v.Name == "Chest2" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 6500 then
+			_G.Chest_6500 = v
+			return
+		end
+	end
+end
+function Chest_7500()
+	for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+		if v.Name == "Chest1" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 7500 then
+			_G.Chest_7500 = v
+			return
+		elseif v.Name == "Chest2" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 7500 then
+			_G.Chest_7500 = v
+			return
+		end
+	end
+end
+function Chest_9500()
+	for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+		if v.Name == "Chest1" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 9500 then
+			_G.Chest_9500 = v
+			return
+		elseif v.Name == "Chest2" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 9500 then
+			_G.Chest_9500 = v
+			return
+		end
+	end
+end
+function Chest_10500()
+	for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+		if v.Name == "Chest1" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10500 then
+			_G.Chest_10500 = v
+			return
+		elseif v.Name == "Chest2" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10500 then
+			_G.Chest_10500 = v
+			return
+		end
+	end
+end
+function Chest_12500()
+	for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+		if v.Name == "Chest1" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 12500 then
+			_G.Chest_12500 = v
+			return
+		elseif v.Name == "Chest2" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 12500 then
+			_G.Chest_12500 = v
+			return
+		end
+	end
+end
+function Chest_15500()
+	for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+		if v.Name == "Chest1" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 15500 then
+			_G.Chest_15500 = v
+			return
+		elseif v.Name == "Chest2" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 15500 then
+			_G.Chest_15500 = v
+			return
+		end
+	end
+end
+function Chest_17500()
+	for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+		if v.Name == "Chest1" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 17500 then
+			_G.Chest_17500 = v
+			return
+		elseif v.Name == "Chest2" and (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 17500 then
+			_G.Chest_17500 = v
+			return
+		end
+	end
+end
+
+    spawn(function()
+        if _G.AutoFarmChestHop and Grab_Chest  then
+            wait(2550)
+            Hop()
+        end
+    end)
+
+spawn(function()
+    while wait(.1) do
+        pcall(function()
+            if _G.AutoCraftTrueTripleKatana then
+                local args = {
+                    [1] = "LegendarySwordDealer",
+                    [2] = "2"
+                }
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+            end
+        end)
+    end
+end)
+
+local function inmyself(name)
+	return game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(name) or game:GetService("Players").LocalPlayer.Character:FindFirstChild(name);
+end
+
+Tabs.AutomaticTab:AddSection("\\\\ Weapon //")
+
+Tabs.AutomaticTab:AddDropdown('', {Values = {"Pole 1st Form","Saber","Rengoku"},Default = _G.Config["Weapon"]["Select Weapon"],Title = "Select Weapon",Description = "- If you click this Button, Choose sword for auto item !"}):OnChanged(function(Value)
+_G.SelectSword = Value
+_G.Config["Weapon"]["Select Weapon"] = Value
+Saveconfig()
+end)
+
+Tabs.AutomaticTab:AddToggle("", {Title = "Auto Fully Weapon", Default = _G.Config["Weapon"]["Auto Fully Weapon"],Description = "- If you click this Button, You will auto fully sword !" }):OnChanged(function(Value)
+_G.AutoFullySword = Value
+_G.Config["Weapon"]["Auto Fully Weapon"] =  Value
+Saveconfig()
+end)
+
+spawn(function()
+    while wait() do
+        if _G.SelectSword == "Pole 1st Form" and _G.AutoFullySword and World1 then
+            pcall(function()
+                if game:GetService("Workspace").Enemies:FindFirstChild("Thunder God") then
+                    for _, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                        if v.Name == "Thunder God" then
+                            if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                repeat
+                                    task.wait()
+                                    AutoHaki()
+
+toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+
+EquipWeapon(_G.SelectWeapon)
+                                    v.HumanoidRootPart.CanCollide = false
+                                    v.Humanoid.WalkSpeed = 0
+                                    v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)                                                                
+                                until not _G.Autopole or not v.Parent or v.Humanoid.Health <= 0
+                            end
+                        end
+                    end
+                    else
+                        if game:GetService("ReplicatedStorage"):FindFirstChild("Thunder God") then
+ toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Thunder God").HumanoidRootPart.CFrame * CFrame.new(5,10,7))
+                        else
+                            if _G.AutoPoleHop then
+                                Hop()
+                            end
+                        end
+                    end
+                end)
+            end
+        end
+    end)
+
+        spawn(function()
+        while task.wait() do
+            if _G.SelectSword == "Saber" and _G.AutoFullySword and game.Players.LocalPlayer.Data.Level.Value >= 200 and World1 then
+                pcall(function()
+                    if game:GetService("Workspace").Map.Jungle.Final.Part.Transparency == 0 then
+                        if game:GetService("Workspace").Map.Jungle.QuestPlates.Door.Transparency == 0 then
+                            if (CFrame.new(-1612.55884, 36.9774132, 148.719543, 0.37091279, 3.0717151e-09, -0.928667724, 3.97099491e-08, 1, 1.91679348e-08, 0.928667724, -4.39869794e-08, 0.37091279).Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 100 then
+                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+                                wait(1)
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map.Jungle.QuestPlates.Plate1.Button.CFrame
+                                wait(1)
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map.Jungle.QuestPlates.Plate2.Button.CFrame
+                                wait(1)
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map.Jungle.QuestPlates.Plate3.Button.CFrame
+                                wait(1)
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map.Jungle.QuestPlates.Plate4.Button.CFrame
+                                wait(1)
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map.Jungle.QuestPlates.Plate5.Button.CFrame
+                                wait(1)
+                            else
+                                toTarget(CFrame.new(-1612.55884, 36.9774132, 148.719543, 0.37091279, 3.0717151e-09, -0.928667724, 3.97099491e-08, 1, 1.91679348e-08, 0.928667724, -4.39869794e-08, 0.37091279))
+                            end
+                        else
+                            if game:GetService("Workspace").Map.Desert.Burn.Part.Transparency == 0 then
+                                if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Torch") or game.Players.LocalPlayer.Character:FindFirstChild("Torch") then
+                                    EquipWeapon("Torch")
+                                    toTarget(CFrame.new(1114.61475, 5.04679728, 4350.22803, -0.648466587, -1.28799094e-09, 0.761243105, -5.70652914e-10, 1, 1.20584542e-09, -0.761243105, 3.47544882e-10, -0.648466587))
+                                  else
+                                  toTarget(CFrame.new(-1610.00757, 11.5049858, 164.001587, 0.984807551, -0.167722285, -0.0449818149, 0.17364943, 0.951244235, 0.254912198, 3.42372805e-05, -0.258850515, 0.965917408))
+                                end
+                            else
+                                if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress","SickMan") ~= 0 then
+                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress","GetCup")
+                                    wait(0.5)
+                                    EquipWeapon("Cup")
+                                    wait(0.5)
+                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress","FillCup",game:GetService("Players").LocalPlayer.Character.Cup)
+                                    wait(0)
+                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress","SickMan")
+                                else
+                                    if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress","RichSon") == nil then
+                                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress","RichSon")
+                                    elseif game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress","RichSon") == 0 then
+                                    if game:GetService("Workspace").Enemies:FindFirstChild("Mob Leader") or game:GetService("ReplicatedStorage"):FindFirstChild("Mob Leader") then
+										toTarget(CFrame.new(-2967.59521, -4.91089821, 5328.70703, 0.342208564, -0.0227849055, 0.939347804, 0.0251603816, 0.999569714, 0.0150796166, -0.939287126, 0.0184739735, 0.342634559)) 
+                                            for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                                if v.Name == "Mob Leader" then
+                                                   if game:GetService("Workspace").Enemies:FindFirstChild("Mob Leader") then
+                                                    if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                                        repeat task.wait()
+                                                        AutoHaki()
+                                                        EquipWeapon(_G.SelectWeapon)
+                                                        v.HumanoidRootPart.CanCollide = false
+                                                        v.Humanoid.WalkSpeed = 0
+                                                        v.HumanoidRootPart.Size = Vector3.new(80,80,80)                             
+                                                              toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,30,0))                                                    
+                                                        until v.Humanoid.Health <= 0 or not _G.AutoFullySword
+                                                     end
+                                                end
+                                                if game:GetService("ReplicatedStorage"):FindFirstChild("Mob Leader") then
+                                                    toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Mob Leader").HumanoidRootPart.CFrame * CFrame.new(2, -9, 2))
+                                                end
+                                            end
+                                        end
+                                     end
+                                    elseif game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress","RichSon") == 1 then
+                                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress","RichSon")
+                                        wait(0.5)
+                                        EquipWeapon("Relic")
+                                        wait(0.5)
+                                        toTarget(CFrame.new(-1404.91504, 29.9773273, 3.80598116, 0.876514494, 5.66906877e-09, 0.481375456, 2.53851997e-08, 1, -5.79995607e-08, -0.481375456, 6.30572643e-08, 0.876514494))
+                                    end
+                                end
+                            end
+                        end
+                    else
+                        if game:GetService("Workspace").Enemies:FindFirstChild("Saber Expert") or game:GetService("ReplicatedStorage"):FindFirstChild("Saber Expert") then
+                            for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                    if v.Name == "Saber Expert" then
+                                        repeat task.wait()
+                                            EquipWeapon(_G.SelectWeapon)
+                                                  toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,30,0))
+                                            v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+                                            v.HumanoidRootPart.Transparency = 1
+                                            v.Humanoid.JumpPower = 0
+                                            v.Humanoid.WalkSpeed = 0
+                                            v.HumanoidRootPart.CanCollide = false
+                                            --v.Humanoid:ChangeState(11)
+                                            --v.Humanoid:ChangeState(14)
+                                            FarmPos = v.HumanoidRootPart.CFrame
+                                            MonFarm = v.Name
+                                        until v.Humanoid.Health <= 0 or not _G.AutoFullySword
+                                        if v.Humanoid.Health <= 0 then
+                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress","PlaceRelic")
+                                        end
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end)
+            end
+        end
+    end)
+
+spawn(function()
+	pcall(function()
+		while wait() do
+			if _G.SelectSword == "Rengoku" and _G.AutoFullySword and World2 then
+				if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Hidden Key") or game:GetService("Players").LocalPlayer.Character:FindFirstChild("Hidden Key") then
+					EquipWeapon("Hidden Key")				Tween(CFrame.new(6571.1201171875, 299.23028564453, -6967.841796875))
+				elseif game:GetService("Workspace").Enemies:FindFirstChild("Awakened Ice Admiral") or 
+game:GetService("Workspace").Enemies:FindFirstChild("Snow Lurker") or game:GetService("Workspace").Enemies:FindFirstChild("Arctic Warrior") then
+					for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+						if (v.Name == "Awakened Ice Admiral" or v.Name == "Snow Lurker" or v.Name == "Arctic Warrior") and v.Humanoid.Health > 0 then
+                 repeat task.wait()
+                  
+AutoHaki()
+
+toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+
+EquipWeapon(_G.SelectWeapon)
+
+BringMob(v.Name,v.HumanoidRootPart.CFrame)
+
+v.HumanoidRootPart.CanCollide = false
+                                    v.Humanoid.WalkSpeed = 0
+                                    v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
+                                until not _G.AutoFullySword or not v.Parent or v.Humanoid.Health <= 0
+						end
+					end
+				else					toTarget(CFrame.new(5439.716796875, 84.420944213867, -6715.1635742188))
 				end
 			end
 		end
 	end)
 end)
-Fruit:Toggle("Bring Fruit"," ",false,function(t)
 
-	_G.A = t
-	if _G.A == false then return end 
-	while _G.A do wait()
-		for i,v in pairs(game.Workspace:GetChildren()) do
-			if v:IsA "Tool" then
-				v.Handle.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+Tabs.AutomaticTab:AddSection("\\\\ Dough King //")
+
+local DoDoughKing = Tabs.AutomaticTab:AddParagraph({
+Title = "- If you this checking, Status Dough King !",
+Content = ""
+})
+
+spawn(
+function()
+	while wait() do
+		pcall(  
+		function()
+			if string.len(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")) == 88 then
+DoDoughKing:SetDesc("Task : Have " .. string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), 39, 41) .. " more left")
+			elseif string.len(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")) == 87 then
+DoDoughKing:SetDesc("Task : Have " .. string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), 39, 40) .. " more left")
+			elseif string.len(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")) == 86 then
+DoDoughKing:SetDesc("Task : Have " .. string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), 39, 39) .. " more left")
+			else
 			end
-		end
+		end)
 	end
 end)
-SelectDevil = ""
-Check = false
-Fruit:Dropdown(
-	"Devil Fruit Sniper",
-	{
-		"Bomb-Bomb",
-		"Spike-Spike",
-		"Chop-Chop",
-		"Spring-Spring",
-		"Smoke-Smoke",
-		"Flame-Flame",
-		"Ice-Ice",
-		"Sand-Sand",
-		"Dark-Dark",
-		"Light-Light",
-		"Rubber-Rubber",
-		"Barrier-Barrier",
-		"Magma-Magma",
-		"Quake-Quake",
-		"Human-Human: Buddha",
-		"String-String",
-		"Bird-Bird: Phoenix",
-		"Rumble-Rumble",
-		"Paw-Paw",
-		"Gravity-Gravity",
-		"Dough-Dough",
-		"Control-Control",
-		"Dragon-Dragon"
-	}
-	,function(ply)
-		SelectDevil = ply
-	end
-)
-Fruit:Toggle("Buy Devil Fruit Sinper"," ",false,function(value)
-	if SelectDevil == "" and value then
-		Flux:Notification("Select Devil Fruit Buy Sniper", "Alright")
-	elseif value then
-		BuyFruitSinper = vu
-	end	
-end)
-spawn(function()
-	while wait(.1) do
-		if BuyFruitSinper == "Bomb-Bomb" then
-			local args = {
-				[1] = "PurchaseRawFruit",
-				[2] = "Bomb-Bomb"
-			}
 
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if BuyFruitSinper == "Spike-Spike" then
-			local args = {
-				[1] = "PurchaseRawFruit",
-				[2] = "Spike-Spike"
-			}
-
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if BuyFruitSinper == "Chop-Chop" then
-			local args = {
-				[1] = "PurchaseRawFruit",
-				[2] = "Chop-Chop"
-			}
-
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if BuyFruitSinper == "Spring-Spring" then
-			local args = {
-				[1] = "PurchaseRawFruit",
-				[2] = "Spring-Spring"
-			}
-
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if BuyFruitSinper == "Smoke-Smoke" then
-			local args = {
-				[1] = "PurchaseRawFruit",
-				[2] = "Smoke-Smoke"
-			}
-
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if BuyFruitSinper == "Flame-Flame" then
-			local args = {
-				[1] = "PurchaseRawFruit",
-				[2] = "Flame-Flame"
-			}
-
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if BuyFruitSinper == "Ice-Ice" then
-			local args = {
-				[1] = "PurchaseRawFruit",
-				[2] = "Ice-Ice"
-			}
-
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if BuyFruitSinper == "Sand-Sand" then
-			local args = {
-				[1] = "PurchaseRawFruit",
-				[2] = "Snad-Snad"
-			}
-
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if BuyFruitSinper == "Dark-Dark" then
-			local args = {
-				[1] = "PurchaseRawFruit",
-				[2] = "Dark-Dark"
-			}
-
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if BuyFruitSinper == "Light-Light" then
-			local args = {
-				[1] = "PurchaseRawFruit",
-				[2] = "Light-Light"
-			}
-
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if BuyFruitSinper == "Quake-Quake" then
-			local args = {
-				[1] = "PurchaseRawFruit",
-				[2] = "Quake-Quake"
-			}
-
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if BuyFruitSinper == "Rubber-Rubber" then
-			local args = {
-				[1] = "PurchaseRawFruit",
-				[2] = "Rubber-Rubber"
-			}
-
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if BuyFruitSinper == "Barrier-Barrier" then
-			local args = {
-				[1] = "PurchaseRawFruit",
-				[2] = "Barrier-Barrier"
-			}
-
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if BuyFruitSinper == "Magma-Magma" then
-			local args = {
-				[1] = "PurchaseRawFruit",
-				[2] = "Magma-Magma"
-			}
-
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if BuyFruitSinper == "Human-Human: Buddha" then
-			local args = {
-				[1] = "PurchaseRawFruit",
-				[2] = "Human-Human: Buddha"
-			}
-
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if BuyFruitSinper == "String-String" then
-			local args = {
-				[1] = "PurchaseRawFruit",
-				[2] = "String-String"
-			}
-
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if BuyFruitSinper == "Bird-Bird: Phoenix" then
-			local args = {
-				[1] = "PurchaseRawFruit",
-				[2] = "Bird-Bird: Phoenix"
-			}
-
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if BuyFruitSinper == "Rumble-Rumble" then
-			local args = {
-				[1] = "PurchaseRawFruit",
-				[2] = "Rumble-Rumble"
-			}
-
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if BuyFruitSinper == "Paw-Paw" then
-			local args = {
-				[1] = "PurchaseRawFruit",
-				[2] = "Paw-Paw"
-			}
-
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if BuyFruitSinper == "Gravity-Gravity" then
-			local args = {
-				[1] = "PurchaseRawFruit",
-				[2] = "Gravity-Gravity"
-			}
-
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if BuyFruitSinper == "Dough-Dough" then
-			local args = {
-				[1] = "PurchaseRawFruit",
-				[2] = "Dough-Dough"
-			}
-
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-		end
-	end
-end)
-spawn(function()
-	while wait(.1) do
-		if BuyFruitSinper == "Control-Control" then
-			local args = {
-				[1] = "PurchaseRawFruit",
-				[2] = "Control-Control"
-			}
-
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-		end
-	end
+Tabs.AutomaticTab:AddToggle("", {Title = "Auto Dough King", Default = _G.Config["DoughKing"]["Auto Dough King"],Description = "- If you click this Button, You will unlock door mochi full !" }):OnChanged(function(Value)
+_G.KatakuriV2 = Value
+_G.Config["DoughKing"]["Auto Dough King"] =  Value
+Saveconfig()
 end)
 
 spawn(function()
-	while wait(.1) do
-		if BuyFruitSinper == "Dragon-Dragon" then
-			local args = {
-				[1] = "PurchaseRawFruit",
-				[2] = "Dragon-Dragon"
-			}
+	while wait() do
+		if _G.KatakuriV2 then
+			pcall(function()
+				if game.Players.LocalPlayer.Backpack:FindFirstChild("God's Chalice") or game.Players.LocalPlayer.Character:FindFirstChild("God's Chalice") then
+					if string.find(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SweetChaliceNpc"), "Where") then
+						game.StarterGui:SetCore("SendNotification", {
+							Title = "Notification",
+							Text = "Not Have Enough Material" ,
+							Icon = "http://www.roblox.com/asset/?id=",
+							Duration = 2.5
+						})
+					else
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SweetChaliceNpc")
+					end
+				elseif game.Players.LocalPlayer.Backpack:FindFirstChild("Sweet Chalice") or game.Players.LocalPlayer.Character:FindFirstChild("Sweet Chalice") then
+					if string.find(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), "Do you want to open the portal now?") then
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")
+					else
+						if game.Workspace.Enemies:FindFirstChild("Baking Staff") or game.Workspace.Enemies:FindFirstChild("Head Baker") or game.Workspace.Enemies:FindFirstChild("Cake Guard") or game.Workspace.Enemies:FindFirstChild("Cookie Crafter")  then
+							for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+								if (v.Name == "Baking Staff" or v.Name == "Head Baker" or v.Name == "Cake Guard" or v.Name == "Cookie Crafter") and v.Humanoid.Health > 0 then
+									repeat
+										wait()
+										AutoHaki()
 
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+
+BringMob(v.Name,v.HumanoidRootPart.CFrame)
+										EquipWeapon(_G.SelectWeapon)								
+										
+									until _G.KatakuriV2 == false or game:GetService("ReplicatedStorage"):FindFirstChild("Cake Prince") or not v.Parent or v.Humanoid.Health <= 0
+								end
+							end
+						else												toTarget(CFrame.new(-1820.0634765625, 210.74781799316406, -12297.49609375))
+						end
+					end
+				elseif game.ReplicatedStorage:FindFirstChild("Dough King") or game:GetService("Workspace").Enemies:FindFirstChild("Dough King") then
+					if game:GetService("Workspace").Enemies:FindFirstChild("Dough King") then
+						for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+							if v.Name == "Dough King" then
+								repeat
+									wait()
+									AutoHaki()
+
+toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+									EquipWeapon(_G.SelectWeapon)
+									v.HumanoidRootPart.CanCollide = false
+									
+								until _G.KatakuriV2 == false or not v.Parent or v.Humanoid.Health <= 0
+							end
+						end
+					else
+						toTarget(CFrame.new(-2009.2802734375, 4532.97216796875, -14937.3076171875))
+					end
+				elseif game.Players.LocalPlayer.Backpack:FindFirstChild("Red Key") or game.Players.LocalPlayer.Character:FindFirstChild("Red Key") then
+					local args = {
+						[1] = "CakeScientist",
+						[2] = "Check"
+					}
+					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+				else
+					if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
+						if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Diablo") or string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Deandre") or string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Urban") then
+							if game:GetService("Workspace").Enemies:FindFirstChild("Diablo") or game:GetService("Workspace").Enemies:FindFirstChild("Deandre") or game:GetService("Workspace").Enemies:FindFirstChild("Urban") then
+								for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+									if v.Name == "Diablo" or v.Name == "Deandre" or v.Name == "Urban" then
+										if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+											repeat
+												wait()
+												AutoHaki()
+
+toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+												EquipWeapon(_G.SelectWeapon)
+												v.HumanoidRootPart.CanCollide = false
+												v.Humanoid.WalkSpeed = 0
+																							sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRadius", math.huge)
+											until _G.KatakuriV2 == false or v.Humanoid.Health <= 0 or not v.Parent or game.Players.LocalPlayer.Backpack:FindFirstChild("God's Chalice") or game.Players.LocalPlayer.Character:FindFirstChild("God's Chalice")
+										end
+									end
+								end
+							else
+								if game:GetService("ReplicatedStorage"):FindFirstChild("Diablo") then
+									toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Diablo").HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
+								elseif game:GetService("ReplicatedStorage"):FindFirstChild("Deandre") then
+									toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Deandre").HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
+								elseif game:GetService("ReplicatedStorage"):FindFirstChild("Urban") then
+									toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Urban").HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
+								end
+							end
+						end
+					else
+						wait(0.5)
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("EliteHunter")
+					end
+				end
+			end)
 		end
 	end
 end)
-function bring2()
-	local plr = game.Players.LocalPlayer
-	pcall(function()
-	for i, v in pairs(game.workspace.Enemies:GetChildren()) do
-		for k, x in pairs (game.workspace.Enemies:GetChildren()) do
-		if x.Name == Ms then
-			if v.Name == Ms then
-				x.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
-				v.HumanoidRootPart.CanCollide = false
-				v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-				sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
-			end
-		end
-		end
-	end
-	end)
+
+Tabs.AutomaticTab:AddToggle("", {Title = "Auto Dough King Hop", Default = _G.Config["DoughKing"]["Auto Dough King Hop"],Description = "- If you click this Button, You will unlock door mochi  !" }):OnChanged(function(Value)
+_G.KatakuriV2Hop = Value
+_G.Config["DoughKing"]["Auto Dough King Hop"] =  Value
+Saveconfig()
+end)
+
+spawn(function()
+pcall(function()
+while wait(.1) do
+if _G.KatakuriV2 and _G.KatakuriV2Hop and World3 and not game:GetService("ReplicatedStorage"):FindFirstChild("Dough King") and not game:GetService("Workspace").Enemies:FindFirstChild("Dough King") and not game:GetService("ReplicatedStorage"):FindFirstChild("Diablo") and not game:GetService("Workspace").Enemies:FindFirstChild("Diablo") and not game:GetService("ReplicatedStorage"):FindFirstChild("Deandre") and not game:GetService("Workspace").Enemies:FindFirstChild("Deandre") and not game:GetService("ReplicatedStorage"):FindFirstChild("Urban") and not game:GetService("Workspace").Enemies:FindFirstChild("Urban") and not game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("God's Chalice") or game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Sweet Chalice") then
+Hop()
 end
-spawn(function()
-	while wait(.1) do
-		if _G.AutoFarm then
-			bring2()
-		end
     end
-end)
-spawn(function()
-	while wait(.1) do
-		if _G.AutoBartilo then
-			bring2()
-		end
-    end
-end)
-spawn(function()
-	while wait(.1) do
-		if _G.AutoFarmEctoplasm then
-			bring2()
-		end
-    end
-end)
-spawn(function()
-	while wait(.1) do
-		if _G.GunMastery then
-			bring2()
-		end
-    end
-end)
-spawn(function()
-	while wait(.1) do
-		if _G.FruitMastery then
-			bring2()
-		end
-    end
-end)
-pppp:Colorpicker("Select Color Haki", Color3.fromRGB(255,1,1), function(t)
- _G.see = t
-end)    while wait(.1) do
+        end)
+    end)
 
-     if _G.see or  game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-     for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-        if string.find(v.Name, "BusoLayer1") then
-           v.Material = "Neon"
-           v.Color = _G.see
+Tabs.AutomaticTab:AddSection("\\\\ Bones //")
+
+local DoBones = Tabs.AutomaticTab:AddParagraph({
+Title = "- If you this checking, Status Bones !",
+Content = "You' now having : "..CheckItem"Bones"..(" Bones")
+})
+Tabs.AutomaticTab:AddToggle("", {Title = "Auto Farm Bone", Default = _G.Config["Bones"]["Auto Farm Bones"],Description = "- If you click this Button, You will farm reborn skeleton  !" }):OnChanged(function(Value)
+_G.Auto_Bone = Value
+_G.Config["Bones"]["Auto Farm Bones"] =  Value
+Saveconfig()
+end)
+
+spawn(function()
+    while task.wait() do
+        if _G.Auto_Bone then
+            pcall(function()
+                if game:GetService("Workspace").Enemies:FindFirstChild("Reborn Skeleton") or game:GetService("Workspace").Enemies:FindFirstChild("Living Zombie") or game:GetService("Workspace").Enemies:FindFirstChild("Demonic Soul") or game:GetService("Workspace").Enemies:FindFirstChild("Posessed Mummy") then
+                    for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                        if v.Name == "Reborn Skeleton" or v.Name == "Living Zombie" or v.Name == "Demonic Soul" or v.Name == "Posessed Mummy" then
+                            if v.Humanoid.Health > 0 and v:FindFirstChild("HumanoidRootPart") and v.Parent and _G.Auto_Bone then
+                                repeat task.wait()
+                                    AutoHaki()
+                                    toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+                                    EquipWeapon(_G.SelectWeapon)
+                                    BringMob(v.Name,v.HumanoidRootPart.CFrame)
+                                    v.HumanoidRootPart.CanCollide = false
+                                    v.Humanoid.WalkSpeed = 0
+                                    v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+                                until v.Humanoid.Health <= 0 or not v.Parent or not v:FindFirstChild("HumanoidRootPart") or not _G.Auto_Bone
+                            end
+                        end
+                    end
+                else
+                    if game:GetService("ReplicatedStorage"):FindFirstChild("Reborn Skeleton") then
+                        toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Reborn Skeleton").HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
+                    end
+                       if game:GetService("ReplicatedStorage"):FindFirstChild("Living Zombie") then
+                        toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Living Zombie").HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
+                    end
+                       if game:GetService("ReplicatedStorage"):FindFirstChild("Reborn Skeleton") then
+                        toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Reborn Skeleton").HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
+                    end
+                    if game:GetService("ReplicatedStorage"):FindFirstChild("Demonic Soul") then
+                        toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Demonic Soul").HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
+                    end
+                       if game:GetService("ReplicatedStorage"):FindFirstChild("Posessed Mummy") then
+                        toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Posessed Mummy").HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
+                    end                                                                     
+                end
+            end)
         end
     end
-end
-end
+end)
