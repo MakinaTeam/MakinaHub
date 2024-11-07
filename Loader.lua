@@ -4620,7 +4620,7 @@ Tabs.AutomaticTab:AddSection("\\\\ Bones //")
 
 local DoBones = Tabs.AutomaticTab:AddParagraph({
 Title = "- If you this checking, Status Bones !",
-Content = "You' now having : "..CheckItem("Bones")
+Content = "You' now having : "..CheckItem"Bones"..("Bones")
 })
 
 --DoBones:SetDesc("You' now having : "..CheckItem("Bones"))
