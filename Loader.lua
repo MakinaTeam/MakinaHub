@@ -4652,20 +4652,20 @@ spawn(function()
                         end
                     end
                 else
-                    if game:GetService("ReplicatedStorage"):FindFirstChild(Reborn Skeleton) then
-                        Tween(game:GetService("ReplicatedStorage"):FindFirstChild(Reborn Skeleton).HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
+                    if game:GetService("ReplicatedStorage"):FindFirstChild("Reborn Skeleton") then
+                        Tween(game:GetService("ReplicatedStorage"):FindFirstChild("Reborn Skeleton").HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
                     end
-                       if game:GetService("ReplicatedStorage"):FindFirstChild(Living Zombie) then
-                        Tween(game:GetService("ReplicatedStorage"):FindFirstChild(Living Zombie).HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
+                       if game:GetService("ReplicatedStorage"):FindFirstChild("Living Zombie") then
+                        Tween(game:GetService("ReplicatedStorage"):FindFirstChild("Living Zombie").HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
                     end
-                       if game:GetService("ReplicatedStorage"):FindFirstChild(Reborn Skeleton) then
-                        Tween(game:GetService("ReplicatedStorage"):FindFirstChild(Reborn Skeleton).HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
+                       if game:GetService("ReplicatedStorage"):FindFirstChild("Reborn Skeleton") then
+                        Tween(game:GetService("ReplicatedStorage"):FindFirstChild("Reborn Skeleton").HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
                     end
-                    if game:GetService("ReplicatedStorage"):FindFirstChild(Demonic Soul) then
-                        Tween(game:GetService("ReplicatedStorage"):FindFirstChild(Demonic Soul).HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
+                    if game:GetService("ReplicatedStorage"):FindFirstChild("Demonic Soul") then
+                        Tween(game:GetService("ReplicatedStorage"):FindFirstChild("Demonic Soul").HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
                     end
-                       if game:GetService("ReplicatedStorage"):FindFirstChild(Posessed Mummy) then
-                        Tween(game:GetService("ReplicatedStorage"):FindFirstChild(Posessed Mummy).HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
+                       if game:GetService("ReplicatedStorage"):FindFirstChild("Posessed Mummy") then
+                        Tween(game:GetService("ReplicatedStorage"):FindFirstChild("Posessed Mummy").HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
                     end                                                                     
                 end
             end)
