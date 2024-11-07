@@ -4644,17 +4644,14 @@ spawn(
 							if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
 								repeat
 									wait()
-									AutoHaki()
-									if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
-									wait()
-									end
+									AutoHaki()									
 			                        toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))						
                                     EquipWeapon(_G.SelectWeapon)
 								    BringMob(v.Name,v.HumanoidRootPart.CFrame)						
                                     v.HumanoidRootPart.CanCollide = false
 									v.Humanoid.WalkSpeed = 0
 									v.Head.CanCollide = false							
-								until not _G.AutoFarm or not v.Parent or v.Humanoid.Health <= 0
+								until not _G.Auto_Bone or not v.Parent or v.Humanoid.Health <= 0
 							end
 						end
 					end
