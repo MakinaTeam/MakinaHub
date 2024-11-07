@@ -1,209 +1,121 @@
-        
-local Sea = nil
-if game.PlaceId == 2753915549 then
-Sea = "1st Sea"
+repeat wait() until game.IsLoaded and (game.Players.LocalPlayer or game.Players.PlayerAdded:Wait()) and (game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait())
+if Ran then
+    return
+else
+    getgenv().Ran = true
 end
-if game.PlaceId == 4442272183 then
-Sea = "2nd Sea"
+if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main", 9e9):FindFirstChild("ChooseTeam") then
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetTeam", "Pirates")
+    wait(3)
 end
-if game.PlaceId ==  7449423635 then
-Sea = "3rd Sea"
-end
-
----------------------------------------------------
-repeat wait() until game:IsLoaded()
-game.NetworkClient.ChildRemoved:Connect(function()
-   game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId, game.JobId, game.Players.LocalPlayer)
-end)
-game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
-    if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
-        game:GetService("TeleportService"):Teleport(game.PlaceId)
-    end
-end)
----------------------------------------------------
 local plr = game.Players.LocalPlayer
-local modusrl = ""
-local name = plr.Name
-local Debounce = true
-local PlaceId = game.PlaceId
----------------------------------------
-local FruitSound = Instance.new("Sound")
-FruitSound.Name = "Sound"
-FruitSound.SoundId = "http://www.roblox.com/asset/?id=449615528"
-FruitSound.Volume = 100
-FruitSound.Looped = true
-FruitSound.archivable = false
-FruitSound.Parent = game.Workspace
--------------------------------------------------------Anti afk
-local vu = game:GetService("VirtualUser")
-game:GetService("Players").LocalPlayer.Idled:connect(function()
-   vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-   wait(5)
-   vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-end)
-------------------------------------------------------
-for i, v in pairs(workspace:GetChildren()) do
-    if v:IsA("Tool")  
-        and v.Handle then
-                local BillboardGui = Instance.new("BillboardGui")
-		local TextLabel = Instance.new("TextLabel")
-		BillboardGui.Parent = v.Handle
-		BillboardGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-		BillboardGui.Active = true
-		BillboardGui.AlwaysOnTop = true
-		BillboardGui.LightInfluence = 1
-		BillboardGui.Size = UDim2.new(0, 100, 0, 25)
-		TextLabel.Parent = BillboardGui
-		TextLabel.BackgroundColor3 = Color3.new(1, 1, 1)
-		TextLabel.BackgroundTransparency = 1
-		TextLabel.BorderSizePixel = 0
-		TextLabel.Size = UDim2.new(0, 100, 0, 25)
-		TextLabel.Font = Enum.Font.SourceSans
-		TextLabel.Text = v.Name
-		TextLabel.TextColor3 =  Color3.new(0, 255, 169)
-		TextLabel.TextScaled = true
-		TextLabel.TextSize = 14
-		TextLabel.TextWrapped = true
-        end
-    
-    if v:IsA("Model") and v.Name == "Fruit " then
-      if v.Handle then
-                local BillboardGui = Instance.new("BillboardGui")
-		local TextLabel = Instance.new("TextLabel")
-		BillboardGui.Parent = v
-		BillboardGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-		BillboardGui.Active = true
-		BillboardGui.AlwaysOnTop = true
-		BillboardGui.LightInfluence = 1
-		BillboardGui.Size = UDim2.new(0, 100, 0, 25)
-		TextLabel.Parent = BillboardGui
-		TextLabel.BackgroundColor3 = Color3.new(1, 1, 1)
-		TextLabel.BackgroundTransparency = 1
-		TextLabel.BorderSizePixel = 0
-		TextLabel.Size = UDim2.new(0, 100, 0, 25)
-		TextLabel.Font = Enum.Font.SourceSans
-		TextLabel.Text = "Fruit"
-		TextLabel.TextColor3 = Color3.new(0, 255, 169)
-		TextLabel.TextScaled = true
-		TextLabel.TextSize = 14
-		TextLabel.TextWrapped = true
-        end
+local chr = plr.Character
+local t = game.TweenService
+local bv = Instance.new("BodyVelocity")
+bv.MaxForce = Vector3.new(1/0, 1/0, 1/0)
+bv.Velocity = Vector3.new()
+bv.Name = "bV"
+local bav = Instance.new("BodyAngularVelocity")
+bav.AngularVelocity = Vector3.new()
+bav.MaxTorque = Vector3.new(1/0, 1/0, 1/0)
+bav.Name = "bAV"
+for _,v in next, workspace:GetChildren() do
+    if v.Name:find("Fruit") and (v:IsA("Tool") or v:IsA("Model")) then
+        repeat
+            local anc1 = bv:Clone()
+            anc1.Parent = chr.HumanoidRootPart
+            local anc2 = bav:Clone()
+            anc2.Parent = chr.HumanoidRootPart
+            local p = t:Create(chr.HumanoidRootPart, TweenInfo.new((plr:DistanceFromCharacter(v.Handle.Position)-100)/320, Enum.EasingStyle.Linear), {CFrame=v.Handle.CFrame + Vector3.new(0, v.Handle.Size.Y, 0)})
+            p:Play()
+            p.Completed:Wait()
+            chr.HumanoidRootPart.CFrame = v.Handle.CFrame
+            anc1:Destroy()
+            anc2:Destroy()
+            wait(1)
+        until v.Parent ~= workspace
+        wait(1)
+        local fruit = chr:FindFirstChildOfClass("Tool") and chr:FindFirstChildOfClass("Tool").Name:find("Fruit") and chr:FindFirstChildOfClass("Tool") or (function()
+            for _,fr in plr.Backpack:GetChildren() do
+                if fr.Name:find("Fruit") then
+                    return fr
+                end
+            end
+        end)()
+        print(fruit)
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StoreFruit", fruit:GetAttribute("OriginalName"), fruit)
     end
 end
------------------------------------------------------------
-   local Plr = game:GetService("Players").LocalPlayer
-   local TweenService = game:GetService("TweenService")
-   local current_tween
-   local farming_tween
-   local noclip_tween
-   local reached_place
-   ----------------
-function TeleportTween(dist, AdditionalCFrame)
-       if Plr.Character:FindFirstChild("HumanoidRootPart") and Plr.Character:FindFirstChild("Humanoid") then
-           if AdditionalCFrame then
-               local tweenInfo = TweenInfo.new((Plr.Character:WaitForChild("HumanoidRootPart").Position - dist.Position).magnitude / 320, Enum.EasingStyle.Linear)
-               current_tween = TweenService:Create(Plr.Character:WaitForChild("HumanoidRootPart"), tweenInfo, {CFrame = dist * AdditionalCFrame})
-           else 
-               local tweenInfo = TweenInfo.new((Plr.Character:WaitForChild("HumanoidRootPart").Position - dist.Position).magnitude / 320, Enum.EasingStyle.Linear)
-               current_tween = TweenService:Create(Plr.Character:WaitForChild("HumanoidRootPart"), tweenInfo, {CFrame = dist})
-           end 
-           current_tween:Play()
-       end 
+print('nope')
+local currentJobId = game.JobId
+repeat
+    task.spawn(pcall, function()
+        Time = 0.1 -- seconds
+repeat wait() until game:IsLoaded()
+wait(Time)
+local PlaceID = game.PlaceId
+local AllIDs = {}
+local foundAnything = ""
+local actualHour = os.date("!*t").hour
+local Deleted = false
+function TPReturner()
+   local Site;
+   if foundAnything == "" then
+       Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
+   else
+       Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
+   end
+   local ID = ""
+   if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
+       foundAnything = Site.nextPageCursor
+   end
+   local num = 0;
+   for i,v in pairs(Site.data) do
+       local Possible = true
+       ID = tostring(v.id)
+       if tonumber(v.maxPlayers) > tonumber(v.playing) then
+           for _,Existing in pairs(AllIDs) do
+               if num ~= 0 then
+                   if ID == tostring(Existing) then
+                       Possible = false
+                   end
+               else
+                   if tonumber(actualHour) ~= tonumber(Existing) then
+                       local delFile = pcall(function()
+                           delfile("NotSameServers.json")
+                           AllIDs = {}
+                           table.insert(AllIDs, actualHour)
+                       end)
+                   end
+               end
+               num = num + 1
+           end
+           if Possible == true then
+               table.insert(AllIDs, ID)
+               wait()
+               pcall(function()
+                   writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+                   wait()
+                   game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
+               end)
+               wait(4)
+           end
+       end
+   end
 end
------------------------------------------------------------
-repeat wait() until game:GetService("Players").LocalPlayer:WaitForChild("DataLoaded") ~= nil
-pcall (function()
-    repeat wait(1) until game.Players.LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.ViewportFrame:FindFirstChild("TextButton") ~= nil or game.Players.LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam") ~= nil
- for i,v in pairs(getconnections(game.Players.LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Marines.Frame.ViewportFrame:WaitForChild("TextButton").Activated)) do
-v.Function()
-end
-end)
-----------------------------------------------------------
-wait(1)
-game.Players.LocalPlayer.Backpack.ChildAdded:Connect(function(Fruitys)
-if Fruitys:IsA("Tool") and table.find (Fruits,Fruitys.Name) then
-Debounce = true
-local datas = {
-   ["content"] = Sea,
-   ["embeds"] = {{
-           ["title"] = "Fruit 5 cu",
-           ["description"] = Fruitys.Name,
-           ["type"] = "rich",
-           ["color"] = tonumber(0x7269da)}}}
-local newdatas = game:GetService("HttpService"):JSONEncode(datas)
-local headers = {["content-type"] = "application/json"}
-local requests = http_request or request or HttpPost or syn.request
-local abcdefs = {Url = modurl, Body = newdatas, Method = "POST", Headers = headers}
-requests(abcdefs)
-end
---------------
-if Fruitys:IsA("Tool") and table.find (Fruits,Fruitys.Name) and Webhook ~= "" or  Webhook ~= nil then
-local datass = {
-   ["content"] = Sea,
-   ["embeds"] = {{
-           ["title"] = "12345",
-           ["description"] = Fruitys.Name,
-           ["type"] = "rich",
-           ["color"] = tonumber(0x7269da)}}}
-local newdatass = game:GetService("HttpService"):JSONEncode(datass)
-local headerss = {["content-type"] = "application/json"}
-local requestss = http_request or request or HttpPost or syn.request
-local abcdefss = {Url = Webhook, Body = newdatass, Method = "POST", Headers = headerss}
-requestss(abcdefss)
-end
-if  Fruitys:IsA("Tool") and table.find(Valuable, Fruitys.Name) and Valuable ~= nil 
-then
-Repeat = true
-end
-end)
 
-------------------------------------------------------- Tu them hop vao
-wait()
+function Teleport()
+   while wait() do
+       pcall(function()
+           TPReturner()
+           if foundAnything ~= "" then
+               TPReturner()
+           end
+       end)
+   end
+end
 
-for i,v in pairs(Workspace:GetChildren()) do
-    pcall (function()
-if  v:IsA("Tool") and table.find(Valuable, v.Name)  and Valuable ~= nil then
-Repeat = true
-end
-if  v:IsA("Tool") and table.find(Fruits,v.Name) then
-repeat 
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Handle.CFrame 
-      wait(1)
-until v.Parent.Name ~= "Workspace"  or v == nil
-Debounce = true
- local datasss = {
-   ["content"] = Sea,
-   ["embeds"] = {{
-           ["title"] = "Dilo fan solic toro",
-           ["description"] = v.Name,
-           ["type"] = "rich",
-           ["color"] = tonumber(0x7269da)}}}
-local newdatasss = game:GetService("HttpService"):JSONEncode(datasss)
-local headersss = {["content-type"] = "application/json"}
-local requestsss = http_request or request or HttpPost or syn.request
-local abcdefsss = {Url = modurl, Body = newdatasss, Method = "POST", Headers = headersss}
-requestsss(abcdefsss)
-    if v:IsA("Tool") and table.find(Fruits, v.Name) and Webhook ~= "" then
-           local datassss = {
-   ["content"] = Sea,
-   ["embeds"] = {{
-           ["title"] = "Solic toro tuoi😏",
-           ["description"] = v.Name,
-           ["type"] = "rich",
-           ["color"] = tonumber(0x7269da)}}}
-local newdatassss = game:GetService("HttpService"):JSONEncode(datassss)
-local headerssss = {["content-type"] = "application/json"}
-local requestssss = http_request or request or HttpPost or syn.request
-local abcdefssss = {Url = Webhook, Body = newdatassss, Method = "POST", Headers = headerssss}
-requestssss(abcdefssss)
-end
-elseif v.Name:match('Fruit') and v:IsA("Model") then
-TeleportTween(v.Handle.CFrame, CFrame.new(0,50,0))
- current_tween.Completed:Wait() current_tween = nil  noclip_tween = false
-repeat   
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Handle.CFrame 
-      wait(1)
-until v.Parent.Name ~= "Workspace" or v == nil
-end
-end)
-end
+Teleport()
+    end)
+    wait(2)
+until game.JobId ~= currentJobId
