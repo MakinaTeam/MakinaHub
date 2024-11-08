@@ -4416,7 +4416,7 @@ task.spawn(function()
     end
 end)
 
-Tabs.AutomaticTab:AddToggle("", {Title = "Auto Soul Reaper", Default = _G.Config["Soul Reaper"]["Auto Soul Reaper"],Description = "- If you click this Button, You will event hallow  !" }):OnChanged(function(Value)
+Tabs.AutomaticTab:AddToggle("", {Title = "Auto Soul Reaper", Default = _G.Config["Soul Reaper"]["Auto Soul Reaper"],Description = "- If you click this Button, You will event hallow essence  !" }):OnChanged(function(Value)
 _G.AutoFarmBossHallow =  Value
 _G.Config["Soul Reaper"]["Auto Soul Reaper"] =  Value
 Saveconfig()
