@@ -2039,27 +2039,26 @@ end
             local v321 = {};
             if (v320 == 2753915549) then
                 v321 = {
-                    Sky3 = Vector3.new( -7894, 5547, -380),
-                    Sky3Exit = Vector3.new( -4607, 874, -1667),
-                    UnderWater = Vector3.new(61163, 11, 1819),
-                    UnderwaterExit = Vector3.new(4050, -1, -1814)
+                    ["1"] = Vector3.new(-7894.6201171875, 5545.49169921875, -380.2467346191406),
+                    ["2"] = Vector3.new(-4607.82275390625, 872.5422973632812, -1667.556884765625),
+                    ["3"] = Vector3.new(61163.8515625, 11.759522438049316, 1819.7841796875),
+                    ["4"] = Vector3.new(3876.280517578125, 35.10614013671875, -1939.3201904296875)
                 };
             elseif (v320 == 4442272183) then
                 v321 = {
-                    ["Swan Mansion"] = Vector3.new( -390, 332, 673),
-                    ["Swan Room"] = Vector3.new(2285, 15, 905),
-                    ["Cursed Ship"] = Vector3.new(923, 126, 32852),
-                    ["Zombie Island"] = Vector3.new( -6509, 83, -133)
+                    ["Mansion"] = Vector3.new(-288.46246337890625, 306.130615234375, 597.9988403320312),
+                    ["Flamingo"] = Vector3.new(2284.912109375, 15.152046203613281, 905.48291015625),
+                    ["122"] = Vector3.new(923.21252441406, 126.9760055542, 32852.83203125),
+                    ["3032"] = Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422)
                 };
             elseif (v320 == 7449423635) then
                 v321 = {
-                    ["Floating Turtle"] = Vector3.new( -12462, 375, -7552),
-                    ["Hydra Island"] = Vector3.new(5745, 610, -267),
-                    Mansion = Vector3.new( -12462, 375, -7552),
-                    Castle = Vector3.new( -5036, 315, -3179),
-                    ["Beautiful Pirate"] = Vector3.new(5319, 23, -93),
-                    ["Beautiful Room"] = Vector3.new(5314.58203, 22.5364361, -125.942276, 1, 2.1476277e-8, -1.9911115e-13, -2.1476277e-8, 1, -3.0510602e-8, 1.984559e-13, 3.0510602e-8, 1),
-                    ["Temple of Time"] = Vector3.new(28286, 14897, 103)
+                    ["Caslte On The Sea"] = Vector3.new(-5058.77490234375, 314.5155029296875, -3155.88330078125),
+                    ["Hydra"] = Vector3.new(5756.83740234375, 610.4240112304688, -253.9253692626953),
+                    ["Mansion"] = Vector3.new(-12463.8740234375, 374.9144592285156, -7523.77392578125),
+                    ["Great Tree"] = Vector3.new(28282.5703125, 14896.8505859375, 105.1042709350586),
+                    ["Ngu1"] = Vector3.new(-11993.580078125, 334.7812805175781, -8844.1826171875),
+                    ["ngu2"] = Vector3.new(5314.58203125, 25.419387817382812, -125.94227600097656)
                 };
             end
             for v764, v765 in pairs(v321) do
@@ -2087,7 +2086,7 @@ end
                 if  not v326 then
                     return;
                 end
-                --local v1379 = (v326.Position - v327.Character.HumanoidRootPart.Position).Magnitude;
+                local v1379 = (v326.Position - v327.Character.HumanoidRootPart.Position).Magnitude;
                 local v1380 = CheckNearestTeleporter(v326);
                 if v1380 then
                     requestEntrance(v1380);
