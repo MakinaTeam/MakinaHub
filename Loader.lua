@@ -431,12 +431,6 @@ for f, f in next, workspace:GetChildren() do
             local e = e:Clone()
             e.Parent = b.HumanoidRootPart
             local a =
-                c:Create(
-                b.HumanoidRootPart,
-                TweenInfo.new((a:DistanceFromCharacter(f.Handle.Position) - 0) / 300, Enum.EasingStyle.Linear),
-                {CFrame = f.Handle.CFrame + Vector3.new(0, f.Handle.Size.Y, 0)}
-            )
-            a:Play()
             a.Completed:Wait()
             b.HumanoidRootPart.CFrame = f.Handle.CFrame
             d:Destroy()
