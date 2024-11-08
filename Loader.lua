@@ -6,6 +6,8 @@ elseif game.PlaceId == 7449423635 then
     World3 = true
 end
 
+getgenv().TweenSpeed = 350
+
         if World3 then
             distbyp = 5000;
             island = {
