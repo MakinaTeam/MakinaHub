@@ -3634,128 +3634,231 @@ spawn(function()
     end
 end)
 
-Tabs.AutomaticTab:AddSection("\\\\ Mobs //")
+Tabs.AutomaticTab:AddSection("\\\\ Dough King //")
 
-Tabs.AutomaticTab:AddSlider("", {Title = "Distance",Default = _G.Config["Mob"]["Distance"],Min = 0,Max = 5000,Rounding = 1,Description = "- If you pos this slider, Choose mob on the island !"}):OnChanged(function(Value)
-_G.Distance = Value
-_G.Config["Mob"]["Distance"] = Value
-Saveconfig()
-end)
-_G.Distance = 2500
-Tabs.AutomaticTab:AddToggle("", {Title = "Mob Aura", Default = _G.Config["Mob"]["Mob Aura"],Description = "- If you click this Button, You will auto Killing mob on the island !" }):OnChanged(function(Value)
-_G.AutoFarmNearest = Value
-_G.Config["Mob"]["Mob Aura"] =  Value
-Saveconfig()
-end)
+local DoDoughKing = Tabs.AutomaticTab:AddParagraph({
+Title = "- If you this checking, Status Dough King !",
+Content = ""
+})
 
-		do
-		task = task or getrenv().task;
-		fastSpawn,fastWait,delay = task.spawn,task.wait,task.delay
-	end
-	spawn(function()
-		while wait() do
-			if _G.AutoFarmNearest then
-				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-					if _G.AutoFarmNearest and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= _G.Distance then
-						repeat wait()
-              AutoHaki()
-
-BringMob(v.Name,v.HumanoidRootPart.CFrame)
-							
-EquipWeapon(_G.SelectWeapon)
-							toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))                            
-							if delay then
-								delay(1,function()							
-								end)
-							end 
-						until not _G.AutoFarmNearest or not v.Parent or v.Humanoid.Health <= 0
-					end
-				end
+spawn(
+function()
+	while wait() do
+		pcall(  
+		function()
+			if string.len(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")) == 88 then
+DoDoughKing:SetDesc("Task : Have " .. string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), 39, 41) .. " more left")
+			elseif string.len(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")) == 87 then
+DoDoughKing:SetDesc("Task : Have " .. string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), 39, 40) .. " more left")
+			elseif string.len(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")) == 86 then
+DoDoughKing:SetDesc("Task : Have " .. string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), 39, 39) .. " more left")
+			else
 			end
-		end
-	end)
-
-Tabs.AutomaticTab:AddSection("\\\\ Sword //")
-
-local AllSwordInInventroy = {};
-pcall(function()
-	for i, v in pairs(game:GetService("ReplicatedStorage").Remotes['CommF_']:InvokeServer("getInventoryWeapons")) do
-		if (type(v) ~= "table") then
-		elseif (v.Type == "Sword") then
-			table.insert(AllSwordInInventroy, v.Name);
-		end
+		end)
 	end
 end)
 
-Tabs.AutomaticTab:AddDropdown('', {Values = AllSwordInInventroy,Default = _G.Config["Sword"]["Select Sword"],Title = "Select Sword",Description = "- If you click this Button, Choose Sword for farming !"}):OnChanged(function(Value)
-SelectSword = Value
-_G.Config["Sword"]["Select Sword"] = Value
+Tabs.AutomaticTab:AddToggle("", {Title = "Auto Dough King", Default = _G.Config["DoughKing"]["Auto Dough King"],Description = "- If you click this Button, You will unlock door mochi full !" }):OnChanged(function(Value)
+_G.KatakuriV2 = Value
+_G.Config["DoughKing"]["Auto Dough King"] =  Value
 Saveconfig()
 end)
 
-Tabs.AutomaticTab:AddToggle("", {Title = "Auto Farm Sword", Default = _G.Config["Sword"]["Auto Farm Sword"],Description = "- If you click this Button, You will auto farm kill sword on farm bone !" }):OnChanged(function(Value)
-_G.Config["Sword"]["Auto Farm Sword"] = Value
-Saveconfig()
-FarmMasterySword = Value
-if FarmMasterySword then game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LoadItem",SelectSword)
-end
+spawn(function()
+	while wait() do
+		if _G.KatakuriV2 then
+			pcall(function()
+				if game.Players.LocalPlayer.Backpack:FindFirstChild("God's Chalice") or game.Players.LocalPlayer.Character:FindFirstChild("God's Chalice") then
+					if string.find(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SweetChaliceNpc"), "Where") then
+						game.StarterGui:SetCore("SendNotification", {
+							Title = "Notification",
+							Text = "Not Have Enough Material" ,
+							Icon = "http://www.roblox.com/asset/?id=",
+							Duration = 2.5
+						})
+					else
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SweetChaliceNpc")
+					end
+				elseif game.Players.LocalPlayer.Backpack:FindFirstChild("Sweet Chalice") or game.Players.LocalPlayer.Character:FindFirstChild("Sweet Chalice") then
+					if string.find(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), "Do you want to open the portal now?") then
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")
+					else
+						if game.Workspace.Enemies:FindFirstChild("Baking Staff") or game.Workspace.Enemies:FindFirstChild("Head Baker") or game.Workspace.Enemies:FindFirstChild("Cake Guard") or game.Workspace.Enemies:FindFirstChild("Cookie Crafter")  then
+							for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+								if (v.Name == "Baking Staff" or v.Name == "Head Baker" or v.Name == "Cake Guard" or v.Name == "Cookie Crafter") and v.Humanoid.Health > 0 then
+									repeat
+										wait()
+										AutoHaki()
 
-        task.spawn(function()
-                    while wait() do
-                        pcall(function()
-						if FarmMasterySword and World3 then
-if World3 then
-							if game:GetService("Workspace").Enemies:FindFirstChild("Reborn Skeleton") or game:GetService("Workspace").Enemies:FindFirstChild("Living Zombie") or game:GetService("Workspace").Enemies:FindFirstChild("Demonic Soul") or game:GetService("Workspace").Enemies:FindFirstChild("Posessed Mummy") then
-								for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-									if v.Name == "Reborn Skeleton" or v.Name == "Living Zombie" or v.Name == "Demonic Soul" or v.Name == "Posessed Mummy" then
-										if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-											repeat wait()					
-                         AutoHaki()
-
-toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,30,0))
+toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
 
 BringMob(v.Name,v.HumanoidRootPart.CFrame)
-							
-EquipWeaponSword()
-											    
-v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-												
-v.Humanoid.JumpPower = 0
-												
-v.Humanoid.WalkSpeed = 0
+										EquipWeapon(_G.SelectWeapon)								
+										
+									until _G.KatakuriV2 == false or game:GetService("ReplicatedStorage"):FindFirstChild("Cake Prince") or not v.Parent or v.Humanoid.Health <= 0
+								end
+							end
+						else												toTarget(CFrame.new(-1820.0634765625, 210.74781799316406, -12297.49609375))
+						end
+					end
+				elseif game.ReplicatedStorage:FindFirstChild("Dough King") or game:GetService("Workspace").Enemies:FindFirstChild("Dough King") then
+					if game:GetService("Workspace").Enemies:FindFirstChild("Dough King") then
+						for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+							if v.Name == "Dough King" then
+								repeat
+									wait()
+									AutoHaki()
+
+toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+									EquipWeapon(_G.SelectWeapon)
+									v.HumanoidRootPart.CanCollide = false
+									
+								until _G.KatakuriV2 == false or not v.Parent or v.Humanoid.Health <= 0
+							end
+						end
+					else
+						toTarget(CFrame.new(-2009.2802734375, 4532.97216796875, -14937.3076171875))
+					end
+				elseif game.Players.LocalPlayer.Backpack:FindFirstChild("Red Key") or game.Players.LocalPlayer.Character:FindFirstChild("Red Key") then
+					local args = {
+						[1] = "CakeScientist",
+						[2] = "Check"
+					}
+					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+				else
+					if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
+						if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Diablo") or string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Deandre") or string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Urban") then
+							if game:GetService("Workspace").Enemies:FindFirstChild("Diablo") or game:GetService("Workspace").Enemies:FindFirstChild("Deandre") or game:GetService("Workspace").Enemies:FindFirstChild("Urban") then
+								for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+									if v.Name == "Diablo" or v.Name == "Deandre" or v.Name == "Urban" then
+										if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+											repeat
+												wait()
+												AutoHaki()
+
+toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+												EquipWeapon(_G.SelectWeapon)
 												v.HumanoidRootPart.CanCollide = false
-												v.Humanoid:ChangeState(11)											
-											until not FarmMasterySword or v.Humanoid.Health <= 0 or not v.Parent or v.Humanoid.Health <= 0					
+												v.Humanoid.WalkSpeed = 0
+																							sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRadius", math.huge)
+											until _G.KatakuriV2 == false or v.Humanoid.Health <= 0 or not v.Parent or game.Players.LocalPlayer.Backpack:FindFirstChild("God's Chalice") or game.Players.LocalPlayer.Character:FindFirstChild("God's Chalice")
 										end
 									end
 								end
 							else
-								toTarget(CFrame.new(-9504.8564453125, 172.14292907714844, 6057.259765625))
+								if game:GetService("ReplicatedStorage"):FindFirstChild("Diablo") then
+									toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Diablo").HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
+								elseif game:GetService("ReplicatedStorage"):FindFirstChild("Deandre") then
+									toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Deandre").HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
+								elseif game:GetService("ReplicatedStorage"):FindFirstChild("Urban") then
+									toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Urban").HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
+								end
 							end
-							else						    
-						    end
-                     end
-                            
-                            
-                        end)
-                    end
-end)
+						end
+					else
+						wait(0.5)
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("EliteHunter")
+					end
+				end
+			end)
+		end
+	end
 end)
 
-function EquipWeaponSword()
-	pcall(function()
-		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-			if v.ToolTip == "Sword" and v:IsA('Tool') then
-				local ToolHumanoid = game.Players.LocalPlayer.Backpack:FindFirstChild(v.Name) 
-				game.Players.LocalPlayer.Character.Humanoid:EquipTool(ToolHumanoid) 
-			end
-		end
-	end)
+Tabs.AutomaticTab:AddToggle("", {Title = "Auto Dough King Hop", Default = _G.Config["DoughKing"]["Auto Dough King Hop"],Description = "- If you click this Button, You will unlock door mochi  !" }):OnChanged(function(Value)
+_G.KatakuriV2Hop = Value
+_G.Config["DoughKing"]["Auto Dough King Hop"] =  Value
+Saveconfig()
+end)
+
+spawn(function()
+pcall(function()
+while wait(.1) do
+if _G.KatakuriV2 and _G.KatakuriV2Hop and World3 and not game:GetService("ReplicatedStorage"):FindFirstChild("Dough King") and not game:GetService("Workspace").Enemies:FindFirstChild("Dough King") and not game:GetService("ReplicatedStorage"):FindFirstChild("Diablo") and not game:GetService("Workspace").Enemies:FindFirstChild("Diablo") and not game:GetService("ReplicatedStorage"):FindFirstChild("Deandre") and not game:GetService("Workspace").Enemies:FindFirstChild("Deandre") and not game:GetService("ReplicatedStorage"):FindFirstChild("Urban") and not game:GetService("Workspace").Enemies:FindFirstChild("Urban") and not game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("God's Chalice") or game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Sweet Chalice") then
+Hop()
 end
+    end
+        end)
+    end)
+
+Tabs.AutomaticTab:AddSection("\\\\ Bones //")
+
+local DoBones = Tabs.AutomaticTab:AddParagraph({
+Title = "- If you this checking, Status Bones !",
+Content = "You' now having : "..CheckItem"Bones"..(" Bones")
+})
+Tabs.AutomaticTab:AddToggle("", {Title = "Auto Farm Bone", Default = _G.Config["Bones"]["Auto Farm Bones"],Description = "- If you click this Button, You will farm reborn skeleton  !" }):OnChanged(function(Value)
+_G.Auto_Bone = Value
+_G.Config["Bones"]["Auto Farm Bones"] =  Value
+Saveconfig()
+end)
+
+spawn(function()
+    while task.wait() do
+        if _G.Auto_Bone then
+            pcall(function()
+                if game:GetService("Workspace").Enemies:FindFirstChild("Reborn Skeleton") or game:GetService("Workspace").Enemies:FindFirstChild("Living Zombie") or game:GetService("Workspace").Enemies:FindFirstChild("Demonic Soul") or game:GetService("Workspace").Enemies:FindFirstChild("Posessed Mummy") then
+                    for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                        if v.Name == "Reborn Skeleton" or v.Name == "Living Zombie" or v.Name == "Demonic Soul" or v.Name == "Posessed Mummy" then
+                            if v.Humanoid.Health > 0 and v:FindFirstChild("HumanoidRootPart") and v.Parent and _G.Auto_Bone then
+                                repeat task.wait()
+                                    AutoHaki()
+                                    toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+                                    EquipWeapon(_G.SelectWeapon)
+                                    BringMob(v.Name,v.HumanoidRootPart.CFrame)
+                                    v.HumanoidRootPart.CanCollide = false
+                                    v.Humanoid.WalkSpeed = 0
+                                    v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+                                until v.Humanoid.Health <= 0 or not v.Parent or not v:FindFirstChild("HumanoidRootPart") or not _G.Auto_Bone
+                            end
+                        end
+                    end
+                else
+					toTarget(CFrame.new(-9506.234375, 172.130615234375, 6117.0771484375))
+                    if game:GetService("ReplicatedStorage"):FindFirstChild("Reborn Skeleton") then
+                        toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Reborn Skeleton").HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
+                    end
+                       if game:GetService("ReplicatedStorage"):FindFirstChild("Living Zombie") then
+                        toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Living Zombie").HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
+                    end
+                       if game:GetService("ReplicatedStorage"):FindFirstChild("Reborn Skeleton") then
+                        toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Reborn Skeleton").HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
+                    end
+                    if game:GetService("ReplicatedStorage"):FindFirstChild("Demonic Soul") then
+                        toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Demonic Soul").HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
+                    end
+                       if game:GetService("ReplicatedStorage"):FindFirstChild("Posessed Mummy") then
+                        toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Posessed Mummy").HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
+                    end                                                                     
+                end
+            end)
+        end
+    end
+end)
+
+Tabs.AutomaticTab:AddToggle("", {Title = "Trade With Death King", Default = _G.Config["Bones"]["Trade With Death King"],Description = "- If you click this Button, You will random bones  !" }):OnChanged(function(Value)
+_G.RandomBone =  Value
+_G.Config["Bones"]["Trade With Death King"] =  Value
+Saveconfig()
+end)
+
+spawn(function()
+	while wait() do
+		if _G.RandomBone then
+			local args = {
+				[1] = "Bones",
+				[2] = "Buy",
+				[3] = 1,
+				[4] = 1
+			}
+			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+		end
+	end
+end)
 
 Tabs.AutomaticTab:AddSection("\\\\ Chest //")
 
-local DoChest = Tabs.AutomaticTab:AddParagraph({
+local DoChest = Tabs.GeneralTab:AddParagraph({
 Title = "- If you this checking, Status Count Chest !",
 Content = ""
 })
@@ -3769,18 +3872,18 @@ spawn(function()
 				count10 = count10 + 1
 			end
 		end
-		DoChest:SetDesc("Total : "..count10.."Chest")
+		DoChest:SetDesc("Total : "..count10.." Chest")
 		wait(5)
 	end
 end)
 
-Tabs.AutomaticTab:AddToggle("", {Title = "Auto Collect Chest", Default = _G.Config["Chest"]["Auto Farm Chest"],Description = "- If you click this Button, You will tween find chest !" }):OnChanged(function(Value)
+Tabs.GeneralTab:AddToggle("", {Title = "Auto Collect Chest", Default = _G.Config["Chest"]["Auto Farm Chest"],Description = "- If you click this Button, You will tween find chest !" }):OnChanged(function(Value)
 Grab_Chest = Value
 _G.Config["Chest"]["Auto Farm Chest"] = Value
 Saveconfig()
 end)
 
-Tabs.AutomaticTab:AddToggle("", {Title = "Auto Collect Chest Hop", Default = _G.Config["Chest"]["Auto Farm Chest Hop"],Description = "- If you click this Button, You will change server find chest !" }):OnChanged(function(Value)
+Tabs.GeneralTab:AddToggle("", {Title = "Auto Collect Chest Hop", Default = _G.Config["Chest"]["Auto Farm Chest Hop"],Description = "- If you click this Button, You will change server find chest !" }):OnChanged(function(Value)
 _G.AutoFarmChestHop = Value
 _G.Config["Chest"]["Auto Farm Chest Hop"] = Value
 Saveconfig()
@@ -4277,432 +4380,3 @@ end
             Hop()
         end
     end)
-
-spawn(function()
-    while wait(.1) do
-        pcall(function()
-            if _G.AutoCraftTrueTripleKatana then
-                local args = {
-                    [1] = "LegendarySwordDealer",
-                    [2] = "2"
-                }
-                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-            end
-        end)
-    end
-end)
-
-local function inmyself(name)
-	return game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(name) or game:GetService("Players").LocalPlayer.Character:FindFirstChild(name);
-end
-
-Tabs.AutomaticTab:AddSection("\\\\ Weapon //")
-
-Tabs.AutomaticTab:AddDropdown('', {Values = {"Pole 1st Form","Saber","Rengoku"},Default = _G.Config["Weapon"]["Select Weapon"],Title = "Select Weapon",Description = "- If you click this Button, Choose sword for auto item !"}):OnChanged(function(Value)
-_G.SelectSword = Value
-_G.Config["Weapon"]["Select Weapon"] = Value
-Saveconfig()
-end)
-
-Tabs.AutomaticTab:AddToggle("", {Title = "Auto Fully Weapon", Default = _G.Config["Weapon"]["Auto Fully Weapon"],Description = "- If you click this Button, You will auto fully sword !" }):OnChanged(function(Value)
-_G.AutoFullySword = Value
-_G.Config["Weapon"]["Auto Fully Weapon"] =  Value
-Saveconfig()
-end)
-
-spawn(function()
-    while wait() do
-        if _G.SelectSword == "Pole 1st Form" and _G.AutoFullySword and World1 then
-            pcall(function()
-                if game:GetService("Workspace").Enemies:FindFirstChild("Thunder God") then
-                    for _, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                        if v.Name == "Thunder God" then
-                            if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                                repeat
-                                    task.wait()
-                                    AutoHaki()
-
-toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
-
-EquipWeapon(_G.SelectWeapon)
-                                    v.HumanoidRootPart.CanCollide = false
-                                    v.Humanoid.WalkSpeed = 0
-                                    v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)                                                                
-                                until not _G.Autopole or not v.Parent or v.Humanoid.Health <= 0
-                            end
-                        end
-                    end
-                    else
-                        if game:GetService("ReplicatedStorage"):FindFirstChild("Thunder God") then
- toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Thunder God").HumanoidRootPart.CFrame * CFrame.new(5,10,7))
-                        else
-                            if _G.AutoPoleHop then
-                                Hop()
-                            end
-                        end
-                    end
-                end)
-            end
-        end
-    end)
-
-        spawn(function()
-        while task.wait() do
-            if _G.SelectSword == "Saber" and _G.AutoFullySword and game.Players.LocalPlayer.Data.Level.Value >= 200 and World1 then
-                pcall(function()
-                    if game:GetService("Workspace").Map.Jungle.Final.Part.Transparency == 0 then
-                        if game:GetService("Workspace").Map.Jungle.QuestPlates.Door.Transparency == 0 then
-                            if (CFrame.new(-1612.55884, 36.9774132, 148.719543, 0.37091279, 3.0717151e-09, -0.928667724, 3.97099491e-08, 1, 1.91679348e-08, 0.928667724, -4.39869794e-08, 0.37091279).Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 100 then
-                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-                                wait(1)
-                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map.Jungle.QuestPlates.Plate1.Button.CFrame
-                                wait(1)
-                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map.Jungle.QuestPlates.Plate2.Button.CFrame
-                                wait(1)
-                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map.Jungle.QuestPlates.Plate3.Button.CFrame
-                                wait(1)
-                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map.Jungle.QuestPlates.Plate4.Button.CFrame
-                                wait(1)
-                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map.Jungle.QuestPlates.Plate5.Button.CFrame
-                                wait(1)
-                            else
-                                toTarget(CFrame.new(-1612.55884, 36.9774132, 148.719543, 0.37091279, 3.0717151e-09, -0.928667724, 3.97099491e-08, 1, 1.91679348e-08, 0.928667724, -4.39869794e-08, 0.37091279))
-                            end
-                        else
-                            if game:GetService("Workspace").Map.Desert.Burn.Part.Transparency == 0 then
-                                if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Torch") or game.Players.LocalPlayer.Character:FindFirstChild("Torch") then
-                                    EquipWeapon("Torch")
-                                    toTarget(CFrame.new(1114.61475, 5.04679728, 4350.22803, -0.648466587, -1.28799094e-09, 0.761243105, -5.70652914e-10, 1, 1.20584542e-09, -0.761243105, 3.47544882e-10, -0.648466587))
-                                  else
-                                  toTarget(CFrame.new(-1610.00757, 11.5049858, 164.001587, 0.984807551, -0.167722285, -0.0449818149, 0.17364943, 0.951244235, 0.254912198, 3.42372805e-05, -0.258850515, 0.965917408))
-                                end
-                            else
-                                if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress","SickMan") ~= 0 then
-                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress","GetCup")
-                                    wait(0.5)
-                                    EquipWeapon("Cup")
-                                    wait(0.5)
-                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress","FillCup",game:GetService("Players").LocalPlayer.Character.Cup)
-                                    wait(0)
-                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress","SickMan")
-                                else
-                                    if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress","RichSon") == nil then
-                                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress","RichSon")
-                                    elseif game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress","RichSon") == 0 then
-                                    if game:GetService("Workspace").Enemies:FindFirstChild("Mob Leader") or game:GetService("ReplicatedStorage"):FindFirstChild("Mob Leader") then
-										toTarget(CFrame.new(-2967.59521, -4.91089821, 5328.70703, 0.342208564, -0.0227849055, 0.939347804, 0.0251603816, 0.999569714, 0.0150796166, -0.939287126, 0.0184739735, 0.342634559)) 
-                                            for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                                if v.Name == "Mob Leader" then
-                                                   if game:GetService("Workspace").Enemies:FindFirstChild("Mob Leader") then
-                                                    if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                                                        repeat task.wait()
-                                                        AutoHaki()
-                                                        EquipWeapon(_G.SelectWeapon)
-                                                        v.HumanoidRootPart.CanCollide = false
-                                                        v.Humanoid.WalkSpeed = 0
-                                                        v.HumanoidRootPart.Size = Vector3.new(80,80,80)                             
-                                                              toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,30,0))                                                    
-                                                        until v.Humanoid.Health <= 0 or not _G.AutoFullySword
-                                                     end
-                                                end
-                                                if game:GetService("ReplicatedStorage"):FindFirstChild("Mob Leader") then
-                                                    toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Mob Leader").HumanoidRootPart.CFrame * CFrame.new(2, -9, 2))
-                                                end
-                                            end
-                                        end
-                                     end
-                                    elseif game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress","RichSon") == 1 then
-                                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress","RichSon")
-                                        wait(0.5)
-                                        EquipWeapon("Relic")
-                                        wait(0.5)
-                                        toTarget(CFrame.new(-1404.91504, 29.9773273, 3.80598116, 0.876514494, 5.66906877e-09, 0.481375456, 2.53851997e-08, 1, -5.79995607e-08, -0.481375456, 6.30572643e-08, 0.876514494))
-                                    end
-                                end
-                            end
-                        end
-                    else
-                        if game:GetService("Workspace").Enemies:FindFirstChild("Saber Expert") or game:GetService("ReplicatedStorage"):FindFirstChild("Saber Expert") then
-                            for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                                    if v.Name == "Saber Expert" then
-                                        repeat task.wait()
-                                            EquipWeapon(_G.SelectWeapon)
-                                                  toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,30,0))
-                                            v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-                                            v.HumanoidRootPart.Transparency = 1
-                                            v.Humanoid.JumpPower = 0
-                                            v.Humanoid.WalkSpeed = 0
-                                            v.HumanoidRootPart.CanCollide = false
-                                            --v.Humanoid:ChangeState(11)
-                                            --v.Humanoid:ChangeState(14)
-                                            FarmPos = v.HumanoidRootPart.CFrame
-                                            MonFarm = v.Name
-                                        until v.Humanoid.Health <= 0 or not _G.AutoFullySword
-                                        if v.Humanoid.Health <= 0 then
-                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress","PlaceRelic")
-                                        end
-                                    end
-                                end
-                            end
-                        end
-                    end
-                end)
-            end
-        end
-    end)
-
-spawn(function()
-	pcall(function()
-		while wait() do
-			if _G.SelectSword == "Rengoku" and _G.AutoFullySword and World2 then
-				if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Hidden Key") or game:GetService("Players").LocalPlayer.Character:FindFirstChild("Hidden Key") then
-					EquipWeapon("Hidden Key")				Tween(CFrame.new(6571.1201171875, 299.23028564453, -6967.841796875))
-				elseif game:GetService("Workspace").Enemies:FindFirstChild("Awakened Ice Admiral") or 
-game:GetService("Workspace").Enemies:FindFirstChild("Snow Lurker") or game:GetService("Workspace").Enemies:FindFirstChild("Arctic Warrior") then
-					for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-						if (v.Name == "Awakened Ice Admiral" or v.Name == "Snow Lurker" or v.Name == "Arctic Warrior") and v.Humanoid.Health > 0 then
-                 repeat task.wait()
-                  
-AutoHaki()
-
-toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
-
-EquipWeapon(_G.SelectWeapon)
-
-BringMob(v.Name,v.HumanoidRootPart.CFrame)
-
-v.HumanoidRootPart.CanCollide = false
-                                    v.Humanoid.WalkSpeed = 0
-                                    v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
-                                until not _G.AutoFullySword or not v.Parent or v.Humanoid.Health <= 0
-						end
-					end
-				else					toTarget(CFrame.new(5439.716796875, 84.420944213867, -6715.1635742188))
-				end
-			end
-		end
-	end)
-end)
-
-Tabs.AutomaticTab:AddSection("\\\\ Dough King //")
-
-local DoDoughKing = Tabs.AutomaticTab:AddParagraph({
-Title = "- If you this checking, Status Dough King !",
-Content = ""
-})
-
-spawn(
-function()
-	while wait() do
-		pcall(  
-		function()
-			if string.len(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")) == 88 then
-DoDoughKing:SetDesc("Task : Have " .. string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), 39, 41) .. " more left")
-			elseif string.len(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")) == 87 then
-DoDoughKing:SetDesc("Task : Have " .. string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), 39, 40) .. " more left")
-			elseif string.len(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")) == 86 then
-DoDoughKing:SetDesc("Task : Have " .. string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), 39, 39) .. " more left")
-			else
-			end
-		end)
-	end
-end)
-
-Tabs.AutomaticTab:AddToggle("", {Title = "Auto Dough King", Default = _G.Config["DoughKing"]["Auto Dough King"],Description = "- If you click this Button, You will unlock door mochi full !" }):OnChanged(function(Value)
-_G.KatakuriV2 = Value
-_G.Config["DoughKing"]["Auto Dough King"] =  Value
-Saveconfig()
-end)
-
-spawn(function()
-	while wait() do
-		if _G.KatakuriV2 then
-			pcall(function()
-				if game.Players.LocalPlayer.Backpack:FindFirstChild("God's Chalice") or game.Players.LocalPlayer.Character:FindFirstChild("God's Chalice") then
-					if string.find(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SweetChaliceNpc"), "Where") then
-						game.StarterGui:SetCore("SendNotification", {
-							Title = "Notification",
-							Text = "Not Have Enough Material" ,
-							Icon = "http://www.roblox.com/asset/?id=",
-							Duration = 2.5
-						})
-					else
-						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SweetChaliceNpc")
-					end
-				elseif game.Players.LocalPlayer.Backpack:FindFirstChild("Sweet Chalice") or game.Players.LocalPlayer.Character:FindFirstChild("Sweet Chalice") then
-					if string.find(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), "Do you want to open the portal now?") then
-						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")
-					else
-						if game.Workspace.Enemies:FindFirstChild("Baking Staff") or game.Workspace.Enemies:FindFirstChild("Head Baker") or game.Workspace.Enemies:FindFirstChild("Cake Guard") or game.Workspace.Enemies:FindFirstChild("Cookie Crafter")  then
-							for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-								if (v.Name == "Baking Staff" or v.Name == "Head Baker" or v.Name == "Cake Guard" or v.Name == "Cookie Crafter") and v.Humanoid.Health > 0 then
-									repeat
-										wait()
-										AutoHaki()
-
-toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
-
-BringMob(v.Name,v.HumanoidRootPart.CFrame)
-										EquipWeapon(_G.SelectWeapon)								
-										
-									until _G.KatakuriV2 == false or game:GetService("ReplicatedStorage"):FindFirstChild("Cake Prince") or not v.Parent or v.Humanoid.Health <= 0
-								end
-							end
-						else												toTarget(CFrame.new(-1820.0634765625, 210.74781799316406, -12297.49609375))
-						end
-					end
-				elseif game.ReplicatedStorage:FindFirstChild("Dough King") or game:GetService("Workspace").Enemies:FindFirstChild("Dough King") then
-					if game:GetService("Workspace").Enemies:FindFirstChild("Dough King") then
-						for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-							if v.Name == "Dough King" then
-								repeat
-									wait()
-									AutoHaki()
-
-toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
-									EquipWeapon(_G.SelectWeapon)
-									v.HumanoidRootPart.CanCollide = false
-									
-								until _G.KatakuriV2 == false or not v.Parent or v.Humanoid.Health <= 0
-							end
-						end
-					else
-						toTarget(CFrame.new(-2009.2802734375, 4532.97216796875, -14937.3076171875))
-					end
-				elseif game.Players.LocalPlayer.Backpack:FindFirstChild("Red Key") or game.Players.LocalPlayer.Character:FindFirstChild("Red Key") then
-					local args = {
-						[1] = "CakeScientist",
-						[2] = "Check"
-					}
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-				else
-					if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
-						if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Diablo") or string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Deandre") or string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Urban") then
-							if game:GetService("Workspace").Enemies:FindFirstChild("Diablo") or game:GetService("Workspace").Enemies:FindFirstChild("Deandre") or game:GetService("Workspace").Enemies:FindFirstChild("Urban") then
-								for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-									if v.Name == "Diablo" or v.Name == "Deandre" or v.Name == "Urban" then
-										if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-											repeat
-												wait()
-												AutoHaki()
-
-toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
-												EquipWeapon(_G.SelectWeapon)
-												v.HumanoidRootPart.CanCollide = false
-												v.Humanoid.WalkSpeed = 0
-																							sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRadius", math.huge)
-											until _G.KatakuriV2 == false or v.Humanoid.Health <= 0 or not v.Parent or game.Players.LocalPlayer.Backpack:FindFirstChild("God's Chalice") or game.Players.LocalPlayer.Character:FindFirstChild("God's Chalice")
-										end
-									end
-								end
-							else
-								if game:GetService("ReplicatedStorage"):FindFirstChild("Diablo") then
-									toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Diablo").HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
-								elseif game:GetService("ReplicatedStorage"):FindFirstChild("Deandre") then
-									toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Deandre").HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
-								elseif game:GetService("ReplicatedStorage"):FindFirstChild("Urban") then
-									toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Urban").HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
-								end
-							end
-						end
-					else
-						wait(0.5)
-						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("EliteHunter")
-					end
-				end
-			end)
-		end
-	end
-end)
-
-Tabs.AutomaticTab:AddToggle("", {Title = "Auto Dough King Hop", Default = _G.Config["DoughKing"]["Auto Dough King Hop"],Description = "- If you click this Button, You will unlock door mochi  !" }):OnChanged(function(Value)
-_G.KatakuriV2Hop = Value
-_G.Config["DoughKing"]["Auto Dough King Hop"] =  Value
-Saveconfig()
-end)
-
-spawn(function()
-pcall(function()
-while wait(.1) do
-if _G.KatakuriV2 and _G.KatakuriV2Hop and World3 and not game:GetService("ReplicatedStorage"):FindFirstChild("Dough King") and not game:GetService("Workspace").Enemies:FindFirstChild("Dough King") and not game:GetService("ReplicatedStorage"):FindFirstChild("Diablo") and not game:GetService("Workspace").Enemies:FindFirstChild("Diablo") and not game:GetService("ReplicatedStorage"):FindFirstChild("Deandre") and not game:GetService("Workspace").Enemies:FindFirstChild("Deandre") and not game:GetService("ReplicatedStorage"):FindFirstChild("Urban") and not game:GetService("Workspace").Enemies:FindFirstChild("Urban") and not game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("God's Chalice") or game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Sweet Chalice") then
-Hop()
-end
-    end
-        end)
-    end)
-
-Tabs.AutomaticTab:AddSection("\\\\ Bones //")
-
-local DoBones = Tabs.AutomaticTab:AddParagraph({
-Title = "- If you this checking, Status Bones !",
-Content = "You' now having : "..CheckItem"Bones"..(" Bones")
-})
-Tabs.AutomaticTab:AddToggle("", {Title = "Auto Farm Bone", Default = _G.Config["Bones"]["Auto Farm Bones"],Description = "- If you click this Button, You will farm reborn skeleton  !" }):OnChanged(function(Value)
-_G.Auto_Bone = Value
-_G.Config["Bones"]["Auto Farm Bones"] =  Value
-Saveconfig()
-end)
-
-spawn(function()
-    while task.wait() do
-        if _G.Auto_Bone then
-            pcall(function()
-                if game:GetService("Workspace").Enemies:FindFirstChild("Reborn Skeleton") or game:GetService("Workspace").Enemies:FindFirstChild("Living Zombie") or game:GetService("Workspace").Enemies:FindFirstChild("Demonic Soul") or game:GetService("Workspace").Enemies:FindFirstChild("Posessed Mummy") then
-                    for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                        if v.Name == "Reborn Skeleton" or v.Name == "Living Zombie" or v.Name == "Demonic Soul" or v.Name == "Posessed Mummy" then
-                            if v.Humanoid.Health > 0 and v:FindFirstChild("HumanoidRootPart") and v.Parent and _G.Auto_Bone then
-                                repeat task.wait()
-                                    AutoHaki()
-                                    toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
-                                    EquipWeapon(_G.SelectWeapon)
-                                    BringMob(v.Name,v.HumanoidRootPart.CFrame)
-                                    v.HumanoidRootPart.CanCollide = false
-                                    v.Humanoid.WalkSpeed = 0
-                                    v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                until v.Humanoid.Health <= 0 or not v.Parent or not v:FindFirstChild("HumanoidRootPart") or not _G.Auto_Bone
-                            end
-                        end
-                    end
-                else
-					toTarget(CFrame.new(-9506.234375, 172.130615234375, 6117.0771484375))
-                    if game:GetService("ReplicatedStorage"):FindFirstChild("Reborn Skeleton") then
-                        toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Reborn Skeleton").HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
-                    end
-                       if game:GetService("ReplicatedStorage"):FindFirstChild("Living Zombie") then
-                        toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Living Zombie").HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
-                    end
-                       if game:GetService("ReplicatedStorage"):FindFirstChild("Reborn Skeleton") then
-                        toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Reborn Skeleton").HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
-                    end
-                    if game:GetService("ReplicatedStorage"):FindFirstChild("Demonic Soul") then
-                        toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Demonic Soul").HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
-                    end
-                       if game:GetService("ReplicatedStorage"):FindFirstChild("Posessed Mummy") then
-                        toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Posessed Mummy").HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
-                    end                                                                     
-                end
-            end)
-        end
-    end
-end)
-
-Tabs.AutomaticTab:AddToggle("", {Title = "Trade With Death King", Default = _G.Config["Bones"]["Trade With Death King"],Description = "- If you click this Button, You will random bones  !" }):OnChanged(function(Value)
-_G.RandomBone =  Value
-_G.Config["Bones"]["Trade With Death King"] =  Value
-Saveconfig()
-end)
-
-spawn(function()
-	while wait() do
-		if _G.RandomBone then
-			local args = {
-				[1] = "Bones",
-				[2] = "Buy",
-				[3] = 1,
-				[4] = 1
-			}
-			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-		end
-	end
-end)
