@@ -2087,7 +2087,7 @@ end
                 if  not v326 then
                     return;
                 end
-                local v1379 = (v326.Position - v327.Character.HumanoidRootPart.Position).Magnitude;
+                --local v1379 = (v326.Position - v327.Character.HumanoidRootPart.Position).Magnitude;
                 local v1380 = CheckNearestTeleporter(v326);
                 if v1380 then
                     requestEntrance(v1380);
