@@ -15,6 +15,7 @@ v63 = "Xeter Attack"
 	Fast_Attack = true
 	DamageAura = true
 	ClickNoCooldown = true
+NeedAttacking = true
 
 spawn(function()
 	while wait() do
