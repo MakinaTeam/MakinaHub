@@ -2914,8 +2914,17 @@ Saveconfig()
 end)
 
 -- Attack
-local Camera = require(game.ReplicatedStorage.Util.CameraShaker)
-Camera:Stop()
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            local Camera = require(game.ReplicatedStorage.Util.CameraShaker)
+            Camera:Stop()
+        end)
+    end
+end)
+
+
 local plr = game.Players.LocalPlayer
 
 local CbFw = debug.getupvalues(require(plr.PlayerScripts.CombatFramework))
@@ -2983,8 +2992,7 @@ end
 _G.FastAttack = true
 
 spawn(function()
-    while wait(0.01) do
-        if getupvalues(CombatFramework)[2]['activeController'].timeToNextAttack and _G.FastAttack then        
+    while wait(0.01) do    
     pcall(function()
         if getupvalues(CombatFramework)[2]['activeController'].timeToNextAttack and _G.FastAttack then
 getupvalues(CombatFramework)[2]['activeController'].increment = 3
@@ -2998,7 +3006,6 @@ getupvalues(CombatFramework)[2]['activeController'].increment = 3
                 AttackNoCD()
                 
                 
-end
 end
 end
 end
