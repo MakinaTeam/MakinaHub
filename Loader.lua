@@ -4400,7 +4400,7 @@ end)
 Tabs.AutomaticTab:AddSection("\\\\ Soul Reaper //")
 
 local DoEssence = Tabs.AutomaticTab:AddParagraph({
-Title = "- If you this checking, Status Item Hallow Essence !",
+Title = "- If you this checking, Status Hallow Essence !",
 Content = ""
 })
 
@@ -4408,9 +4408,9 @@ task.spawn(function()
     while task.wait() do
         pcall(function()
             if game.Players.LocalPlayer.Backpack:FindFirstChild("Hallow Essence") or game.Players.LocalPlayer.Character:FindFirstChild("Hallow Essence") then
-                DoEssence:SetDesc("Task : You Have Hallow Essence ")
+                DoEssence:SetDesc("Task : You Have Hallow Essence")
             else
-                DoEssence:SetDesc("Task : You don't have Hallow Essence ")
+                DoEssence:SetDesc("Task : You don't have Hallow Essence")
             end
         end)
     end
