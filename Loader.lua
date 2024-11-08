@@ -355,6 +355,7 @@ for a, a in pairs(game:GetService("Workspace"):GetChildren()) do
     end
 end
 print(NameFruit)
+_G.AutoStoreFruit = true
 spawn(
     function()
         pcall(
@@ -371,8 +372,12 @@ spawn(
     end
 )
 wait(1)
-
-Time = true
+          game.StarterGui:SetCore("SendNotification", {
+          Title = "Hiru Hub [ Premium ]",
+          Text = "Hop Server....",
+          Duration = 1,
+          })
+          Time = true
 repeat
     task.spawn(
         pcall,
