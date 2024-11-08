@@ -315,6 +315,27 @@ spawn(function()
 	end
 end)
 
+repeat
+    local ChooseTeam = game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("ChooseTeam", true)
+    local UIController = game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("UIController", true)
+    if UIController and ChooseTeam then
+        if ChooseTeam.Visible then
+            for i, v in pairs(getgc()) do
+                if type(v) == "function" and getfenv(v).script == UIController then
+                    local constant = getconstants(v)
+                    pcall(function()
+                        if (constant[1] == "Pirates" or constant[1] == "Marines") and #constant == 1 then
+                            local teamToSelect = getgenv().Team or "Pirates"
+                            if constant[1] == teamToSelect then
+                                v(teamToSelect)
+                            end
+                        end
+                    end)
+                end
+            end
+        end
+    end
+    wait(1)
 local ScreenGui = Instance.new("ScreenGui")
 local TextLabel = Instance.new("TextLabel")
 local UIGradient = Instance.new("UIGradient")
@@ -410,11 +431,6 @@ for f, f in next, workspace:GetChildren() do
             local e = e:Clone()
             e.Parent = b.HumanoidRootPart
             local a =
-                c:Create(
-                b.HumanoidRootPart,
-                TweenInfo.new((a:DistanceFromCharacter(f.Handle.Position) - 0) / 300,),
-                {CFrame = f.Handle.CFrame + Vector3.new(0, f.Handle.Size.Y, 0)}
-            )
             a:Play()
             a.Completed:Wait()
             b.HumanoidRootPart.CFrame = f.Handle.CFrame
