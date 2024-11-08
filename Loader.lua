@@ -447,6 +447,7 @@ for a, a in pairs(game:GetService("Workspace"):GetChildren()) do
     end
 end
 print(NameFruit)
+_G.AutoStoreFruit = true
 spawn(
     function()
         pcall(
