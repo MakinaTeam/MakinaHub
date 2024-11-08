@@ -2993,6 +2993,7 @@ _G.FastAttack = true
 
 spawn(function()
     while wait(0.01) do    
+      if _G.FastAttack then
     pcall(function()
         if getupvalues(CombatFramework)[2]['activeController'].timeToNextAttack and _G.FastAttack then
 getupvalues(CombatFramework)[2]['activeController'].increment = 3
