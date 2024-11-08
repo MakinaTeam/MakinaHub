@@ -11,7 +11,7 @@ spawn(function()
         pcall(function()
             com.activeController.hitboxMagnitude = 60
             if UseFast then
-                ifUseFast then
+                if UseFast then
                     if fastatkmode == "n" then
                     com.activeController.hitboxMagnitude = 60
                     com.activeController.active = false
