@@ -3769,7 +3769,7 @@ spawn(function()
 				count10 = count10 + 1
 			end
 		end
-		DoChest:SetDesc("Task : "..count10)
+		DoChest:SetDesc("Total : "..count10.."Chest")
 		wait(5)
 	end
 end)
