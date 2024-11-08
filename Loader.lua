@@ -1911,7 +1911,7 @@ end
 		return 0
 		end
         if World3 then
-            distbyp = 1000;
+            distbyp = 1500;
             island = {
                 ["Port Town"] = CFrame.new( -290.7376708984375, 6.729952812194824, 5343.5537109375),
                 ["Hydra Island"] = CFrame.new(5749.7861328125 + 50 , 611.9736938476562, -276.2497863769531),
@@ -1927,7 +1927,7 @@ end
                 ["Tiki Outpost"] = CFrame.new( -16234, 9, 416)
             };
         elseif World2 then
-            distbyp = 1000;
+            distbyp = 1500;
             island = {
                 A = CFrame.new(753.14288330078, 408.23559570313, -5274.6147460938),
                 B = CFrame.new( -5622.033203125, 492.19604492188, -781.78552246094),
@@ -1940,7 +1940,7 @@ end
                 I = CFrame.new( -6127.654296875, 15.951762199402, -5040.2861328125)
             };
         elseif World1 then
-            distbyp = 1000;
+            distbyp = 1500;
             island = {
                 A = CFrame.new(979.79895019531, 16.516613006592, 1429.0466308594),
                 B = CFrame.new( -2566.4296875, 6.8556680679321, 2045.2561035156),
