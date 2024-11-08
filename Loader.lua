@@ -4582,4 +4582,12 @@ spawn(function()
 			end)
 		end
 	end
-end)       
+end)    
+
+spawn(function()
+	while wait() do
+		if _G.AutoDoughtBoss then
+			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner", true)
+		end
+	end
+end) 
