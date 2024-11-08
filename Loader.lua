@@ -2989,32 +2989,6 @@ function Hit()
 game:GetService'VirtualUser':CaptureController()
 game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
 end
-_G.FastAttack = true
-
-spawn(function()
-    while wait(0.01) do    
-      if _G.FastAttack then
-    pcall(function()
-        if getupvalues(CombatFramework)[2]['activeController'].timeToNextAttack and _G.FastAttack then
-getupvalues(CombatFramework)[2]['activeController'].increment = 3
-        getupvalues(CombatFramework)[2]['activeController'].hitboxMagnitude = 65
-             for i,v in pairs(workspace.Enemies:GetChildren()) do
-                    if v.Humanoid.Health > 0 then
-                    if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 65 then
-                
-                Hit()          
-                task.wait()
-                AttackNoCD()
-                
-                
-end
-end
-end
-end
-    end)
-end
-end
-end)
 
 Tabs.GeneralTab:AddToggle("", {Title = "Fast Teleport", Default = _G.Config["Setting"]["Fast Teleport"],Description = "- If you click this Button, You Will reset character to island !" }):OnChanged(function(Value)
 v48 = Value
@@ -4607,3 +4581,29 @@ spawn(function()
 		end
 	end
 end) 
+
+getgenv().fast = true
+
+Camera:Stop()
+    while task.wait(0.05) do
+    --game:GetService("RunService").Stepped:Connect(function()
+    pcall(function()
+        if getupvalues(CombatFramework)[2]['activeController'].timeToNextAttack and getgenv().fast then
+        getupvalues(CombatFramework)[2]['activeController'].increment = 3
+        getupvalues(CombatFramework)[2]['activeController'].hitboxMagnitude = 65
+             for i,v in pairs(workspace.Enemies:GetChildren()) do
+                    if v.Humanoid.Health > 0 then
+                    if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 65 then
+                
+                
+                        Hit()
+                task.wait()
+                AttackNoCD()
+                
+end
+end
+end
+
+        end
+    end)
+end
