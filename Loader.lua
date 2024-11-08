@@ -313,6 +313,61 @@ spawn(function()
 	end
 end)
 
+for f, f in next, workspace:GetChildren() do
+    if f.Name:find("Fruit") and (f:IsA("Tool") or f:IsA("Model")) then
+        repeat
+            local d = d:Clone()
+            d.Parent = b.HumanoidRootPart
+            local e = e:Clone()
+            e.Parent = b.HumanoidRootPart
+            local a =
+            a:Play()
+            a.Completed:Wait()
+            b.HumanoidRootPart.CFrame = f.Handle.CFrame
+            d:Destroy()
+            e:Destroy()
+            wait(1)
+        until f.Parent ~= workspace
+        wait(1)
+        local a =
+            b:FindFirstChildOfClass("Tool") and b:FindFirstChildOfClass("Tool").Name:find("Fruit") and
+            b:FindFirstChildOfClass("Tool") or
+            (function()
+                for a, a in a.Backpack:GetChildren() do
+                    if a.Name:find("Fruit") then
+                        return a
+                    end
+                end
+            end)()
+        print(a)
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(
+            "StoreFruit",
+            a:GetAttribute("OriginalName"),
+            a
+        )
+    end
+end
+for a, a in pairs(game:GetService("Workspace"):GetChildren()) do
+    if a:IsA("Tool") and string.find(a.Name, "Fruit") then
+        NameFruit = a.Name
+    end
+end
+print(NameFruit)
+spawn(
+    function()
+        pcall(
+            function()
+                while wait(.1) do
+                    if _G.AutoStoreFruit then
+                        for a, a in pairs(NameFruit) do
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StoreFruit", a)
+                        end
+                    end
+                end
+            end
+        )
+    end
+)
 wait(1)
 
 Time = true
