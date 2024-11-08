@@ -222,6 +222,7 @@ _G.Config = {
   },
    ["Bones"] = {
     ["Auto Farm Bones"] = false,
+    ["Trade With Death King"] = false,
   },
 }
 end
@@ -260,6 +261,19 @@ if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Death")
     if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Respawn") then
         game:GetService("ReplicatedStorage").Effect.Container.Respawn:Destroy()
 end
+
+setscriptable = true
+task.spawn(function()
+	while true do
+		wait()
+		if setscriptable then
+			setscriptable(game.Players.LocalPlayer, "SimulationRadius", true)
+		end
+		if sethiddenproperty then
+			sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
+		end
+	end
+end)
 
 function CheckQuest() 
     MyLevel = game:GetService("Players").LocalPlayer.Data.Level.Value
@@ -4651,6 +4665,7 @@ spawn(function()
                         end
                     end
                 else
+					toTarget(CFrame.new(-9506.234375, 172.130615234375, 6117.0771484375))
                     if game:GetService("ReplicatedStorage"):FindFirstChild("Reborn Skeleton") then
                         toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Reborn Skeleton").HumanoidRootPart.CFrame * CFrame.new(0, 40, 0))
                     end
@@ -4670,4 +4685,24 @@ spawn(function()
             end)
         end
     end
+end)
+
+Tabs.AutomaticTab:AddToggle("", {Title = "Trade With Death King", Default = _G.Config["Bones"]["Trade With Death King"],Description = "- If you click this Button, You will random bones  !" }):OnChanged(function(Value)
+_G.RandomBone =  Value
+_G.Config["Bones"]["Trade With Death King"] =  Value
+Saveconfig()
+end)
+
+spawn(function()
+	while wait() do
+		if _G.RandomBone then
+			local args = {
+				[1] = "Bones",
+				[2] = "Buy",
+				[3] = 1,
+				[4] = 1
+			}
+			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+		end
+	end
 end)
