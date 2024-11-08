@@ -2007,12 +2007,6 @@ end
             if not Pos then return end 
             lp.Character:WaitForChild("HumanoidRootPart", 9)
             lp.Character:WaitForChild("Head", 9)
-            if not lp.Character.HumanoidRootPart:FindFirstChild("Hold") then
-                local Hold = Instance.new("BodyVelocity", lp.Character.HumanoidRootPart)
-                Hold.Name = "Hold"
-                Hold.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
-                Hold.Velocity = Vector3.new(0, 0, 0)
-            end
             if not lp.Character:FindFirstChild("PartTele") then
                 local PartTele = Instance.new("Part", lp.Character)
                 PartTele.Size = Vector3.new(10,1,10)
