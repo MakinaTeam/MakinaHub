@@ -3010,6 +3010,7 @@ getupvalues(CombatFramework)[2]['activeController'].increment = 3
 end
 end
 end
+end
     end)
 end
 end
