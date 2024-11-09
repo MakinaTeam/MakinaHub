@@ -3080,6 +3080,15 @@ Mouse.Button1Down:Connect(function()
 	end
 end)
 
+spawn(function()
+    while wait() do
+        pcall(function()
+        local Camera = require(game.ReplicatedStorage.Util.CameraShaker)
+        Camera:Stop()
+        end)
+    end
+end)
+
 Tabs.GeneralTab:AddToggle("", {Title = "Fast Teleport", Default = _G.Config["Setting"]["Fast Teleport"],Description = "- If you click this Button, You Will reset character to island !" }):OnChanged(function(Value)
 v48 = Value
 _G.Config["Setting"]["Fast Teleport"] =  Value
