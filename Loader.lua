@@ -1900,7 +1900,9 @@ UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.from
 UIGradient.Parent = TextLabel
 require(game.ReplicatedStorage.Util.CameraShaker):Stop()
 print("--[[Loaded UI]]--")
-Fluent = loadstring(game:HttpGet("https://pastebin.com/raw/gwvyBF34"))()
+local Fluent = loadstring(game:HttpGet("https://pastebin.com/raw/gwvyBF34"))()
+
+local InterfaceManager = loadstring(game:HttpGet("https://pastebin.com/raw/UnKuYx8S"))()
 Window = Fluent:CreateWindow({
     Title = "<font color='rgb(22, 55, 240)'>Hiru Hub</font>",
     SubTitle = "<font color='rgb(37, 240, 22)'>•By Kiddo</font>",
