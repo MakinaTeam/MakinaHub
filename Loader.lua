@@ -74,28 +74,7 @@ function FPSBooster()
         end
     end
 end
-print("getgenv BoostFps")
-if getgenv().BoostFps then
-    FPSBooster()
-end
-print("getgenv AntiCrash")
-if getgenv().AntiCrash then
-    print("anti crash true")
-    else
-    print("anti crash false")
-end
-repeat
-    wait()
-until game.Players.LocalPlayer.Character    
-loadstring(game:HttpGet("https://raw.githubusercontent.com/tepfai/Function/refs/heads/main/File56hk09gfv999hg99h%23checkquest%23.lua"))()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/tepfai/Function/refs/heads/main/FunctionsHop.lua"))()
-function CheckItem(ah)
-    for k, v in pairs(game:GetService("ReplicatedStorage").Remotes["CommF_"]:InvokeServer("getInventory")) do
-        if v.Name == ah then
-            return v
-        end
-    end
-end
+
 function UpdateIslandESP() 
         for i,v in pairs(game:GetService("Workspace")["_WorldOrigin"].Locations:GetChildren()) do
             pcall(function()
@@ -1921,7 +1900,7 @@ UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.from
 UIGradient.Parent = TextLabel
 require(game.ReplicatedStorage.Util.CameraShaker):Stop()
 print("--[[Loaded UI]]--")
-Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/tepfai/MyFiles/refs/heads/main/main.lua"))()
+Fluent = loadstring(game:HttpGet("https://pastebin.com/raw/gwvyBF34"))()
 Window = Fluent:CreateWindow({
     Title = "<font color='rgb(22, 55, 240)'>Hiru Hub</font>",
     SubTitle = "<font color='rgb(37, 240, 22)'>•By Kiddo</font>",
