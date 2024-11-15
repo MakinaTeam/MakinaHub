@@ -2740,7 +2740,7 @@ _G.BringMob = true
                         if _G.BringMob and bringmob then
                             if v.Name == MonFarm and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
                                 if v.Name == "Factory Staff" then
-                                    if (v.HumanoidRootPart.Position - FarmPos.Position).Magnitude <= 350 then
+                                    if (v.HumanoidRootPart.Position - FarmPos.Position).Magnitude <= 300 then
                                         v.Head.CanCollide = false
                                         v.HumanoidRootPart.CanCollide = false
                                         v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
@@ -2748,7 +2748,7 @@ _G.BringMob = true
                                         sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
                                     end
                                 elseif v.Name == MonFarm then
-                                    if (v.HumanoidRootPart.Position - FarmPos.Position).Magnitude <= 350 then
+                                    if (v.HumanoidRootPart.Position - FarmPos.Position).Magnitude <= 300 then
                                         v.Head.CanCollide = false
                                         v.HumanoidRootPart.CanCollide = false
                                         v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
