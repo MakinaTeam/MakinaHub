@@ -13,8 +13,6 @@ MinimizeKey = Enum.KeyCode.LeftControl
 
 do 
 
-	Window:SelectTab(1)
-	
 	Config = {
 
 	}
