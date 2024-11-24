@@ -103,44 +103,7 @@ if not _G['Normal Hub Table'].isWindows then
 	Frame.Transparency = 1
 	Frame.Position = UDim2.new(0.157012194, 0, 0.164366379, 0)
 	Frame.Size = UDim2.new(0, 115, 0, 49)
-
-	player = game.Players.LocalPlayer
-	L1 = Instance.new("ScreenGui")
-	L2 = Instance.new("TextButton")
-	L3 = Instance.new("UICorner")
-	L4 = Instance.new("ImageLabel")
-	sound = Instance.new("Sound")
-	L3.Name = "UICorner"
-	L3.Parent = L2
-	L4.Name = "ButtonImage"
-	L4.Parent = L2
-	L4.BackgroundColor3 = Color3.fromRGB(22, 55, 240)
-	L4.BackgroundTransparency = 1.000
-	L4.BorderSizePixel = 0
-	L4.Position = UDim2.new(0.1, 0, 0.1, 0) 
-	L4.Size = UDim2.new(0, 45, 0, 45)
-	L4.Image = ""
-	L1.Name = "MainGui"
-	L1.Parent = player:WaitForChild("PlayerGui")
-	L1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-	L2.Name = "CustomButton"
-	L2.Parent = L1
-	L2.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-	L2.BackgroundTransparency = 0.2
-	L2.BorderSizePixel = 0
-	L2.Position = UDim2.new(0.0, 10, 0, 10)
-	L2.Size = UDim2.new(0, 50, 0, 50)
-	L2.Font = Enum.Font.FredokaOne
-	L2.Text = "Danny Hub"
-	L2.TextColor3 = Color3.fromRGB(22, 55, 240)
-	L2.TextSize = 9.000
-	L2.Draggable = true
-	sound.Parent = L2
-	sound.SoundId = "rbxassetid://130785805"
-	L2.MouseButton1Click:Connect(function()
-		game:GetService("VirtualInputManager"):SendKeyEvent(true,"LeftControl",false,game.Players.LocalPlayer.Character.HumanoidRootPart)	game:GetService("VirtualInputManager"):SendKeyEvent(false,"LeftControl",false,game.Players.LocalPlayer.Character.HumanoidRootPart)
-		sound:Play()
-	end) 
+		
 
 UICorner.CornerRadius = UDim.new(0, 100)
 UICorner.Parent = ImageButton
