@@ -12,7 +12,6 @@ MinimizeKey = Enum.KeyCode.LeftControl
 })
 
 do 
-
 	Config = {
 
 	}
