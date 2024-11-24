@@ -12,6 +12,9 @@ MinimizeKey = Enum.KeyCode.LeftControl
 })
 
 do 
+
+	Window:SelectTab(1)
+	
 	Config = {
 
 	}
@@ -3204,7 +3207,17 @@ end
 
 AllFuncs['Sell Fish'] = function()
 	while Config['Sell Fish'] and task.wait(3) do
-		game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("selleverything"):InvokeServer()
+		local player = game.Players.LocalPlayer
+		local character = player.Character or player.CharacterAdded:Wait()
+		local rootPart = character:WaitForChild("HumanoidRootPart")
+		local currentPosition = rootPart.CFrame
+		local sellPosition = CFrame.new(464, 151, 232)
+		local wasAutoFreezeActive = false
+		rootPart.CFrame = sellPosition
+		wait(0.5)
+		workspace:WaitForChild("world"):WaitForChild("npcs"):WaitForChild("Marc Merchant"):WaitForChild("merchant"):WaitForChild("sellall"):InvokeServer()
+		wait(3)
+		rootPart.CFrame = currentPosition
 	end
 end
 
