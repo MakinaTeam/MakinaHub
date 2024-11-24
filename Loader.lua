@@ -82,61 +82,44 @@ if not _G['Normal Hub Table'].isWindows then
 		game.CoreGui:FindFirstChild('UIBUTTON'):Destroy()
 	end
 
-	local TweenService = game:GetService("TweenService")
-	local UserInputService = game:GetService("UserInputService")
-	local UIBUTTON = Instance.new("ScreenGui")
-	local Frame = Instance.new("Frame")
-	local ImageButton = Instance.new("ImageButton")
-	local UICorner = Instance.new("UICorner")
-	local UICorner_2 = Instance.new("UICorner")
-
-	UIBUTTON.Name = "UIBUTTON"
-	UIBUTTON.Parent = game.CoreGui
-	UIBUTTON.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
-	Frame.Parent = UIBUTTON
-	Frame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-	Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Frame.BorderSizePixel = 0
-	Frame.Transparency = 1
-	Frame.Position = UDim2.new(0.157012194, 0, 0.164366379, 0)
-	Frame.Size = UDim2.new(0, 115, 0, 49)
-
-ImageButton.Parent = Frame
-ImageButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ImageButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
-ImageButton.BorderSizePixel = 0
-ImageButton.Active = true
-ImageButton.Draggable = true
-ImageButton.Position = UDim2.new(0.218742043, 0, -0.155235752, 0)
-ImageButton.Size = UDim2.new(0, 64, 0, 64)
-
--- Set initial image to "open"
-ImageButton.Image = "rbxassetid://136634905225382" -- Open image asset ID
-local isOpen = true -- Variable to track the state
-
-ImageButton.MouseButton1Click:Connect(function()
-    -- Animate the button size
-    ImageButton:TweenSize(UDim2.new(0, 60, 0, 60), Enum.EasingDirection.In, Enum.EasingStyle.Elastic, 0.1)
-    delay(0.1, function()
-        ImageButton:TweenSize(UDim2.new(0, 64, 0, 64), Enum.EasingDirection.Out, Enum.EasingStyle.Elastic, 0.1)
-    end)
-
-    -- Toggle the image based on the state
-    if isOpen then
-        ImageButton.Image = "rbxassetid://134717468347051" -- Replace with close image asset ID
-    else
-        ImageButton.Image = "rbxassetid://136634905225382" -- Open image asset ID
-    end
-    isOpen = not isOpen -- Toggle the state
-
-    -- Simulate key presses
-    local VirtualInputManager = game:GetService("VirtualInputManager")
-    VirtualInputManager:SendKeyEvent(true,"RightControl",false,game)
-    VirtualInputManager:SendKeyEvent(false,"RightControl",false,game)
-    VirtualInputManager:SendKeyEvent(true,"LeftControl",false,game)
-    VirtualInputManager:SendKeyEvent(false,"LeftControl",false,game)
-end)
+	player = game.Players.LocalPlayer
+	L1 = Instance.new("ScreenGui")
+	L2 = Instance.new("TextButton")
+	L3 = Instance.new("UICorner")
+	L4 = Instance.new("ImageLabel")
+	sound = Instance.new("Sound")
+	L3.Name = "UICorner"
+	L3.Parent = L2
+	L4.Name = "ButtonImage"
+	L4.Parent = L2
+	L4.BackgroundColor3 = Color3.fromRGB(22, 55, 240)
+	L4.BackgroundTransparency = 1.000
+	L4.BorderSizePixel = 0
+	L4.Position = UDim2.new(0.1, 0, 0.1, 0) 
+	L4.Size = UDim2.new(0, 45, 0, 45)
+	L4.Image = ""
+	L1.Name = "MainGui"
+	L1.Parent = player:WaitForChild("PlayerGui")
+	L1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	L2.Name = "CustomButton"
+	L2.Parent = L1
+	L2.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+	L2.BackgroundTransparency = 0.2
+	L2.BorderSizePixel = 0
+	L2.Position = UDim2.new(0.0, 10, 0, 10)
+	L2.Size = UDim2.new(0, 50, 0, 50)
+	L2.Font = Enum.Font.FredokaOne
+	L2.Text = "Fn Hub"
+	L2.TextColor3 = Color3.fromRGB(255, 0, 69)
+	L2.TextSize = 9.000
+	L2.Draggable = true
+	sound.Parent = L2
+	sound.SoundId = "rbxassetid://130785805"
+	L2.MouseButton1Click:Connect(function()
+		game:GetService("VirtualInputManager"):SendKeyEvent(true,"RightControl",false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+			game:GetService("VirtualInputManager"):SendKeyEvent(false,"RightControl",false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+		sound:Play()
+	end)
 
 UICorner.CornerRadius = UDim.new(0, 100)
 UICorner.Parent = ImageButton
@@ -3048,13 +3031,7 @@ do -- INFO FISH
 end
 
 local Tap = {
-	General = Window:AddTab({Title = "Generals", Icon = "box"}),
-	Event = Window:AddTab({Title = "Event", Icon = "star"}),
-	Player = Window:AddTab({ Title = "Player", Icon = "user"}),
-	Shop = Window:AddTab({ Title = "Shopee", Icon = "shopping-bag"}),
-	Configs = Window:AddTab({Title = "Configs", Icon = "diamond"}),
-	Teleport = Window:AddTab({Title = "Teleport", Icon = "asterisk"}),
-	Settings = Window:AddTab({Title = "Settings", Icon = "settings"})
+	General = Window:AddTab({Title = "General", Icon = "home"})
 }
 
 Toggle = function(Section, NameIndex, Description, ConfigName, Function, ...)
@@ -3178,8 +3155,8 @@ AllFuncs['Farm Fish'] = function()
 		if LocalPlayer.Character:FindFirstChild(RodName) and LocalPlayer.Character:FindFirstChild(RodName):FindFirstChild("bobber") then
 			local XyzClone = game:GetService("ReplicatedStorage").resources.items.items.GPS.GPS.gpsMain.xyz:Clone()
 			XyzClone.Parent = game.Players.LocalPlayer.PlayerGui:WaitForChild("hud"):WaitForChild("safezone"):WaitForChild("backpack")
-			XyzClone.Name = "Lure"
-			XyzClone.Text = "<font color='#ff4949'>Lure </font>: 0%"
+			--XyzClone.Name = "Lure"
+			--XyzClone.Text = "<font color='#ff4949'>Lure </font>: 0%"
 			repeat
 				pcall(function()
 					PlayerGui:FindFirstChild("shakeui").safezone:FindFirstChild("button").Size = UDim2.new(1001, 0, 1001, 0)
