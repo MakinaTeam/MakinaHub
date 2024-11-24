@@ -91,18 +91,6 @@ if not _G['Normal Hub Table'].isWindows then
 	local ImageButton = Instance.new("ImageButton")
 	local UICorner = Instance.new("UICorner")
 	local UICorner_2 = Instance.new("UICorner")
-
-	UIBUTTON.Name = "UIBUTTON"
-	UIBUTTON.Parent = game.CoreGui
-	UIBUTTON.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
-	Frame.Parent = UIBUTTON
-	Frame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-	Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Frame.BorderSizePixel = 0
-	Frame.Transparency = 1
-	Frame.Position = UDim2.new(0.157012194, 0, 0.164366379, 0)
-	Frame.Size = UDim2.new(0, 115, 0, 49)
 	
 	local isOpen = true -- Variable to track the state
 	
