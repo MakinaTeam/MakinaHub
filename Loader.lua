@@ -1,1289 +1,4169 @@
-
--- v1.6
-
-local ProtectPremium = true
-
---<>----<>----<>----< Getting Services >----<>----<>----<>--
-AnalyticsService = game:GetService("AnalyticsService")
-CollectionService = game:GetService("CollectionService")
-DataStoreService = game:GetService("DataStoreService")
-HttpService = game:GetService("HttpService")
-Lighting = game:GetService("Lighting")
-MarketplaceService = game:GetService("MarketplaceService")
-Players = game:GetService("Players")
-ReplicatedFirst = game:GetService("ReplicatedFirst")
-ReplicatedStorage = game:GetService("ReplicatedStorage")
-RunService = game:GetService("RunService")
-ServerScriptService = game:GetService("ServerScriptService")
-ServerStorage = game:GetService("ServerStorage")
-SoundService = game:GetService("SoundService")
-StarterGui = game:GetService("StarterGui")
-StarterPack = game:GetService("StarterPack")
-StarterPlayer = game:GetService("StarterPlayer")
-TeleportService = game:GetService("TeleportService")
-TweenService = game:GetService("TweenService")
-Teams = game:GetService("Teams")
-VirtualUser = game:GetService("VirtualUser")
-Workspace = game:GetService("Workspace")
-UserInputService = game:GetService("UserInputService")
-VirtualInputManager = game:GetService("VirtualInputManager")
-ContextActionService = game:GetService("ContextActionService")
-GuiService = game:GetService("GuiService")
-print("ClientMonsterTools.lua loaded")
-
-
---<>----<>----<>----< Anti Afk >----<>----<>----<>--
-game.Players.LocalPlayer.Idled:Connect(function()
-    VirtualUser:CaptureController()
-    VirtualUser:ClickButton2(Vector2.new())
-    print("Roblox Tried to kick you but we didn't let them kick you :D")
-end)
-warn("[Anti Afk] - loaded successfully") 
-
---<>----<>----<>----< Main Script >----<>----<>----<>--
-print("[Space Hub | Fisch]: loading...")
-local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/Knuxy92/Ui-linoria/main/Fluent/Fluent.lua"))()
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 
 local Window = Fluent:CreateWindow({
-    Title = "Fisch | Space Hub",
-    SubTitle = "v1.6",
-    TabWidth = 150,
-    Size = UDim2.fromOffset(600, 400),
-    Acrylic = false,
-    Theme = "Darker",
-    MinimizeKey = Enum.KeyCode.LeftControl
+	Title = "14k_LAK IS DEFINITELY SHIT",
+	SubTitle = "Private Script",
+	TabWidth = 160,
+	Size = UDim2.fromOffset(550, 350),
+	Acrylic = false, 
+	Theme = "Amethyst",
+	MinimizeKey = Enum.KeyCode.LeftControl
 })
 
--- Creating tabs
-local Tabs = {
-    Home = Window:AddTab({ Title = "Home", Icon = "home" }),
-    Main = Window:AddTab({ Title = "Main", Icon = "code" }),
-    Teleports = Window:AddTab({ Title = "Teleports", Icon = "compass" }),
-    Misc = Window:AddTab({ Title = "Misc", Icon = "file-text" }),
-    Fun = Window:AddTab({ Title = "Fun", Icon = "coffee" }),
-    Webhook = Window:AddTab({ Title = "Webhook", Icon = "clock" }),
-    Premium = Window:AddTab({ Title = "Premium", Icon = "diamond" }),
-    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
+do 
+	Config = {
+
+	}
+	_G.Config = Config
+	AllFuncs = {}
+	Threads = getgenv().Threads
+	Players = game.Players
+	LocalPlayer = game.Players.LocalPlayer
+	Client = game.Players.LocalPlayer
+
+
+	-- \\ Module GetService // --
+
+	ReplicatedStorage = game:GetService('ReplicatedStorage')
+	RunService = game:GetService("RunService")
+	VirtualInputManager = game:GetService('VirtualInputManager')
+	CollectionService = game:GetService("CollectionService")
+	CoreGui = game:GetService("CoreGui")
+	HttpService = game:GetService("HttpService")
+	TeleportService = game:GetService("TeleportService")
+	VirtualUser = game:GetService("VirtualUser")
+	VirtualInputManager = game:GetService("VirtualInputManager")
+	UserInputService = game:GetService("UserInputService")
+
+
+	-- \\ Normal Module // --
+	
+	PlayerGui = LocalPlayer.PlayerGui
+	Backpack = LocalPlayer.Backpack
+	request = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
+
+	Char = Client.Character
+	Character = Client.Character
+	if not Threads then getgenv().Threads = {} end
+
+	repeat 
+		LocalPlayer = Players.LocalPlayer
+		wait()
+	until LocalPlayer
+end
+
+function Notify(Des, Time, title)
+	Fluent:Notify({
+		Title= title or "Normal Hub Notify",
+		Content = Des,
+		Duration = Time or 3
+	})
+end
+
+_G['Normal Hub Table'] = {
+	isWindows = UserInputService:GetPlatform() == Enum.Platform.Windows,
+	TypeOs = (table.find({Enum.Platform.Windows}, game:GetService('UserInputService'):GetPlatform()) ~= nil and 'Pc') or 'Mb',
+	SizeUi = (not isWindows and UDim2.fromOffset(600,300)) or UDim2.fromOffset(560,600),
+	AutoSize = true,
+	TweenUiSize = true,
+	SpeedTweenUi = 0.25,
+	StyleTweenUi = Enum.EasingStyle.Quad,
+	Mutiply = 1.80,
+	SizeX = 550,
+	SafePercent = 20,
+
+	AnimationUiToggle = true,
 }
 
-local Options = Fluent.Options
+_G['Normal Hub Table'].SizeUi = (not _G['Normal Hub Table'].isWindows and UDim2.fromOffset(600,300)) or UDim2.fromOffset(560,600)
+if not _G['Normal Hub Table'].isWindows then
+	if game.CoreGui:FindFirstChild('UIBUTTON') then
+		game.CoreGui:FindFirstChild('UIBUTTON'):Destroy()
+	end
 
-local teleportSpots = {
-    altar = CFrame.new(1296.320068359375, -808.5519409179688, -298.93817138671875),
-    arch = CFrame.new(998.966796875, 126.6849365234375, -1237.1434326171875),
-    birch = CFrame.new(1742.3203125, 138.25787353515625, -2502.23779296875),
-    brine = CFrame.new(-1794.10596, -145.849701, -3302.92358, -5.16176224e-05, 3.10316682e-06, 0.99999994, 0.119907647, 0.992785037, 3.10316682e-06, -0.992785037, 0.119907647, -5.16176224e-05),
-    deep = CFrame.new(-1510.88672, -237.695053, -2852.90674, 0.573604643, 0.000580655003, 0.81913209, -0.000340352941, 0.999999762, -0.000470530824, -0.819132209, -8.89541116e-06, 0.573604763),
-    deepshop = CFrame.new(-979.196411, -247.910156, -2699.87207, 0.587748766, 0, 0.809043527, 0, 1, 0, -0.809043527, 0, 0.587748766),
-    enchant = CFrame.new(1296.320068359375, -808.5519409179688, -298.93817138671875),
-    executive = CFrame.new(-29.836761474609375, -250.48486328125, 199.11614990234375),
-    keepers = CFrame.new(1296.320068359375, -808.5519409179688, -298.93817138671875),
-    mod_house = CFrame.new(-30.205902099609375, -249.40594482421875, 204.0529022216797),
-    moosewood = CFrame.new(383.10113525390625, 131.2406005859375, 243.93385314941406),
-    mushgrove = CFrame.new(2501.48583984375, 127.7583236694336, -720.699462890625),
-    roslit = CFrame.new(-1476.511474609375, 130.16842651367188, 671.685302734375),
-    snow = CFrame.new(2648.67578125, 139.06605529785156, 2521.29736328125),
-    snowcap = CFrame.new(2648.67578125, 139.06605529785156, 2521.29736328125),
-    spike = CFrame.new(-1254.800537109375, 133.88555908203125, 1554.2021484375),
-    statue = CFrame.new(72.8836669921875, 138.6964874267578, -1028.4193115234375),
-    sunstone = CFrame.new(-933.259705, 128.143951, -1119.52063, -0.342042685, 0, -0.939684391, 0, 1, 0, 0.939684391, 0, -0.342042685),
-    swamp = CFrame.new(2501.48583984375, 127.7583236694336, -720.699462890625),
-    terrapin = CFrame.new(-143.875244140625, 141.1676025390625, 1909.6070556640625),
-    trident = CFrame.new(-1479.48987, -228.710632, -2391.39307, 0.0435845852, 0, 0.999049723, 0, 1, 0, -0.999049723, 0, 0.0435845852),
-    vertigo = CFrame.new(-112.007278, -492.901093, 1040.32788, -1, 0, 0, 0, 1, 0, 0, 0, -1),
-    volcano = CFrame.new(-1888.52319, 163.847565, 329.238281, 1, 0, 0, 0, 1, 0, 0, 0, 1),
-    wilson = CFrame.new(2938.80591, 277.474762, 2567.13379, 0.4648332, 0, 0.885398269, 0, 1, 0, -0.885398269, 0, 0.4648332),
-    wilsons_rod = CFrame.new(2879.2085, 135.07663, 2723.64233, 0.970463336, -0.168695927, -0.172460333, 0.141582936, -0.180552125, 0.973321974, -0.195333466, -0.968990743, -0.151334763)
-}
-local FishAreas = {
-    Roslit_Bay = CFrame.new(-1663.73889, 149.234116, 495.498016, 0.0380855016, 4.08820178e-08, -0.999274492, 5.74658472e-08, 1, 4.3101906e-08, 0.999274492, -5.90657123e-08, 0.0380855016),
-    Ocean = CFrame.new(7665.104, 125.444443, 2601.59351, 0.999966085, -0.000609769544, -0.00821684115, 0.000612694537, 0.999999762, 0.000353460142, 0.00821662322, -0.000358482561, 0.999966204),
-    Snowcap_Pond = CFrame.new(2778.09009, 283.283783, 2580.323, 1, 7.17688531e-09, -2.22843701e-05, -7.17796267e-09, 1, -4.83369114e-08, 2.22843701e-05, 4.83370712e-08, 1),
-    Moosewood_Docks = CFrame.new(343.2359924316406, 133.61595153808594, 267.0580139160156),
-    Deep_Ocean = CFrame.new(3569.07153, 125.480949, 6697.12695, 0.999980748, -0.00188910461, -0.00591362361, 0.00193980196, 0.999961317, 0.00857902411, 0.00589718809, -0.00859032944, 0.9999457),
-    Vertigo = CFrame.new(-137.697098, -736.86377, 1233.15271, 1, -1.61821543e-08, -2.01375751e-05, 1.6184277e-08, 1, 1.05423091e-07, 2.01375751e-05, -1.0542341e-07, 1),
-    Snowcap_Ocean = CFrame.new(3088.66699, 131.534332, 2587.11304, 1, 4.30694858e-09, -1.19097813e-14, -4.30694858e-09, 1, -2.80603398e-08, 1.17889275e-14, 2.80603398e-08, 1),
-    Harvesters_Spike = CFrame.new(-1234.61523, 125.228767, 1748.57166, 0.999991536, -0.000663080777, -0.00405627443, 0.000725277001, 0.999881923, 0.0153511297, 0.00404561637, -0.0153539423, 0.999873936),
-    SunStone = CFrame.new(-845.903992, 133.172211, -1163.57776, 1, -7.93465915e-09, -2.09446498e-05, 7.93544608e-09, 1, 3.75741536e-08, 2.09446498e-05, -3.75743205e-08, 1),
-    Roslit_Bay_Ocean = CFrame.new(-1708.09302, 155.000015, 384.928009, 1, -9.84460868e-09, -3.24939563e-15, 9.84460868e-09, 1, 4.66220271e-08, 2.79042003e-15, -4.66220271e-08, 1),
-    Moosewood_Pond = CFrame.new(509.735992, 152.000031, 302.173004, 1, -1.78487678e-08, -8.1329488e-14, 1.78487678e-08, 1, 8.45405168e-08, 7.98205428e-14, -8.45405168e-08, 1),
-    Terrapin_Ocean = CFrame.new(58.6469994, 135.499985, 2147.41699, 1, 2.09643041e-08, -5.6023784e-15, -2.09643041e-08, 1, -9.92988376e-08, 3.52064755e-15, 9.92988376e-08, 1),
-    Isonade = CFrame.new(-1060.99902, 121.164787, 953.996033, 0.999958456, 0.000633197487, -0.00909138657, -0.000568434712, 0.999974489, 0.00712434994, 0.00909566507, -0.00711888634, 0.999933302),
-    Moosewood_Ocean = CFrame.new(-167.642715, 125.19548, 248.009521, 0.999997199, -0.000432743778, -0.0023210498, 0.000467110571, 0.99988997, 0.0148265222, 0.00231437827, -0.0148275653, 0.999887407),
-    Roslit_Pond = CFrame.new(-1811.96997, 148.047089, 592.642517, 1, 1.12983072e-08, -2.16573972e-05, -1.12998171e-08, 1, -6.97014357e-08, 2.16573972e-05, 6.97016844e-08, 1),
-    Moosewood_Ocean_Mythical = CFrame.new(252.802994, 135.849625, 36.8839989, 1, -1.98115071e-08, -4.50667564e-15, 1.98115071e-08, 1, 1.22230617e-07, 2.08510289e-15, -1.22230617e-07, 1),
-    Terrapin_Olm = CFrame.new(22.0639992, 182.000015, 1944.36804, 1, 1.14953362e-08, -2.7011112e-15, -1.14953362e-08, 1, -7.09263972e-08, 1.88578841e-15, 7.09263972e-08, 1),
-    The_Arch = CFrame.new(1283.30896, 130.923569, -1165.29602, 1, -5.89772364e-09, -3.3183043e-15, 5.89772364e-09, 1, 3.63913486e-08, 3.10367822e-15, -3.63913486e-08, 1),
-    Scallop_Ocean = CFrame.new(23.2255898, 125.236847, 738.952271, 0.999990165, -0.00109633175, -0.00429760758, 0.00115595153, 0.999902785, 0.0138949333, 0.00428195624, -0.013899764, 0.999894202),
-    SunStone_Hidden = CFrame.new(-1139.55701, 134.62204, -1076.94324, 1, 3.9719481e-09, -1.6278158e-05, -3.97231048e-09, 1, -2.22651142e-08, 1.6278158e-05, 2.22651781e-08, 1),
-    Mushgrove_Stone = CFrame.new(2525.36011, 131.000015, -776.184021, 1, 1.90145943e-08, -3.24206519e-15, -1.90145943e-08, 1, -1.06596836e-07, 1.21516956e-15, 1.06596836e-07, 1),
-    Keepers_Altar = CFrame.new(1307.13599, -805.292236, -161.363998, 1, 2.40881981e-10, -3.25609947e-15, -2.40881981e-10, 1, -1.35044154e-09, 3.255774e-15, 1.35044154e-09, 1),
-    Lava = CFrame.new(-1959.86206, 193.144821, 271.960999, 1, -6.02453598e-09, -2.97388313e-15, 6.02453598e-09, 1, 3.37767716e-08, 2.77039384e-15, -3.37767716e-08, 1),
-    Roslit_Pond_Seaweed = CFrame.new(-1785.2869873046875, 148.15780639648438, 639.9299926757812),    
-}
-local racistPeople = {
-    Witch = CFrame.new(409.638092, 134.451523, 311.403687, -0.74079144, 0, 0.671735108, 0, 1, 0, -0.671735108, 0, -0.74079144),
-    Quiet_Synph = CFrame.new(566.263245, 152.000031, 353.872101, -0.753558397, 0, -0.657381535, 0, 1, 0, 0.657381535, 0, -0.753558397),
-    Pierre = CFrame.new(391.38855, 135.348389, 196.712387, -1, 0, 0, 0, 1, 0, 0, 0, -1),
-    Phineas = CFrame.new(469.912292, 150.69342, 277.954987, 0.886104584, -0, -0.46348536, 0, 1, -0, 0.46348536, 0, 0.886104584),
-    Paul = CFrame.new(381.741882, 136.500031, 341.891022, -1, 0, 0, 0, 1, 0, 0, 0, -1),
-    Shipwright = CFrame.new(357.972595, 133.615967, 258.154541, 0, 0, -1, 0, 1, 0, 1, 0, 0),
-    Angler = CFrame.new(480.102478, 150.501053, 302.226898, 1, 0, 0, 0, 1, 0, 0, 0, 1),
-    Marc = CFrame.new(466.160034, 151.00206, 224.497086, -0.996853352, 0, -0.0792675018, 0, 1, 0, 0.0792675018, 0, -0.996853352),
-    Lucas = CFrame.new(449.33963, 181.999893, 180.689072, 0, 0, 1, 0, 1, -0, -1, 0, 0),
-    Latern_Keeper = CFrame.new(-39.0456772, -246.599976, 195.644363, -1, 0, 0, 0, 1, 0, 0, 0, -1),
-    Latern_Keeper2 = CFrame.new(-17.4230175, -304.970276, -14.529892, -1, 0, 0, 0, 1, 0, 0, 0, -1),
-    Inn_Keeper = CFrame.new(487.458466, 150.800034, 231.498932, -0.564704418, 0, -0.825293183, 0, 1, 0, 0.825293183, 0, -0.564704418),
-    Roslit_Keeper = CFrame.new(-1512.37891, 134.500031, 631.24353, 0.738236904, 0, -0.674541533, 0, 1, 0, 0.674541533, 0, 0.738236904),
-    FishingNpc_1 = CFrame.new(-1429.04138, 134.371552, 686.034424, 0, 0.0168599077, -0.999857903, 0, 0.999857903, 0.0168599077, 1, 0, 0),
-    FishingNpc_2 = CFrame.new(-1778.55408, 149.791779, 648.097107, 0.183140755, 0.0223737024, -0.982832015, 0, 0.999741018, 0.0227586292, 0.983086705, -0.00416803267, 0.183093324),
-    FishingNpc_3 = CFrame.new(-1778.26807, 147.83165, 653.258606, -0.129575253, 0.501478612, 0.855411887, -2.44146213e-05, 0.862683058, -0.505744994, -0.991569638, -0.0655529201, -0.111770131),
-    Henry = CFrame.new(483.539307, 152.383057, 236.296143, -0.789363742, 0, 0.613925934, 0, 1, 0, -0.613925934, 0, -0.789363742),
-    Daisy = CFrame.new(581.550049, 165.490753, 213.499969, -0.964885235, 0, -0.262671858, 0, 1, 0, 0.262671858, 0, -0.964885235),
-    Appraiser = CFrame.new(453.182373, 150.500031, 206.908783, 0, 0, 1, 0, 1, -0, -1, 0, 0),
-    Merchant = CFrame.new(416.690521, 130.302628, 342.765289, -0.249025017, -0.0326484665, 0.967946589, -0.0040341015, 0.999457955, 0.0326734781, -0.968488574, 0.00423171744, -0.249021754),
-    Mod_Keeper = CFrame.new(-39.0905838, -245.141144, 195.837891, -0.948549569, -0.0898146331, -0.303623199, -0.197293222, 0.91766715, 0.34490931, 0.247647122, 0.387066364, -0.888172567),
-    Ashe = CFrame.new(-1709.94055, 149.862411, 729.399536, -0.92290163, 0.0273250472, -0.384064913, 0, 0.997478604, 0.0709675401, 0.385035753, 0.0654960647, -0.920574605),
-    Alfredrickus = CFrame.new(-1520.60632, 142.923264, 764.522034, 0.301733732, 0.390740901, -0.869642735, 0.0273988936, 0.908225596, 0.417582989, 0.952998459, -0.149826124, 0.26333645),
-}
-local itemSpots = {
-    Training_Rod = CFrame.new(457.693848, 148.357529, 230.414307, 1, -0, 0, 0, 0.975410998, 0.220393807, -0, -0.220393807, 0.975410998),
-    Plastic_Rod = CFrame.new(454.425385, 148.169739, 229.172424, 0.951755166, 0.0709736273, -0.298537821, -3.42726707e-07, 0.972884834, 0.231290117, 0.306858391, -0.220131472, 0.925948203),
-    Lucky_Rod = CFrame.new(446.085999, 148.253006, 222.160004, 0.974526405, -0.22305499, 0.0233404674, 0.196993902, 0.901088715, 0.386306256, -0.107199371, -0.371867687, 0.922075212),
-    Kings_Rod = CFrame.new(1375.57642, -810.201721, -303.509247, -0.7490201, 0.662445903, -0.0116144121, -0.0837960541, -0.0773290396, 0.993478119, 0.657227278, 0.745108068, 0.113431036),
-    Flimsy_Rod = CFrame.new(471.107697, 148.36171, 229.642441, 0.841614008, 0.0774728209, -0.534493923, 0.00678436086, 0.988063335, 0.153898612, 0.540036798, -0.13314943, 0.831042409),
-    Nocturnal_Rod = CFrame.new(-141.874237, -515.313538, 1139.04529, 0.161644459, -0.98684907, 1.87754631e-05, 1.87754631e-05, 2.21133232e-05, 1, -0.98684907, -0.161644459, 2.21133232e-05),
-    Fast_Rod = CFrame.new(447.183563, 148.225739, 220.187454, 0.981104493, 1.26492232e-05, 0.193478703, -0.0522461236, 0.962867677, 0.264870107, -0.186291039, -0.269973755, 0.944674432),
-    Carbon_Rod = CFrame.new(454.083618, 150.590073, 225.328827, 0.985374212, -0.170404434, 1.41561031e-07, 1.41561031e-07, 1.7285347e-06, 1, -0.170404434, -0.985374212, 1.7285347e-06),
-    Long_Rod = CFrame.new(485.695038, 171.656326, 145.746109, -0.630167365, -0.776459217, -5.33461571e-06, 5.33461571e-06, -1.12056732e-05, 1, -0.776459217, 0.630167365, 1.12056732e-05),
-    Mythical_Rod = CFrame.new(389.716705, 132.588821, 314.042847, 0, 1, 0, 0, 0, -1, -1, 0, 0),
-    Midas_Rod = CFrame.new(401.981659, 133.258316, 326.325745, 0.16456604, 0.986365497, 0.00103566051, 0.00017541647, 0.00102066994, -0.999999464, -0.986366034, 0.1645661, -5.00679016e-06),
-    Trident_Rod = CFrame.new(-1484.34192, -222.325562, -2194.77002, -0.466092706, -0.536795318, 0.703284025, -0.319611132, 0.843386114, 0.43191275, -0.824988723, -0.0234660208, -0.56466186),
-    Enchated_Altar = CFrame.new(1310.54651, -799.469604, -82.7303467, 0.999973059, 0, 0.00733732153, 0, 1, 0, -0.00733732153, 0, 0.999973059),
-    Bait_Crate = CFrame.new(384.57513427734375, 135.3519287109375, 337.5340270996094),
-    Quality_Bait_Crate = CFrame.new(-177.876, 144.472, 1932.844),
-    Crab_Cage = CFrame.new(474.803589, 149.664566, 229.49469, -0.721874595, 0, 0.692023814, 0, 1, 0, -0.692023814, 0, -0.721874595),
-    GPS = CFrame.new(517.896729, 149.217636, 284.856842, 7.39097595e-06, -0.719539165, -0.694451928, -1, -7.39097595e-06, -3.01003456e-06, -3.01003456e-06, 0.694451928, -0.719539165),
-    Basic_Diving_Gear = CFrame.new(369.174774, 132.508835, 248.705368, 0.228398502, -0.158300221, -0.96061182, 1.58026814e-05, 0.986692965, -0.162594408, 0.973567724, 0.037121132, 0.225361705),
-    Fish_Radar = CFrame.new(365.75177, 134.50499, 274.105804, 0.704499543, -0.111681774, -0.70086211, 1.32396817e-05, 0.987542748, -0.157350808, 0.709704578, 0.110844307, 0.695724905)
-}
+	local TweenService = game:GetService("TweenService")
+	local UserInputService = game:GetService("UserInputService")
+	local UIBUTTON = Instance.new("ScreenGui")
+	local Frame = Instance.new("Frame")
+	local ImageButton = Instance.new("ImageButton")
+	local UICorner = Instance.new("UICorner")
+	local UICorner_2 = Instance.new("UICorner")
 
--- Locals
-local LocalPlayer = Players.LocalPlayer
-local LocalCharacter = LocalPlayer.Character
-local HumanoidRootPart = LocalCharacter:FindFirstChild("HumanoidRootPart")
-local ActiveFolder = Workspace:FindFirstChild("active")
-local PlayerGUI = LocalPlayer:FindFirstChildOfClass("PlayerGui")
+	UIBUTTON.Name = "UIBUTTON"
+	UIBUTTON.Parent = game.CoreGui
+	UIBUTTON.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
--- Varbiables
+	Frame.Parent = UIBUTTON
+	Frame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+	Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Frame.BorderSizePixel = 0
+	Frame.Transparency = 1
+	Frame.Position = UDim2.new(0.157012194, 0, 0.164366379, 0)
+	Frame.Size = UDim2.new(0, 115, 0, 49)
 
-local AutoFreeze = false
-local autoShake = false
-local AutoFish = false
-local autoShake2 = false
-local autoShake3 = false
-local AutoZoneCast = false
-local autoShakeDelay = 0.3
-local autoReel = false
-local AutoCast = false
-local Noclip = false
-local AntiDrown = false
-local WebhookLog = false
-local AutoSell = false
-local AntiAfk = false
-local AutoAppraiser = false
+ImageButton.Parent = Frame
+ImageButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ImageButton.BorderSizePixel = 0
+ImageButton.Active = true
+ImageButton.Draggable = true
+ImageButton.Position = UDim2.new(0.218742043, 0, -0.155235752, 0)
+ImageButton.Size = UDim2.new(0, 64, 0, 64)
 
-local Keybind = Enum.KeyCode.F
+-- Set initial image to "open"
+ImageButton.Image = "rbxassetid://136634905225382" -- Open image asset ID
+local isOpen = true -- Variable to track the state
 
--- Rest
+ImageButton.MouseButton1Click:Connect(function()
+    -- Animate the button size
+    ImageButton:TweenSize(UDim2.new(0, 60, 0, 60), Enum.EasingDirection.In, Enum.EasingStyle.Elastic, 0.1)
+    delay(0.1, function()
+        ImageButton:TweenSize(UDim2.new(0, 64, 0, 64), Enum.EasingDirection.Out, Enum.EasingStyle.Elastic, 0.1)
+    end)
 
-PlayerGUI.ChildAdded:Connect(function(GUI)
-    if GUI:IsA("ScreenGui") then
-        if GUI.Name == "reel" and autoReel then
-            local reelfinishedEvent = ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished")
-            if reelfinishedEvent then
-                while GUI do
-                    task.wait(2)
-                    reelfinishedEvent:FireServer(100, false)
-                end
-            end
-        end
-    end
-end)
-function AutoFish5()
-    if autoShake3 then
-        task.spawn(function()
-            while AutoFish do
-                local PlayerGUI = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
-                local shakeUI = PlayerGUI:FindFirstChild("shakeui")
-                if shakeUI and shakeUI.Enabled then
-                    local safezone = shakeUI:FindFirstChild("safezone")
-                    if safezone then
-                        local button = safezone:FindFirstChild("button")
-                        if button and button:IsA("ImageButton") and button.Visible then
-                            if autoShake then
-                                local pos = button.AbsolutePosition
-                                local size = button.AbsoluteSize
-                                VirtualInputManager:SendMouseButtonEvent(pos.X + size.X / 2, pos.Y + size.Y / 2, 0, true, game:GetService("Players").LocalPlayer, 0)
-                                VirtualInputManager:SendMouseButtonEvent(pos.X + size.X / 2, pos.Y + size.Y / 2, 0, false, game:GetService("Players").LocalPlayer, 0)
-                            elseif autoShake2 then
-                                GuiService.SelectedObject = button
-                                VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.Return, false, game)
-                                VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.Return, false, game)
-                            end
-                        end
-                    end
-                end
-                task.wait()
-            end
-        end)
+    -- Toggle the image based on the state
+    if isOpen then
+        ImageButton.Image = "rbxassetid://134717468347051" -- Replace with close image asset ID
     else
-        task.spawn(function()
-            while AutoFish do
-                task.wait(autoShakeDelay)
-                local PlayerGUI = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
-                local shakeUI = PlayerGUI:FindFirstChild("shakeui")
-                if shakeUI and shakeUI.Enabled then
-                    local safezone = shakeUI:FindFirstChild("safezone")
-                    if safezone then
-                        local button = safezone:FindFirstChild("button")
-                        if button and button:IsA("ImageButton") and button.Visible then
-                            if autoShake then
-                                local pos = button.AbsolutePosition
-                                local size = button.AbsoluteSize
-                                VirtualInputManager:SendMouseButtonEvent(pos.X + size.X / 2, pos.Y + size.Y / 2, 0, true, game:GetService("Players").LocalPlayer, 0)
-                                VirtualInputManager:SendMouseButtonEvent(pos.X + size.X / 2, pos.Y + size.Y / 2, 0, false, game:GetService("Players").LocalPlayer, 0)
-                            elseif autoShake2 then
-                                GuiService.SelectedObject = button
-                                VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.Return, false, game)
-                                VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.Return, false, game)
-                            end
-                        end
-                    end
-                end
-            end
-        end)
+        ImageButton.Image = "rbxassetid://136634905225382" -- Open image asset ID
     end
-end
-function ZoneCasting()
-    if not ProtectPremium then
-        return
-    end
-    spawn(function()
-        while AutoZoneCast do
-            local player = game.Players.LocalPlayer
-            local character = player.Character
-            if character then
-                local tool = character:FindFirstChildOfClass("Tool")
-                if tool then
-                    local hasBobber = tool:FindFirstChild("bobber")
-                    if hasBobber then
-                        local ropeConstraint = hasBobber:FindFirstChild("RopeConstraint")
-                        if ropeConstraint then
-                            ropeConstraint.Length = 200000
-                        end
+    isOpen = not isOpen -- Toggle the state
 
-                        local platformSize = Vector3.new(10, 1, 10)
-                        local platformPositionOffset = Vector3.new(0, -4, 0)
-
-                        -- Custom Zones
-                        if selectedZoneCast == "Bluefin Tuna Abundance" then
-                            local selectedZone = Workspace.zones.fishing:FindFirstChild("Deep Ocean")
-                            if selectedZone then
-                                local abundanceValue = selectedZone:FindFirstChild("Abundance")
-                                if abundanceValue and abundanceValue.Value == "Bluefin Tuna" then
-                                    local bobberPosition = CFrame.new(selectedZone.Position.X, 126.564, selectedZone.Position.Z)
-                                    hasBobber.CFrame = bobberPosition
-                                    
-                                    local platform = Instance.new("Part")
-                                    platform.Size = platformSize
-                                    platform.Position = hasBobber.Position + platformPositionOffset
-                                    platform.Anchored = true
-                                    platform.Parent = hasBobber
-                                    platform.BrickColor = BrickColor.new("Bright blue")
-                                    platform.Transparency = 1.000
-                                end
-                            end
-                        elseif selectedZoneCast == "Swordfish Abundance" then
-                            local selectedZone = Workspace.zones.fishing:FindFirstChild("Deep Ocean")
-                            if selectedZone then
-                                local abundanceValue = selectedZone:FindFirstChild("Abundance")
-                                if abundanceValue and abundanceValue.Value == "Swordfish" then
-                                    local bobberPosition = CFrame.new(selectedZone.Position.X, 126.564, selectedZone.Position.Z)
-                                    hasBobber.CFrame = bobberPosition
-                                    
-                                    local platform = Instance.new("Part")
-                                    platform.Size = platformSize
-                                    platform.Position = hasBobber.Position + platformPositionOffset
-                                    platform.Anchored = true
-                                    platform.Parent = hasBobber
-                                    platform.BrickColor = BrickColor.new("Bright blue")
-                                    platform.Transparency = 1.000
-                                end
-                            end
-                        else
-                            -- Default Zones
-                            local selectedZone = Workspace.zones.fishing:FindFirstChild(selectedZoneCast)
-                            if selectedZone then
-                                local bobberPosition
-                                if selectedZoneCast == "FischFright24" then
-                                    bobberPosition = CFrame.new(selectedZone.Position.X, 126, selectedZone.Position.Z)
-                                elseif selectedZoneCast == "Isonade" then
-                                    bobberPosition = CFrame.new(selectedZone.Position.X, 126, selectedZone.Position.Z)
-                                elseif selectedZoneCast == "Deep Ocean" then
-                                    bobberPosition = CFrame.new(1521, 126, -3543)
-                                elseif selectedZoneCast == "Desolate Deep" then
-                                    bobberPosition = CFrame.new(-1068, 126, -3108)
-                                elseif selectedZoneCast == "Harvesters Spike" then
-                                    bobberPosition = CFrame.new(-1234, 126, 1748)
-                                elseif selectedZoneCast == "Moosewood Docks" then
-                                    bobberPosition = CFrame.new(345, 126, 214)
-                                elseif selectedZoneCast == "Moosewood Ocean" then
-                                    bobberPosition = CFrame.new(890, 126, 465)
-                                elseif selectedZoneCast == "Moosewood Ocean Mythical" then
-                                    bobberPosition = CFrame.new(270, 126, 52)
-                                elseif selectedZoneCast == "Moosewood Pond" then
-                                    bobberPosition = CFrame.new(526, 126, 305)
-                                elseif selectedZoneCast == "Mushgrove Water" then
-                                    bobberPosition = CFrame.new(2541, 126, -792)
-                                elseif selectedZoneCast == "Ocean" then
-                                    bobberPosition = CFrame.new(-5712, 126, 4059)
-                                elseif selectedZoneCast == "Roslit Bay" then
-                                    bobberPosition = CFrame.new(-1650, 126, 504)
-                                elseif selectedZoneCast == "Roslit Bay Ocean" then
-                                    bobberPosition = CFrame.new(-1825, 126, 946)
-                                elseif selectedZoneCast == "Roslit Pond" then
-                                    bobberPosition = CFrame.new(-1807, 141, 599)
-                                elseif selectedZoneCast == "Roslit Pond Seaweed" then
-                                    bobberPosition = CFrame.new(-1804, 141, 625)
-                                elseif selectedZoneCast == "Scallop Ocean" then
-                                    bobberPosition = CFrame.new(16, 126, 730)
-                                elseif selectedZoneCast == "Snowcap Ocean" then
-                                    bobberPosition = CFrame.new(2308, 126, 2200)
-                                elseif selectedZoneCast == "Snowcap Pond" then
-                                    bobberPosition = CFrame.new(2777, 275, 2605)
-                                elseif selectedZoneCast == "Sunstone" then
-                                    bobberPosition = CFrame.new(-645, 126, -955)
-                                elseif selectedZoneCast == "Terrapin Ocean" then
-                                    bobberPosition = CFrame.new(-57, 126, 2011)
-                                elseif selectedZoneCast == "The Arch" then
-                                    bobberPosition = CFrame.new(1076, 126, -1202)
-                                elseif selectedZoneCast == "Vertigo" then
-                                    bobberPosition = CFrame.new(-75, -740, 1200)
-                                end
-
-                                hasBobber.CFrame = bobberPosition
-                                
-                                local platform = Instance.new("Part")
-                                platform.Size = platformSize
-                                platform.Position = hasBobber.Position + platformPositionOffset
-                                platform.Anchored = true
-                                platform.Parent = hasBobber
-                                platform.BrickColor = BrickColor.new("Bright blue")
-                                platform.Transparency = 1.000
-                            end
-                        end
-                    else
-                        print("Bobber not found in the tool.")
-                    end
-                else
-                    print("No tool found in the character.")
-                end
-            end
-            task.wait(0.01)
-        end
-    end)
-end
-
-function AntiAfk2()
-    spawn(function()
-        while AntiAfk do
-            game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("afk"):FireServer(false)
-            task.wait(0.01)
-        end
-    end)
-end           
-PlayerGUI.ChildAdded:Connect(function(GUI)
-    if GUI:IsA("ScreenGui") then
-    elseif GUI.Name == "reel" and autoReel then
-        local reelfinishedEvent = ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished")
-        if reelfinishedEvent then
-            while GUI do
-                task.wait(2)
-                reelfinishedEvent:FireServer(100, false)
-            end
-        end
-    end
-end)
-function Pidoras()
-    spawn(function()
-        while AutoCast do
-            local player = game.Players.LocalPlayer
-            local character = player.Character
-
-            if character then
-                local tool = character:FindFirstChildOfClass("Tool")
-
-                if tool then
-                    local hasBobber = tool:FindFirstChild("bobber")
-
-                    if not hasBobber then
-                        local castEvent = tool:FindFirstChild("events") and tool.events:FindFirstChild("cast")
-
-                        if castEvent then
-                            local Random = math.random() * (99 - 90) + 90
-                            local FRandom = string.format("%.4f", Random)
-                            print(FRandom)
-                            
-                            local Random2 = math.random(90, 99)
-                            castEvent:FireServer(Random2)
-
-                            local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
-                            if humanoidRootPart then
-                                humanoidRootPart.Anchored = false
-                            end
-                        end
-                    end
-                end
-                task.wait(1)
-            end
-        end
-    end)
-end
-NoclipConnection = RunService.Stepped:Connect(function()
-    if Noclip == true then
-        if LocalCharacter ~= nil then
-            for i, v in pairs(LocalCharacter:GetDescendants()) do
-                if v:IsA("BasePart") and v.CanCollide == true then
-                    v.CanCollide = false
-                end
-            end
-        end
-    end
+    -- Simulate key presses
+    local VirtualInputManager = game:GetService("VirtualInputManager")
+    VirtualInputManager:SendKeyEvent(true,"RightControl",false,game)
+    VirtualInputManager:SendKeyEvent(false,"RightControl",false,game)
+    VirtualInputManager:SendKeyEvent(true,"LeftControl",false,game)
+    VirtualInputManager:SendKeyEvent(false,"LeftControl",false,game)
 end)
 
-local initialPosition
+UICorner.CornerRadius = UDim.new(0, 100)
+UICorner.Parent = ImageButton
 
-function rememberPosition()
-    spawn(function()
+	UICorner_2.CornerRadius = UDim.new(0, 10)
+	UICorner_2.Parent = Frame
+
+
+	local UIS = game:GetService('UserInputService')
+	local frame = Frame
+	local dragToggle = nil
+	local dragSpeed = 0.25
+	local dragStart = nil
+	local startPos = nil
+
+	local function updateInput(input)
+		local delta = input.Position - dragStart
+		local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
+			startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+		game:GetService('TweenService'):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
+	end
+
+	frame.InputBegan:Connect(function(input)
+		if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
+			dragToggle = true
+			dragStart = input.Position
+			startPos = frame.Position
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragToggle = false
+				end
+			end)
+		end
+	end)
+
+	UIS.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			if dragToggle then
+				Frame.Transparency = 1
+				updateInput(input)
+			else
+				Frame.Transparency = 1
+			end
+		end
+	end)
+end
+
+do -- Settings Initializer
+	local path = "Normal Hub/fisch"
+	if not isfolder(path) then makefolder(path) end
+	DefaultConfigName = path.."/OriConfibg.json"
+	ConfigName = path.."/"..Client.UserId.."Config.json"
+	Config = isfile(ConfigName) and readfile(ConfigName)
+	DefaultConfig = isfile(DefaultConfigName) and readfile(DefaultConfigName)
+	if DefaultConfig then
+		if type(DefaultConfig) == "string" and DefaultConfig:find"{" then
+			local Success,Result
+			Success,Result = pcall(function()
+				return game:GetService("HttpService"):JSONDecode(DefaultConfig)
+			end)
+			wait(0.1)
+			if Success then
+				DefaultConfig = Result
+			else
+				DefaultConfig = nil
+			end
+		end
+	end
+	if isfile(tostring(Client.UserId).."ALC.txt") then
+		if readfile(tostring(Client.UserId).."ALC.txt") == "true"  then
+			if Config then
+				if type(Config) == "string" and Config:find"{" then
+					local Success,Result
+					Success,Result = pcall(function()
+						return game:GetService("HttpService"):JSONDecode(Config)
+					end)
+					wait(0.1)
+					if Success then
+						Config = Result
+					else
+						Config = {}
+					end
+				else
+					Config = {}
+				end
+			else
+				Config = {}
+			end
+		else
+			Config = {}
+		end
+	else
+		writefile(tostring(Client.UserId).."ALC.txt", "true")
+		Config = {}
+	end
+	if getgenv().Config then
+		Config = getgenv().Config
+	end
+end
+
+do -- Config Function
+	save = function()
+		if not isfolder('Normal Hub') then
+			makefolder('Normal Hub')
+		end
+		writefile(ConfigName,game:GetService("HttpService"):JSONEncode(Config))
+	end
+	setDefaultConfig = function()
+		if not isfolder('Normal Hub') then
+			makefolder('Normal Hub')
+		end
+		writefile(DefaultConfigName,game:GetService("HttpService"):JSONEncode(Config))
+	end
+end
+
+do -- INFO FISH
+	local fish = game:GetService("ReplicatedStorage"):WaitForChild("resources"):WaitForChild("animations"):WaitForChild("fish")
+	FISHDATA = {
+		Tire = {
+			WeightPool = {110, 110};
+			Chance = 17;
+			Rarity = "Trash";
+			Resilience = 130;
+			Description = "Who would leave this in an ocean? Seems to be in great condition too. A common tire for cars and pickup trucks.";
+			Hint = "Find it in cheap bodies of water.";
+			FavouriteBait = "Magnet";
+			FavouriteTime = nil;
+			Price = 20;
+			XP = 10;
+			Seasons = {"None"};
+			Weather = {"None"};
+			Quips = {"Ermm..?", "A tire.?", "Who would put this in here?", "Oh. A tire.", "A tire!..?"};
+			SparkleColor = Color3.fromRGB(255, 255, 255);
+			From = "None";
+		};
+		Boot = {
+			WeightPool = {12, 12};
+			Chance = 17;
+			Rarity = "Trash";
+			Resilience = 120;
+			Description = "Who would leave this in an ocean? Seems to be in great condition too. A common boot, must of fallen off of a boat?.. Or someONE must of fallen off of a boat.. Whatever. either way, it's yours now!";
+			Hint = "Find it in cheap bodies of water.";
+			FavouriteBait = "Magnet";
+			FavouriteTime = nil;
+			Price = 15;
+			XP = 20;
+			Seasons = {"None"};
+			Weather = {"None"};
+			Quips = {"Ermm..?", "Why only one..?", "A Boot.!", "A Boot...", "I caught!.. a Boot..?", "Erm.. A Boot?"};
+			SparkleColor = Color3.fromRGB(197, 152, 80);
+			From = "None";
+		};
+		["Fungal Cluster"] = {
+			WeightPool = {9, 9};
+			Chance = 22;
+			Rarity = "Trash";
+			Resilience = 120;
+			Description = "Offspring of the Giant Fungal Trees of Mushgrove Swamp. These mushrooms produce heavy spores which polute the surrounding area and sky; giving everything an uncomfortable and green feel.";
+			Hint = "Find it in Mushgrove Swamp. Gives off spores.";
+			FavouriteBait = "Magnet";
+			FavouriteTime = nil;
+			Price = 9;
+			XP = 20;
+			Seasons = {"None"};
+			Weather = {"None"};
+			Quips = {"Ermm..?", "Hmm..?"};
+			SparkleColor = Color3.fromRGB(255, 0, 0);
+			HoldAnimation = fish:WaitForChild("underweight");
+			From = "Mushgrove";
+		};
+		Driftwood = {
+			WeightPool = {6, 6};
+			Chance = 17;
+			Rarity = "Trash";
+			Resilience = 120;
+			Description = "A wood that has been washed up onto the shore by the tides. Could be great for a crafts project!";
+			Hint = "Find it washed on beaches.";
+			FavouriteBait = "Magnet";
+			FavouriteTime = nil;
+			Price = 10;
+			XP = 30;
+			Seasons = {"None"};
+			Weather = {"None"};
+			Quips = {"Ermm..?", "Uhmm..?", "Driftwood!", "Oh. Driftwood.", "It's!- Oh.. Driftwood..", "Driftwood.."};
+			SparkleColor = Color3.fromRGB(197, 107, 62);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "None";
+		};
+		Seaweed = {
+			WeightPool = {1, 3};
+			Chance = 20;
+			Rarity = "Trash";
+			Resilience = 90;
+			Description = "Some lovely seaweed that caught your hook. Not as cool as a fish, but it's better than finding a lonesome boot!";
+			Hint = "Find it in saltwater or near patches of seaweed.";
+			FavouriteBait = "Magnet";
+			FavouriteTime = nil;
+			Price = 9;
+			XP = 20;
+			Seasons = {"None"};
+			Weather = {"None"};
+			Quips = {"Ermm..?", "Uhmm..?", "Driftwood!", "Oh. Driftwood.", "It's!- Oh.. Driftwood..", "Driftwood.."};
+			SparkleColor = Color3.fromRGB(197, 107, 62);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "None";
+		};
+		Log = {
+			WeightPool = {45, 75};
+			Chance = 10;
+			Rarity = "Trash";
+			Resilience = 80;
+			Description = "A large log of wood than must have drifted on to shore. Could be great for house projects!";
+			Hint = "Find it washed on beaches and in the ocean.";
+			FavouriteBait = "Magnet";
+			FavouriteTime = nil;
+			Price = 124;
+			XP = 45;
+			Seasons = {"None"};
+			Weather = {"None"};
+			Quips = {"Oh.. a Log!", "A.. Log?", "How did I pull this up?", "A Log..?"};
+			SparkleColor = Color3.fromRGB(255, 255, 255);
+			HoldAnimation = fish:WaitForChild("heavy");
+			From = "None";
+		};
+		Rock = {
+			WeightPool = {150, 210};
+			Chance = 50;
+			Rarity = "Trash";
+			Resilience = 90;
+			Description = "It's not a boulder.. It's a rock! Found in rocky bodies of water.";
+			Hint = "Found in rocky bodies of water.";
+			FavouriteBait = "Magnet";
+			FavouriteTime = nil;
+			Price = 15;
+			XP = 10;
+			Seasons = {"None"};
+			Weather = {"None"};
+			Quips = {"Ermm..?", "Uhmm..?", "A Rock!", "Oh. A Rock.", "It's!- Oh.. A Rock..", "A rock.."};
+			SparkleColor = Color3.fromRGB(80, 80, 80);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "None";
+		};
+		Ice = {
+			WeightPool = {40, 60};
+			Chance = 35;
+			Rarity = "Trash";
+			Resilience = 90;
+			Description = "Chunk of ice that broke off from a glacier in Snowcap. Kinda fun to lick..";
+			Hint = "Found in frozen bodies of water.";
+			FavouriteBait = "Magnet";
+			FavouriteTime = nil;
+			Price = 15;
+			XP = 10;
+			Seasons = {"None"};
+			Weather = {"None"};
+			Quips = {"Ermm..?", "Uhmm..?", "A block of Ice!", "Oh. Ice.", "Ouu! Let me lick it!", "Ice..", "It's not a popsicle, but it will do!"};
+			SparkleColor = Color3.fromRGB(171, 255, 245);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Snowcap";
+		};
+		Basalt = {
+			WeightPool = {150, 210};
+			Chance = 55;
+			Rarity = "Trash";
+			Resilience = 120;
+			Description = "Basalt, also known as Lava Rock, is an igneous volcanic rock that forms when molten lava cools and solidifies. Very common to find when in a volcanic area.";
+			Hint = "Found in active Volcanoes";
+			FavouriteBait = "Magnet";
+			FavouriteTime = nil;
+			Price = 15;
+			XP = 10;
+			Seasons = {"None"};
+			Weather = {"None"};
+			Quips = {"Ermm..?", "Uhmm..?", "Some Basalt!", "Oh. A Piece of Basalt.", "It's!- Oh.. Basalt..", "Basalt.."};
+			SparkleColor = Color3.fromRGB(59, 59, 59);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Roslit Volcano";
+		};
+		["Common Crate"] = {
+			WeightPool = {80, 80};
+			Chance = 17;
+			Rarity = "Uncommon";
+			Resilience = 120;
+			Description = "A moderately sized wooden crate seemingly lost from a fishing boat of some kind. The date of it's disappearance is unknown. Therefore, finders keepers?- Opening it might give you an array of fish, bait, and money!";
+			Hint = "Fallen off of a fishing boat.";
+			FavouriteBait = "Magnet";
+			FavouriteTime = nil;
+			BuyMult = 1.6;
+			Price = 80;
+			XP = 20;
+			Seasons = {"None"};
+			Weather = {"None"};
+			Quips = {"A Common Crate!", "A Crate!", "Woah! A Crate!", "A Common Crate!", "Who left this here?"};
+			SparkleColor = Color3.fromRGB(255, 255, 255);
+			HoldAnimation = fish:WaitForChild("crate");
+			IsCrate = true;
+			CrateType = "All";
+			BaitContents = {"Shrimp", "Bagel", "Squid", "Seaweed", "Magnet", "Worm", "Minnow", "Flakes", "Insect", "Maggot", "Rapid Catcher"};
+			FishContents = {"Sockeye Salmon", "Trout", "Carp", "Minnow", "Mackerel", "Gudgeon", "Cod", "Haddock", "White Bass", "Sea Bass", "Chub", "Pumpkinseed"};
+			CoinContents = {40, 120};
+			From = "None";
+		};
+		["Carbon Crate"] = {
+			WeightPool = {160, 160};
+			Chance = 2;
+			Rarity = "Rare";
+			Resilience = 50;
+			Description = "A large military grade crate, lost from some sort of commercial fishing boat. The date of it's disappearance is unkown. Therefore, finders keepers?- Opening it might give you an array of fish, bait, and money!";
+			Hint = "Fallen off of a commercial fishing boat.";
+			FavouriteBait = "Magnet";
+			FavouriteTime = nil;
+			BuyMult = 3.5;
+			Price = 140;
+			XP = 50;
+			Seasons = {"None"};
+			Weather = {"None"};
+			Quips = {"A Carbon Crate!", "A Crate!", "Woah! A Crate!", "A Carbon Crate!", "Who left this here?", "Where is this from??"};
+			SparkleColor = Color3.fromRGB(255, 255, 255);
+			HoldAnimation = fish:WaitForChild("crate");
+			IsCrate = true;
+			CrateType = "FishOrCoins";
+			FishContents = {"Alligator Gar", "Nurse Shark", "Ribbon Eel", "Eel", "White Bass", "Longtail Bass", "Yellowfin Tuna", "Bluefin Tuna", "Squid", "Lobster", "Cod", "Pike", "Barracuda", "Arapaima", "Amberjack", "Sturgeon", "Longtail Bass", "Squid", "Mahi Mahi", "Halibut", "Coelacanth", "Abyssacuda"};
+			CoinContents = {130, 400};
+			From = "None";
+		};
+		["Fish Barrel"] = {
+			WeightPool = {150, 150};
+			Chance = 12;
+			Rarity = "Uncommon";
+			Resilience = 110;
+			Description = "A large wooden barrel with iron hoops. The barrel filled with a large array of ocean and freshwater fish that all seem pretty fresh. Therefore, finders keeps?- Opening it might give you an assortment of fish";
+			Hint = "Fallen off of a fishing boat.";
+			FavouriteBait = "Magnet";
+			FavouriteTime = nil;
+			Price = 80;
+			XP = 40;
+			Seasons = {"None"};
+			Weather = {"None"};
+			Quips = {"A Common Crate!", "A Crate!", "Woah! A Crate!", "A Common Crate!", "Who left this here?"};
+			SparkleColor = Color3.fromRGB(255, 255, 255);
+			HoldAnimation = fish:WaitForChild("crate");
+			From = "None";
+			IsCrate = true;
+			CrateType = "Fish";
+			FishContents = {"Sockeye Salmon", "Trout", "Bream", "Sturgeon", "Barracuda", "Carp", "Pufferfish", "Bluefin Tuna", "Yellowfin Tuna", "Sockeye Salmon", "Trout", "Bream", "Barracuda", "Carp", "Pike", "Alligator Gar", "Cod", "Minnow", "Longtail Bass", "Mahi Mahi", "Sardine", "Crab", "Amberjack", "Arapaima", "Perch", "Sea Bass", "Cod", "Haddock", "Sweetfish", "Goldfish", "Halibut", "Minnow", "Pale Tang", "Porgy", "Porgy", "White Bass", "Walleye", "Redeye Bass", "Sockeye Salmon", "Trout", "Bream", "Sturgeon", "Barracuda", "Carp", "Pufferfish", "Bluefin Tuna", "Yellowfin Tuna", "Sockeye Salmon", "Trout", "Bream", "Barracuda", "Carp", "Pike", "Alligator Gar", "Cod", "Minnow", "Longtail Bass", "Mahi Mahi", "Sardine", "Crab", "Amberjack", "Arapaima", "Perch", "Sea Bass", "Cod", "Haddock", "Sweetfish", "Goldfish", "Halibut", "Minnow", "Pale Tang", "Porgy", "Porgy", "White Bass", "Walleye", "Redeye Bass", "Golden Smallmouth Bass"};
+		};
+
+		["Bait Crate"] = {
+			WeightPool = {80, 80};
+			Chance = 15;
+			Rarity = "Uncommon";
+			Resilience = 120;
+			Description = "A wooden crate with fabric over top to preserve the bait inside. Seemingly lost from a fishing boat of some kind. The bait is still alive and fresh. Therefore, finders keepers?- Opening it might give you an array of common and rare baits!";
+			Hint = "Fallen off of a fishing boat.";
+			FavouriteBait = "Magnet";
+			FavouriteTime = nil;
+			BuyMult = 1.6;
+			Price = 75;
+			XP = 40;
+			Seasons = {"None"};
+			Weather = {"None"};
+			Quips = {"A Crate of Bait!", "A Bait Crate!", "Woah! A Crate!", "A Crate!", "Who left this here?", "Oh, the shrimps still moving?", "A Crate full of Bait!"};
+			SparkleColor = Color3.fromRGB(255, 255, 255);
+			HoldAnimation = fish:WaitForChild("crate");
+			From = "None";
+			IsCrate = true;
+			CrateType = "Bait";
+			BaitContents = {"Shrimp", "Seaweed", "Bagel", "Squid", "Magnet", "Worm", "Minnow", "Flakes", "Insect", "Fish Head", "Rapid Catcher", "instant Catcher", "Super Flakes", "Maggot"};
+		};
+		["Quality Bait Crate"] = {
+			WeightPool = {120, 120};
+			Chance = 8;
+			Rarity = "Rare";
+			Resilience = 120;
+			Description = "A metal bait box with a rubber seal to protect the bait inside. Seemingly lost from a fishing boat of some kind. The bait is still alive and fresh. Therefore, finders keepers?- Opening it might give you an array of baits!";
+			Hint = "Fallen off of a fishing boat.";
+			FavouriteBait = "Magnet";
+			FavouriteTime = nil;
+			BuyMult = 3.5;
+			Price = 150;
+			XP = 40;
+			Seasons = {"None"};
+			Weather = {"None"};
+			Quips = {"A Crate of Bait!", "A Bait Crate!", "Woah! A Crate!", "A Crate!", "Who left this here?", "Oh, the shrimps still moving?", "A Crate full of Bait!"};
+			SparkleColor = Color3.fromRGB(255, 255, 255);
+			HoldAnimation = fish:WaitForChild("downward");
+			From = "None";
+			IsCrate = true;
+			CrateType = "Bait";
+			BaitContents = {"Fish Head", "Rapid Catcher", "instant Catcher", "Seaweed", "Seaweed", "Squid", "Super Flakes", "Maggot", "Night Shrimp", "Maggot", "Maggot", "Weird Algae"};
+		};
+		["Volcanic Geode"] = {
+			WeightPool = {200, 200};
+			Chance = 17;
+			Rarity = "Rare";
+			Resilience = 120;
+			Description = "The Volcanic Geode encases a magma crystal core, preserving its contents with an amber-like quality. Within this geode, you might find a trove of rare or extinct treasuresâ€” it's like a volcanic Christmas!";
+			Hint = "Fallen off of a fishing boat.";
+			FavouriteBait = "Magnet";
+			FavouriteTime = nil;
+			BuyMult = 3;
+			Price = 200;
+			XP = 20;
+			Seasons = {"None"};
+			Weather = {"None"};
+			Quips = {"Ooo, shiny!", "A rock...?!", "Woah! Glowy thing!", "A Geode!", "What's this thing?"};
+			SparkleColor = Color3.fromRGB(255, 255, 255);
+			HoldAnimation = fish:WaitForChild("crate");
+			IsCrate = true;
+			CrateType = "All";
+			BaitContents = {"Coal", "Coal", "Coal", "Coal", "Maggot", "Maggot", "Minnow", "Truffle Worm", "Coal", "Night Shrimp", "Rapid Catcher", "instant Catcher", "Super Flakes", "Night Shrimp", "Rapid Catcher", "Super Flakes"};
+			FishContents = {"Ember Snapper", "Pyrogrub", "Sturgeon", "Magma Tang", "Alligator Gar", "Pufferfish", "Sea Urchin", "Sea Urchin", "Perch", "Perch", "Perch", "Angelfish", "Rock", "Rock", "Rock", "Magma Tang"};
+			CoinContents = {150, 500};
+			From = "Roslit Volcano";
+		};
+		["Largemouth Bass"] = {
+			WeightPool = {10, 45};
+			Chance = 75;
+			Rarity = "Common";
+			Resilience = 80;
+			Description = "The Largemouth Bass is a common freshwater fish found in Moosewood known for its large mouth and aggressive feeding behavior. It's found in various habitats, such as lakes, ponds, and rivers, where the water is warm and there's plenty of vegetation. Largemouth Bass are also known for their camouflage, with a greenish color on their backs that helps them blend in with their surroundings.";
+			Hint = "Found in Moosewoods freshwater. Seems to prefer worms and other small baits.";
+			FavouriteBait = "Worm";
+			FavouriteTime = nil;
+			Price = 85;
+			XP = 20;
+			Seasons = {"Spring", "Summer"};
+			Weather = {"Rain"};
+			Quips = {"Now, where's the snare?", "Woah!", "Awesome!", "A Largemouth Bass!", "Ou! A Bass!"};
+			SparkleColor = Color3.fromRGB(172, 255, 134);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Moosewood";
+		};
+		["Sea Bass"] = {
+			WeightPool = {20, 60};
+			Chance = 75;
+			Rarity = "Common";
+			Resilience = 80;
+			Description = "The Sea Bass is a popular catch for many anglers, known for its elongated body and aggressive fighting behavior when hooked. They can be found all over the world in all sorts of salt waters.";
+			Hint = "In salt waters.";
+			FavouriteBait = "Squid";
+			FavouriteTime = nil;
+			Price = 95;
+			XP = 90;
+			Seasons = {"Spring", "Summer"};
+			Weather = {"Clear"};
+			Quips = {"A Sea Bass!", "I caught a Sea Bass!", "Woah! A Sea Bass!", "Ouu! A Bass!"};
+			SparkleColor = Color3.fromRGB(203, 203, 203);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Ocean";
+		};
+		["Smallmouth Bass"] = {
+			WeightPool = {5, 17};
+			Chance = 75;
+			Rarity = "Common";
+			Resilience = 80;
+			Description = "The Smallmouth Bass is a popular freshwater fish known for its fighting spirit and preference for clear, cool waters. It has a streamlined body with a greenish-brown coloration and distinctive horizontal stripes.  It can be found in plenty of freshwaters, but is native to Terrapin Islands filtered water.";
+			Hint = "Can be found in freshwaters and in the filtered waters of Terrapin Island.";
+			FavouriteBait = "Worm";
+			FavouriteTime = nil;
+			Price = 70;
+			XP = 90;
+			Seasons = {"Spring", "Summer"};
+			Weather = {"Windy"};
+			Quips = {"A Smallmouth Bass!", "I caught a Smallmouth Bass!", "Woah! A Smallmouth Bass!", "Ouu! A Bass!"};
+			SparkleColor = Color3.fromRGB(127, 255, 88);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Terrapin";
+		};
+		Anchovy = {
+			WeightPool = {1, 3};
+			Chance = 100;
+			Rarity = "Common";
+			Resilience = 100;
+			Description = "Anchovies are extremely small and slender fish, with a silvery sheen. They are known for their schooling behavior and are a common catch near Moosewood.";
+			Hint = "Caught in all saltwaters of Moosewood";
+			FavouriteBait = "None";
+			FavouriteTime = "Day";
+			Price = 30;
+			XP = 20;
+			Seasons = {"Spring"};
+			Weather = {"Clear"};
+			Quips = {"I caught an Anchovy..", "An Anchovy!", "It really put up a battle!"};
+			SparkleColor = Color3.fromRGB(255, 255, 255);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Moosewood";
+		};
+		["Swamp Bass"] = {
+			WeightPool = {20, 60};
+			Chance = 80;
+			Rarity = "Common";
+			Resilience = 80;
+			Description = "The Swamp Bass is species of Bass that can only be found in Swamp water. They are extremely similar to Smallmouth Bass besides their special adaptation; They have camelion-like camouflage. This allows them to nearly entirely avoid being a prey of larger fish and Alligators.";
+			Hint = "Can be found in Mushgrove Swamp.";
+			FavouriteBait = "Worm";
+			FavouriteTime = nil;
+			Price = 60;
+			XP = 50;
+			Seasons = {"Spring", "Summer"};
+			Weather = {"Windy"};
+			Quips = {"A Swamp Bass!", "I caught a Swamp Bass!", "Woah! A Swamp Bass!", "Ouu! A Swamp Bass!"};
+			SparkleColor = Color3.fromRGB(137, 255, 116);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Mushgrove";
+		};
+		Chub = {
+			WeightPool = {10, 30};
+			Chance = 100;
+			Rarity = "Common";
+			Resilience = 80;
+			Description = "The Chub is a hardy and adaptable freshwater fish, typically found in Roslit Pond. The Chub is an easy catch for novice anglers and is thankfully a common catch.";
+			Hint = "commonly caught in Roslit Pond.";
+			FavouriteBait = "Seaweed";
+			FavouriteTime = "Day";
+			Price = 40;
+			XP = 40;
+			Seasons = {"Spring", "Summer"};
+			Weather = {"None"};
+			Quips = {"I caught a Chub!", "Woah, a Chub!!"};
+			SparkleColor = Color3.fromRGB(255, 255, 255);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Roslit";
+		};
+		["White Bass"] = {
+			WeightPool = {3, 25};
+			Chance = 60;
+			Rarity = "Uncommon";
+			Resilience = 70;
+			Description = "The White Bass is a slender, silvery fish with horizontal black stripes running along its body. It can be found in plenty of freshwaters, but is native to Terrapin Islands filtered water.";
+			Hint = "Can be found in freshwaters and in the filtered waters of Terrapin Island during the day.";
+			FavouriteBait = "Minnow";
+			FavouriteTime = "Day";
+			Price = 110;
+			XP = 50;
+			Seasons = {"Spring", "Summer"};
+			Weather = {"Foggy"};
+			Quips = {"A White Bass!", "I caught a White Bass!", "Woah! A White Bass!", "Ouu! A Bass!"};
+			SparkleColor = Color3.fromRGB(255, 255, 255);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Terrapin";
+		};
+		Blackfish = {
+			WeightPool = {5, 20};
+			Chance = 80;
+			Rarity = "Uncommon";
+			Resilience = 60;
+			Description = "Blackfish are small, black, nighttime swimmers that can be most commonly found in the cold the rocky waters of Snowcap Pond.";
+			Hint = "Found in Snowcap Pond during the night.";
+			FavouriteBait = "Worm";
+			FavouriteTime = "Night";
+			Price = 100;
+			XP = 100;
+			Seasons = {"None"};
+			Weather = {"None"};
+			Quips = {"A Blackfish!", "I caught a Blackfish!", "Oh, a Blackfish!"};
+			SparkleColor = Color3.fromRGB(113, 113, 113);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Snowcap";
+		};
+		Burbot = {
+			WeightPool = {10, 35};
+			Chance = 50;
+			Rarity = "Uncommon";
+			Resilience = 50;
+			Description = "The Burbot is a long, slender freshwater fish with a mottled brown and green appearance, resembling a cross between a catfish and an eel. Burbots are known for being active in colder temperatures, particularly under the ice in Snowcap Pond.";
+			Hint = "Found in Snowcap Pond.";
+			FavouriteBait = "Minnow";
+			FavouriteTime = nil;
+			Price = 80;
+			XP = 110;
+			Seasons = {"Autumn"};
+			Weather = {"Foggy"};
+			Quips = {"A Burbot!", "I caught a Burbot!", "Oh, a Burbot!"};
+			SparkleColor = Color3.fromRGB(194, 255, 129);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Snowcap";
+		};
+		Grayling = {
+			WeightPool = {5, 20};
+			Chance = 75;
+			Rarity = "Common";
+			Resilience = 70;
+			Description = "An interesting, cold-water fish with shimmering silver scales and a signature large, colourful dorsal fin. It is known for it's beauty and its agile swimming behaviour. The Grayling is often found in Snowcap Pond during the day, but it can rarely be found at night.";
+			Hint = "Found in Snowcap Pond during the day.";
+			FavouriteBait = "Insect";
+			FavouriteTime = "Day";
+			Price = 80;
+			XP = 100;
+			Seasons = {"Spring", "Summer"};
+			Weather = {"Foggy"};
+			Quips = {"A Grayling!", "I caught a Grayling!", "Oh, a Grayling!"};
+			SparkleColor = Color3.fromRGB(255, 255, 255);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Snowcap";
+		};
+		["Redeye Bass"] = {
+			WeightPool = {3, 15};
+			Chance = 40;
+			Rarity = "Unusual";
+			Resilience = 50;
+			Description = "The Redeye Bass looks very similar to the Largemouth Bass. However, the Redeye bass has very distinct red or orange eyes to go along with its greenish brown body.";
+			Hint = "Can be found in freshwaters and in the filtered waters of Terrapin Island during the day.";
+			FavouriteBait = "Flakes";
+			FavouriteTime = "Day";
+			Price = 115;
+			XP = 100;
+			Seasons = {"Spring", "Autumn"};
+			Weather = {"Windy"};
+			Quips = {"A Redeyed Bass!", "I caught a Redeye Bass!", "Woah! A Redeye Bass!", "Ouu! A Redeye Bass!"};
+			SparkleColor = Color3.fromRGB(255, 29, 29);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Terrapin";
+		};
+		["Skipjack Tuna"] = {
+			WeightPool = {70, 160};
+			Chance = 40;
+			Rarity = "Unusual";
+			Resilience = 45;
+			Description = "The Skipjack Tuna can be caught near Snowcap Island. They are extremely agile swimmers, allowing them to put up a strong fight against anglers.";
+			Hint = "Found near Snowcap Island.";
+			FavouriteBait = "None";
+			FavouriteTime = nil;
+			Price = 150;
+			XP = 100;
+			Seasons = {"None"};
+			Weather = {"None"};
+			Quips = {"I caught a Tuna!", "A Skipjack Tuna!", "Woah, a Skipjack Tuna!", "I caught a Skipjack Tuna!"};
+			SparkleColor = Color3.fromRGB(162, 174, 255);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Snowcap";
+		};
+		Bream = {
+			WeightPool = {11, 27};
+			Chance = 75;
+			Rarity = "Common";
+			Resilience = 80;
+			Description = "Breams are school fish with deep bodies, flat sides and a small head. The bream loves worms and is most commonly found in Moosewoods freshwater.";
+			Hint = "Found in freshwaters, and along ocean beaches. Prefers day.";
+			FavouriteBait = "Worm";
+			FavouriteTime = "Day";
+			Price = 60;
+			XP = 30;
+			Seasons = {"Spring", "Winter"};
+			Weather = {"Foggy"};
+			Quips = {"A Bream!", "Bream!", "I caught a Bream!", "Woah, a Bream!", "Hello, Bream!"};
+			SparkleColor = Color3.fromRGB(255, 255, 193);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Moosewood";
+		};
+		Pumpkinseed = {
+			WeightPool = {1, 5};
+			Chance = 65;
+			Rarity = "Uncommon";
+			Resilience = 80;
+			Description = "Pumpkinseed are known for their distinctive red or orange edge on the ear flap and their round body shape. They prefer warmer waters and are often found in Roslit Bays freshwater. Pumpkinseed are also much less aggresive compared to other sunfish species.";
+			Hint = "Found in Roslit freshwater during warm days.";
+			FavouriteBait = "Minnow";
+			FavouriteTime = nil;
+			Price = 90;
+			XP = 30;
+			Seasons = {"Summer"};
+			Weather = {"Clear"};
+			Quips = {"A Pumpkinseed!", "I caught a Pumpkinseed!", "Can it hear me?", "Woah.. Cool ears!"};
+			SparkleColor = Color3.fromRGB(255, 60, 60);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Roslit";
+		};
+		["Sockeye Salmon"] = {
+			WeightPool = {20, 70};
+			Chance = 90;
+			Rarity = "Common";
+			Resilience = 90;
+			ProgressEfficiency = 1.2;
+			Description = "The Sockeye Salmon are a very common type of salmon found near Moosewood, known for their vibrent red and green colours and interesting habits when laying eggs. They are very common during colder seasons such as Autumn, as that is the time most Sockeye Salmon lay their eggs.";
+			Hint = "Resides in oceans, some freshwaters along Moosewood. Prefers shrimp.";
+			FavouriteBait = "Bagel";
+			FavouriteTime = nil;
+			Price = 45;
+			XP = 25;
+			Seasons = {"Autumn", "Winter"};
+			Weather = {"Rain"};
+			Quips = {"Salmoff!", "Woah!", "Awesome!", "A Sockeye Salmon!", "Woah, A Sockeye Salmon!", "A Salmon!"};
+			SparkleColor = Color3.fromRGB(255, 160, 160);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Moosewood";
+		};
+		Sweetfish = {
+			WeightPool = {2, 5};
+			Chance = 75;
+			Rarity = "Common";
+			Resilience = 85;
+			Description = "The Sweetfish is known for its delicate sweet flavor, and its golden hue. They are very commonly found in short river-like gap of Sunstone Island.";
+			Hint = "Found in the center gap of Sunstone Island.";
+			FavouriteBait = "Worm";
+			FavouriteTime = nil;
+			Price = 40;
+			XP = 25;
+			Seasons = {"Autumn"};
+			Weather = {"Clear"};
+			Quips = {"A Sweetfish!", "Is there a sour one?", "Woah! A Sweetfish!", "Hope it's not artificially sweet!"};
+			SparkleColor = Color3.fromRGB(157, 255, 96);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Sunstone";
+		};
+		Trout = {
+			WeightPool = {9, 50};
+			Chance = 85;
+			Rarity = "Common";
+			Resilience = 80;
+			Description = "The Trout is a common freshwater fish found in all waters of Moosewood & Roslit. Trouts are well recognized for their interesting dotted patterns and pinkish-red ribbon across the sides of their soft bodies. Trouts also interestingly have two hearts to help efficiently pump blood throughout their body.";
+			Hint = "Can be found in plenty of common waters in Moosewood & Roslit.";
+			FavouriteBait = "Insect";
+			FavouriteTime = nil;
+			Price = 65;
+			XP = 40;
+			Seasons = {"None"};
+			Weather = {"Clear"};
+			Quips = {"I thought theres a rainbow?", "Woah, a Trout!", "Woah!", "A Trout!", "I caught a Trout!"};
+			SparkleColor = Color3.fromRGB(99, 168, 94);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Moosewood";
+		};
+		Porgy = {
+			WeightPool = {5, 30};
+			Chance = 60;
+			Rarity = "Common";
+			Resilience = 65;
+			Description = "Porgies are a common catch for coasta anglers. They are a relatively easy to catch ocean fish with no real special qualities besides their taste and fun to say name.";
+			Hint = "Found all over the Ocean during the day and prefers shrimp.";
+			FavouriteBait = "Shrimp";
+			FavouriteTime = "Day";
+			Price = 90;
+			XP = 40;
+			Seasons = {"Summer", "Spring"};
+			Weather = {"Clear", "Foggy"};
+			Quips = {"A Corgi.. I mean Porgy??", "Woah, a Porgy!", "Nice, A Porgy!", "A Porgy!", "I caught a Porgy!"};
+			SparkleColor = Color3.fromRGB(248, 255, 169);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Ocean";
+		};
+		Walleye = {
+			WeightPool = {18, 40};
+			Chance = 60;
+			Rarity = "Uncommon";
+			Resilience = 70;
+			Description = "The Walleye is a predatory fish known for its sharp teeth and distinctive large eyes. The Walleye can be found around the East side of Terrapin Island.";
+			Hint = "Can be found near Terrapin Island.";
+			FavouriteBait = "Minnow";
+			FavouriteTime = nil;
+			Price = 90;
+			XP = 90;
+			Seasons = {"Spring", "Autumn"};
+			Weather = {"None"};
+			Quips = {"Woah! A Walleye!", "I caught a Walleye!", "Lovely, a Walleye!"};
+			SparkleColor = Color3.fromRGB(113, 188, 96);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Terrapin";
+		};
+		Bluegill = {
+			WeightPool = {1, 6};
+			Chance = 85;
+			Rarity = "Common";
+			Resilience = 90;
+			Description = "A small, round freshwater fish with bright blue and orange hues, easily recognized by its distinct gill spot. It can be found all over the waters of Snowcap.";
+			Hint = "Found in Saltwaters near Snowcap.";
+			FavouriteBait = "Insect";
+			FavouriteTime = nil;
+			Price = 60;
+			XP = 90;
+			Seasons = {"Summer", "Spring"};
+			Weather = {"Clear"};
+			Quips = {"A Bluegill!", "But I pinked the Red Pill!", "I caught a Bluegill!!", "Lovely, a Bluegill!"};
+			SparkleColor = Color3.fromRGB(149, 255, 188);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Snowcap";
+		};
+		Sardine = {
+			WeightPool = {1, 3};
+			Chance = 90;
+			Rarity = "Common";
+			Resilience = 90;
+			Description = "Sarines are small schooling fish, known for their high oil content, silver scales, and long tiny bodies.";
+			Hint = "Found commonly in the open ocean.";
+			FavouriteBait = "None";
+			FavouriteTime = "Day";
+			Price = 30;
+			XP = 20;
+			Seasons = {"Spring", "Summer"};
+			Weather = {"Clear"};
+			Quips = {"I caught a Sardine!", "Ouu! A Sardine!", "A Sardine!"};
+			SparkleColor = Color3.fromRGB(185, 185, 185);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Ocean";
+		};
+		["Arctic Char"] = {
+			WeightPool = {20, 60};
+			Chance = 40;
+			Rarity = "Uncommon";
+			Resilience = 50;
+			Description = "The Arctic Char is a striking fish commonly known for its vibrant reddish-orange belly and long mouth. They can be found in the cold salt-waters of Snowcap Island.";
+			Hint = "Found in open salt-water near Snowcap.";
+			FavouriteBait = "Insect";
+			FavouriteTime = nil;
+			Price = 80;
+			XP = 50;
+			Seasons = {"Spring", "Autumn"};
+			Weather = {"None"};
+			Quips = {"A Char!", "I caught an Arctic Char!", "Woah, a Char!", "It's an Arctic Char!"};
+			SparkleColor = Color3.fromRGB(255, 83, 83);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Snowcap";
+		};
+		["Red Drum"] = {
+			WeightPool = {10, 25};
+			Chance = 40;
+			Rarity = "Common";
+			Resilience = 50;
+			Description = "The Red Drum is a close relative to the Black Drum; Red Drum can be found all around Snowcaps vast salt-waters.";
+			Hint = "Found in salt-water of Snowcap.";
+			FavouriteBait = "Insect";
+			FavouriteTime = nil;
+			Price = 80;
+			XP = 50;
+			Seasons = {"Spring", "Autumn"};
+			Weather = {"None"};
+			Quips = {"A Red Drum!", "I caught a Red Drum!", "Woah, a Drum!", "It'a Red Drum!", "All I see is Red Drum."};
+			SparkleColor = Color3.fromRGB(255, 49, 49);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Snowcap";
+		};
+		Herring = {
+			WeightPool = {5, 11};
+			Chance = 80;
+			Rarity = "Common";
+			Resilience = 80;
+			Description = "The Herring is a slender silvery fish known for its schooling behavior. Herring can often be found in costal waters during the day.";
+			Hint = "Found commonly in the coast of Snowcaps salt-water during the day.";
+			FavouriteBait = "Shrimp";
+			FavouriteTime = "Day";
+			Price = 70;
+			XP = 50;
+			Seasons = {"Summer", "Spring"};
+			Weather = {"Clear", "Windy"};
+			Quips = {"A Herring!", "I caught a Herring!", "Oh, a Herring!"};
+			SparkleColor = Color3.fromRGB(255, 255, 255);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Snowcap";
+		};
+		Pollock = {
+			WeightPool = {10, 50};
+			Chance = 80;
+			Rarity = "Common";
+			Resilience = 60;
+			Description = "Pollock are sleek, silver fish with a light belly contrasting a darker dorsal. They are fast swimmers and often found feeding under Snowcap Islands docks.";
+			Hint = "Found in Snowcap island, especially near the docks.";
+			FavouriteBait = "None";
+			FavouriteTime = nil;
+			Price = 70;
+			XP = 50;
+			Seasons = {"Summer"};
+			Weather = {"Foggy", "Rain"};
+			Quips = {"A Pollock!", "I caught a Pollock!", "Woah, a Pollock!", "Look! A Pollock!"};
+			SparkleColor = Color3.fromRGB(255, 255, 255);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Snowcap";
+		};
+		Spiderfish = {
+			WeightPool = {3, 10};
+			Chance = 90;
+			Rarity = "Common";
+			Resilience = 90;
+			Description = "The Spiderfish is a rare void fish, caught only in Vertigos calm waters. They are schooling fish and are a common prey of Vertigos vicious predators.";
+			Hint = "Found commonly in Vertigo.";
+			FavouriteBait = "None";
+			FavouriteTime = nil;
+			Price = 30;
+			XP = 20;
+			Seasons = {"Winter"};
+			Weather = {"None"};
+			Quips = {"I caught a Spiderfish!", "Ouu! A Spiderfish!", "A Spiderfish!"};
+			SparkleColor = Color3.fromRGB(53, 60, 79);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Vertigo";
+		};
+		Bowfin = {
+			WeightPool = {30, 60};
+			Chance = 60;
+			Rarity = "Uncommon";
+			Resilience = 60;
+			Description = "The Mudfish, also known as Bowfin, is a resilient, ancient fish species known for its ability to survive in harsh, low-oxygen environments like swamps and muddy waters. They can be found all over Mushgrove Swamp, especially lurking in dense vegetation and during the night.";
+			Hint = "Caught in Mushgrove Swamp at night.";
+			FavouriteBait = "Worm";
+			FavouriteTime = "Night";
+			Price = 100;
+			XP = 50;
+			Seasons = {"Spring", "Summer"};
+			Weather = {"Rain"};
+			Quips = {"A Mudfish!", "Ouu, A Mudfish!", "I caught a Mudfish!"};
+			SparkleColor = Color3.fromRGB(189, 125, 95);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Mushgrove";
+		};
+		Snook = {
+			WeightPool = {30, 70};
+			Chance = 45;
+			Rarity = "Unusual";
+			Resilience = 85;
+			Description = "The Common Snook is a cute salt water swimmer found commonly near Moosewood Docks. They are easy noticable due to their thin black stripe across their body, and easily catchable due to schools during spawning season in spring.";
+			Hint = "Can be found close to ocean docks of Moosewood.";
+			FavouriteBait = "Shrimp";
+			FavouriteTime = nil;
+			Price = 110;
+			XP = 45;
+			Seasons = {"Spring"};
+			Weather = {"Clear", "Foggy"};
+			Quips = {"I caught a Snook!", "It's a Snook!", "A Snook!", "Look at this Snook!"};
+			SparkleColor = Color3.fromRGB(255, 233, 125);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Moosewood";
+		};
+		Carp = {
+			WeightPool = {10, 50};
+			Chance = 60;
+			Rarity = "Uncommon";
+			Resilience = 70;
+			Description = "Carps are freshwater fish that are known for their whisker-like barbels around their mouth. Carps can adapt to plenty of different environments, as they can thrive in various water conditions. Due to their resilience, they are a common choice for stocking man-made ponds and lakes! They are also pretty cute, in my opinion.";
+			Hint = "Found in the back of Moosewood Pond.";
+			FavouriteBait = "Bagel";
+			FavouriteTime = nil;
+			Price = 110;
+			XP = 80;
+			Seasons = {"None"};
+			Weather = {"None"};
+			Quips = {"Is it magic?", "Woah, a Carp!", "It's a Carp!", "Woahh! This is bigger than I thought.", "Carp-tastic!", "!!!", "Woah!", "A Carp! My skill are sharp!"};
+			SparkleColor = Color3.fromRGB(255, 186, 125);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Moosewood";
+		};
+		["Grey Carp"] = {
+			WeightPool = {20, 70};
+			Chance = 55;
+			Rarity = "Uncommon";
+			Resilience = 60;
+			Description = "The Grey Carp is a sturdy freshwater fish known for its strength and adaptability. They can be found in Mushgrove Swamp feeding on plants and small insects. The Grey Carp is extrremely strong, and is a tough battle to catch.";
+			Hint = "Found in Mushgrove Swamp near the fallen watch tower.";
+			FavouriteBait = "Seaweed";
+			FavouriteTime = nil;
+			Price = 120;
+			XP = 75;
+			Seasons = {"None"};
+			Weather = {"Autumn"};
+			Quips = {"Is it grey magic?", "Woah, a Grey Carp!", "It's a Carp!", "Woahh! A Grey Carp!!", "Carp-tastic!", "!!!", "Woah! Grey Carp!"};
+			SparkleColor = Color3.fromRGB(255, 255, 255);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Mushgrove";
+		};
+		["Red Snapper"] = {
+			WeightPool = {10, 70};
+			Chance = 75;
+			Rarity = "Common";
+			Resilience = 75;
+			Description = "The Red Snapper is a common salt water fish that can be commonly found all around Moosewoods oceans. They are a very noticable fish with their obvious red and light red tones.";
+			Hint = "Found in saltwater near Moosewood Docks. Prefers the the Summer and Autumn.";
+			FavouriteBait = "None";
+			FavouriteTime = nil;
+			Price = 70;
+			XP = 80;
+			Seasons = {"Summer", "Autumn"};
+			Weather = {"None"};
+			Quips = {"A Red Snapper!", "Woah! I caught a Red Snapper!", "I caught a Red Snapper!", "Red Snapper!!!"};
+			SparkleColor = Color3.fromRGB(255, 74, 74);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Moosewood";
+		};
+		Mackerel = {
+			WeightPool = {10, 40};
+			Chance = 100;
+			Rarity = "Common";
+			Resilience = 85;
+			Description = "The Mackerel is a fast-swimming, silver fish with distinctive stripes and high-oil content. Mackerel are most active from spring to autumn in mildly warm weather.";
+			Hint = "Found in mildly warm saltwater.";
+			FavouriteBait = "Shrimp";
+			FavouriteTime = "Day";
+			Price = 75;
+			XP = 80;
+			Seasons = {"Spring", "Autumn"};
+			Weather = {"Foggy"};
+			Quips = {"A Mackerel!", "I caught a Mackerel!", "Woah, a Mackerel!", "Mackerelllll!", "What's up, Mackerel!"};
+			SparkleColor = Color3.fromRGB(207, 207, 207);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Ocean";
+		};
+		Haddock = {
+			WeightPool = {15, 40};
+			Chance = 110;
+			Rarity = "Common";
+			Resilience = 85;
+			Description = "Haddock are small, silvery fish found in cold ocean waters. Haddock are often found in large schools, they are relatively easy to catch and are easy to find near their signature 'Haddock Rock'.";
+			Hint = "Found in schools near 'Haddock rock'.";
+			FavouriteBait = "Worm";
+			FavouriteTime = "Day";
+			Price = 50;
+			XP = 60;
+			Seasons = {"Autumn", "Winter"};
+			Weather = {"None"};
+			Quips = {"I caught a Haddock!", "Woah, a Haddock!!"};
+			SparkleColor = Color3.fromRGB(227, 227, 227);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Ocean";
+		};
+		Cod = {
+			WeightPool = {20, 100};
+			Chance = 75;
+			Rarity = "Uncommon";
+			Resilience = 70;
+			Description = "Cod are robust, deep-water fish. Best found in the open cold oceans during winter and spring. Cods are a reliable and rewarding catch with substantial size and strong fighting ability.";
+			Hint = "Found in cold deep ocean water.";
+			FavouriteBait = "Minnow";
+			FavouriteTime = nil;
+			Price = 90;
+			XP = 70;
+			Seasons = {"Winter", "Spring"};
+			Weather = {"Foggy"};
+			Quips = {"A Cod!", "I caught a Cod!", "Woah, a Cod!", "Cod of duty!", "What's up, Coddy!"};
+			SparkleColor = Color3.fromRGB(207, 158, 139);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Ocean";
+		};
+		["Longtail Bass"] = {
+			WeightPool = {20, 40};
+			Chance = 50;
+			Rarity = "Uncommon";
+			Resilience = 70;
+			Description = "The Longtail Bass is a striking species known for its elongated tail fin and vibrant coloration. It can be found all over the ocean, and is also a common catch of Sunstone Island!";
+			Hint = "Found in open ocean water and in Sunstone.";
+			FavouriteBait = "Shrimp";
+			FavouriteTime = nil;
+			Price = 120;
+			XP = 70;
+			Seasons = {"Spring", "Summer"};
+			Weather = {"Foggy"};
+			Quips = {"A Longtail Bass!", "I caught a Longtail Bass!"};
+			SparkleColor = Color3.fromRGB(255, 89, 89);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Sunstone";
+		};
+		Salmon = {
+			WeightPool = {40, 100};
+			Chance = 70;
+			Rarity = "Uncommon";
+			Resilience = 70;
+			Description = "Salmon are visually known for their silver skin and streamlined bodies. They are extremely strong swimmers and leapers, making them a difficult catch. You can find these Ocean Salmon in any deep bodies of salt water, and some freshwaters.";
+			Hint = "Found in oceans and some freshwaters.";
+			FavouriteBait = "Worm";
+			FavouriteTime = nil;
+			Price = 130;
+			XP = 90;
+			Seasons = {"Spring", "Winter"};
+			Weather = {"Rain", "Clear"};
+			Quips = {"Salmoff!", "Woah!", "Awesome!", "A Salmon!", "Woah, A Salmon!", "A Salmon!!!"};
+			SparkleColor = Color3.fromRGB(65, 166, 255);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Ocean";
+		};
+		Arapaima = {
+			WeightPool = {1000, 2000};
+			Chance = 15;
+			Rarity = "Rare";
+			Resilience = 30;
+			Description = "Arapaima are massive freshwater fish with large, broad bodies and a distinctive, armor-like scaled appearance. They have a unique respiratory system that allows them to breathe air, as well as gills.";
+			Hint = "Found in Roslit Bays freshwater durong the day.";
+			FavouriteBait = "Minnow";
+			FavouriteTime = nil;
+			Price = 250;
+			XP = 150;
+			Seasons = {"None"};
+			Weather = {"Rain", "Fog"};
+			Quips = {"An Arapaima!", "I caught an Arapaima!", "Woah, an Arapaima!"};
+			SparkleColor = Color3.fromRGB(154, 39, 39);
+			HoldAnimation = fish:WaitForChild("heavy");
+			From = "Roslit";
+		};
+		["Twilight Eel"] = {
+			WeightPool = {100, 200};
+			Chance = 70;
+			Rarity = "Uncommon";
+			Resilience = 40;
+			Description = "The Twilight Eel, whilst resembaling a giant tadpole, is an Eel. Twilight Eels are extremely slimy, and use the bulb on their head to attract prey.";
+			Hint = "Found in Vertigo's Dip.";
+			FavouriteBait = "Insect";
+			FavouriteTime = nil;
+			Price = 90;
+			XP = 100;
+			Seasons = {"Winter"};
+			Weather = {"None"};
+			Quips = {"Woah, a Twilight Eel!", "I caught an Eel!", "It looks like a tadpole!"};
+			SparkleColor = Color3.fromRGB(128, 255, 121);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Vertigo";
+		};
+		["Bluefin Tuna"] = {
+			WeightPool = {1000, 2200};
+			Chance = 35;
+			Rarity = "Rare";
+			Resilience = 30;
+			Description = "The Bluefin Tuna is a very large and strong species of Tuna. They are highly migratory and can travel extremely long distances. Their population is critically low due to overfishing; Making them rarer than other Tuna.";
+			Hint = "Found in deep open.";
+			FavouriteBait = "Minnow";
+			FavouriteTime = nil;
+			Price = 350;
+			XP = 120;
+			Seasons = {"Summer"};
+			Weather = {"None"};
+			Quips = {"A Bluefin Tuna!", "I caught a Bluefin Tuna!", "Woah, a Bluefin Tuna!", "Tunaaaaa!", "What's up, Tuna!"};
+			SparkleColor = Color3.fromRGB(125, 210, 255);
+			HoldAnimation = fish:WaitForChild("heavy");
+			From = "Ocean";
+		};
+		["Yellowfin Tuna"] = {
+			WeightPool = {450, 1360};
+			Chance = 65;
+			Rarity = "Uncommon";
+			Resilience = 60;
+			Description = "The Yellowfin Tuna is a species of tuna known for their speed and agility. The Yellowfin Tuna cna be found best near Moosewoods waters, but you can fidn them in most open saltwater due to them being highly migratory. They are less endangered than Bluefin Tuna but still face threats.";
+			Hint = "Found in open saltwater near moosewood.";
+			FavouriteBait = "None";
+			FavouriteTime = nil;
+			Price = 120;
+			XP = 80;
+			Seasons = {"Summer"};
+			Weather = {"None"};
+			Quips = {"A Yellowfin Tuna!", "I caught a Yellowfin Tuna!", "Woah, a Yellowfin Tuna!", "Tunaaaaa!", "What's up, Tuna!"};
+			SparkleColor = Color3.fromRGB(255, 235, 135);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Moosewood";
+		};
+		Amberjack = {
+			WeightPool = {200, 400};
+			Chance = 75;
+			Rarity = "Uncommon";
+			Resilience = 40;
+			Description = "The Amberjack is a strong, fast-swimming fish known for their vigorous fights and robust body. Mostly active in spring, and best caught in open ocean waters with live baitfish such as small minnows. The Ambjerkack is not rare or hard to come by, but it does put up an impressive battle when trying to catch.";
+			Hint = "Found in open saltwater.";
+			FavouriteBait = "Minnow";
+			FavouriteTime = "Day";
+			Price = 115;
+			XP = 80;
+			Seasons = {"Spring"};
+			Weather = {"Clear", "Rain"};
+			Quips = {"An Amberjack!", "I caught an Amberjack!", "Woah, an Amberjack!", "Lumberjack- I mean Amberjack!"};
+			SparkleColor = Color3.fromRGB(219, 219, 255);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Ocean";
+		};
+		Lapisjack = {
+			WeightPool = {200, 400};
+			Chance = 55;
+			Rarity = "Rare";
+			Resilience = 20;
+			Description = "The Lapisjack is a strong, fast-swimming fish known for their vigorous fights and robust body. Mostly active in spring, and only found in Keepers Altar. They are capable of sustaining their conscious when the Altar is active.";
+			Hint = "Found in Keepers Altar.";
+			FavouriteBait = "Minnow";
+			FavouriteTime = "Day";
+			Price = 115;
+			XP = 80;
+			Seasons = {"Spring"};
+			Weather = {"Clear", "Rain"};
+			Quips = {"An Amberjack!", "I caught an Amberjack!", "Woah, an Amberjack!", "Lumberjack- I mean Amberjack!"};
+			SparkleColor = Color3.fromRGB(219, 219, 255);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Keepers Altar";
+		};
+		Lingcod = {
+			WeightPool = {40, 140};
+			Chance = 40;
+			Rarity = "Unusual";
+			Resilience = 50;
+			ProgressEfficiency = 0.95;
+			Description = "A large, aggressive predator with mottled brown and green skin, known for its sharp teeth and oddly fierce fighting behavior when hooked. They can be found in ocean water near Snowcap during the day. They are especially active near the water-side enterance of Snowcap Cave.";
+			Hint = "Found in Snowcaps ocean water during the day. Especially active near the water-side enterance of Snowcap Cave.";
+			FavouriteBait = "Fish Head";
+			FavouriteTime = "Day";
+			Price = 110;
+			XP = 80;
+			Seasons = {"Autumn", "Summer"};
+			Weather = {"Windy"};
+			Quips = {"I caught a Lingcod!", "Woah! this is freaky!", "A Lingcod!", "It's a Lingcod!"};
+			SparkleColor = Color3.fromRGB(76, 115, 55);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Snowcap";
+		};
+		Gudgeon = {
+			WeightPool = {1, 3};
+			Chance = 80;
+			Rarity = "Common";
+			Resilience = 100;
+			Description = "The Gudgeon is an extrmely small, slender fish. They are adaptable and can thrive in a variety of freshwater environments but are native and commonly found near Terrapin Island.";
+			Hint = "Found in the water of Terrapin Island.";
+			FavouriteBait = "Insect";
+			FavouriteTime = "Day";
+			Price = 40;
+			XP = 10;
+			Seasons = {"Spring, Summer"};
+			Weather = {"None"};
+			Quips = {"I can barely see it!", "A Gudgeon.!", "Oh, cool!"};
+			SparkleColor = Color3.fromRGB(216, 251, 255);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Terrapin";
+		};
+		Perch = {
+			WeightPool = {2, 12};
+			Chance = 80;
+			Rarity = "Common";
+			Resilience = 70;
+			Description = "The Perch is a common freshwater fish that is best found in Roslit Bays fresh water. They are known for their striped bodies and a playful behaviour.";
+			Hint = "Found in freshwater of Roslit.";
+			FavouriteBait = "Worm";
+			FavouriteTime = nil;
+			Price = 70;
+			XP = 80;
+			Seasons = {"None"};
+			Weather = {"Clear"};
+			Quips = {"A Perch!", "I caught a Perch!", "Woah, a Perch!", "Aww! A Perch!"};
+			SparkleColor = Color3.fromRGB(119, 163, 77);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Roslit";
+		};
+		["White Perch"] = {
+			WeightPool = {2, 12};
+			Chance = 80;
+			Rarity = "Common";
+			Resilience = 70;
+			Description = "The Perch is a common freshwater fish that is best found in Mushgrove Swamp; Unlike the classic Perch, the White Perch has no noticable stripes.";
+			Hint = "Found in Mushgrove.";
+			FavouriteBait = "Worm";
+			FavouriteTime = nil;
+			Price = 80;
+			XP = 80;
+			Seasons = {"Spring", "Autumn"};
+			Weather = {"None"};
+			Quips = {"A White Perch!", "I caught a White Perch!", "Woah, a Perch!", "Aww! A Perch!"};
+			SparkleColor = Color3.fromRGB(255, 255, 255);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Mushgrove";
+		};
+		Goldfish = {
+			WeightPool = {2, 7};
+			Chance = 55;
+			Rarity = "Uncommon";
+			Resilience = 90;
+			Description = "Goldfish are found in Moosewoods pond and are best awake during the nice summer days. Even though they look weak, goldfish are highly tolerant of turbid waters, tempature fluctuations, and low levels of dissolved oxygen.";
+			Hint = "Lives in calm ponds. Very easy to catch with bagels.";
+			FavouriteBait = "Flakes";
+			FavouriteTime = "Day";
+			Price = 65;
+			XP = 75;
+			Seasons = {"Summer"};
+			Weather = {"Clear"};
+			Quips = {"Doesn't look very gold..", "Woah, a Goldfish!", "A goldfish!", "I caught a Goldfish!", "Aw! I caught a Goldfish!"};
+			SparkleColor = Color3.fromRGB(255, 184, 69);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Moosewood";
+		};
+		Bluefish = {
+			WeightPool = {4, 9};
+			Chance = 40;
+			Rarity = "Unusual";
+			Resilience = 34;
+			Description = "Bluefish are found inside Keepers Altar. They can inhabit some of the powerful keepers power that is present in Keepers Altars water. They are only awake during the day, as the power of the Altar is too much for tem to handle during the night.";
+			Hint = "Swims quietly in Keepers Altar during the day.";
+			FavouriteBait = "Flakes";
+			FavouriteTime = "Day";
+			Price = 65;
+			XP = 75;
+			Seasons = {"Summer"};
+			Weather = {"Clear"};
+			Quips = {"Woah, a Bluefish!", "A Bluefish!", "I caught a Bluefish!", "Aw! I caught a Bluefish!"};
+			SparkleColor = Color3.fromRGB(60, 63, 255);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Keepers Altar";
+		};
+		Minnow = {
+			WeightPool = {1, 6};
+			Chance = 60;
+			Rarity = "Common";
+			Resilience = 90;
+			Description = "Minnows are found in Roslit Bays pond and are easiest to find during the clear spring days. Minnows are commonly found in schools of 4 to 6 fish. They also create a great baitfish!";
+			Hint = "Lives in Roslit Bays pond. Very easy to catch with bagels.";
+			FavouriteBait = "Bagel";
+			FavouriteTime = nil;
+			Price = 45;
+			XP = 75;
+			Seasons = {"Spring"};
+			Weather = {"Clear"};
+			Quips = {"Ouu a Minnow!", "Woah, a Minnow!", "A Minnow!", "I caught a Minnow!", "Aw! I caught a Baitfish!"};
+			SparkleColor = Color3.fromRGB(161, 161, 161);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Roslit";
+		};
+		Halibut = {
+			WeightPool = {1000, 2000};
+			Chance = 40;
+			Rarity = "Rare";
+			Resilience = 40;
+			Description = "The Halibut is a large flatfish known for their impressive size and strength. They commonly feed on Haddock and can be found hunting near 'Haddock Rock' and in deep waters. ";
+			Hint = "Found on the floor ocean. Best found near Haddock.";
+			FavouriteBait = "Squid";
+			FavouriteTime = nil;
+			Price = 250;
+			XP = 100;
+			Seasons = {"Summer", "Spring"};
+			Weather = {"Rain"};
+			Quips = {"A Halibut!", "A Flatfish!", "I Caught a Halibut!", "Ou! A Halibut!"};
+			SparkleColor = Color3.fromRGB(207, 129, 93);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Ocean";
+		};
+		Clownfish = {
+			WeightPool = {1, 6};
+			Chance = 60;
+			Rarity = "Uncommon";
+			Resilience = 70;
+			Description = "The clownfish, known for its vibrant orange and white stripes, is a small, hardy reef dweller. Often found alongside coral and see anemones inside the reef of Roslit Bay.\t\t\tBest paired with the Blue Tang!";
+			Hint = "Found in Roslit Bays coral reef.";
+			FavouriteBait = "Flakes";
+			FavouriteTime = nil;
+			Price = 90;
+			XP = 90;
+			Seasons = {"Spring", "Summer"};
+			Weather = {"Foggy"};
+			Quips = {"Ouu a Clownfish!", "Woah, a Clownfish!", "A Clownfish!", "I caught a Clownfish!", "I caught a Clownfish!", "What kind of circus is this?"};
+			SparkleColor = Color3.fromRGB(255, 167, 43);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Roslit";
+		};
+		["Blue Tang"] = {
+			WeightPool = {3, 15};
+			Chance = 60;
+			Rarity = "Uncommon";
+			Resilience = 65;
+			Description = "The Blue Tang is most renowned for its vivid blue coloration and yellow tail. Often found alongside coral and see anemones inside the reef of Roslit Bay.\t\t\tBest paired with the Clownfish!";
+			Hint = "Found in Roslit Bays coral reef.";
+			FavouriteBait = "Flakes";
+			FavouriteTime = "Day";
+			Price = 90;
+			XP = 90;
+			Seasons = {"Spring", "Summer"};
+			Weather = {"None"};
+			Quips = {"Ouu a Blue Tang!", "Woah, a Blue Tang!", "A Blue Tang!", "I caught a Blue Tang!", "I caught a Blue Tang!", "Found her!"};
+			SparkleColor = Color3.fromRGB(48, 69, 255);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Roslit";
+		};
+		["Magma Tang"] = {
+			WeightPool = {6, 30};
+			Chance = 50;
+			Rarity = "Uncommon";
+			Resilience = 40;
+			Description = "The Magma Tang is a rare lava imbued Tang with a resting body temperature of 950C. They are extremely common in the lava, as they practically are part of the lava.";
+			Hint = "Found in Roslit Volcano during the day.";
+			FavouriteBait = "Coal";
+			FavouriteTime = "Day";
+			Price = 130;
+			XP = 90;
+			Seasons = {"Spring", "Summer"};
+			Weather = {"None"};
+			Quips = {"Ouu a Blue Tang!", "Woah, a Blue Tang!", "A Blue Tang!", "I caught a Blue Tang!", "I caught a Blue Tang!", "Found her!"};
+			SparkleColor = Color3.fromRGB(255, 158, 73);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Roslit Volcano";
+		};
+		["Red Tang"] = {
+			WeightPool = {3, 15};
+			Chance = 55;
+			Rarity = "Uncommon";
+			Resilience = 65;
+			Description = "The Red Tang is a relatively common catch within Sunstone Island. Very similar to other Tangs such as the Blue Tang, just red!";
+			Hint = "Found in Sunstone Island.";
+			FavouriteBait = "Flakes";
+			FavouriteTime = nil;
+			Price = 100;
+			XP = 90;
+			Seasons = {"Spring", "Summer"};
+			Weather = {"None"};
+			Quips = {"Ouu a Red Tang!", "Woah, a Red Tang!", "A Red Tang!", "I caught a Red Tang!", "I caught a Red Tang!", "Found her!.. But red!"};
+			SparkleColor = Color3.fromRGB(255, 82, 82);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Sunstone";
+		};
+		["Pale Tang"] = {
+			WeightPool = {3, 15};
+			Chance = 55;
+			Rarity = "Uncommon";
+			Resilience = 35;
+			Description = "The Pale Tang is a relatively common catch within Keepers Altar. Very similar to other Tangs such as the Red Tang, just pale!- No one is sure of the Pale Tangs origin, and how it got accustomed to the Keepers Altar.";
+			Hint = "Found in Keepers Altar.";
+			FavouriteBait = "Bagel";
+			FavouriteTime = nil;
+			Price = 100;
+			XP = 90;
+			Seasons = {"Spring", "Summer"};
+			Weather = {"None"};
+			Quips = {"Ouu a Pale Tang!", "Woah, a Pale Tang!", "A Pale Tang!", "I caught a Pale Tang!", "I caught a Pale Tang!", "Found her!.. But albino!"};
+			SparkleColor = Color3.fromRGB(255, 187, 187);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Keepers Altar";
+		};
+		Glassfish = {
+			WeightPool = {1, 4};
+			Chance = 90;
+			Rarity = "Common";
+			Resilience = 90;
+			Description = "The glassfish is a small, transparent fish with a delicate, almost invisible body that makes it well-suited for avoiding predators. It is a common find within the waters of Sunstone Island.";
+			Hint = "Found in Sunstone Island.";
+			FavouriteBait = "Flakes";
+			FavouriteTime = nil;
+			Price = 45;
+			XP = 50;
+			Seasons = {"None"};
+			Weather = {"Clear"};
+			Quips = {"Ouu a Glassfish!", "Woah, a Glassfish!", "I can barely see it!"};
+			SparkleColor = Color3.fromRGB(126, 126, 126);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Sunstone";
+		};
+		Angelfish = {
+			WeightPool = {5, 20};
+			Chance = 40;
+			Rarity = "Unusual";
+			Resilience = 60;
+			Description = "Angelfish are colorful and striking reef dwellers, known for their vibrant patterns and graceful swimming. Found in Roslit bays coral reef, they are a fun and elegant part of Roslits ecosystem.";
+			Hint = "Found in Roslit Bays coral reef.";
+			FavouriteBait = "Worm";
+			FavouriteTime = nil;
+			Price = 120;
+			XP = 60;
+			Seasons = {"None"};
+			Weather = {"Clear"};
+			Quips = {"Ouu an Angelfish!", "Woah, an Angelfish!"};
+			SparkleColor = Color3.fromRGB(255, 255, 255);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Roslit";
+		};
+		["Nurse Shark"] = {
+			WeightPool = {1000, 1500};
+			Chance = 35;
+			Rarity = "Unusual";
+			Resilience = 35;
+			Description = "Nurse Sharks are a nocturnal bottom feeder, spending most of their time on the ocean floor or in small crevices. Despite their appearance, they are gentle and slow-moving. Nurse Sharks can 'suction feed', using their powerful jaws to scrape algae off surfaces.";
+			Hint = "Caught at night in the ocean.";
+			FavouriteBait = "Minnow";
+			FavouriteTime = "Night";
+			Price = 200;
+			XP = 100;
+			Seasons = {"Summer", "Autumn"};
+			Weather = {"None"};
+			Quips = {"A Nurse Shark!", "Woah! A Nurse Shark!", "I Caught a Nurse Shark!"};
+			SparkleColor = Color3.fromRGB(255, 152, 152);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Ocean";
+		};
+		Butterflyfish = {
+			WeightPool = {2, 15};
+			Chance = 40;
+			Rarity = "Uncommon";
+			Resilience = 60;
+			Description = "Butterflyfish are vibrant reef fish known for their striking colors and elaborate patterns. They feed and behave similar to other fish found in Roslit Bays coral reef.";
+			Hint = "Found in Roslit Bays coral reef.";
+			FavouriteBait = "Flakes";
+			FavouriteTime = "Day";
+			Price = 110;
+			XP = 60;
+			Seasons = {"None"};
+			Weather = {"Clear", "Foggy"};
+			Quips = {"Ouu a Glassfish!", "Woah, a Glassfish!", "I can barely see it!"};
+			SparkleColor = Color3.fromRGB(255, 249, 80);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Roslit";
+		};
+		Flounder = {
+			WeightPool = {15, 55};
+			Chance = 40;
+			Rarity = "Unusual";
+			Resilience = 80;
+			Description = "Flounders are a demersal flatfish- meanig they feed at the bottom of the ocean, and has a flat body to blend in with the seafloor. Both of a flounders eyes are on one side, pointing upwars to the sky. They are easy to find in dark areas with a lot of surface or at night near Moosewood Docks.";
+			Hint = "Lays flat at the bottom of the ocean. Prefers the night.";
+			FavouriteBait = "Squid";
+			FavouriteTime = "Night";
+			Price = 120;
+			XP = 80;
+			Seasons = {"None"};
+			Weather = {"Windy"};
+			Quips = {"A Flounder!", "A Flatfish!", "I caught a Flounder!"};
+			SparkleColor = Color3.fromRGB(86, 68, 57);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Moosewood";
+		};
+		Stingray = {
+			WeightPool = {150, 300};
+			Chance = 20;
+			Rarity = "Rare";
+			Resilience = 50;
+			Description = "Graceful and flat, stingrays glide effortlessly through the water, using their wide pectoral fins to move. Their long, whip-like tails end in a sharp stinger, which they can use for defense. Stingrays are bottom dwellers, often found in rocky and sandy seafloors and caves.";
+			Hint = "Found in sea caves during the day.";
+			FavouriteBait = "None";
+			FavouriteTime = "Day";
+			Price = 230;
+			XP = 100;
+			Seasons = {"Summer", "Spring"};
+			Weather = {"Clear"};
+			Quips = {"I caught a Stingray!", "Woah.. a Stingray!"};
+			SparkleColor = Color3.fromRGB(180, 87, 50);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Ocean";
+		};
+		Barracuda = {
+			WeightPool = {55, 110};
+			Chance = 60;
+			Rarity = "Uncommon";
+			Resilience = 55;
+			Description = "Barracudas are large predatory fish, known for their fearsome appearance and ferocious behaviour. The barracuda is an adept saltwater hunter and are commonly mistaken as a hazard towarads humans, when in reality they are reletively comfortable and friendly swimmers. They can be found in deep oceans, and near Moosewood.";
+			Hint = "Found in deeper saltwater and near Moosewood.";
+			FavouriteBait = "Worm";
+			FavouriteTime = "Day";
+			Price = 150;
+			XP = 90;
+			Seasons = {"None"};
+			Weather = {"None"};
+			Quips = {"Woah, a Barracuda!", "I caught a Barracuda!", "A Barracuda!!", "!!!!"};
+			SparkleColor = Color3.fromRGB(117, 141, 121);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Ocean";
+		};
+		Abyssacuda = {
+			WeightPool = {55, 110};
+			Chance = 20;
+			Rarity = "Rare";
+			Resilience = 10;
+			Description = "Abyssacudas are large predatory fish, known for their fearsome appearance and ferocious behaviour. They are adept swimmers, and are a top predator for the Twilight Eel. Abyssacudas are related to the Barracuda, however their cause for being primarily innate to Vertigo is unknown.";
+			Hint = "Found in Vertigos calm waters.";
+			FavouriteBait = "Minnow";
+			FavouriteTime = nil;
+			Price = 400;
+			XP = 90;
+			Seasons = {"Spring", "Summer"};
+			Weather = {"None"};
+			Quips = {"Woah, a n Abyssacuda!", "I caught an Abyssacuda!", "An Abyssacuda!!", "Abyssacudaaaaa!!"};
+			SparkleColor = Color3.fromRGB(87, 77, 116);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Vertigo";
+		};
+		["Alligator Gar"] = {
+			WeightPool = {200, 450};
+			Chance = 45;
+			Rarity = "Rare";
+			Resilience = 40;
+			Description = "The Alligator Gar is a large,vicious freshwater fish that can be found in Roslit Bays pond. Gars track back to 100 million years ago, giving them the nickname as a 'living fossil'.";
+			Hint = "Can be found in lakes during summer.";
+			FavouriteBait = "None";
+			FavouriteTime = nil;
+			Price = 220;
+			XP = 100;
+			Seasons = {"Summer"};
+			Weather = {"None"};
+			Quips = {"I caught a Gar!", "It's an Alligator Gar!", "A Gar!!", "Woah, an Alligator Gar!", "Aye!! A Gar!"};
+			SparkleColor = Color3.fromRGB(255, 255, 255);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Roslit";
+		};
+		["Marsh Gar"] = {
+			WeightPool = {170, 380};
+			Chance = 30;
+			Rarity = "Rare";
+			Resilience = 30;
+			Description = "The Marsh Gar is a large vicious marshwater fish that can be found in Mushgrove Swamp. March Gar are extremely strong hunters, using their whiskers to sense prey in foggy waters.";
+			Hint = "Found under the bridges of Mushgrove Swamp.";
+			FavouriteBait = "Fish Head";
+			FavouriteTime = nil;
+			Price = 280;
+			XP = 100;
+			Seasons = {"Winter"};
+			Weather = {"Foggy"};
+			Quips = {"A Gar!", "I caught a Marsh Gar!", "Woah! A Marsh Gar!"};
+			SparkleColor = Color3.fromRGB(180, 36, 36);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Mushgrove";
+		};
+		["Fangborn Gar"] = {
+			WeightPool = {170, 380};
+			Chance = 50;
+			Rarity = "Unusual";
+			Resilience = 30;
+			Description = "The Fangborn Gar is a vicious Voidwater fish that is completely blind. They roam the waters aimlessly and use a sense of smell to track food in Vertigo Dip.";
+			Hint = "Found in Vertigo's cave water.";
+			FavouriteBait = "Fish Head";
+			FavouriteTime = nil;
+			Price = 170;
+			XP = 100;
+			Seasons = {"None"};
+			Weather = {"Foggy"};
+			Quips = {"A Gar!", "I caught a Fangborn Gar!", "Woah! A Fangborn Gar!"};
+			SparkleColor = Color3.fromRGB(32, 26, 48);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Vertigo";
+		};
+		Trumpetfish = {
+			WeightPool = {9, 20};
+			Chance = 40;
+			Rarity = "Unusual";
+			Resilience = 60;
+			Description = "The Trumpetfish is a long, slender fish known for its tubular body and pointed snout. Its unique shape makes it a fascinating sight for visitors of Sunstone.";
+			Hint = "Found in the waters near Sunstone Island during the day.";
+			FavouriteBait = "Shrimp";
+			FavouriteTime = "Day";
+			Price = 100;
+			XP = 80;
+			Seasons = {"Autumn", "Summer"};
+			Weather = {"None"};
+			Quips = {"Woah, a Trumpetfish!", "Baby Keem!", "What a catch!", "Holy.. This thing is weird.."};
+			SparkleColor = Color3.fromRGB(247, 255, 98);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Sunstone";
+		};
+		["Mahi Mahi"] = {
+			WeightPool = {70, 150};
+			Chance = 20;
+			Rarity = "Rare";
+			Resilience = 30;
+			Description = "The Mahi Mahi is a vibrant, fast-swimming fish known for its striking colors of blue, green, and yellow. They can be found all around Sunstone island, and is prized by many anglers.";
+			Hint = "Found near Sunstone Island.";
+			FavouriteBait = "None";
+			FavouriteTime = nil;
+			Price = 150;
+			XP = 90;
+			Seasons = {"Spring"};
+			Weather = {"Clear", "Windy"};
+			Quips = {"I caught a Mahi Mahi!", "Woah, a Mahi Mahi!!", "It's a Mahi Mahi!"};
+			SparkleColor = Color3.fromRGB(255, 249, 89);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Sunstone";
+		};
+		["Voidfin Mahi"] = {
+			WeightPool = {75, 155};
+			Chance = 10;
+			Rarity = "Rare";
+			Resilience = 10;
+			Description = "The Voidfin Mahi are extremely fast and sensitive fish. They can sense a heartbeat from hundreds of miles, and are capable of swimming through some solid bio-matters, such as wood.";
+			Hint = "Found in Vertigo.";
+			FavouriteBait = "Truffle Worm";
+			FavouriteTime = nil;
+			Price = 450;
+			XP = 400;
+			Seasons = {"Spring"};
+			Weather = {"Clear", "Windy"};
+			Quips = {"I caught a Voidfin Mahi!", "Woah, a Voidfin Mahi!!", "It's a Voidfin Mahi!"};
+			SparkleColor = Color3.fromRGB(83, 67, 106);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Vertigo";
+		};
+		Chinfish = {
+			WeightPool = {20, 40};
+			Chance = 70;
+			Rarity = "Uncommon";
+			Resilience = 80;
+			Description = "The Chinfish is a peculiar species with a distinct chin-like protrusion on its lower jaw. They are sluiggish swimmers and are an interesting catch to have on the otherside of your line.";
+			Hint = "Caught near Sunstone Island.";
+			FavouriteBait = "None";
+			FavouriteTime = nil;
+			Price = 85;
+			XP = 40;
+			Seasons = {"Autumn", "Winter"};
+			Weather = {"Rain"};
+			Quips = {"Woah, a Chinfish!", "The Megachin!", "I caught a Chinfish!", "It's a Chinfish!"};
+			SparkleColor = Color3.fromRGB(214, 214, 214);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Sunstone";
+		};
+		Napoleonfish = {
+			WeightPool = {250, 350};
+			Chance = 19;
+			Rarity = "Rare";
+			Resilience = 40;
+			Description = "The Napoleonfish, also known as the Humphead Wrasse, is a large and brightly colored fish with a distinctive bump on its forehead. Despite its size, it is surprisingly agile, making it a thrilling challenge for anglers.";
+			Hint = "Found easier in the outer waters of Sunstone Island during the day.";
+			FavouriteBait = "None";
+			FavouriteTime = "Day";
+			Price = 200;
+			XP = 100;
+			Seasons = {"Summer"};
+			Weather = {"Windy"};
+			Quips = {"A Napoleonfish!", "I caught a Napoleonfish!", "Woahh, a Napoleonfish!"};
+			SparkleColor = Color3.fromRGB(90, 255, 195);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Sunstone";
+		};
+		Crab = {
+			WeightPool = {6, 14};
+			Chance = 40;
+			Rarity = "Uncommon";
+			Resilience = 90;
+			Description = "Crabs are cute crustaceans that search the ocean floor for food. They can be found in plenty of ocean regions. Be careful, some can have harshly strong claws.";
+			Hint = "Can be caught while cage fishing in open oceans.";
+			FavouriteBait = "None";
+			FavouriteTime = nil;
+			Price = 100;
+			XP = 50;
+			Seasons = {"Spring", "Autumn"};
+			Weather = {"None"};
+			Quips = {"A Crusty Crab!", "Woah! A Crab", "Awesome!", "A Crab!", "Ou! A Crab!"};
+			SparkleColor = Color3.fromRGB(209, 90, 90);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Ocean";
+		};
+		Coelacanth = {
+			WeightPool = {70, 100};
+			Chance = 14;
+			Rarity = "Rare";
+			Resilience = 40;
+			Description = "The Coelacanth is an ancient fish with a distinctive shape and strong swimming behaviors. Known as a 'living fossil,' this fish was thought to be extinct until its rediscovery in 1938. Coelacanths are deep-sea dwellers, often found in underwater caves and steep slopes.";
+			Hint = "Found in the Deep Ocean.";
+			FavouriteBait = "None";
+			FavouriteTime = "Night";
+			Price = 370;
+			XP = 300;
+			Seasons = {"Spring", "Autumn"};
+			Weather = {"Clear"};
+			Quips = {"Woah, a Coelacanth!", "I caught a Coelacanth!", "It's a Coelacanth!", "Nice! It's a Coelacanth!"};
+			SparkleColor = Color3.fromRGB(76, 76, 76);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Ocean";
+		};
+		["Mushgrove Crab"] = {
+			WeightPool = {6, 14};
+			Chance = 14;
+			Rarity = "Rare";
+			Resilience = 90;
+			Description = "The Mushgrove Crab is a rare species of crab. They have fully adapted to the Mushgrove Swamp and commonly eat off of the massive fungal life that has over taken the swamp.";
+			Hint = "Can be caught while cage fishing in mushgrove.";
+			FavouriteBait = "None";
+			FavouriteTime = nil;
+			Price = 330;
+			XP = 80;
+			Seasons = {"Summer"};
+			Weather = {"None"};
+			Quips = {"A Crusty Mushgrove Crab!", "Woah! A Mushgrove Crab", "Awesome!", "A Mushgrove Crab!", "Ou! A Mushgrove Crab!"};
+			SparkleColor = Color3.fromRGB(185, 56, 52);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Mushgrove";
+		};
+		["Swamp Scallop"] = {
+			WeightPool = {6, 14};
+			Chance = 40;
+			Rarity = "Unusual";
+			Resilience = 90;
+			Description = "Swamp Scallops are a special kind of Scallops with a rich umami taste. They formed from an invasive growth of the Scallop population in Mushgrove Swamp.";
+			Hint = "Can be caught while cage fishing in mushgrove.";
+			FavouriteBait = "None";
+			FavouriteTime = nil;
+			Price = 150;
+			XP = 40;
+			Seasons = {"Winter"};
+			Weather = {"None"};
+			Quips = {"A Swamp Scallop!", "Woah! A Swamp Scallop", "Awesome!", "A Swamp Scallop!", "Ou! A Swamp Scallop!"};
+			SparkleColor = Color3.fromRGB(142, 185, 78);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Mushgrove";
+		};
+		Scallop = {
+			WeightPool = {2, 5};
+			Chance = 40;
+			Rarity = "Uncommon";
+			Resilience = 60;
+			Description = "Scallops are known for their ability to 'swim' by rapidly opening and closing their shells, which propels them through the water. They can be found best in sandy or grass filled areas of the ocean.";
+			Hint = "Best caught in sandy or grass filled areas of the ocean.";
+			FavouriteBait = "None";
+			FavouriteTime = nil;
+			Price = 100;
+			XP = 40;
+			Seasons = {"Winter", "Autumn"};
+			Weather = {"None"};
+			Quips = {"A Scallop!", "Woah! A Scallop", "Awesome!", "A Scallop!", "Ou! A Scallop!"};
+			SparkleColor = Color3.fromRGB(255, 195, 135);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Ocean";
+		};
+		["Sand Dollar"] = {
+			WeightPool = {1, 2};
+			Chance = 55;
+			Rarity = "Common";
+			Resilience = 200;
+			Description = "Sand dollars are species of flat, burrowing sea urchins.. Yeah, they are urchins! Fun fact; The rattling of a fossilized Sand Dollar is their teeth-like sections moving around inside of them.";
+			Hint = "Can be easily caught while cage fishing. Best caught near docks and beaches.";
+			FavouriteBait = "None";
+			FavouriteTime = nil;
+			Price = 20;
+			XP = 35;
+			Seasons = {"Summer"};
+			Weather = {"None"};
+			Quips = {"A Sand Dollar!", "Woah! A Sand Dollar", "Awesome!", "A Sand Dollar!", "Ou! A Sand Dollar!"};
+			SparkleColor = Color3.fromRGB(255, 227, 143);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Ocean";
+		};
+		Mussel = {
+			WeightPool = {1, 2};
+			Chance = 55;
+			Rarity = "Common";
+			Resilience = 200;
+			Description = "Mussels are small mollusc that can be easily found on rocks, near beaches, and near docks. They actually have one food and have very limited movement, so most mussels stay in one place their entire lives.. thats boring!";
+			Hint = "Can be easily caught while cage fishing. Best caught near docks and beaches.";
+			FavouriteBait = "None";
+			FavouriteTime = nil;
+			Price = 20;
+			XP = 35;
+			Seasons = {"Winter"};
+			Weather = {"None"};
+			Quips = {"A Mussel!", "Woah! A Mussel", "Awesome!", "A Mussel!", "Ou! A Mussel!"};
+			SparkleColor = Color3.fromRGB(53, 53, 89);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Ocean";
+		};
+		Oyster = {
+			WeightPool = {2, 5};
+			Chance = 50;
+			Rarity = "Uncommon";
+			Resilience = 95;
+			Description = "Oysters are bivalve mollusks with rough, irregularly shaped shells. They are typically found in clusters, attached to submerged rocks and roots. They can be found all over Terapin Islands; The Oysters help filter the water of Terrapin, leaving making it nearly a freshwater island.";
+			Hint = "Can be easily caught while cage fishing. Best caught near large rocks and all over Terrapin Island.";
+			FavouriteBait = "None";
+			FavouriteTime = nil;
+			Price = 30;
+			XP = 35;
+			Seasons = {"Summer", "autumn"};
+			Weather = {"None"};
+			Quips = {"An Oyster!", "Woah! An Oyster", "Awesome!", "An Oyster!", "Ou! An Oyster!"};
+			SparkleColor = Color3.fromRGB(217, 194, 168);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Ocean";
+		};
+		["King Oyster"] = {
+			WeightPool = {4, 10};
+			Chance = 20;
+			Rarity = "Rare";
+			Resilience = 95;
+			Description = "King Oysters are a special breed of oysters that can only be found around Terrapin Island. They filter almost all salt out of the water, making Terrapins water freshwater.";
+			Hint = "Can be easily caught while cage fishing. Only found near Terrapin Island.";
+			FavouriteBait = "None";
+			FavouriteTime = nil;
+			Price = 200;
+			XP = 35;
+			Seasons = {"Summer", "autumn"};
+			Weather = {"None"};
+			Quips = {"An Oyster!", "Woah! A King Oyster", "Awesome!", "A King Oyster!", "Ou! A King Oyster!"};
+			SparkleColor = Color3.fromRGB(217, 215, 151);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Terrapin";
+		};
+		["Sea Urchin"] = {
+			WeightPool = {2, 9};
+			Chance = 15;
+			Rarity = "Rare";
+			Resilience = 200;
+			Description = "Sea Urchins are spiny, globular animals. Their hard shells are round and spiny. They use their spikes along with their tube feet to push themselves along the ocean terrain. Sea Urchins can be caught in any climate and traditionally only prefer sea water.";
+			Hint = "Can be rarely caught while cage fishing, especially in the ocean.";
+			FavouriteBait = "None";
+			FavouriteTime = nil;
+			Price = 320;
+			XP = 80;
+			Seasons = {"None"};
+			Weather = {"Foggy"};
+			Quips = {"A Sea Urchin!", "I caught a Sea Urchin!", "Woah, an Urchin!"};
+			SparkleColor = Color3.fromRGB(34, 32, 42);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Ocean";
+		};
+		Shrimp = {
+			WeightPool = {1, 2};
+			Chance = 45;
+			Rarity = "Common";
+			Resilience = 200;
+			Description = "Shrimp are small, versatile crustaceans that are most active from spring to autumn, and can be found in an abundance in deep oceans. Shrimp are predominantly nocturnal, making night fishing the most effective time.";
+			Hint = "Caught at night in deep oceans in crab cages.";
+			FavouriteBait = "None";
+			FavouriteTime = "Night";
+			Price = 45;
+			XP = 35;
+			Seasons = {"Spring", "Autumn"};
+			Weather = {"Rain"};
+			Quips = {"A Shrimp!", "Woah! A Shrimp", "Awesome!", "A Shrimp!", "Ou! A Shrimpy!"};
+			SparkleColor = Color3.fromRGB(255, 107, 96);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Ocean";
+		};
+		["Night Shrimp"] = {
+			WeightPool = {1, 2};
+			Chance = 45;
+			Rarity = "Common";
+			Resilience = 200;
+			Description = "Night Shrimp are small, versatile crustaceans that can be found in an abundance in Vertigo's calm water. night Shrimp are predominantly diurnal, making day fishing the most effective time.";
+			Hint = "Caught with crab cages in Vertigo.";
+			FavouriteBait = "None";
+			FavouriteTime = "Day";
+			Price = 55;
+			XP = 35;
+			Seasons = {"Summer", "Winter"};
+			Weather = {"Clear"};
+			Quips = {"A Night Shrimp!", "Woah! A Night Shrimp", "Awesome!", "A Night Shrimp!", "Ou! A Night Shrimpy!"};
+			SparkleColor = Color3.fromRGB(49, 51, 74);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Vertigo";
+		};
+		Prawn = {
+			WeightPool = {1, 5};
+			Chance = 40;
+			Rarity = "Uncommon";
+			Resilience = 200;
+			Description = "Prawns are prized crustaceans known for their delicate flavor and versatility. they are most active in summer, and can be found in an abundance in deep oceans. Prawns; similar to shrimp-- are predominantly nocturnal, making night fishing the most effective time.";
+			Hint = "Caught at night in deep oceans in crab cages.";
+			FavouriteBait = "None";
+			FavouriteTime = "Night";
+			Price = 45;
+			XP = 35;
+			Seasons = {"Summer"};
+			Weather = {"Rain"};
+			Quips = {"A Prawn!", "Woah! A Prawn", "Awesome!", "A Prawn!", "Ou! A Prawn!"};
+			SparkleColor = Color3.fromRGB(165, 255, 248);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Ocean";
+		};
+		Lobster = {
+			WeightPool = {9, 28};
+			Chance = 30;
+			Rarity = "Unusual";
+			Resilience = 200;
+			Description = "Lobsters are valuable crustaceans known for their rich, succulent meat. Lobsters are most active in the summer to autumn, and are commonly caught in crab cages during calm clear days.";
+			Hint = "Caught in oceans using a crab cage.";
+			FavouriteBait = "None";
+			FavouriteTime = nil;
+			Price = 130;
+			XP = 60;
+			Seasons = {"Summer"};
+			Weather = {"Clear"};
+			Quips = {"A Larry Lobster!", "Woah! A Lobster", "Awesome!", "A Lobster!", "Ou! A Lobster!"};
+			SparkleColor = Color3.fromRGB(255, 57, 57);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Ocean";
+		};
+		Pike = {
+			WeightPool = {12, 35};
+			Chance = 45;
+			Rarity = "Unusual";
+			Resilience = 55;
+			Description = "Pikes are a freshwater predator known for its elongated body, sharp teeth, and aggressive hunting behavior. It's a voracious carnivore that preys on smaller fish, frogs, and even small mammals near the water's edge. Pikes have a unique ability to ambush their prey by remaining almost motionless in the water, then striking with incredible speed to catch their meal.";
+			Hint = "Found in Moosewoods freshwater. Seems to prefer insect baits. Very vicious.";
+			FavouriteBait = "Insect";
+			FavouriteTime = nil;
+			Price = 230;
+			XP = 90;
+			Seasons = {"Autumn", "Spring"};
+			Weather = {"Rain"};
+			Quips = {"A Pike!", "I caught a Pike!", "Woah! a Pike!", "PIKE!!!", "I'd prefer a lance.", "A Pike?!", "That's a big Pike!"};
+			SparkleColor = Color3.fromRGB(93, 140, 109);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Moosewood";
+		};
+		["Glacier Pike"] = {
+			WeightPool = {12, 35};
+			Chance = 45;
+			Rarity = "Unusual";
+			Resilience = 55;
+			Description = "Pikes are a long, predatory freshwater fish known for its aggressive nature and sharp teeth. Glacier Pikes are supremely found in cold freshwaters in Snowcap Island. They can be determained by their unique ice-coloured scales and longer fins.";
+			Hint = "Found in Snowcaps freshwater. Seems to prefer insect baits.";
+			FavouriteBait = "Insect";
+			FavouriteTime = nil;
+			Price = 230;
+			XP = 90;
+			Seasons = {"Autumn", "Spring"};
+			Weather = {"Rain"};
+			Quips = {"A Glacier Pike!", "I caught a Glacier Pike!", "Woah! a Glacier Pike!", "GLACIER PIKE!!!", "I'd prefer a lance.", "A Glacier Pike?!", "That's a big Glacier Pike!"};
+			SparkleColor = Color3.fromRGB(93, 140, 109);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Snowcap";
+		};
+		Eel = {
+			WeightPool = {8, 45};
+			Chance = 30;
+			Rarity = "Unusual";
+			Resilience = 65;
+			Description = "Eels are a long snake-like, ray-finned fish that is primarily nocturnal. They have a keen sense of smell and can be harmful to humans due to their strong jaws with sharp teeth. Some eels also contain toxins that will destroy red blood cells. Eels move in an interesting way due to them not having pelvic or pectoral fins. To swim, eels generate waves that travel the length of their body, animating them similar to snakes.";
+			Hint = "Only comes out at night. Can be found in all kinds of habitats near Moosewood.";
+			FavouriteBait = "None";
+			FavouriteTime = "Night";
+			Price = 130;
+			XP = 90;
+			Seasons = {"None"};
+			Weather = {"None"};
+			Quips = {"Is it a snake?", "An Eel!", "I think some slime got on me.", "Woah! An Eel!", "H-eel-lo!", "An Eel! Things just got REAL!"};
+			SparkleColor = Color3.fromRGB(255, 233, 226);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Moosewood";
+		};
+		["Ember Snapper"] = {
+			WeightPool = {60, 120};
+			Chance = 50;
+			Rarity = "Unusual";
+			Resilience = 40;
+			Description = "The Ember Snapper is a lava swimming fish with a resemblance to the salt water 'Red Snapper'. The Ember Snapper is acute in volcanic habitats due to their thick skin and strong dorsal fins.";
+			Hint = "Found in volcanic regions.";
+			FavouriteBait = "Coal";
+			FavouriteTime = nil;
+			Price = 200;
+			XP = 120;
+			Seasons = {"Summer"};
+			Weather = {"None"};
+			Quips = {"An Ember Snapper!", "Woah! I caught an Ember Snapper!", "I caught an Ember Snapper!", "Ember Snapper!!!"};
+			SparkleColor = Color3.fromRGB(191, 39, 25);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Roslit Volcano";
+		};
+		["Ember Perch"] = {
+			WeightPool = {4, 15};
+			Chance = 80;
+			Rarity = "Unusual";
+			Resilience = 40;
+			Description = "The Ember Perch is a lava swimming fish with a resemblance to the fresh water 'Perch'. The Ember Perch is acute in volcanic habitats due to their thick skin and ability to turn coal and carbon into a food source.";
+			Hint = "Found in volcanic regions.";
+			FavouriteBait = "None";
+			FavouriteTime = nil;
+			Price = 160;
+			XP = 100;
+			Seasons = {"None"};
+			Weather = {"Clear"};
+			Quips = {"An Ember Perch!", "I caught a Perch!.. Why is it so hot?", "Woah, a Perch! Why is it on fire?", "Aww! An Ember Perch!", "Woah! An Ember Perch!"};
+			SparkleColor = Color3.fromRGB(255, 19, 19);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Roslit Volcano";
+		};
+		Squid = {
+			WeightPool = {5, 25};
+			Chance = 25;
+			Rarity = "Unusual";
+			Resilience = 45;
+			Description = "Squids can be found best at night in the surrounding ocean of Roslit Bay. Squids are rapid swimmers and largelt locate their prey by sight. Squids are extremely intellegent and can even hunt in cooperative groups.";
+			Hint = "Best found at night in ocean near Roslit Bay.";
+			FavouriteBait = "Shrimp";
+			FavouriteTime = "Night";
+			Price = 140;
+			XP = 95;
+			Seasons = {"Winter"};
+			Weather = {"Foggy"};
+			Quips = {"A Squid!", "A cute Squid!", "I caught a Squid!"};
+			SparkleColor = Color3.fromRGB(255, 173, 102);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Roslit";
+		};
+		["Ribbon Eel"] = {
+			WeightPool = {5, 150};
+			Chance = 12;
+			Rarity = "Unusual";
+			Resilience = 30;
+			Description = "The ribbon eel is a striking and elusive reef fish known for its vibrant blue or green body and long, ribbon-like appearance. While they are rare, the Ribbon Eel can be best found in the coral reef of Roslit Bay";
+			Hint = "Only comes out at night. Can be found inside the coral reef of Roslit Bay.";
+			FavouriteBait = "Minnow";
+			FavouriteTime = nil;
+			Price = 150;
+			XP = 150;
+			Seasons = {"Summer"};
+			Weather = {"None"};
+			Quips = {"Is it a snake?", "A Ribbon Eel!", "I think some slime got on me.", "Woah! A Ribbon Eel!", "H-eel-lo! Ribbon Eel!"};
+			SparkleColor = Color3.fromRGB(70, 141, 255);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Roslit";
+		};
+		["Chinook Salmon"] = {
+			WeightPool = {100, 400};
+			Chance = 30;
+			Rarity = "Unusual";
+			Resilience = 50;
+			Description = "The Chinook Salmon, also known as King Salmon, are large silver fish with a slightly forked tail and a black mouth. They are highely prized; and are a common target for sport and commercial fishing. The King Salmon are commonly in ocean waters, but during the Autumn they migrate to Terrapin Island to lay eggs.";
+			Hint = "Found in the waters of Terrapin Island, and general ocean waters.";
+			FavouriteBait = "Minnow";
+			FavouriteTime = nil;
+			Price = 230;
+			XP = 100;
+			Seasons = {"Autumn"};
+			Weather = {"None"};
+			Quips = {"Ou! A Chinook Salmon!", "A King Salmon!", "I Caught a King Salmon!", "Woah, a King Salmon!"};
+			SparkleColor = Color3.fromRGB(255, 255, 255);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Terrapin";
+		};
+		Sturgeon = {
+			WeightPool = {200, 800};
+			Chance = 20;
+			Rarity = "Rare";
+			Resilience = 35;
+			Description = "A massive, ancient fish with a long, armored body and distinctive bony plates. Sturgeons are known for their size and strength, making them challenging to catch.";
+			Hint = "found in Snowcap Pond.";
+			FavouriteBait = "Seaweed";
+			FavouriteTime = nil;
+			Price = 300;
+			XP = 100;
+			Seasons = {"None"};
+			Weather = {"None"};
+			Quips = {"A Sturgeon!", "I AMM.. I AMM A STURGEON!!", "I caught a Sturgeon Fish!", "A Sturgeon!!", "Woahh a Sturgeon!"};
+			SparkleColor = Color3.fromRGB(232, 232, 232);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Snowcap";
+		};
+		["Bull Shark"] = {
+			WeightPool = {900, 1300};
+			Chance = 0.3;
+			Rarity = "Legendary";
+			Resilience = 20;
+			Description = "Bull sharks have robust bodies, and an extremely powerful nature. They have a special ability to adapt to both saltwater and freshwater, which is quite rare for sharks. Bull Sharks can be found most commonly near coats, and in freshwaters.";
+			Hint = "Found roaming in all types of waters and on the coasts.";
+			FavouriteBait = "Fish Head";
+			FavouriteTime = nil;
+			Price = 400;
+			XP = 150;
+			Seasons = {"Spring"};
+			Weather = {"Rain", "Foggy"};
+			Quips = {"A Bull Shark!", "Thats some Bull Shark!", "I caught a Bull Shark!"};
+			SparkleColor = Color3.fromRGB(255, 245, 197);
+			HoldAnimation = fish:WaitForChild("heavybasic");
+			From = "Ocean";
+		};
+		["Suckermouth Catfish"] = {
+			WeightPool = {95, 170};
+			Chance = 35;
+			Rarity = "Rare";
+			Resilience = 60;
+			Description = "The Suckermouth Catfish is a tropical freshwater fish found on the ground and near the seaweed of Roslits Bays pond. They are easily notable for their large armour like scutes covering their upper parts of the head and body.";
+			Hint = "Found best near seaweed of Roslit Bays pond.";
+			FavouriteBait = "Seaweed";
+			FavouriteTime = "Day";
+			Price = 160;
+			XP = 80;
+			Seasons = {"Spring", "Autumn"};
+			Weather = {"None"};
+			Quips = {"A Suckermouth Catfish!", "I caught a Catfish!", "Woah, a Suckermouth!"};
+			SparkleColor = Color3.fromRGB(158, 128, 255);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Roslit";
+		};
+		Pyrogrub = {
+			WeightPool = {300, 600};
+			Chance = 25;
+			Rarity = "Rare";
+			Resilience = 25;
+			ProgressEfficiency = 0.8;
+			Description = "The Pyrogrub is a fearsome, lava swimming eel that thrives in the most volcanic of environments. The Pyrogrub sports thick dragon-like scales which allow it's inner body to not react to any form of outside temperature.";
+			Hint = "Found in volcanic regions.";
+			FavouriteBait = "Coal";
+			FavouriteTime = nil;
+			Price = 340;
+			XP = 120;
+			Seasons = {"Winter"};
+			Weather = {"None"};
+			Quips = {"A Pyrogrub!", "I caught a Pyrogrub!", "Woah, a Pyrogrub!", "What the?!"};
+			SparkleColor = Color3.fromRGB(255, 151, 46);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Roslit Volcano";
+		};
+		Anglerfish = {
+			WeightPool = {5, 20};
+			Chance = 12;
+			Rarity = "Rare";
+			Resilience = 35;
+			Description = "The anglerfish is a deep-sea predator known for it's bioluminescent lure that dangles in front of its mouth to attract prey. With its menacing appearance, sharp teeth, and eerie glow, the Anglerfish thrives in dark, deep waters, making it a rare and exciting catch in the Deep Ocean.";
+			Hint = "Found in the far, deep ocean during the night.";
+			FavouriteBait = "Squid";
+			FavouriteTime = "Night";
+			Price = 230;
+			XP = 100;
+			Seasons = {"Winter", "Autumn"};
+			Weather = {"Foggy"};
+			Quips = {"Woah, an Anglerfish!", "No way! An anglerfish!", "I caught an Anglerfish!"};
+			SparkleColor = Color3.fromRGB(182, 25, 25);
+			HoldAnimation = fish:WaitForChild("small");
+			From = "Ocean";
+		};
+		["Keepers Guardian"] = {
+			WeightPool = {200, 400};
+			Chance = 15;
+			Rarity = "Rare";
+			Resilience = 25;
+			Description = "Whilst it is named the 'Keepers Guardian', they are actually friendly creatures! The Guardian can sense peoples intentions, and will only become violent when they notice someone with a harmful intention to it or the Keepers Altar.";
+			Hint = "Found in Keepers Altar.";
+			FavouriteBait = "Worm";
+			FavouriteTime = nil;
+			Price = 250;
+			XP = 120;
+			Seasons = {"Winter"};
+			Weather = {"Rain"};
+			Quips = {"A Keepers Guardian!", "I caught a Keepers Guardian!", "Woah, a Keepers Guardian!", "What the?! A Keepers Guardian?!"};
+			SparkleColor = Color3.fromRGB(56, 53, 134);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Keepers Altar";
+		};
+		Pufferfish = {
+			WeightPool = {5, 20};
+			Chance = 12;
+			Rarity = "Rare";
+			Resilience = 65;
+			Description = "Pufferfish are clumsy swimmers that can fill their elastic stomachs with huge amounts of water & air to blow themselves up to several times their normal size. They do this to evade and scare of predators. On top of their bloating abilities, they also are one of the most poisonous fish in the sea... Also they are the only bony fish which can close their eyes!";
+			Hint = "Found in reefs and deepwaters.";
+			FavouriteBait = "Seaweed";
+			FavouriteTime = nil;
+			Price = 230;
+			XP = 100;
+			Seasons = {"Summer"};
+			Weather = {"None"};
+			Quips = {"Woah! a Blowfish!", "A Pufferfish!", "A Water Balloon!", "Woah, A Pufferfish!"};
+			SparkleColor = Color3.fromRGB(255, 227, 15);
+			HoldAnimation = fish:WaitForChild("small");
+			From = "Ocean";
+		};
+		Swordfish = {
+			WeightPool = {1000, 2500};
+			Chance = 15;
+			Rarity = "Rare";
+			Resilience = 35;
+			Description = "Swordfish are extremely strong and notable due to their long flattened bill that resembles a sword, as their name implies. They are a great catch, and anglers around the globe are impressed by a Swordfish catch.";
+			Hint = "Found in deep ocean water. Extremely strong.";
+			FavouriteBait = "Squid";
+			FavouriteTime = nil;
+			Price = 850;
+			XP = 300;
+			Seasons = {"Summer"};
+			Weather = {"Windy", "Clear"};
+			Quips = {"A Swordfish!", "WOAH! A Swordfish!!", "SWORDFISHHHH", "I caught a swordfish!!"};
+			SparkleColor = Color3.fromRGB(93, 128, 255);
+			HoldAnimation = fish:WaitForChild("heavy");
+			ViewportSizeOffset = 0.9;
+			From = "Ocean";
+		};
+		Sailfish = {
+			WeightPool = {400, 600};
+			Chance = 16;
+			Rarity = "Rare";
+			Resilience = 40;
+			Description = "Sailfish are known for their incredible speed, long bill, and their striking sail-like dorsal fin. It's sleek body is built for fast swiming, allowing it to dart through water in bursts of speed. They are found in tropical and warmer ocean waters.";
+			Hint = "Found in ocean water. Extremely strong.";
+			FavouriteBait = "Minnow";
+			FavouriteTime = nil;
+			Price = 800;
+			XP = 300;
+			Seasons = {"Spring"};
+			Weather = {"Windy", "Clear"};
+			Quips = {"A Sailfish!", "WOAH! A Sailfish!!", "It's a Sailfish!", "I caught a Sailfish!!"};
+			SparkleColor = Color3.fromRGB(255, 242, 94);
+			HoldAnimation = fish:WaitForChild("heavybasic");
+			ViewportSizeOffset = 0.9;
+			From = "Ocean";
+		};
+		Alligator = {
+			WeightPool = {1500, 3000};
+			Chance = 0.9;
+			Rarity = "Legendary";
+			Resilience = 15;
+			ProgressEfficiency = 0.8;
+			Description = "The Alligator is a massive, fearsome reptile known for its powerful bite and armored body. Found in Mushgrove Swamp, Alligators are the apex predator with a stealthy and ambush-based hunting style.";
+			Hint = "Found in Mushgrove Swamp during the night.";
+			FavouriteBait = "Fish Head";
+			FavouriteTime = "Night";
+			Price = 700;
+			XP = 400;
+			Seasons = {"Spring"};
+			Weather = {"Foggy, Rain"};
+			Quips = {"WOAH!!", "OH MY GOD!!", "AN ALLIGATOR!", "WHAT????"};
+			SparkleColor = Color3.fromRGB(153, 255, 116);
+			HoldAnimation = fish:WaitForChild("heavybasic");
+			From = "Mushgrove";
+		};
+		["Obsidian Salmon"] = {
+			WeightPool = {40, 180};
+			Chance = 3;
+			Rarity = "Legendary";
+			Resilience = 15;
+			ProgressEfficiency = 0.9;
+			Description = "The Obsidian Salmon is an extremely rare breed of Sockeye Salmon. The Obsidian Salmon breeds extremely deep in the heart of Roslit Volcano. They are extremely strong and are double as dense as a common Sockeye Salmon.";
+			Hint = "???";
+			FavouriteBait = "Coal";
+			FavouriteTime = "Night";
+			Price = 600;
+			XP = 300;
+			Seasons = {"Winter"};
+			Weather = {"None"};
+			Quips = {"Obsidian Salmoff!", "Woah! An Obsidian Salmon!", "Awesome! An Obsidian Salmon", "An Obsidian Salmon!", "Woah, An Obsidian Salmon!", "A Salmon!..? Made of obsidian?"};
+			SparkleColor = Color3.fromRGB(102, 0, 255);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Roslit Volcano";
+		};
+		["Manta Ray"] = {
+			WeightPool = {7750, 10000};
+			Chance = 0.01;
+			Rarity = "Mythical";
+			Resilience = 10;
+			ProgressEfficiency = 0.9;
+			Description = "Manta Rays are very elegant and remarkably large creatures that coast alongside the coral reefs of Roslit Bay. They move their wing-like fins in a wavy motion to generate enough speed to guide through the ocean. Manta Rays typically feed on small fish during the night.";
+			Hint = "Found gliding through Roslit Bays coral reef during the night.";
+			FavouriteBait = "Shrimp";
+			FavouriteTime = "Night";
+			Price = 3000;
+			XP = 1000;
+			Seasons = {"Summer"};
+			Weather = {"None"};
+			Quips = {"WOAH.. A Manta Ray!", "I caught a Manta Ray!", "Woah.. A Manta Ray!!"};
+			SparkleColor = Color3.fromRGB(87, 118, 255);
+			HoldAnimation = fish:WaitForChild("heavy");
+			From = "Roslit";
+		};
+		["Obsidian Swordfish"] = {
+			WeightPool = {1000, 2500};
+			Chance = 0.01;
+			Rarity = "Mythical";
+			Resilience = 20;
+			ProgressEfficiency = 0.8;
+			Description = "Swordfish are extremely strong and notable due to their long flattened bill that resembles a sword, as their name implies. This swordfish has adapted to it's magma filled life, and is now imbued with Obsidian skin.";
+			Hint = "???";
+			FavouriteBait = "Minnow";
+			FavouriteTime = nil;
+			Price = 2500;
+			XP = 1000;
+			Seasons = {"Summer"};
+			Weather = {"Windy", "Clear"};
+			Quips = {"An Obsidian Swordfish!", "WOAH! An Obsidian Swordfish!!", "OBSIDIANNN SWORDFISHHHH", "I caught an Obsidian Swordfish!!"};
+			SparkleColor = Color3.fromRGB(176, 79, 255);
+			HoldAnimation = fish:WaitForChild("heavy");
+			ViewportSizeOffset = 0.9;
+			From = "Roslit Volcano";
+		};
+		["Golden Smallmouth Bass"] = {
+			WeightPool = {15, 45};
+			Chance = 3;
+			Rarity = "Legendary";
+			Resilience = 55;
+			Description = "A special and extremely rare breed of the Smallmouth Bass. They are extremely scarce in quantity, but they have slightly more haste and resilience than their cousins. Can be found alongside the Common Smallmouth Bass.";
+			Hint = "Swims fiercely in freshwater alongside their cousin; the Smallmouth Bass.";
+			FavouriteBait = "Flakes";
+			FavouriteTime = "Day";
+			Price = 700;
+			XP = 250;
+			Seasons = {"Autumn"};
+			Weather = {"Foggy"};
+			Quips = {"Now, where's the cymbol?", "A Golden Bass??", "Golden Bass!", "A Golden Smallmouth Bass!", "A Gold Bass!", "I usually wear silver.", "So shiny! A Golden Bass!"};
+			SparkleColor = Color3.fromRGB(255, 205, 3);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Terrapin";
+		};
+		Oarfish = {
+			WeightPool = {1500, 2500};
+			Chance = 0.01;
+			Rarity = "Mythical";
+			Resilience = 15;
+			ProgressEfficiency = 0.7;
+			Description = "The Oarfish is a massive, snake-like creatures that dwell in the deep ocean. they are often mistaken for sea serpents or mythical creatures. Their presence is considered an omen by many ancient cultures.";
+			Hint = "???";
+			FavouriteBait = "Squid";
+			FavouriteTime = nil;
+			Price = 4000;
+			XP = 2000;
+			Seasons = {"Winter"};
+			Weather = {"Foggy"};
+			Quips = {"WOAH! An Oarfish!", "I Caught an Oarfish!", "It's an Oarfish!"};
+			SparkleColor = Color3.fromRGB(255, 51, 51);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Ocean";
+		};
+		Glacierfish = {
+			WeightPool = {400, 600};
+			Chance = 0.02;
+			Rarity = "Mythical";
+			Resilience = 10;
+			ProgressEfficiency = 0.85;
+			Description = "Glacierfish are cold saltwater fish with large, broad bodies and a distinctive pink fin colouration. They are an extremely rare fish and can sometimes be a difficult catch for any angler. They can be found more commonly in Snowcap Caves during the night.";
+			Hint = "Found in Snowcap Caves during the night. Big fan of the Truffle Worm.";
+			FavouriteBait = "Truffle Worm";
+			FavouriteTime = "Night";
+			Price = 800;
+			XP = 400;
+			Seasons = {"None"};
+			Weather = {"Rain", "Foggy"};
+			Quips = {"A Glacierfish!", "I caught a Glacierfish!", "Woah, a Glacierfish!"};
+			SparkleColor = Color3.fromRGB(161, 233, 255);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Snowcap";
+		};
+		Sunfish = {
+			WeightPool = {4000, 10000};
+			Chance = 1;
+			Rarity = "Legendary";
+			Resilience = 70;
+			ProgressEfficiency = 0.4;
+			Description = "Sunfish are the heaviest bony fish species alive today. Common sunfish can weigh up to one metric tonne but on rare instances they can way two metric tonnes! The largest appeal of the ocean Sunfish is the unsual shape of it's body and it's astonishing weight. Sunfish have the name for their love of basking in the sun by floating to the surface of the water.";
+			Hint = "Caught near Sunstone Island and can sometimes weigh over 1,000 kg.";
+			FavouriteBait = "None";
+			FavouriteTime = "Day";
+			Price = 1500;
+			XP = 550;
+			Seasons = {"Summer"};
+			Weather = {"Clear"};
+			Quips = {"I think my backbone snapped..", "Woah!!", "OH MY! A SUNFISH?", "A sunfish!", "Woah, a Sunfish!", "Nice tan..", "How did I pull this up?", "A SUNFISH!"};
+			SparkleColor = Color3.fromRGB(255, 232, 99);
+			HoldAnimation = fish:WaitForChild("heavy");
+			From = "Sunstone";
+		};
+		Moonfish = {
+			WeightPool = {2500, 5000};
+			Chance = 0.2;
+			Rarity = "Legendary";
+			Resilience = 20;
+			ProgressEfficiency = 0.6;
+			Description = "The Moonfish is a sizable, flat, bony fish that inhabits deep and occasionally warm waters. While their behavior resembles that of the Ocean Sunfish, Moonfish are far more aggressive, using their rock-hard skulls to charge at fish, boats, and swimmers.";
+			Hint = "???";
+			FavouriteBait = "Minnow";
+			FavouriteTime = "Night";
+			Price = 1800;
+			XP = 900;
+			Seasons = {"Winter"};
+			Weather = {"Clear"};
+			Quips = {"I think my backbone snapped..", "Woah!!", "OH MY! A MOONFISH?", "A Moonfish!!", "Woah, a Moonfish!!", "How did I pull this up?", "A Moonfish!!!"};
+			SparkleColor = Color3.fromRGB(255, 122, 70);
+			HoldAnimation = fish:WaitForChild("heavy");
+			From = "Ocean";
+		};
+		["Great White Shark"] = {
+			WeightPool = {7000, 12000};
+			Chance = 2;
+			Rarity = "Mythical";
+			Resilience = 8;
+			ProgressEfficiency = 0.7;
+			Description = "Great White Sharks are apex predators and will put up an intense fight when hooked. Their presence is often a sign of rich, diverse marine life in the area. Rare and challenging, they offer one of the biggest rewards for those skilled enough to catch them.";
+			Hint = "Only rarely spotted in the oceans during a Shark Hunt.";
+			FavouriteBait = "Fish Head";
+			FavouriteTime = nil;
+			Price = 6000;
+			XP = 900;
+			Seasons = {"Autumn"};
+			Weather = {"Clear"};
+			Quips = {"WOAH!! I CAUGHT A GREAT WHITE!", "A GREAT WHITE??", "HOLY.. A GREAT WHITE??", "I CAN'T FEEL MY SPINE!!"};
+			SparkleColor = Color3.fromRGB(93, 123, 255);
+			HoldAnimation = fish:WaitForChild("heavy");
+			From = "Ocean";
+			Shark = true;
+		};
+		["Dumbo Octopus"] = {
+			WeightPool = {15, 40};
+			Chance = 0.1;
+			Rarity = "Legendary";
+			Resilience = 30;
+			ProgressEfficiency = 0.85;
+			Description = "The Dumbo Octopus is a deep-sea dweller, named for its ear like fins that resemble the ears of Disney's famous elephant character. With a soft, gelatinous body and gentle movements, it glides through the oceans and coral reefs of Roslit Bay.";
+			Hint = "Caught in Roslit Bays coral reef.";
+			FavouriteBait = "Worm";
+			FavouriteTime = nil;
+			Price = 900;
+			XP = 400;
+			Seasons = {"Winter"};
+			Weather = {"Rain"};
+			Quips = {"Woah, I caught a Dumbo!", "A Dumbo Octopus!", "No way! A Dumbo Octupus!"};
+			SparkleColor = Color3.fromRGB(255, 142, 90);
+			HoldAnimation = fish:WaitForChild("small");
+			From = "Roslit";
+		};
+		["Pond Emperor"] = {
+			WeightPool = {1000, 2500};
+			Chance = 0.05;
+			Rarity = "Legendary";
+			Resilience = 25;
+			ProgressEfficiency = 0.6;
+			Description = "Pond Emperors are highly territorial, powerful swimmers that will consume almost anything. Their striking coloration, aggressive nature, and rare appearances make them a prized and fortunate catch for anglers.";
+			Hint = "Found in Snowcap Pond.";
+			FavouriteBait = "Squid";
+			FavouriteTime = nil;
+			Price = 900;
+			XP = 700;
+			Seasons = {"Winter"};
+			Weather = {"Clear"};
+			Quips = {"A Pond Emperor!", "WOAH! A Pond Emperor!!", "Pond Emperor!", "I caught a Pond Emperor!!"};
+			SparkleColor = Color3.fromRGB(136, 39, 255);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Snowcap";
+		};
+		Isonade = {
+			WeightPool = {6000, 13000};
+			Chance = 0.1;
+			Rarity = "Mythical";
+			Resilience = 8;
+			ProgressEfficiency = 0.5;
+			Description = "The Isonade is a sinister creature that is assumed exctinct. They are seeming to be a dream that is possible to be caught and captured. They only circle near Strange Whirlpools, can they even sometimes can be the cause for one.";
+			Hint = "Can be found when fishing in a strange whirlpool.";
+			FavouriteBait = "Truffle Worm";
+			FavouriteTime = nil;
+			Price = 8000;
+			XP = 1200;
+			Seasons = {"None"};
+			Weather = {"None"};
+			Quips = {"WOAH!! I CAUGHT AN ISONADE!", "AN ISONADE??", "HOLY.. AN ISONADE??", "I CAN'T FEEL MY SPINE!!", "THESE EXIST?"};
+			SparkleColor = Color3.fromRGB(47, 29, 106);
+			HoldAnimation = fish:WaitForChild("heavy");
+			From = "Vertigo";
+		};
+		["Great Hammerhead Shark"] = {
+			WeightPool = {2300, 5000};
+			Chance = 2;
+			Rarity = "Mythical";
+			Resilience = 20;
+			ProgressEfficiency = 0.65;
+			Description = "The Great Hammerhead Shark is a large, powerful predator known for its distinct hammer-shaped head. Its unique head shape improves its ability to track prey, making it a formidable hunter in the ocean, and a prominent catch amung anglers.";
+			Hint = "Only rarely spotted in the oceans during a Shark Hunt. Only awake during the day.";
+			FavouriteBait = "Fish Head";
+			FavouriteTime = "Day";
+			Price = 5500;
+			XP = 860;
+			Seasons = {"Spring"};
+			Weather = {"Windy"};
+			Quips = {"WOAH!! I CAUGHT A GREAT HAMMERHEAD!", "A GREAT HAMMERHEAD??", "HOLY.. A GREAT HAMMERHEAD??", "I CAN'T FEEL MY SPINE!!", "HAMMERTIME!", "Comically large hammer head!!"};
+			SparkleColor = Color3.fromRGB(255, 255, 255);
+			HoldAnimation = fish:WaitForChild("heavy");
+			From = "Ocean";
+			Shark = true;
+		};
+		Wiifish = {
+			WeightPool = {200, 400};
+			Chance = 1;
+			Rarity = "Legendary";
+			Resilience = 40;
+			ProgressEfficiency = 0.8;
+			Description = "The Wiifish is a legendary tropic fish that can only be found in the saltwaters Sunstone Island during the day. They are an extremely old fish, dating back over 230,000,000 years ago. While the Wiifish is a slow swimmer, they can put up an immense fight for even advanced anglers.";
+			Hint = "Found rarely near Sunstone Island during the day.";
+			FavouriteBait = "None";
+			FavouriteTime = nil;
+			Price = 1200;
+			XP = 500;
+			Seasons = {"Autumn"};
+			Weather = {"None"};
+			Quips = {"Woah, a Wiifish!", "This thing is super ancient!", "A Wiifish!!", "This brings me back!"};
+			SparkleColor = Color3.fromRGB(255, 136, 51);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Sunstone";
+		};
+		Dolphin = {
+			WeightPool = {1500, 2000};
+			Chance = 0.5;
+			Rarity = "Legendary";
+			Resilience = 5;
+			ProgressEfficiency = 0.95;
+			Description = "The Dolphin is a playful, intelligent marine mammal known for its sleek body, curved dorsal fin, and high intelligence. Dolphins are fast swimmers, known for jumping out of the water in graceful arcs and interacting with boats and swimmers. Found in the ocean.";
+			Hint = "Found in the ocean.";
+			FavouriteBait = "None";
+			FavouriteTime = "Day";
+			Price = 1200;
+			XP = 600;
+			Seasons = {"Summer", "Spring"};
+			Weather = {"Clear"};
+			Quips = {"I caught a Dolphin!", "It's a Dolphin!", "A DOLPHINN!"};
+			SparkleColor = Color3.fromRGB(255, 255, 255);
+			HoldAnimation = fish:WaitForChild("heavybasic");
+			From = "Ocean";
+		};
+		Sawfish = {
+			WeightPool = {4000, 6000};
+			Chance = 0.7;
+			Rarity = "Legendary";
+			Resilience = 10;
+			Description = "The Sawfish is a large, unique fish with a long, flattened snout that is lined with sharp teeth, resembling a saw. They are found all across the ocean mostly during the night.";
+			Hint = "found all around the ocean during the night.";
+			FavouriteBait = "Fish Head";
+			FavouriteTime = "Night";
+			Price = 1500;
+			XP = 900;
+			Seasons = {"Autumn"};
+			Weather = {"Foggy"};
+			Quips = {"A Sawfish!", "Chainsawfish!", "I caught a Sawfish!", "Woah, a Sawfish!"};
+			SparkleColor = Color3.fromRGB(161, 199, 255);
+			HoldAnimation = fish:WaitForChild("heavy");
+			From = "Ocean";
+		};
+		["Mythic Fish"] = {
+			WeightPool = {6, 14};
+			Chance = 0.01;
+			Rarity = "Mythical";
+			Resilience = 40;
+			ProgressEfficiency = 0.4;
+			Description = "The Mythic Fish is an extremely rare and beautiful fish. They swim gracefully in couples of two near the surface of the ocean water. They seem weak, but they can oddly put up a strong fight when being caught. This is due to the other Mythic Fish attempting to aid it's partner by pulling it off the hook.";
+			Hint = "Found in the Ocean.";
+			FavouriteBait = "Flakes";
+			FavouriteTime = "Day";
+			Price = 2000;
+			XP = 800;
+			Seasons = {"None"};
+			Weather = {"None"};
+			Quips = {"Oh no.. Where is it's partner?", "A Mythic Fish!!", "I Caught a Mythic Fish!!!", "NO WAY! A Mythic Fish!"};
+			SparkleColor = Color3.fromRGB(255, 199, 32);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Ocean";
+		};
+		Rabbitfish = {
+			WeightPool = {25, 60};
+			Chance = 1;
+			Rarity = "Legendary";
+			Resilience = 35;
+			ProgressEfficiency = 0.8;
+			Description = "The Rabbitfish is an illusive saltwater fish that is only found under The Arch. They are odd creatures that both resemble a rabbit, and swim in a pattern similar to a bunny jumping.";
+			Hint = "Found under The Arch.";
+			FavouriteBait = "Seaweed";
+			FavouriteTime = nil;
+			Price = 1100;
+			XP = 800;
+			Seasons = {"None"};
+			Weather = {"None"};
+			Quips = {"Woah!! A Rabbitfish!", "A Rabbit!!", "I caught a Rabbitfish!"};
+			SparkleColor = Color3.fromRGB(204, 142, 255);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Ocean";
+		};
+		["Umbral Shark"] = {
+			WeightPool = {1050, 1550};
+			Chance = 0.01;
+			Rarity = "Legendary";
+			Resilience = 10;
+			ProgressEfficiency = 0.9;
+			Description = "Umbral Sharks are a nocturnal bottom feeder, spending most of their time on the floor or in small crevices. They are gentle and slow-moving until provoked. Once angered, they can be extremely strong swimmers and often will break fishing lines. They are extremely rare, as they don't often come high enough in the water for anyone to see.";
+			Hint = "Caught at night in Keepers Altar.";
+			FavouriteBait = "Fish Head";
+			FavouriteTime = "Night";
+			Price = 1000;
+			XP = 500;
+			Seasons = {"Winter"};
+			Weather = {"Clear"};
+			Quips = {"An Umbral Shark!", "Woah! An Umbral Shark!", "I Caught an Umbral Shark!"};
+			SparkleColor = Color3.fromRGB(151, 110, 255);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Keepers Altar";
+		};
+		Ringle = {
+			WeightPool = {1, 4};
+			Chance = 0.01;
+			Rarity = "Mythical";
+			Resilience = 80;
+			ProgressEfficiency = 0.5;
+			Description = "The Ringle is an interesting and illusive fish that swims at extremely low and cold depths. They have a Rhino-like horn that they use to attack their prey. Most commonly found in the open ocean of Snowcap Island.";
+			Hint = "Found in the open ocean of Snowcap Island during the night.";
+			FavouriteBait = "Bagel";
+			FavouriteTime = "Night";
+			Price = 900;
+			XP = 500;
+			Seasons = {"None"};
+			Weather = {"Clear", "Foggy"};
+			Quips = {"A Ringle!", "I caught a Ringle!", "A Ringle!!", "Woah, an Ringle!"};
+			SparkleColor = Color3.fromRGB(87, 224, 255);
+			HoldAnimation = fish:WaitForChild("tiny");
+			From = "Snowcap";
+		};
+		Olm = {
+			WeightPool = {1, 4};
+			Chance = 2;
+			Rarity = "Legendary";
+			Resilience = 80;
+			ProgressEfficiency = 0.95;
+			Description = "The Olm is an aquatic salamander which is an exclusively cave-dwelling species. The olm is mostly found in dark and moist areas of freshwater. They are most notable for their adaptations to a life of darkness with-in their caves. The Olm has severely under underdeveloped eyes, leaving it blind. This blindness gives them an acute sense of smell and hearing.";
+			Hint = "Reisdes on the floor of caves and dark rocky areas. Loves the night.";
+			FavouriteBait = "Flakes";
+			FavouriteTime = "Night";
+			Price = 900;
+			XP = 500;
+			Seasons = {"None"};
+			Weather = {"Clear", "Foggy"};
+			Quips = {"An Olm!", "I caught an Olm!", "Olm.. my gosh!", "An Olm!!", "Woah, an Olm!", "This ain't no Axolotl..", "It looks like a recorder"};
+			SparkleColor = Color3.fromRGB(255, 178, 178);
+			HoldAnimation = fish:WaitForChild("tiny");
+			ViewportSizeOffset = 2;
+			From = "Terrapin";
+		};
+		["Sea Pickle"] = {
+			WeightPool = {4, 10};
+			Chance = 0.01;
+			Rarity = "Mythical";
+			Resilience = 50;
+			Description = "The Sea Pickle is a quirky, small, tube-like sea creature found on ocean beds. Its glowing green body gives off a faint bioluminescent light, making it easy to spot at night. It's know to wriggle out of nets and rods, making it a tricky catch. Despite its unassuming appearance, it's highly valued for its oddity and unique glow.";
+			Hint = "Found in the ocean. Can be caught in rods and cages.";
+			FavouriteBait = "Seaweed";
+			FavouriteTime = "Night";
+			Price = 2000;
+			XP = 60;
+			Seasons = {"Autunn", "Summer"};
+			Weather = {"Clear", "Cloudy"};
+			Quips = {"A SEA PICKLE!!", "I CAUGHT A SEA PICKLE!", "A Sea pickle!"};
+			SparkleColor = Color3.fromRGB(121, 255, 80);
+			HoldAnimation = fish:WaitForChild("small");
+			From = "Ocean";
+		};
+		["Crown Bass"] = {
+			WeightPool = {20, 60};
+			Chance = 0.2;
+			Rarity = "Legendary";
+			Resilience = 20;
+			ProgressEfficiency = 0.8;
+			Description = "The Crown Bass is a special type of bass that is known for its vibrant colours, and its luminescent 'crown' on its head. They use this crown to attract prey, and see easily at night. They can be found all over the world in all sorts of salt waters, especially warmer waters during the night.";
+			Hint = "In salt waters during the night. ";
+			FavouriteBait = "Squid";
+			FavouriteTime = "Night";
+			Price = 1200;
+			XP = 700;
+			Seasons = {"Summer"};
+			Weather = {"Foggy"};
+			Quips = {"A Crown Bass!", "I caught a Crown Bass!", "Woah! A Crown Bass!", "Ouu! A Crown Bass!"};
+			SparkleColor = Color3.fromRGB(203, 163, 70);
+			HoldAnimation = fish:WaitForChild("basic");
+			From = "Ocean";
+		};
+		["Whisker Bill"] = {
+			WeightPool = {350, 1000};
+			Chance = 0.01;
+			Rarity = "Mythical";
+			Resilience = 25;
+			ProgressEfficiency = 0.8;
+			Description = "The Whisker Bill is a mythical creature that was a popular staple of Moosewood Island before they were thought to be excinct. Whisker Bills are extremely strong, however are awkward swimmers due to their peculiar archetype.";
+			Hint = "???";
+			FavouriteBait = "Truffle Worm";
+			FavouriteTime = nil;
+			Price = 3100;
+			XP = 150;
+			Seasons = {"None"};
+			Weather = {"None"};
+			Quips = {"The mythical Whisker Bill..", "Woah.. A Whisker Bill..", "I caught.. A Whisker Bill..", "Woah..."};
+			SparkleColor = Color3.fromRGB(255, 255, 255);
+			HoldAnimation = fish:WaitForChild("heavy");
+			From = "Moosewood";
+		};
+		["Colossal Squid"] = {
+			WeightPool = {7000, 12000};
+			Chance = 0.02;
+			Rarity = "Mythical";
+			Resilience = 5;
+			ProgressEfficiency = 0.3;
+			Description = "The Colossal Squid is a massive, deep-sea creature with enormous tentacles and large appetite for anglers. Known for its incredible size and strength, it lurks in the deepest parts of the ocean, only occasionally venturing near the surface during the nights.";
+			Hint = "???";
+			FavouriteBait = "None";
+			FavouriteTime = "Night";
+			Price = 6500;
+			XP = 3000;
+			Seasons = {"None"};
+			Weather = {"Foggy"};
+			Quips = {"WOAH. A COLOSSAL SQUID!!", "MY BACCKK", "I CAN'T BELIEVE IT! COLOSSAL SQUID!"};
+			SparkleColor = Color3.fromRGB(255, 82, 82);
+			HoldAnimation = fish:WaitForChild("heavy");
+			From = "Ocean";
+		};
+		["Rubber Ducky"] = {
+			WeightPool = {1, 7};
+			Chance = 0.01;
+			Rarity = "Legendary";
+			Resilience = 100;
+			ProgressEfficiency = 0.3;
+			Description = "A simple, squeezable, rubber duck! It may have been lost in one of the deepest parts of our discovered world... But, it's in great condition!";
+			Hint = "???";
+			FavouriteBait = "None";
+			FavouriteTime = nil;
+			Price = 900;
+			XP = 800;
+			Seasons = {"None"};
+			Weather = {"Rain"};
+			Quips = {"A.. Rubber Duck..?", "Woah!.. A Ducky??", "Awesome!!!!!!!", "Did someone lose this?", "How did this get down here..?"};
+			SparkleColor = Color3.fromRGB(255, 234, 115);
+			HoldAnimation = fish:WaitForChild("small");
+			From = "Vertigo";
+		};
+		["Enchant Relic"] = {
+			WeightPool = {210, 210};
+			Chance = 0.2;
+			Rarity = "Relic";
+			Resilience = 35;
+			ProgressEfficiency = 0.8;
+			Description = "A stone filled with the blessing of a Divine Lantern Keeper.. Returning it to it's throne under the Statue of Sovereignty will result in your currently equipped rod being engulfed in its power.";
+			Hint = "???";
+			FavouriteBait = "None";
+			FavouriteTime = nil;
+			Price = 3500;
+			XP = 800;
+			Seasons = {"None"};
+			Weather = {"None"};
+			Quips = {"I feel it's power..", "Woah.. A Relic??", "A Relic!!", "I caught a Relic!"};
+			SparkleColor = Color3.fromRGB(126, 255, 216);
+			HoldAnimation = fish:WaitForChild("small");
+			From = "None";
+		};
+		Ghoulfish = {
+			WeightPool = {45, 120};
+			Chance = 0.1;
+			Rarity = "Event";
+			Resilience = 30;
+			ProgressEfficiency = 0.9;
+			Description = "The Ghoulfish is known for its eerie appearance. They only appear during FischFright season, and are a scary bie to have on the end of your rod.";
+			Hint = "Only can be caught during FischFright.";
+			FavouriteBait = "Squid";
+			FavouriteTime = nil;
+			Price = 1000;
+			XP = 600;
+			Seasons = {"None"};
+			Weather = {"Clear"};
+			Quips = {"A Ghoulfish!", "I caught a Ghoulfish!", "Woah! A Ghoulfish!", "Ouu! A Ghoulfish!"};
+			SparkleColor = Color3.fromRGB(255, 255, 255);
+			HoldAnimation = fish:WaitForChild("basic");
+		};
+		Lurkerfish = {
+			WeightPool = {5, 20};
+			Chance = 0.01;
+			Rarity = "Event";
+			Resilience = 20;
+			ProgressEfficiency = 0.9;
+			Description = "The Lurkerfish is an interesting breed of the Anglerfish that is only visible during FischFright. It is said this fish gains its visible body from the though of FischFight, and during the rest of the year, the Lurkerfish is completely invisible to the untrained eye.";
+			Hint = "Only can be caught during FischFright.";
+			FavouriteBait = "Squid";
+			FavouriteTime = nil;
+			Price = 1500;
+			XP = 800;
+			Seasons = {"Winter", "Autumn"};
+			Weather = {"Foggy"};
+			Quips = {"Woah, a Lurkerfish!", "No way! A Lurkerfish!", "I caught a Lurkerfish!"};
+			SparkleColor = Color3.fromRGB(140, 255, 176);
+			HoldAnimation = fish:WaitForChild("small");
+		};
+		["Candy Fish"] = {
+			WeightPool = {5, 10};
+			Chance = 10;
+			Rarity = "Event";
+			Resilience = 50;
+			Description = "The Candy Fisch is a vibrant, brighlt colored fish, formed from glucose and carbon. Known for their playful nature, and sweet gummy texture. Only can be caught during FischFright.";
+			Hint = "Only can be caught during FischFright.";
+			FavouriteBait = "Flakes";
+			FavouriteTime = nil;
+			Price = 200;
+			XP = 400;
+			Seasons = {"Winter"};
+			Weather = {"Clear"};
+			Quips = {"Woah, a Candy Fisch!", "No way! A Candy Fisch!", "I caught a Candy Fisch!"};
+			SparkleColor = Color3.fromRGB(255, 51, 51);
+			HoldAnimation = fish:WaitForChild("small");
+		};
+		Zombiefish = {
+			WeightPool = {15, 30};
+			Chance = 10;
+			Rarity = "Event";
+			Resilience = 50;
+			Description = "Once a lifeless fish drifting to the surface, the Zombiefish was struck by lightning and brought back to life. Now reanimated, it prowls the waters during FischFright, haunting the tides with its undead presence.";
+			Hint = "Only can be caught during FischFright.";
+			FavouriteBait = "Flakes";
+			FavouriteTime = nil;
+			Price = 200;
+			XP = 400;
+			Seasons = {"Winter"};
+			Weather = {"Clear"};
+			Quips = {"Woah, a Candy Fisch!", "No way! A Candy Fisch!", "I caught a Candy Fisch!"};
+			SparkleColor = Color3.fromRGB(255, 51, 51);
+			HoldAnimation = fish:WaitForChild("small");
+		};
+		Skelefish = {
+			WeightPool = {5, 10};
+			Chance = 10;
+			Rarity = "Event";
+			Resilience = 50;
+			Description = "The Skelefish is a literal fish skeleton, eerily animated as if it still had flesh. Its bony structure drifts through the water, with jagged, rib-like bones and a hollow skull that stares blankly ahead. Only can be caught during FischFright.";
+			Hint = "Only can be caught during FischFright.";
+			FavouriteBait = "Fish Head";
+			FavouriteTime = nil;
+			Price = 200;
+			XP = 400;
+			Seasons = {"Winter"};
+			Weather = {"Clear"};
+			Quips = {"Woah, a Skelefish!", "No way! A Skelefish!", "I caught a Skelefish!"};
+			SparkleColor = Color3.fromRGB(255, 255, 255);
+			HoldAnimation = fish:WaitForChild("tiny");
+		};
+		Nessie = {
+			WeightPool = {20000, 40000};
+			Chance = 0.01;
+			Rarity = "Event";
+			Resilience = 5;
+			ProgressEfficiency = 0.2;
+			Description = "Nessie is thought to be a complete myth. Little did these anglers know, you found the impossible catch... Nessie... Only obtainable during FischFright ";
+			Hint = "Only obtainable during FischFright";
+			FavouriteBait = "Truffle Worm";
+			FavouriteTime = "Night";
+			Price = 6500;
+			XP = 3000;
+			Seasons = {"None"};
+			Weather = {"Foggy"};
+			Quips = {"WOAH, NESSIE!?!", "MY BACCKK", "I CAN'T BELIEVE IT! NESSIE!", "I DIDN'T THINK IT WAS REAL!!"};
+			SparkleColor = Color3.fromRGB(129, 255, 181);
+			HoldAnimation = fish:WaitForChild("heavy");
+		};
+		Rarities = {"Trash", "Common", "Uncommon", "Unusual", "Rare", "Legendary", "Mythical", "Event", "Relic", "Divine"};
+		RarityColours = {
+			Trash = Color3.fromRGB(145, 145, 145);
+			Common = Color3.fromRGB(142, 187, 191);
+			Uncommon = Color3.fromRGB(161, 255, 169);
+			Unusual = Color3.fromRGB(192, 135, 198);
+			Rare = Color3.fromRGB(119, 108, 181);
+			Legendary = Color3.fromRGB(240, 181, 109);
+			Mythical = Color3.fromRGB(255, 62, 120);
+			Event = Color3.fromRGB(54, 73, 159);
+			Divine = Color3.fromRGB(202, 198, 255);
+			Relic = Color3.fromRGB(120, 255, 183);
+		};
+	}
+end
+
+local Tap = {
+	General = Window:AddTab({Title = "Generals", Icon = "box"}),
+	Event = Window:AddTab({Title = "Event", Icon = "star"}),
+	Player = Window:AddTab({ Title = "Player", Icon = "user"}),
+	Shop = Window:AddTab({ Title = "Shopee", Icon = "shopping-bag"}),
+	Configs = Window:AddTab({Title = "Configs", Icon = "diamond"}),
+	Teleport = Window:AddTab({Title = "Teleport", Icon = "asterisk"}),
+	Settings = Window:AddTab({Title = "Settings", Icon = "settings"})
+}
+
+Toggle = function(Section, NameIndex, Description, ConfigName, Function, ...)
+	local Misc = {...}
+	ConfigName = ConfigName or NameIndex
+	local defaultState = Config[ConfigName] or false
+
+	local CreateToggle = Section:AddToggle((NameIndex or NameIndex.."-toggle"), {
+		Title = NameIndex or "null",
+		Default = defaultState,
+		Description = Description or "",
+	})
+
+	CreateToggle:OnChanged(function(v)
+		Config[ConfigName] = v
+		save()
+		if Function then
+			Function(v)
+		else
+			if AllFuncs[ConfigName] then
+				local threadRunning = task.spawn(AllFuncs[ConfigName])
+
+				if not v and threadRunning then
+					task.cancel(threadRunning)
+				end
+			end
+		end
+	end)
+
+	return CreateToggle
+end
+
+Slider = function(section,Name,min,max,Rounding,...)
+	local SettingName,func = ...
+	if not func and type(SettingName) == "function" then func = SettingName end
+	if not SettingName then SettingName = Name end
+	local default = Config[SettingName]
+	local CreateSlider = section:AddSlider((Name or Name.."-slider"), {
+		Title =Name or "null",
+		Min = min or 0,
+		Max = max or 1,
+		Default = (Config[SettingName] or default) or min,
+		Rounding = (Rounding == true and 1) or 0,
+	})
+
+	CreateSlider:OnChanged(function(v)
+		save()
+		Config[SettingName] = v
+	end)
+	task.wait()
+	return CreateSlider
+end
+
+TextBox = function(section,Name,tooltip,PlaceHolder,Numberic,...)
+	local SettingName,func = ...
+	if not func and type(SettingName) == "function" then func = SettingName end
+	if not SettingName then SettingName = Name end
+	local CreateInput =section:AddInput((Name or Name.."-input"), {
+		Title =Name or "Null",
+		Placeholder = PlaceHolder or "Put text here!",
+		Numeric = Numberic or false,
+		Finished = true,
+		Description = tooltip or "",
+		Default = Config[SettingName],
+	})
+
+	CreateInput:OnChanged(function(value)
+		Config[SettingName] = value
+		save()
+	end)
+	task.wait()
+	return CreateInput
+end
+
+Dropdown = function(section, Name, default, list, multi, ...)
+	local SettingName, func = ...
+	if not func and type(SettingName) == "function" then func = SettingName end
+	SettingName = SettingName or Name
+
+	if multi then
+		default = (default or Config[SettingName]) or {}
+		if type(Config[SettingName]) == "string" then
+			Config[SettingName] = {Config[SettingName]}
+		end
+	else
+		default = (default or Config[SettingName]) or ""
+	end
+
+	local CreateDropdown = section:AddDropdown((Name or Name.."-dropdown"), {
+		Title = Name or "Null",
+		Values = list or {"None"},
+		Multi = multi or false,
+		Default = default
+	})
+
+	CreateDropdown:OnChanged(function(v)
+		if multi and type(v) == 'table' then
+			Config[SettingName] = {}
+			for _, selectedValue in pairs(v) do
+				table.insert(Config[SettingName], selectedValue)
+			end
+		else
+			Config[SettingName] = v
+		end
+		save()
+		if func then
+			func(v)
+		end
+	end)
+
+	return CreateDropdown
+end
+
+
+AllFuncs['Farm Fish'] = function()
+	local RodName = ReplicatedStorage.playerstats[LocalPlayer.Name].Stats.rod.Value
+	while Config['Farm Fish'] and task.wait() do
+		if Backpack:FindFirstChild(RodName) then
+			LocalPlayer.Character.Humanoid:EquipTool(Backpack:FindFirstChild(RodName))
+		end
+		if LocalPlayer.Character:FindFirstChild(RodName) and LocalPlayer.Character:FindFirstChild(RodName):FindFirstChild("bobber") then
+			local XyzClone = game:GetService("ReplicatedStorage").resources.items.items.GPS.GPS.gpsMain.xyz:Clone()
+			XyzClone.Parent = game.Players.LocalPlayer.PlayerGui:WaitForChild("hud"):WaitForChild("safezone"):WaitForChild("backpack")
+			XyzClone.Name = "Lure"
+			XyzClone.Text = "<font color='#ff4949'>Lure </font>: 0%"
+			repeat
+				pcall(function()
+					PlayerGui:FindFirstChild("shakeui").safezone:FindFirstChild("button").Size = UDim2.new(1001, 0, 1001, 0)
+					game:GetService("VirtualUser"):Button1Down(Vector2.new(1, 1))
+					game:GetService("VirtualUser"):Button1Up(Vector2.new(1, 1))
+				end)
+				XyzClone.Text = "<font color='#ff4949'>Lure </font>: "..tostring(ExportValue(tostring(LocalPlayer.Character:FindFirstChild(RodName).values.lure.Value), 2)).."%"
+				RunService.Heartbeat:Wait()
+			until not LocalPlayer.Character:FindFirstChild(RodName) or LocalPlayer.Character:FindFirstChild(RodName).values.bite.Value or not Config['Farm Fish']
+			XyzClone.Text = "<font color='#ff4949'>FISHING!</font>"
+			delay(1.5, function()
+				XyzClone:Destroy()
+			end)
+			repeat
+				ReplicatedStorage.events.reelfinished:FireServer(1000000000000000000000000, true)
+				task.wait(.5)
+			until not LocalPlayer.Character:FindFirstChild(RodName) or not LocalPlayer.Character:FindFirstChild(RodName).values.bite.Value or not Config['Farm Fish']
+		else
+			LocalPlayer.Character:FindFirstChild(RodName).events.cast:FireServer(1000000000000000000000000)
+			task.wait(2)
+		end
+	end
+end
+
+
+AllFuncs['Sell Fish'] = function()
+	while Config['Sell Fish'] and task.wait(3) do
+		game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("selleverything"):InvokeServer()
+	end
+end
+
+
+AllFuncs['To Pos Stand'] = function()
+	while Config['To Pos Stand'] and task.wait() do
+		if not Config['SelectPositionStand'] then
+			Notify("Pls Select Position")
+			Config['To Pos Stand'] = false
+			return
+		end
+		pcall(function()
+			LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = Config['SelectPositionStand']
+		end)
+	end
+end
+
+AllFuncs['Toggle Walk Speed'] = function()
+	while Config['Toggle Walk Speed'] and task.wait() do
+		pcall(function()
+			LocalPlayer.Character:FindFirstChild("Humanoid").WalkSpeed = Config['Set Walk Speed']
+		end)
+	end
+	if not Config['Toggle Walk Speed'] then
+		pcall(function()
+			LocalPlayer.Character:FindFirstChild("Humanoid").WalkSpeed = 16
+		end)
+	end
+end
+
+AllFuncs['Toggle Jump Power'] = function()
+	while Config['Toggle Jump Power'] and task.wait() do
+		pcall(function()
+			LocalPlayer.Character:FindFirstChild("Humanoid").JumpPower = Config['Set Jump Power']
+		end)
+	end
+	if not Config['Toggle Jump Power'] then
+		pcall(function()
+			LocalPlayer.Character:FindFirstChild("Humanoid").JumpPower = 50
+		end)
+	end
+end
+
+AllFuncs['Toggle Noclip'] = function()
+	while Config['Toggle Noclip'] and task.wait() do
+		local charParts = LocalPlayer.Character:GetDescendants()
+		for i,v in pairs(charParts) do
+			if v:IsA("BasePart") and LocalPlayer.Character then
+				if v.CanCollide then
+					v.CanCollide = false
+				end
+			end
+		end
+	end
+	if not Config['Toggle Noclip'] then
+		local charParts = LocalPlayer.Character:GetDescendants()
+		for i,v in pairs(charParts) do
+			if v:IsA("BasePart") and LocalPlayer.Character then
+				v.CanCollide = true
+			end
+		end
+	end
+end
+
+GetPlayerProfile = function()
+	local Respone = game:HttpGet("https://thumbnails.roblox.com/v1/users/avatar-bust?userIds="..LocalPlayer.UserId.."&size=420x420&format=Png&isCircular=false")
+	return HttpService:JSONDecode(Respone)['data'][1]['imageUrl']
+end
+
+comma_value = function(Value)
+	local Calculated = Value
+	while true do
+		local Text, Amount = string.gsub(Calculated, "^(-?%d+)(%d%d%d)", "%1,%2")
+		Calculated = Text
+		if Amount == 0 then break end
+	end
+	return Calculated
+end
+
+function GetPosition()
+	if not game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+		return {
+			Vector3.new(0,0,0),
+			Vector3.new(0,0,0),
+			Vector3.new(0,0,0)
+		}
+	end
+	return {
+		game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position.X,
+		game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position.Y,
+		game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position.Z
+	}
+end
+
+function ExportValue(arg1, arg2)
+	return tonumber(string.format("%."..(arg2 or 1)..'f', arg1))
+end
+
+AllFuncs.HopServer = function(FullServer) -- Hop Server (Low)
+	local FullServer = FullServer or false
+
+	local Http = game:GetService("HttpService")
+	local Api = "https://games.roblox.com/v1/games/"
+
+	local _place = game.PlaceId
+	local _servers = Api.._place.."/servers/Public?sortOrder=Asc&limit=100"
+	local ListServers = function (cursor)
+		local Raw = game:HttpGet(_servers .. ((cursor and "&cursor="..cursor) or ""))
+		return Http:JSONDecode(Raw)
+	end
+
+	local Server, Next; repeat
+		local Servers = ListServers(Next)
+		Server = Servers.data[1]
+		Next = Servers.nextPageCursor
+	until Server
+	repeat
+		if not FullServer then
+			game:GetService("TeleportService"):TeleportToPlaceInstance(_place,Server.id,game.Players.LocalPlayer)
+		else
+			if request then
+				local servers = {}
+				local req = request(
+					{
+						Url = string.format("https://games.roblox.com/v1/games/%d/servers/Public?sortOrder=Desc&limit=100&excludeFullGames=true", game.PlaceId)
+					}
+				).Body;
+				local body = game:GetService("HttpService"):JSONDecode(req)
+				if body and body.data then
+					for i, v in next, body.data do
+						if type(v) == "table" and tonumber(v.playing) and tonumber(v.maxPlayers) and v.playing < v.maxPlayers and v.id ~= game.JobId then
+							table.insert(servers, 1, v.id)
+						end
+					end
+				end
+				if #servers > 0 then
+					game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, servers[math.random(1, #servers)], game.Players.LocalPlayer)
+				else
+					return "Couldn't find a server."
+				end
+			end
+		end
+		wait()
+	until game.PlaceId ~= game.PlaceId
+end
+
+local LastDely = tick()
+AllFuncs['Sending Webhook'] = function()
+	while Config['Sending Webhook'] and task.wait() do
+		if tick() - LastDely >= tonumber(Config['Delay Sending']) and (Config['Current Level'] or Config['Current Money']) then
+			LastDely = tick()
+			local LevelDes = ""
+			local MoneyDes = ""
+			local AllFishInventory = ""
+			local BuySuccess = "**"
+			if Config['Current Level'] then
+				LevelDes = "\nNow Level : "..comma_value(LocalPlayer.leaderstats.Level.Value)
+			end
+			if Config['Current Money'] then
+				MoneyDes = "\nNow Money : "..tostring(LocalPlayer.PlayerGui.hud.safezone.coins.Text)
+			end
+			if Config['All Fish Inventory'] then
+				AllFishInventory = "```"
+				for i,v in pairs(GetFishInInventory()) do
+					AllFishInventory = AllFishInventory..i
+					if Config['Send Kilo Fish'] then
+						AllFishInventory = AllFishInventory.." : "..v[1]
+					end
+					if Config['Send Price Fish'] then
+						AllFishInventory = AllFishInventory.." : "..v[2]
+					end
+					AllFishInventory = AllFishInventory.."\n"
+				end
+				AllFishInventory = AllFishInventory.."```"
+			end
+			local SendingSuccess = sendwebhook(Config['WebHook Configs'], {
+				["content"] = ((Config['Ping Discord Id'] and Config['"Discord Id'] ~= "") and "<@"..Config['"Discord Id']..">"),
+				["embeds"] = {
+					{
+						["id"]= 661605297,
+						["title"]= "Fisch Notify",
+						["description"] = "** Player : "..LocalPlayer.Name.."\n "..MoneyDes..""..LevelDes..""..AllFishInventory.."**",
+						["color"]= 8646911,
+						["fields"]= {},
+						["thumbnail"]= {
+							["url"]= GetPlayerProfile()
+						},
+						["footer"]= {
+							["text"]  = "Normal Hub Notify",
+							["icon_url"] = "https://cdn.discordapp.com/attachments/971367335405449246/1259442279672844308/Profile_1.png?ex=66fbc206&is=66fa7086&hm=0b8898eb98938e100ad3cede12d0a526d344cd3ba7d4f737f728ca188a1af027&"
+						}
+					}
+				}
+			})
+			if SendingSuccess then
+				Notify("Sending WebHook Success")
+			else
+				Notify("Failed Sending WebHook!")
+			end
+		end
+	end
+end
+
+workspace.active.ChildAdded:Connect(function(child)
+	if Config['Safe Whirlpool Spawn'] and Config['WebHook Configs'] ~= "" then
+		if child.Name == "Safe Whirlpool" then
+			local Pos = {
+				child.Position.X,
+				child.Position.Y,
+				child.Position.Z,
+			}
+			local StringInput = string.format("%s, %s, %s", ExportValue(Pos[1]), ExportValue(Pos[2]), ExportValue(Pos[3]))
+			local SendingSuccess = sendwebhook(Config['WebHook Configs'], {
+				["content"] = ((Config['Ping Discord Id'] and Config['"Discord Id'] ~= "") and "<@"..Config['"Discord Id']..">"),
+				["embeds"] = {
+					{
+						["id"]= 661605297,
+						["title"]= "Fisch Notify",
+						["description"] = "** Player : "..LocalPlayer.Name.."\n Found Safe Whirlpool\n Position : "..StringInput.."**",
+						["color"]= 8646911,
+						["fields"]= {},
+						["thumbnail"]= {
+							["url"]= GetPlayerProfile()
+						},
+						["footer"]= {
+							["text"]  = "Normal Hub Notify",
+							["icon_url"] = "https://cdn.discordapp.com/attachments/971367335405449246/1259442279672844308/Profile_1.png?ex=66fbc206&is=66fa7086&hm=0b8898eb98938e100ad3cede12d0a526d344cd3ba7d4f737f728ca188a1af027&"
+						}
+					}
+				}
+			})
+			if SendingSuccess then
+				Notify("Sending WebHook Success")
+			else
+				Notify("Failed Sending WebHook!")
+			end
+		end
+	end
+end)
+
+Main = Tap.General:AddSection('General') do
+	SelectPosition = Main:AddParagraph({        
+		Title = "Position : N/A"
+	})
+	Toggle(Main, "Auto Farm Fish","", "Farm Fish")
+	Toggle(Main, "Teleport To Select Position","", "To Pos Stand")
+	Main:AddButton({
+		Title = "Select Position",
+		Callback = function()
+			Config['SelectPositionStand'] = LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
+			SelectPosition:SetTitle("Position : "..tostring(math.floor(LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position.X)).." X "..tostring(math.floor(LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position.Y)).." Y "..tostring(math.floor(LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position.Z)).." Z")
+		end
+	})
+end
+IngredientList = {}
+for i,v in pairs(workspace.active:GetDescendants()) do
+	if v.ClassName == "TextLabel" and v.Text == "Ingredient" then
+		local Path = nil
+		GetRealPart = function(V)
+			if V.ClassName == "Model" then
+				Path = V
+			else
+				GetRealPart(V.Parent)
+			end
+		end
+		GetRealPart(v)
+		local OldName = Path.Name
+		if Path:FindFirstChildOfClass("MeshPart") then
+			if Path:FindFirstChildOfClass("MeshPart").Position.X > 500 then
+				continue
+			end
+		end
+		if Path:FindFirstChild("PickupPrompt") then
+			Path:FindFirstChild("PickupPrompt").HoldDuration = 0
+		end
+		table.insert(IngredientList, OldName)
+	end
+end
+
+_hasItem = function(name)
+	if Backpack:FindFirstChild(name) then return true end
+	if LocalPlayer.Character:FindFirstChild(name) then return true end
+end
+
+Threads[#Threads+1] = task.spawn(function()
+	while wait(.75) do
+		table.clear(IngredientList)
+		for i,v in pairs(workspace.active:GetDescendants()) do
+			if v.ClassName == "TextLabel" and v.Text == "Ingredient" then
+				local Path = nil
+				GetRealPart = function(V)
+					if V.ClassName == "Model" then
+						Path = V
+					else
+						GetRealPart(V.Parent)
+					end
+				end
+				GetRealPart(v)
+				local OldName = Path.Name
+				if Path:FindFirstChildOfClass("MeshPart") then
+					if Path:FindFirstChildOfClass("MeshPart").Position.X > 500 then
+						continue
+					end
+				end
+				if Path:FindFirstChild("PickupPrompt") then
+					Path:FindFirstChild("PickupPrompt").HoldDuration = 0
+				end
+				table.insert(IngredientList, OldName)
+			end
+		end
+	end
+end)
+
+AllFuncs['Auto Find Boat Event'] = function()
+	while Config['Auto Find Boat Event'] and task.wait(.75) do
+		if (#IngredientList <= 0 and not _hasItem("Witches Ingredient")) then
+			if Config['Hop Not Found Ingredient'] then
+				AllFuncs.HopServer(true)
+			end
+			continue
+		end
+		local RodName = ReplicatedStorage.playerstats[LocalPlayer.Name].Stats.rod.Value
+		if LocalPlayer.Character:FindFirstChild(RodName) and LocalPlayer.Character:FindFirstChild(RodName).values.bite.Value then
+			continue
+		end
+		if Config["Farm Fish"] then
+			Config["Farm Fish"] = false
+			continue
+		end
+		if Config['To Pos Stand'] then
+			Config['To Pos Stand'] = false
+			continue
+		end
+		for _, IngredientName in pairs(IngredientList) do
+			for i,v in pairs(workspace.active:GetChildren()) do
+				if v.Name == IngredientName then
+					if v:FindFirstChildOfClass("MeshPart") then
+						if v:FindFirstChildOfClass("MeshPart").Position.X > 200 then
+							continue
+						end
+					end
+					LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = v:GetPivot()
+					wait(1)
+					VirtualInputManager:SendKeyEvent(true, "E", false, game)
+					VirtualInputManager:SendKeyEvent(false, "E", false, game)
+					fireproximityprompt(v.PickupPrompt, 1)				
+				end
+			end
+		end
+		if _hasItem("Witches Ingredient") then
+			repeat
+				task.wait()
+				LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = CFrame.new(404.7090148925781, 134.5, 317.6537780761719)
+				if Backpack:FindFirstChild("Witches Ingredient") then
+					LocalPlayer.Character.Humanoid:EquipTool(Backpack:FindFirstChild("Witches Ingredient"))
+				end
+				fireproximityprompt(workspace.world.map.halloween.witch.WitchesPot.AcidTop.Prompt, 1)				
+			until not _hasItem("Witches Ingredient") or not Config["Auto Find Boat Event"]
+			if Config['Halloween Success'] and Config['WebHook Configs'] ~= "" then
+				local SendingSuccess = sendwebhook(Config['WebHook Configs'], {
+					["content"] = ((Config['Ping Discord Id'] and Config['"Discord Id'] ~= "") and "<@"..Config['"Discord Id']..">"),
+					["embeds"] = {
+						{
+							["id"]= 661605297,
+							["title"]= "Fisch Notify",
+							["description"] = "** Player : "..LocalPlayer.Name.."\n Trade Witches Ingredient Success **",
+							["color"]= 8646911,
+							["fields"]= {},
+							["thumbnail"]= {
+								["url"]= GetPlayerProfile()
+							},
+							["footer"]= {
+								["text"]  = "Normal Hub Notify",
+								["icon_url"] = "https://cdn.discordapp.com/attachments/971367335405449246/1259442279672844308/Profile_1.png?ex=66fbc206&is=66fa7086&hm=0b8898eb98938e100ad3cede12d0a526d344cd3ba7d4f737f728ca188a1af027&"
+							}
+						}
+					}
+				})
+				if SendingSuccess then
+					Notify("Sending WebHook Success")
+				else
+					Notify("Failed Sending WebHook!")
+				end
+			end
+		end
+		if Config['Back To Fishing'] and not _hasItem("Witches Ingredient") and #IngredientList <= 0 then
+			Config["Farm Fish"] = true
+			Config['To Pos Stand'] = true
+			task.spawn(AllFuncs['Farm Fish'])
+			task.spawn(AllFuncs['To Pos Stand'])
+		end
+	end
+end
+Event = Tap.Event:AddSection('Event') do
+	IngredientDropdwon = Dropdown(Event, "Select Ingredient", "", IngredientList, false, "Ingredient Select")
+	Toggle(Event, "Auto Halloween Event ","", "Auto Find Boat Event")
+	Toggle(Event, "Back To Auto Fishing","", "Back To Fishing")
+	Toggle(Event, "Hop Server","Hop Server For Not Found Ingredient", "Hop Not Found Ingredient")
+	Event:AddButton({
+		Title = "Teleport To Ingredient",
+		Callback = function()
+			if Config['Ingredient Select'] == "" then
+				Notify("Pls Select Ingredient ")
+				return
+			end
+			for i,v in pairs(workspace.active:GetChildren()) do
+				if v.Name == Config['Ingredient Select'] then
+					if v:FindFirstChildOfClass("MeshPart") then
+						if v:FindFirstChildOfClass("MeshPart").Position.X > 200 then
+							continue
+						end
+					end
+					LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = v:GetPivot()
+				end
+			end
+			Notify("Not Found `"..Config["Ingredient Select"].."` ")
+		end
+	})
+	
+	Event:AddButton({
+		Title = "Refresh Ingredient",
+		Callback = function()
+			IngredientDropdwon:SetValues(IngredientList)
+		end
+	})
+end
+
+Seller = Tap.General:AddSection('Seller') do
+	Toggle(Seller, "Auto Sell Fish","", "Sell Fish")
+
+	Seller:AddButton({
+		Title = "Sell All Fish",
+		Callback = function()
+			ReplicatedStorage:WaitForChild("events"):WaitForChild("selleverything"):InvokeServer()
+		end
+	})
+	Seller:AddButton({
+		Title = "Sell Fish ( In Hand )",
+		Callback = function()
+			workspace.world.npcs:FindFirstChild("Marc Merchant").merchant.sell:InvokeServer()
+		end
+	})
+	Seller:AddButton({
+		Title = "Show Ui Buy Boat",
+		Callback = function()
+			PlayerGui.hud.safezone.shipwright.Visible = not PlayerGui.hud.safezone.shipwright.Visible 
+		end
+	})
+end
+
+FishList = {}
+for i,v in pairs(FISHDATA) do
+	table.insert(FishList, i)
+end
+
+InfoFish = Tap.General:AddSection('Info Fish') do
+	InfoPrice = InfoFish:AddParagraph({        
+		Title = "Pice : N/A"
+	})
+	InfoRarity = InfoFish:AddParagraph({        
+		Title = "Rarity : N/A"
+	})
+	InfoChance = InfoFish:AddParagraph({        
+		Title = "Chance : N/A"
+	})
+	InfoFavouriteBait = InfoFish:AddParagraph({        
+		Title = "FavouriteBait : N/A"
+	})
+	
+	Dropdown(InfoFish, "Select Fish", "", FishList, false, "Select Fish Info")
+	InfoFish:AddButton({
+		Title = "Get Info Fish In Hand",
+		Callback = function()
+			for i,v in pairs(LocalPlayer.Character:GetChildren()) do
+				if table.find(FishList, v.Name) then
+					Config['Select Fish Info'] = v.Name
+					InfoPrice:SetTitle("Price : "..FISHDATA[Config['Select Fish Info']].Price)
+					InfoRarity:SetTitle("Rarity : "..FISHDATA[Config['Select Fish Info']].Rarity)
+					InfoChance:SetTitle("Chance : "..FISHDATA[Config['Select Fish Info']].Chance.." %")
+					InfoFavouriteBait:SetTitle("FavouriteBait : "..FISHDATA[Config['Select Fish Info']].FavouriteBait)
+					return
+				end
+			end
+			Notify("Pls Equip Fish")
+		end
+	})
+	InfoFish:AddButton({
+		Title = "Get Info Fish",
+		Callback = function()
+			if Config['Select Fish Info'] == "" then
+				Notify("Pls Select Fish")
+				return
+			end
+			InfoPrice:SetTitle("Price : "..FISHDATA[Config['Select Fish Info']].Price)
+			InfoRarity:SetTitle("Rarity : "..FISHDATA[Config['Select Fish Info']].Rarity)
+			InfoChance:SetTitle("Chance : "..FISHDATA[Config['Select Fish Info']].Chance.." %")
+			InfoFavouriteBait:SetTitle("FavouriteBait : "..FISHDATA[Config['Select Fish Info']].FavouriteBait)
+		end
+	})
+end
+
+
+Modify = Tap.Player:AddSection('Player Modify') do
+	Slider(Modify, "Walk Speed", 10, 300, false, "Set Walk Speed")
+	Slider(Modify, "Jump Power", 25, 300, false, "Set Jump Power")
+	Toggle(Modify, "Walk Speed", "", "Toggle Walk Speed")
+	Toggle(Modify, "Jump Power", "", "Toggle Jump Power")
+end
+
+MiscPlayer = Tap.Player:AddSection('Misc Player') do
+	DayOnlyLoop = nil
+	BypassGpsLoop = nil
+	Toggle(MiscPlayer, "Bypass Radar", "", "Bypass Radar", function(Value)
+		for _, v in pairs(game:GetService("CollectionService"):GetTagged("radarTag")) do
+			if v:IsA("BillboardGui") or v:IsA("SurfaceGui") then
+				v.Enabled = Value
+			end
+		end
+	end)
+	Toggle(MiscPlayer, "Bypass Gps", "", "Bypass Gps", function(Value)
+		if Value then
+			local XyzClone = game:GetService("ReplicatedStorage").resources.items.items.GPS.GPS.gpsMain.xyz:Clone()
+			XyzClone.Parent = game.Players.LocalPlayer.PlayerGui:WaitForChild("hud"):WaitForChild("safezone"):WaitForChild("backpack")
+			local Pos = GetPosition()
+			local StringInput = string.format("%s,%s,%s", ExportValue(Pos[1]), ExportValue(Pos[2]), ExportValue(Pos[3]))
+			XyzClone.Text = "<font color='#ff4949'>X</font><font color = '#a3ff81'>Y</font><font color = '#626aff'>Z</font>: "..StringInput
+
+			BypassGpsLoop = game:GetService("RunService").Heartbeat:Connect(function() -- Line 26
+				local Pos = GetPosition()
+				StringInput = string.format("%s,%s,%s", ExportValue(Pos[1]), ExportValue(Pos[2]), ExportValue(Pos[3]))
+				XyzClone.Text = "<font color='#ff4949'>X</font><font color = '#a3ff81'>Y</font><font color = '#626aff'>Z</font>: "..StringInput
+			end)
+		else
+			if PlayerGui.hud.safezone.backpack:FindFirstChild("xyz") then
+				PlayerGui.hud.safezone.backpack:FindFirstChild("xyz"):Destroy()
+			end
+			if BypassGpsLoop then
+				BypassGpsLoop:Disconnect()
+				BypassGpsLoop = nil
+			end
+		end
+	end)
+	Toggle(MiscPlayer, "Bypass Sell All ( Gane Pass )", "", "Bypass Sell all", function(Value)
+		if Value then
+			PlayerGui.hud.safezone.backpack.inventory.Sell.sellall.Disabled = true
+			PlayerGui.hud.safezone.backpack.inventory.Sell.MouseButton1Click:Connect(function()
+				if PlayerGui.hud.safezone.backpack.inventory.Sell.sellall.Disabled then
+					ReplicatedStorage:WaitForChild("events"):WaitForChild("selleverything"):InvokeServer()
+				end
+			end)
+		else
+			PlayerGui.hud.safezone.backpack.inventory.Sell.sellall.Disabled = false
+		end
+	end)
+	Toggle(MiscPlayer, "Infinite Oxygen", "", "Infinite Oxygen", function(Value)
+		LocalPlayer.Character.client.oxygen.Disabled = Value
+	end)
+	Toggle(MiscPlayer, "Weather Clear", "", "Weather Clear", function(Value)
+		local OldWEA = ReplicatedStorage.world.weather.Value
+		if Value then
+			ReplicatedStorage.world.weather.Value = 'Clear' 
+		else
+			ReplicatedStorage.world.weather.Value = OldWEA
+		end
+	end)
+	Toggle(MiscPlayer, "Noclip", "", "Toggle Noclip")
+	Toggle(MiscPlayer, "Walk On Water", "", "Toggle Walk On Water", function(Value)
+		for i,v in pairs(workspace.zones.fishing:GetChildren()) do
+			if v.Name == "Ocean" then
+				v.CanCollide = Value
+			end
+		end
+	end)
+	Toggle(MiscPlayer, "Remove Fog", "", "Remove Fog", function(Value)
+		if Value then
+			if game:GetService("Lighting"):FindFirstChild("Sky") then
+				game:GetService("Lighting"):FindFirstChild("Sky").Parent = game:GetService("Lighting").bloom
+			end
+		else
+			if game:GetService("Lighting").bloom:FindFirstChild("Sky") then
+				game:GetService("Lighting").bloom:FindFirstChild("Sky").Parent = game:GetService("Lighting")
+			end
+		end
+	end)
+	Toggle(MiscPlayer, "Day Only", "", "Day Only", function(Value)
+		if Value then
+			DayOnlyLoop = RunService.Heartbeat:Connect(function()
+				game:GetService("Lighting").TimeOfDay = "12:00:00"
+			end)
+		else
+			if DayOnlyLoop then
+				DayOnlyLoop:Disconnect()
+				DayOnlyLoop = nil
+			end
+		end
+	end)
+	
+	MiscPlayer:AddButton({
+		Title = "Rejoin Server",
+		Description = "",
+		Callback = function()
+			TeleportService:TeleportToPlaceInstance(game.placeId, game.jobId, game.Players.LocalPlayer);
+		end,
+	})
+	MiscPlayer:AddButton({
+		Title = "Hop Server",
+		Description = "",
+		Callback = function()
+			AllFuncs.HopServer(true)
+		end
+	})
+	MiscPlayer:AddButton({
+		Title = "Hop Server Low",
+		Description = "",
+		Callback = function()
+			AllFuncs.HopServer(false)
+		end
+	})
+end
+
+Shoppy = Tap.Shop:AddSection('Shop All') do
+	Toggle(Shoppy, "Teleport To Buy", "", "Teleport To Buy")
+	for i,v in pairs(workspace.world.interactables:GetDescendants()) do
+		if v.Name == "purchaserompt" or v.ClassName == "ProximityPrompt" then
+			v.HoldDuration = 0
+			Shoppy:AddButton({
+				Title = "Buy "..v.Parent.Name,
+				Description = v.ActionText,
+				Callback = function()
+					if fireproximityprompt and not Config['Teleport To Buy'] then
+						local OldCFrame = LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
+						LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = v.Parent:GetPivot()
+						delay(.3, function()
+							fireproximityprompt(v, 1)
+							LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = OldCFrame
+						end)
+					else
+						if not fireproximityprompt then
+							Notify("Execute Not Support fireproximityprompt")
+						end
+						LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = v.Parent:GetPivot()
+					end
+				end
+			})
+		end
+	end
+end
+Shoppy:AddButton({
+    Title = "Buy Enchant Relic",
+    Description = "View [11,000C$]",
+    Callback = function()
         local player = game.Players.LocalPlayer
-        local character = player.Character or player.CharacterAdded:Wait()
-        local humanoid = character:FindFirstChildOfClass("Humanoid")
-        local rootPart = character:WaitForChild("HumanoidRootPart")
- 
-        local initialCFrame = rootPart.CFrame
- 
-        local bodyVelocity = Instance.new("BodyVelocity")
-        bodyVelocity.Velocity = Vector3.new(0, 0, 0)
-        bodyVelocity.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
-        bodyVelocity.Parent = rootPart
- 
-        local bodyGyro = Instance.new("BodyGyro")
-        bodyGyro.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)
-        bodyGyro.D = 100
-        bodyGyro.P = 10000
-        bodyGyro.CFrame = initialCFrame
-        bodyGyro.Parent = rootPart
- 
-        while AutoFreeze do
-            rootPart.CFrame = initialCFrame
-            task.wait(0.01)
-        end
- 
-        if bodyVelocity then
-            bodyVelocity:Destroy()
-        end
-        if bodyGyro then
-            bodyGyro:Destroy()
-        end
-    end)
-end
-function WebhookManager()
-    spawn(function()
-        while WebhookLog do
-            task.wait(WebhookDelay)
-            local OSTime = os.time()
-            local playerLocalTime = os.date('*t', OSTime)
-            local formattedLocalTime = string.format('%02d:%02d:%02d',
-                                             playerLocalTime.hour,
-                                             playerLocalTime.min,
-                                             playerLocalTime.sec)
-            
-            local player = game.Players.LocalPlayer
-            local playerUserId = player.UserId
-            local playerProfileUrl = "https://www.roblox.com/users/" .. playerUserId .. "/profile"
+local character = player.Character or player.CharacterAdded:Wait()
 
-            local MoneyPlayer = game:GetService("Players").LocalPlayer.leaderstats["C$"].Value
-            local LvlPlayer = game:GetService("Players").LocalPlayer.leaderstats.Level.Value
+-- Store the player's current position
+local previousPosition = character.HumanoidRootPart.Position
 
-            local Embed = {
-                title = 'Space Hub',
-                color = 0x8B26BB,
-                fields = {
-                    { name = 'Player Profile', value = playerProfileUrl },
-                    { name = '', value = '', },
-                    { name = 'C$ - Money💸', value = '```' .. MoneyPlayer .. '```', inline = true },
-                    { name = 'Fishing Level🎣', value = '```' .. LvlPlayer .. '```', inline = true },
-                    { name = '', value = '', },
-                    { name = 'Current Local Time', value = formattedLocalTime },
-                },
-                timestamp = os.date('!%Y-%m-%dT%H:%M:%SZ', OSTime),
-            }
-            local success, response = pcall(function()
-                return (syn and syn.request or http_request) {
-                    Url = WebhookUrl,
-                    Method = 'POST',
-                    Headers = { ['Content-Type'] = 'application/json' },
-                    Body = game:GetService('HttpService'):JSONEncode({
-                        username = 'Space Hub | Fisch',
-                        avatar_url = 'https://cdn.discordapp.com/icons/1241045437884923965/6e134ec00e5adf7fc7f82fcabce45e8a.webp?size=4096',
-                        embeds = { Embed }
-                    }),
-                }
-            end)
-        end
-    end)
-end
-function AutoSellz()
-    spawn(function()
-        while AutoSell do
-            SellFishAndReturnAll()
-            task.wait(AutoSellDelay)
-        end
-    end)
-end
-function Appraise()
-    spawn(function()
-        while AutoAppraiser do
-            workspace:WaitForChild("world"):WaitForChild("npcs"):WaitForChild("Appraiser"):WaitForChild("appraiser"):WaitForChild("appraise"):InvokeServer()
-            task.wait(0.1)
-        end
-    end)
-end
+-- Teleport to the specified coordinates
+local targetPosition = Vector3.new(-931.5254516601562, 223.78355407714844, -986.8485717773438)
+character:SetPrimaryPartCFrame(CFrame.new(targetPosition))
 
-function SellFishAndReturnAll()
-    local player = game.Players.LocalPlayer
-    local character = player.Character or player.CharacterAdded:Wait()
-    local rootPart = character:WaitForChild("HumanoidRootPart")
-    local currentPosition = rootPart.CFrame
-    local sellPosition = CFrame.new(464, 151, 232)
-    local wasAutoFreezeActive = false
-    if AutoFreeze then
-        wasAutoFreezeActive = true
-        AutoFreeze = false
+-- Fire the server function
+local merlin = workspace:WaitForChild("world"):WaitForChild("npcs"):WaitForChild("Merlin"):WaitForChild("Merlin"):WaitForChild("power")
+merlin:InvokeServer()
+
+-- Wait for a brief moment before returning to the previous position
+wait(0)  -- Adjust the wait time if needed
+
+-- Return to the previous position
+character:SetPrimaryPartCFrame(CFrame.new(previousPosition))
     end
-    rootPart.CFrame = sellPosition
-    task.wait(0.5)
-    workspace:WaitForChild("world"):WaitForChild("npcs"):WaitForChild("Marc Merchant"):WaitForChild("merchant"):WaitForChild("sellall"):InvokeServer()
-    task.wait(3)
+})
 
-    rootPart.CFrame = currentPosition
-
-    if wasAutoFreezeActive then
-        AutoFreeze = true
-        rememberPosition()
-    end
+WebHookConfigs = Tap.Configs:AddSection('WebHook') do
+	TextBox(WebHookConfigs, "WebHook","","discord.com/api/webhooks", false, "WebHook Configs")
+	TextBox(WebHookConfigs, "Discord Id","","1010021431075155979", false, "Discord Id Ping")
+	Slider(WebHookConfigs, "Delay Sending (Sec)", 10, 600, false, "Delay Sending")
+	Toggle(WebHookConfigs, "Sending WebHook","","Sending Webhook")
+	Toggle(WebHookConfigs, "Ping Discord Id","","Ping Discord Id")
+	
+	WebHookConfigs:AddButton({
+		Title = "Test WebHook",
+		Description = "",
+		Callback = function()
+			local SendingSuccess = sendwebhook(Config['WebHook Configs'], {
+				["content"] = ((Config['Ping Discord Id'] and tostring(Config['"Discord Id']) ~= "") and "<@"..tostring(Config['"Discord Id'])..">"),
+				["embeds"] = {
+					{
+						["id"]= 661605297,
+						["title"]= "Fisch Notify",
+						["description"] = "** Player : "..LocalPlayer.Name.."\n THIS TESTING WEBHOOK**",
+						["color"]= 8646911,
+						["fields"]= {},
+						["thumbnail"]= {
+							["url"]= GetPlayerProfile()
+						},
+						["footer"]= {
+							["text"]  = "Normal Hub Notify",
+							["icon_url"] = "https://cdn.discordapp.com/attachments/971367335405449246/1259442279672844308/Profile_1.png?ex=66fbc206&is=66fa7086&hm=0b8898eb98938e100ad3cede12d0a526d344cd3ba7d4f737f728ca188a1af027&"
+						}
+					}
+				}
+			})
+			if SendingSuccess then
+				Notify("Sending WebHook Success", 1)
+			else
+				Notify("Failed Sending WebHook!", 1)
+			end
+		end,
+	})
 end
-function SellFishAndReturnOne()
-    local player = game.Players.LocalPlayer
-    local character = player.Character or player.CharacterAdded:Wait()
-    local rootPart = character:WaitForChild("HumanoidRootPart")
-    local currentPosition = rootPart.CFrame
-    local sellPosition = CFrame.new(464, 151, 232)
-    local wasAutoFreezeActive = false
-    if AutoFreeze then
-        wasAutoFreezeActive = true
-        AutoFreeze = false
-    end
-    rootPart.CFrame = sellPosition
-    task.wait(0.5)
-    workspace:WaitForChild("world"):WaitForChild("npcs"):WaitForChild("Marc Merchant"):WaitForChild("merchant"):WaitForChild("sell"):InvokeServer()
-    task.wait(3)
-
-    rootPart.CFrame = currentPosition
-
-    if wasAutoFreezeActive then
-        AutoFreeze = true
-        rememberPosition()
-    end
+local TableZum = {}
+GetCount = function(NameFish)
+	local ReturnCound = 0
+	for i,v in pairs(PlayerGui.hud.safezone.backpack.hotbar:GetChildren()) do
+		if v:FindFirstChild("tool") and tostring(v.tool.value) == NameFish then
+			ReturnCound += 1
+		end
+	end
+	for i,v in pairs(PlayerGui.hud.safezone.backpack.inventory.scroll.safezone:GetChildren()) do
+		if v.Name == NameFish then
+			ReturnCound += 1
+		end
+	end
+	
+	return ReturnCound
 end
 
+function GetFishInInventory()
+	local TableReturn = {}
+	for i,v in pairs(PlayerGui.hud.safezone.backpack.hotbar:GetChildren()) do
+		if v:FindFirstChild("tool") and table.find(FishList, tostring(v.tool.value)) then
+			local Count = v.stack.Text:match("%d+") or "1"
+			TableReturn[tostring(v.itemname.Text:gsub("<.->", "")).." X"..Count] = {
+				v.weight.Text,
+				((FISHDATA[tostring(v.tool.value)] and FISHDATA[tostring(v.tool.value)].Price) or "0").."$"
+			}
+		end
+	end
+
+	for i,v in pairs(PlayerGui.hud.safezone.backpack.inventory.scroll.safezone:GetChildren()) do
+		if table.find(FishList, v.Name) then
+			local Count = v.stack.Text:match("%d+") or "1"
+			TableReturn[tostring(v.itemname.Text:gsub("<.->", "")).." X"..Count] = {
+				v.weight.Text,
+				((FISHDATA[v.Name] and FISHDATA[v.Name].Price) or "0").."$"
+			}
+		end
+	end
+	return TableReturn
+end
+
+
+WebHookConfigsData = Tap.Configs:AddSection('Data Sending') do
+	Toggle(WebHookConfigsData, "Current Money","","Current Money")
+	Toggle(WebHookConfigsData, "Current Level","","Current Level")
+	Toggle(WebHookConfigsData, "All Fish Inventory","","All Fish Inventory")
+	Toggle(WebHookConfigsData, "Send Kilo Fish","","Send Kilo Fish")
+	Toggle(WebHookConfigsData, "Send Price Fish","","Send Price Fish")
+	Toggle(WebHookConfigsData, "Safe Whirlpool Spawn","","Safe Whirlpool Spawn")
+	Toggle(WebHookConfigsData, "Halloween Success","","Halloween Success")
+end
+
+Teleporting = Tap.Teleport:AddSection('Teleport') do
+	-- Teleporting button for "Sunstone Island"
+Teleporting:AddButton({
+    Title = "Sunstone Island",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-913.630615234375, 137.29348754882812, -1129.8995361328125)
+    end
+})
+
+-- Teleporting button for "Roslit Bay"
+Teleporting:AddButton({
+    Title = "Roslit Bay",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1501.675537109375, 133, 416.2070007324219)
+    end
+})
+
+-- Teleporting button for "Random Islands"
+Teleporting:AddButton({
+    Title = "Random Islands",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(237.6944580078125, 139.34976196289062, 43.103424072265625)
+    end
+})
+
+-- Teleporting button for "Moosewood"
+Teleporting:AddButton({
+    Title = "Moosewood",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(433.7972106933594, 147.07003784179688, 261.80218505859375)
+    end
+})
+
+-- Teleporting button for "Executive Headquarters"
+Teleporting:AddButton({
+    Title = "Executive Headquarters",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-36.46199035644531, -246.55001831054688, 205.77120971679688)
+    end
+})
+
+-- Teleporting button for "Enchant Room"
+Teleporting:AddButton({
+    Title = "Enchant Room",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1310.048095703125, -805.292236328125, -162.34507751464844)
+    end
+})
+
+-- Teleporting button for "Statue Of Sovereignty"
+Teleporting:AddButton({
+    Title = "Statue Of Sovereignty",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(22.098665237426758, 159.01470947265625, -1039.8543701171875)
+    end
+})
+
+-- Teleporting button for "Mushgrove Swamp"
+Teleporting:AddButton({
+    Title = "Mushgrove Swamp",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2442.805908203125, 130.904052734375, -686.1648559570312)
+    end
+})
+
+-- Teleporting button for "Snowcap Island"
+Teleporting:AddButton({
+    Title = "Snowcap Island",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2589.534912109375, 134.9249267578125, 2333.099365234375)
+    end
+})
+
+-- Teleporting button for "Terrapin Island"
+Teleporting:AddButton({
+    Title = "Terrapin Island",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(152.3716278076172, 154.91015625, 2000.9171142578125)
+    end
+})
+
+-- Teleporting button for "Terrapin Island"
+Teleporting:AddButton({
+    Title = "Enchant Relic",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1309.2784423828125, -802.427001953125, -83.36397552490234)
+    end
+})
+
+-- Teleporting button for "Terrapin Island"
+Teleporting:AddButton({
+    Title = "Best Spot",
+    Callback = function()
+    local forceFieldPart = Instance.new("Part") -- Create a new part
+forceFieldPart.Size = Vector3.new(10, 1, 10) -- Set the size of the part (10x1x10)
+forceFieldPart.Position = Vector3.new(1447.8507080078125, 131.49998474121094, -7649.64501953125) -- Adjusted position (2 units lower)
+forceFieldPart.Anchored = true -- Make sure the part does not fall
+forceFieldPart.BrickColor = BrickColor.new("White") -- Set the color of the part to white
+forceFieldPart.Material = Enum.Material.SmoothPlastic -- Set the material of the part
+forceFieldPart.Parent = game.Workspace -- Parent the part to the Workspace
+
+-- Create a ForceField
+local forceField = Instance.new("ForceField") -- Create a new ForceField object
+forceField.Parent = forceFieldPart -- Parent the ForceField to the part
+wait()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1447.8507080078125, 133.49998474121094, -7649.64501953125)
+    end
+})
+end
+
+
+function sendwebhook(url, data)
+	local HttpService = game:GetService("HttpService")
+	local success, newdata = pcall(function()
+		return HttpService:JSONEncode(data)
+	end)
+	if not success then
+		print("Error encoding data to JSON:", newdata)
+		return
+	end
+	local headers = {
+		["Content-Type"] = "application/json"
+	}
+	local success, response = pcall(function()
+		return request({
+			Url = url,
+			Body = newdata,
+			Method = "POST",
+			Headers = headers
+		})
+	end)
+	return success
+end
+
+local Old = os.time()
+	task.spawn(function(InitializeService)
+		warn("ANTI AFK STARTING")
+		pcall(function()
+			for i,v in pairs(getconnections(Client.Idled)) do
+				v:Disable() 
+			end
+			Client.Idled:connect(function()
+				game:GetService("VirtualUser"):Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+				wait(1)
+				game:GetService("VirtualUser"):Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+			end)
+			while wait(300) do
+				game:GetService("VirtualUser"):Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+				wait(1)
+				game:GetService("VirtualUser"):Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+			end
+		end)
+	end)
 do
-    local _25ms=Tabs.Home:AddButton({
-        Title = "Copy Discord Invite",
-        Description = "discord.gg/bKfnyAXrHT, join for more leaks",
-        Callback = function()
-            setclipboard("https://discord.gg/bKfnyAXrHT")
-        end
-    })
-    local section = Tabs.Home:AddSection("Change Log:")
-    Tabs.Home:AddParagraph({
-        Title = "Information",
-        Content = "[🟩] - Added\n[🟧] - Changed\n[🟥] - Removed\n[⭐] - Premium Feature"
-    })
+	Settings_M = Tap.Settings:AddSection("Misc") do
+		Timeing = Settings_M:AddParagraph({        
+			Title = "Timeing Server"
+		})
+		Toggle(Settings_M, "Auto Loading Configs", "", "AutoLoadingConfigs", function(v)
+			writefile(tostring(LocalPlayer.UserId).."ALC.txt", tostring(v))
+		end)
+		Settings_M:AddButton({
+			Title = "Join Normal Hub Discord",
+			Description = "Click to join",
+			Callback = function()
 
-    Tabs.Home:AddParagraph({
-        Title = "v1.6 - Fixes!",
-        Content = "[⭐] - Zone Casting Fix\n[⭐] - Auto Shake No Delay fix speed\n[🟩] - Teleport to Midas Rod\n[🟧] - Better sell buttons\n[🟧] - Auto Shake Dropdown\n[🟧] - Auto Cast & Reel & Shake in one toggle now"
-    })
-    Tabs.Home:AddParagraph({
-        Title = "v1.5 - Meow!",
-        Content = "[⭐] - Zone Casting\n[🟩] - Player Move Speed\n[🟩] - Player Jump Power\n[🟩] - Fly\n[🟩] - Roblox Radio\n[🟩] - Auto Appraiser\n[🟧] - Better Freeze\n[🟧] - Auto Shake (mouse)\n[🟧] - Auto Cast & Reel (one button)"
-    })
-    Tabs.Home:AddParagraph({
-        Title = "v1.4 - Buttons!",
-        Content = "[🟩] - 4 buttons in teleport\n[🟩] - Button to enable fps cap"
-    })
-    Tabs.Home:AddParagraph({
-        Title = "v1.3 - FpS",
-        Content = "[🟩] - Fps Cap"
-    })
-    Tabs.Home:AddParagraph({
-        Title = "v1.2 - Fishing",
-        Content = "[⭐] - No Shake Delay all\n[🟩] - AntiAFK added\n[🟩] - Auto Bait\n[🟩] - Remove all flags (fps)\n[🟩] - Fish Area teleport\n[🟩] - Auto Cast more safest\n[🟧] - Better Freeze\n[🟧] - Shake Delay minimum 0.2\n[🟧] - Auto Shake v1 and v2 better"
-    })
-    Tabs.Home:AddParagraph({
-        Title = "v1.1 - Fixes",
-        Content = "[🟧] Phantom Clicks - fixed\n[🟧] Better Freeze\n[⭐] - No Shake Delay (Mouse Clicks)"
-    })
-    Tabs.Home:AddParagraph({
-        Title = "v1 - Meow",
-        Content = "[🟧] Auto Shake Speed 0.3-1\n[🟧] Webhook Loger fixed\n[🟩] Black Screen\n[🟩] White Screen\n[🟩] FpS Booster\n[⭐] No Shake Delay (Premium)"
-    })
-    Tabs.Home:AddParagraph({
-        Title = "v0.9 - Fixes",
-        Content = "[🟩] ChangeLog information\n[🟧] Auto Freeze fix\n[🟥] Auto Cast Chance (because bugs ~solara)\n[🟩] Auto Cast - Random Chance from 90 to 99"
-    })
-    Tabs.Home:AddParagraph({
-        Title = "v0.8 - Webhook & Fishing",
-        Content = "[🟩] Webhook fixed bugs\n[🟧] Fixed Auto Freeze\n[🟩] Auto Cast chance\n[🟩] Auto sell fish"
-    })
-    Tabs.Home:AddParagraph({
-        Title = "v0.7 - Webhook",
-        Content = "[🟩] Webhook URL\n[🟩] Webhook Delay messages\n[🟩] Webhook On/Off"
-    })
-    Tabs.Home:AddParagraph({
-        Title = "v0.6 - Items",
-        Content = "[🟧] Teleport Items - +2 rods"
-    })
-    Tabs.Home:AddParagraph({
-        Title = "v0.5 - Fixes",
-        Content = "[🟧] Bigger UI\n[🟩] Auto Shake V2\n[🟧] Auto Shake more information\n[🟩] Teleports Place - New Location\n[🟩] Teleport NPCs - Updated\n[🟩] Ui Toggle (Mobile)"
-    })
-    Tabs.Home:AddParagraph({
-        Title = "v0.4 - Fixes",
-        Content = "[🟩] Freeze Character\n[🟩] Auto Cast Fix Bugs (v0.3)"
-    })
-    Tabs.Home:AddParagraph({
-        Title = "v0.3 - Teleports",
-        Content = "[🟧] Fixed NPCs teleport\n[🟧] Fixed Item Grabber (🎃)\n[🟩] Teleport Fish Radar\n[🟩] Teleport Basic Diving Gear"
-    })
-    Tabs.Home:AddParagraph({
-        Title = "v0.2 - Bug Fixes",
-        Content = "[🟧] Auto Shake\n[🟩] Auto Shake Delay\n[🟧] Auto Reel\n[🟧] Auto Cast\n[🟩] Teleport Place\n[🟩] Teleport NPCs\n[🟩] Teleport Items\n[🟩] Item Graber (🎃)\n[🟩] Noclip\n[🟩] Infinity Oxygen"
-    })
-    Tabs.Home:AddParagraph({
-        Title = "v0.1 - Release",
-        Content = "[🟩] Auto Fish\n[🟩] Auto Sell All"
-    })
+			end,
+		})
+	end
 
-    local section = Tabs.Premium:AddSection("Fishing⭐")
-    local AutoShakeT3 = Tabs.Premium:AddToggle("MyAutoShake3", {Title = "No Shake Delay | Best", Default = false })
-    AutoShakeT3:OnChanged(function(Value)
-        if ProtectPremium == true then
-            autoShake3 = AutoShakeT3.Value
-        else
-            warn("No Premium")
-        end
-    end)
-    local DropdownZoneCast = Tabs.Premium:AddDropdown("DropdownZoneCast", {
-        Title = "Select zone to cast anywhere",
-        Values = {"FischFright24", "Isonade", "Bluefin Tuna Abundance", "", "Deep Ocean", "Desolate Deep", "Harvesters Spike", "Moosewood Docks", "Moosewood Ocean", "Moosewood Ocean Mythical", "Moosewood Pond", "Mushgrove Water", "Ocean", "Roslit Bay", "Roslit Bay Ocean", "Roslit Pond", "Roslit Pond Seaweed", "Scallop Ocean", "Snowcap Ocean", "Snowcap Pond", "Sunstone", "Terrapin Ocean", "The Arch", "Vertigo"},
-        Multi = false,
-    })
-    DropdownZoneCast:OnChanged(function(Value)
-        print("Dropdown changed:", Value)
-        selectedZoneCast = Value
-    end)
-    Tabs.Premium:AddParagraph({
-        Title = "Zone Helper",
-        Content = "First 3 - Event zones\nFischFright24 - Fright Pool"
-    })
-    
-    local ToggleZoneCast1214 = Tabs.Premium:AddToggle("ToggleZoneCast1214", {Title = "Enable cast selected zone", Default = false })
-    ToggleZoneCast1214:OnChanged(function(Value)
-        AutoZoneCast = Value
-        if ProtectPremium == true then
-            if AutoZoneCast then
-                ZoneCasting()
-            end
-        else
-            print("No Premium")
-        end
-    end)
+	RunService.Heartbeat:Connect(function() -- All RunService
+		local TimeSinceLastPlay = os.time() - Old
+		local hours = tostring(math.floor(TimeSinceLastPlay / 3600))
+		local minutes = tostring(math.floor((TimeSinceLastPlay % 3600) / 60))
+		local seconds = tostring(TimeSinceLastPlay % 60)
+		Timeing:SetTitle("Server Joined "..hours.." H "..minutes.." M "..seconds.." S ")
+	end)
 
-    local section = Tabs.Main:AddSection("Fishing")
 
-    local DropdownShake = Tabs.Main:AddDropdown("DropdownShake", {
-        Title = "Select Auto Shake Mode:",
-        Description = "Mouse - Make sure to hide UI and toggle chat off in order for Auto Shake to work!",
-        Values = {"Mouse", "Phantom"},
-        Multi = false,
-        Default = 1,
-    })
-    DropdownShake:OnChanged(function(Value)
-        ShakeMode = Value
-        print("Auto Shake Mode:", Value)
-    end)   
-
-    local Slider = Tabs.Main:AddSlider("Slider", {
-        Title = "AutoShake Delay",
-        Description = "Change the delay between every shake",
-        Default = 2,
-        Min = 0.2,
-        Max = 1,
-        Rounding = 1,
-        Callback = function(Value)
-            autoShakeDelay = Value
-        end
-    })
-    Slider:OnChanged(function(Value)
-        autoShakeDelay = Value
-    end)
-    Slider:SetValue(0.5)
-    
-    local autoReelCastShakeT = Tabs.Main:AddToggle("autoReelCastShakeT", {Title = "Auto Fish", Default = false })
-    autoReelCastShakeT:OnChanged(function(Value)
-        autoReel = Value
-        AutoCast = Value
-        if AutoCast then
-            Pidoras()
-        end
-        if ShakeMode == "Mouse" then
-            autoShake = Value
-        elseif ShakeMode == "Phantom" then
-            autoShake2 = Value
-        end
-        AutoFish = Value
-        AutoFish5()
-        if AutoCast == true and LocalCharacter:FindFirstChildOfClass("Tool") ~= nil then
-            local Tool = LocalCharacter:FindFirstChildOfClass("Tool")
-            if Tool:FindFirstChild("events"):WaitForChild("cast") ~= nil then
-                local Random = math.random() * (99 - 90) + 90
-                local FRandom = string.format("%.4f", Random)
-                print(FRandom)
-                local Random2 = math.random(90, 99)
-                Tool.events.cast:FireServer(Random2)
-            end
-        end
-    end)
-    
-    local AutoFreezeT = Tabs.Main:AddToggle("MyFreeze", {
-        Title = "Freeze Position",
-        Description = "Freezes player position and rotation",
-        Default = false
-    })
-    AutoFreezeT:OnChanged(function()
-        AutoFreeze = AutoFreezeT.Value
-        if AutoFreeze then
-            rememberPosition()
-        end
-    end)
-
-    local AntiAfk3 = Tabs.Main:AddToggle("AntiAfk3", {Title = "Anti-AFK", Description = "Prevents the player from being marked as AFK", Default = false })
-    AntiAfk3:OnChanged(function(Value)
-        AntiAfk = AntiAfk3.Value
-        AntiAfk2()
-    end)
-
-    local section = Tabs.Main:AddSection("Additional")
-
-    local AutoSellF = Tabs.Main:AddToggle("AutoSellF", {Title = "Auto Sell Fish", Default = false })
-    AutoSellF:OnChanged(function()
-        AutoSell = AutoSellF.Value
-        AutoSellz()
-    end)
-
-    local SliderSell = Tabs.Main:AddSlider("SliderSell", {
-        Title = "Selling All fish every ? seconds",
-        Description = "",
-        Default = 60,
-        Min = 1,
-        Max = 600,
-        Rounding = 1,
-        Callback = function(Value)
-            AutoSellDelay = Value
-        end
-    })
-
-    Tabs.Main:AddButton({
-        Title = "Sell one fish",
-        Description = "Need to hold fish",
-        Callback = function()
-            SellFishAndReturnOne()
-        end
-    })
-    Tabs.Main:AddButton({
-        Title = "Sell All fishs",
-        Description = "Selling all fish anywhere!",
-        Callback = function()
-            Window:Dialog({
-                Title = "You sure want sell all fish?",
-                Content = "",
-                Buttons = {
-                    {
-                        Title = "Confirm",
-                        Callback = function()
-                            SellFishAndReturnAll()
-                            print("Fish Sold.")
-                        end
-                    },
-                    {
-                        Title = "Cancel",
-                        Callback = function()
-                            print("Pidr.")
-                        end
-                    }
-                }
-            })
-        end
-    })
-
-    local DropdownPlace = Tabs.Teleports:AddDropdown("DropdownPlace", {
-        Title = "Place teleport",
-        Values = {"altar", "arch", "birch", "brine", "deep", "deepshop", "enchant", "keepers", "mod_house", "moosewood", "mushgrove", "roslit", "snow", "snowcap", "spike", "statue", "sunstone", "swamp", "terrapin", "trident", "vertigo", "volcano", "wilson", "wilsons_rod"},
-        Multi = false,
-    })
-    DropdownPlace:OnChanged(function(Value)
-        if teleportSpots ~= nil and HumanoidRootPart ~= nil then
-            local teleportCFrame = teleportSpots[Value]
-            if teleportCFrame then
-                HumanoidRootPart.CFrame = teleportCFrame
-            else
-                print("1")
-            end
-        end
-    end)
-
-    local DropdownArea = Tabs.Teleports:AddDropdown("DropdownArea", {
-        Title = "Fish Area teleport",
-        Values = {"Roslit_Bay", "Ocean", "Snowcap_Pond", "Moosewood_Docks", "Deep_Ocean", "Vertigo", "Snowcap_Ocean", "Harvesters_Spike", "SunStone", "Roslit_Bay_Ocean", "Moosewood_Pond", "Terrapin_Ocean", "Isonade", "Moosewood_Ocean", "Roslit_Pond", "Moosewood_Ocean_Mythical", "Terrapin_Olm", "The_Arch", "Scallop_Ocean", "SunStone_Hidden", "Mushgrove_Stone", "Keepers_Altar", "Lava", "Roslit_Pond_Seaweed"},
-        Multi = false,
-    })
-    DropdownArea:OnChanged(function(Value)
-        if FishAreas ~= nil and HumanoidRootPart ~= nil then
-            if FishAreas[Value] and typeof(FishAreas[Value]) == "CFrame" then
-                HumanoidRootPart.CFrame = FishAreas[Value]
-            else
-                print("1")
-            end
-        else
-            print("1")
-        end
-    end)    
-
-    local DropdownNPC = Tabs.Teleports:AddDropdown("DropdownNPC", {
-        Title = "Teleport to Npc",
-        Values = {"Witch", "Quiet_Synph", "Pierre", "Phineas", "Paul", "Shipwright", "Angler", "Marc", "Lucas", "Latern_Keeper", "Inn_Keeper", "Roslit_Keeper", "FishingNpc_1", "FishingNpc_2", "FishingNpc_3", "Henry", "Daisy", "Appraiser", "Merchant", "Mod_Keeper", "Ashe", "Alfredrickus"},
-        Multi = false,
-    })
-    DropdownNPC:OnChanged(function(Value)
-        if racistPeople ~= nil and HumanoidRootPart ~= nil then
-            local npcPosition = racistPeople[Value]
-            if npcPosition then
-                if typeof(npcPosition) == "Vector3" then
-                    HumanoidRootPart.CFrame = CFrame.new(npcPosition)
-                elseif typeof(npcPosition) == "CFrame" then
-                    HumanoidRootPart.CFrame = npcPosition
-                else
-                    print("1")
-                end
-            end
-        else
-            print("No valid teleport spot found.")
-        end
-    end)
-    
-
-    local DropdownItems = Tabs.Teleports:AddDropdown("Dropdown3", {
-        Title = "Teleport to Items",
-        Values = {"Training_Rod", "Plastic_Rod", "Lucky_Rod", "Nocturnal_Rod", "Kings_Rod", "Flimsy_Rod", "Fast_Rod", "Carbon_Rod", "Long_Rod", "Mythical_Rod", "Midas_Rod", "Trident_Rod", "Basic_Diving_Gear", "Fish_Radar", "Enchated_Altar", "Bait_Crate", "Quality_Bait_Crate", "Crab_Cage", "GPS"},
-        Multi = false,
-    })
-    DropdownItems:OnChanged(function(Value)
-        if itemSpots ~= nil and HumanoidRootPart ~= nil then
-            local spot = itemSpots[Value]
-            
-            print("Value:", Value, "Spot:", spot, "IsCFrame:", typeof(spot) == "CFrame")
-            
-            if typeof(spot) == "CFrame" then
-                HumanoidRootPart.CFrame = spot
-            else
-                print("1")
-            end
-        end
-    end)
-    local section = Tabs.Misc:AddSection("Appraiser")
-    local ToggleAutoApprari = Tabs.Misc:AddToggle("ToggleAutoApprari", {Title = "Auto Appraiser", Description = "Need to hold fish and be in / near moosewood", Default = false })
-    ToggleAutoApprari:OnChanged(function()
-        AutoAppraiser = ToggleAutoApprari.Value
-        Appraise()
-    end)
-
-    local section = Tabs.Misc:AddSection("Halloween🎃")
-
-    local DropdownH = Tabs.Misc:AddDropdown("Dropdown4", {
-        Title = "Item Grabber",
-        Values = {'Gaint Mushroom', 'Spiders Eye', 'Strange Root', 'Candy Corn', 'Dark Art Skull'},
-        Multi = false,
-    })
-    DropdownH:OnChanged(function(Value)
-        if Value == nil then
-            return
-        end
-        if HumanoidRootPart ~= nil and ActiveFolder ~= nil then
-            local oldpos = HumanoidRootPart.CFrame
-            local EventItem = ActiveFolder:FindFirstChild(Value)
-
-            if EventItem ~= nil and EventItem:FindFirstChild("PickupPrompt") ~= nil then
-                HumanoidRootPart.CFrame = EventItem:FindFirstChildOfClass("MeshPart").CFrame + Vector3.new(3, 2, 0)
-                Noclip = true
-                task.wait(0.05)
-                HumanoidRootPart.Anchored = true
-                task.wait(0.5)
-                fireproximityprompt(EventItem.PickupPrompt)
-                task.wait(1)
-                if Toggles.Noclip.Value == false then
-                    Noclip = false
-                else
-                    Noclip = true
-                end
-                HumanoidRootPart.Anchored = false
-                HumanoidRootPart.CFrame = oldpos
-            else
-                Fluent:Notify({
-                    Title = "WARNING",
-                    Content = string.format('There is no "%s" in workspace', Value),
-                    Duration = 8
-                })                
-            end
-        end
-    end)
-
-    local section = Tabs.Misc:AddSection("Player")
-
-    local ToggleNoclip = Tabs.Misc:AddToggle("ToggleNoclip", {Title = "Noclip", Default = false })
-    ToggleNoclip:OnChanged(function()
-        Noclip = ToggleNoclip.Value
-    end)
-
-    local ToggleAntiDrown = Tabs.Misc:AddToggle("ToggleAntiDrown", {Title = "Infinity Oxygen", Default = false })
-    ToggleAntiDrown:OnChanged(function()
-        AntiDrown = ToggleAntiDrown.Value
-        if AntiDrown == true then
-            if LocalCharacter ~= nil and LocalCharacter:FindFirstChild("client"):WaitForChild("oxygen") ~= nil and LocalCharacter:FindFirstChild("client"):WaitForChild("oxygen").Enabled == true then	
-                LocalCharacter.client.oxygen.Enabled = false	
-            end	
-            CharAddedAntiDrownCon = LocalPlayer.CharacterAdded:Connect(function()	
-                if LocalCharacter ~= nil and LocalCharacter:FindFirstChild("client"):WaitForChild("oxygen") ~= nil and LocalCharacter:FindFirstChild("client"):WaitForChild("oxygen").Enabled == true and AntiDrown == true then	
-                    LocalCharacter.client.oxygen.Enabled = false	
-                end	
-            end)
-        else	
-            if LocalCharacter ~= nil and LocalCharacter:FindFirstChild("client"):WaitForChild("oxygen") ~= nil and LocalCharacter:FindFirstChild("client"):WaitForChild("oxygen").Enabled == false then	
-                LocalCharacter.client.oxygen.Enabled = true	
-            end	
-        end
-    end)
-
-    local section = Tabs.Misc:AddSection("Fps Services")
-
-    local Slider512 = Tabs.Misc:AddSlider("Slider512", {
-        Title = "FPS Cap",
-        Default = 90,
-        Min = 1,
-        Max = 240,
-        Rounding = 1,
-        Callback = function(Value)
-            FpsCap = Value
-            print(Value)
-        end
-    })
-    Slider512:OnChanged(function(Value)
-        FpsCap = Value
-        print(Value)
-    end)
-    Slider512:SetValue(90)
-
-    Tabs.Misc:AddButton({
-        Title = "Button to enable fps cap value",
-        Description = "🐟",
-        Callback = function()
-            setfpscap(FpsCap)
-        end
-    })
-
-    local BlackGui = Instance.new("ScreenGui")
-    BlackGui.Name = "BlackGui"
-    BlackGui.ResetOnSpawn = false
-    local blackFrame = Instance.new("Frame")
-    blackFrame.Name = "BlackFrame"
-    blackFrame.Size = UDim2.new(1, 0, 1, 0)
-    blackFrame.BackgroundColor3 = Color3.new(0, 0, 0)
-    blackFrame.BackgroundTransparency = 1
-    blackFrame.Parent = BlackGui
-    BlackGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-
-    local WhiteGui = Instance.new("ScreenGui")
-    WhiteGui.Name = "WhiteGui"  -- Изменено здесь
-    WhiteGui.ResetOnSpawn = false
-    local whiteFrame = Instance.new("Frame") -- Изменено здесь
-    whiteFrame.Name = "WhiteFrame" -- Изменено здесь
-    whiteFrame.Size = UDim2.new(1, 0, 1, 0)
-    whiteFrame.BackgroundColor3 = Color3.new(1, 1, 1)  -- Цвет белого фрейма
-    whiteFrame.BackgroundTransparency = 1
-    whiteFrame.Parent = WhiteGui
-    WhiteGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-
-    local BlackGui5 = Tabs.Misc:AddToggle("BlackGui5", {Title = "Black Screen", Default = false })
-    BlackGui5:OnChanged(function()
-        local Black123 = BlackGui5.Value
-        if Black123 then
-            blackFrame.BackgroundTransparency = 0
-        else
-            blackFrame.BackgroundTransparency = 1
-        end
-    end)
-
-    local WhiteGui5 = Tabs.Misc:AddToggle("WhiteGui5", {Title = "White Screen", Default = false })
-    WhiteGui5:OnChanged(function()
-        local White123 = WhiteGui5.Value
-        if White123 then
-            whiteFrame.BackgroundTransparency = 0  -- Изменено здесь
-        else
-            whiteFrame.BackgroundTransparency = 1  -- Изменено здесь
-        end
-    end)
-
-    Tabs.Misc:AddButton({
-        Title = "Delete flags",
-        Callback = function()
-            local flags = workspace.active.flags
-            if flags then
-                flags:Destroy()
-            end
-        end
-    })
-    Tabs.Misc:AddButton({
-        Title = "Remove Textures",
-        Description = "Very sus button",
-        Callback = function()
-            Window:Dialog({
-                Title = "activate fps booster?",
-                Content = "Pro",
-                Buttons = {
-                    {
-                        Title = "Confirm",
-                        Callback = function()
-                            loadstring(game:HttpGet('https://raw.githubusercontent.com/ago106/ScriptsRoblox/refs/heads/main/FpS'))()
-                        end
-                    },
-                    {
-                        Title = "Cancel",
-                        Callback = function()
-                            print("Cancelled the dialog.")
-                        end
-                    }
-                }
-            })
-        end
-    })
-
-    Tabs.Fun:AddButton({
-        Title = "Radio UI",
-        Description = "Chill😎",
-        Callback = function()
-            loadstring(game:HttpGet('https://pastebin.com/raw/zv94NGMc'))()
-        end
-    })
-
-    local section = Tabs.Fun:AddSection("Player")
-
-    local ToggleWalkspeed = Tabs.Fun:AddToggle("Walk Speed", {Title = "Walk Speed", Default = false })
-    local defaultWalkSpeed = game.Players.LocalPlayer.Character.Humanoid.WalkSpeed
-    
-    local Input = Tabs.Fun:AddInput("Speed", {
-        Title = "Speed",
-        Default = "16",
-        Placeholder = "Enter walk speed",
-        Numeric = true,
-        Finished = false,
-        Callback = function(Value)
-        end
-    })
-    
-    Input.OnChanged = function()
-        if ToggleWalkspeed:Get() then
-            local speedValue = Input.Value
-            if tonumber(speedValue) then
-                game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = tonumber(speedValue)
-            end
-        end
+	InterfaceManager:SetLibrary(Fluent)
+	InterfaceManager:SetFolder("Normal Hub")
+	InterfaceManager:BuildInterfaceSection(Tap.Settings)
+	Window:SelectTab(1)
+	SaveManager:LoadAutoloadConfig()
+	Fluent:SetTheme("Amethyst")
+	setfflag("TaskSchedulerTargetFps", "1000")
+setfpscap(120)
+while true do
+    if (game:GetService("Workspace").DistributedGameTime % 1 * 60) > 30 then
+        setfpscap(120)
     end
-    
-    ToggleWalkspeed:OnChanged(function(State)
-        if State then
-            local speedValue = Input.Value
-            if speedValue and tonumber(speedValue) then
-                game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = tonumber(speedValue)
-            else
-                game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
-            end
-        else
-            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = defaultWalkSpeed
-        end
-    end)
-    
-    local ToggleJumpPower = Tabs.Fun:AddToggle("Jump Power", {Title = "Jump Power", Default = false })
-    local defaultJumpPower = game.Players.LocalPlayer.Character.Humanoid.JumpPower
-    
-    local InputJump = Tabs.Fun:AddInput("Power", {
-        Title = "Power",
-        Default = "50",
-        Placeholder = "Enter jump power",
-        Numeric = true,
-        Finished = false,
-        Callback = function(Value)
-        end
-    })
-    
-    InputJump.OnChanged = function()
-        if ToggleJumpPower:Get() then
-            local jumpValue = InputJump.Value
-            if tonumber(jumpValue) then
-                game.Players.LocalPlayer.Character.Humanoid.JumpPower = tonumber(jumpValue)
-            end
-        end
-    end
-    
-    ToggleJumpPower:OnChanged(function(State)
-        if State then
-            local jumpValue = InputJump.Value
-            if jumpValue and tonumber(jumpValue) then
-                game.Players.LocalPlayer.Character.Humanoid.JumpPower = tonumber(jumpValue)
-            else
-                game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
-            end
-        else
-            game.Players.LocalPlayer.Character.Humanoid.JumpPower = defaultJumpPower
-        end
-    end)
-
-    local section = Tabs.Webhook:AddSection("Webhook Stats Messages")
-    local InputWebhook = Tabs.Webhook:AddInput("InputWebhook", {
-        Title = "Webhook Url",
-        Default = "",
-        Placeholder = "URL",
-        Numeric = false,
-        Finished = false,
-        Callback = function(Value)
-            WebhookUrl = Value
-        end
-    })
-    InputWebhook:OnChanged(function()
-        print("Url Changed:", InputWebhook.Value)
-    end)
-    local SliderWebhook = Tabs.Webhook:AddSlider("SliderWebhook", {
-        Title = "Send Messages every ? seconds",
-        Description = "Prefer 60 seconds",
-        Default = 60,
-        Min = 1,
-        Max = 600,
-        Rounding = 1,
-        Callback = function(Value)
-            WebhookDelay = Value
-        end
-    })
-    SliderWebhook:OnChanged(function(Value)
-        print("Delay changed:", Value)
-    end)
-
-    local ToggleWebhook = Tabs.Webhook:AddToggle("ToggleWebhook", {Title = "Webhook On/Off", Default = false })
-    ToggleWebhook:OnChanged(function()
-        WebhookLog = ToggleWebhook.Value
-        WebhookManager()
-    end)
+    wait(0)
+end
 end
 
--- Addons:
-SaveManager:SetLibrary(Fluent)
-InterfaceManager:SetLibrary(Fluent)
-
--- SaveManager:IgnoreThemeSettings()
-SaveManager:SetIgnoreIndexes({})
-
-InterfaceManager:SetFolder("SpaceHub")
-SaveManager:SetFolder("SpaceHub/Fisch")
-
-InterfaceManager:BuildInterfaceSection(Tabs.Settings)
-SaveManager:BuildConfigSection(Tabs.Settings)
-
-
-Window:SelectTab(1)
-
-Fluent:Notify({
-    Title = "Space Hub",
-    Content = "The script has been loaded.",
-    Duration = 8
-})
-Fluent:Notify({
-    Title = "Anti Afk - ON",
-    Content = "meow",
-    Duration = 30
-})
-
-SaveManager:LoadAutoloadConfig()
-
-local deviceType = game:GetService("UserInputService").TouchEnabled and "Mobile" or "PC"
-
-if deviceType == "Mobile" then
-    local A = Instance.new("ScreenGui")
-    local B = Instance.new("TextButton")
-    local C = Instance.new("UICorner")
-
-    A.Name = "SpaceToggle"
-    A.Parent = game.CoreGui
-    A.ResetOnSpawn = false
-
-    B.Size = UDim2.new(0, 50, 0, 50)
-    B.Position = UDim2.new(0, 10, 1, -60) -- Consider making this responsive
-    B.BackgroundColor3 = Color3.fromRGB(128, 0, 128)
-    B.Text = "S"
-    B.TextColor3 = Color3.fromRGB(0, 0, 0)
-    B.TextScaled = true
-    B.Transparency = 0.5
-    B.Parent = A
-
-    local function toggleVisibility(frame)
-        for _, child in ipairs(frame:GetChildren()) do
-            if child:IsA("Frame") then
-                child.Visible = not child.Visible
-                toggleVisibility(child)
-            end
-        end
-    end
-
-    B.MouseButton1Click:Connect(function()
-        local spaceGui = game.CoreGui:FindFirstChild("ScreenGui") -- Replace with the actual name
-        if spaceGui then
-            toggleVisibility(spaceGui)
-        else
-            warn("1")
-        end
-    end)
-
-    C.CornerRadius = UDim.new(1, 0)
-    C.Parent = B
-end
