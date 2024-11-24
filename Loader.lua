@@ -13,6 +13,46 @@ MinimizeKey = Enum.KeyCode.LeftControl
 
 do 
 
+	Window:SelectTab(1)
+
+	player = game.Players.LocalPlayer
+	L1 = Instance.new("ScreenGui")
+	L2 = Instance.new("TextButton")
+	L3 = Instance.new("UICorner")
+	L4 = Instance.new("ImageLabel")
+	sound = Instance.new("Sound")
+	L3.Name = "UICorner"
+	L3.Parent = L2
+	L4.Name = "ButtonImage"
+	L4.Parent = L2
+	L4.BackgroundColor3 = Color3.fromRGB(22, 55, 240)
+	L4.BackgroundTransparency = 1.000
+	L4.BorderSizePixel = 0
+	L4.Position = UDim2.new(0.1, 0, 0.1, 0) 
+	L4.Size = UDim2.new(0, 45, 0, 45)
+	L4.Image = ""
+	L1.Name = "MainGui"
+	L1.Parent = player:WaitForChild("PlayerGui")
+	L1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	L2.Name = "CustomButton"
+	L2.Parent = L1
+	L2.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+	L2.BackgroundTransparency = 0.2
+	L2.BorderSizePixel = 0
+	L2.Position = UDim2.new(0.0, 10, 0, 10)
+	L2.Size = UDim2.new(0, 50, 0, 50)
+	L2.Font = Enum.Font.FredokaOne
+	L2.Text = "Danny Hub"
+	L2.TextColor3 = Color3.fromRGB(22, 55, 240)
+	L2.TextSize = 9.000
+	L2.Draggable = true
+	sound.Parent = L2
+	sound.SoundId = "rbxassetid://130785805"
+	L2.MouseButton1Click:Connect(function()
+		game:GetService("VirtualInputManager"):SendKeyEvent(true,"LeftControl",false,game.Players.LocalPlayer.Character.HumanoidRootPart)	game:GetService("VirtualInputManager"):SendKeyEvent(false,"LeftControl",false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+		sound:Play()
+	end) 
+
 	Config = {
 
 	}
@@ -3431,10 +3471,10 @@ Main = Tap.General:AddSection('General') do
 	SelectPosition = Main:AddParagraph({        
 		Title = "Position : N/A"
 	})
-	Toggle(Main, "Auto Farm Fish","", "Farm Fish")
-	Toggle(Main, "Teleport To Select Position","", "To Pos Stand")
+	Toggle(Main, "Auto Fishing","", "Farm Fish")
+	Toggle(Main, "Teleport To Choose Position","", "To Pos Stand")
 	Main:AddButton({
-		Title = "Select Position",
+		Title = "Choose Position",
 		Callback = function()
 			Config['SelectPositionStand'] = LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
 			SelectPosition:SetTitle("Position : "..tostring(math.floor(LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position.X)).." X "..tostring(math.floor(LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position.Y)).." Y "..tostring(math.floor(LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position.Z)).." Z")
