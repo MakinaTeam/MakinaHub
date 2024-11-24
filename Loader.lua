@@ -104,17 +104,6 @@ if not _G['Normal Hub Table'].isWindows then
 	Frame.Position = UDim2.new(0.157012194, 0, 0.164366379, 0)
 	Frame.Size = UDim2.new(0, 115, 0, 49)
 	
-	ImageButton.Parent = Frame
-	ImageButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	ImageButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	ImageButton.BorderSizePixel = 0
-	ImageButton.Active = true
-	ImageButton.Draggable = true
-	ImageButton.Position = UDim2.new(0.218742043, 0, -0.155235752, 0)
-	ImageButton.Size = UDim2.new(0, 64, 0, 64)
-	
-	-- Set initial image to "open"
-	ImageButton.Image = "" -- Open image asset ID
 	local isOpen = true -- Variable to track the state
 	
 	ImageButton.MouseButton1Click:Connect(function()
