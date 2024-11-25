@@ -3544,7 +3544,7 @@ Main = Tap.General:AddSection('General') do
 	})
 end
 
-local DropdownArea = Tap.Teleports:AddDropdown("DropdownArea", {
+local DropdownArea = Tap.Teleports:Dropdown("DropdownArea", {
 	Title = "Fish Area teleport",
 	Values = {"Roslit_Bay", "Ocean", "Snowcap_Pond", "Moosewood_Docks", "Deep_Ocean", "Vertigo", "Snowcap_Ocean", "Harvesters_Spike", "SunStone", "Roslit_Bay_Ocean", "Moosewood_Pond", "Terrapin_Ocean", "Isonade", "Moosewood_Ocean", "Roslit_Pond", "Moosewood_Ocean_Mythical", "Terrapin_Olm", "The_Arch", "Scallop_Ocean", "SunStone_Hidden", "Mushgrove_Stone", "Keepers_Altar", "Lava", "Roslit_Pond_Seaweed"},
 	Multi = false,
@@ -3561,7 +3561,7 @@ DropdownArea:OnChanged(function(Value)
 	end
 end)    
 
-local DropdownNPC = Tap.Teleports:AddDropdown("DropdownNPC", {
+local DropdownNPC = Tap.Teleports:Dropdown("DropdownNPC", {
 	Title = "Teleport to Npc",
 	Values = {"Witch", "Quiet_Synph", "Pierre", "Phineas", "Paul", "Shipwright", "Angler", "Marc", "Lucas", "Latern_Keeper", "Inn_Keeper", "Roslit_Keeper", "FishingNpc_1", "FishingNpc_2", "FishingNpc_3", "Henry", "Daisy", "Appraiser", "Merchant", "Mod_Keeper", "Ashe", "Alfredrickus"},
 	Multi = false,
@@ -3584,7 +3584,7 @@ DropdownNPC:OnChanged(function(Value)
 end)
 
 
-local DropdownItems = Tap.Teleports:AddDropdown("Dropdown3", {
+local DropdownItems = Tap.Teleports:Dropdown("Dropdown3", {
 	Title = "Teleport to Items",
 	Values = {"Training_Rod", "Plastic_Rod", "Lucky_Rod", "Nocturnal_Rod", "Kings_Rod", "Flimsy_Rod", "Fast_Rod", "Carbon_Rod", "Long_Rod", "Mythical_Rod", "Midas_Rod", "Trident_Rod", "Basic_Diving_Gear", "Fish_Radar", "Enchated_Altar", "Bait_Crate", "Quality_Bait_Crate", "Crab_Cage", "GPS"},
 	Multi = false,
