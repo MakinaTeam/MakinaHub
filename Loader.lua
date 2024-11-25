@@ -138,8 +138,6 @@ RunService.Heartbeat:Connect(function()
     CheckInactivity()
 end)
 
-_G.FishingConfig.ButtonDefaults.Size = true
-_G.FishingConfig.ButtonDefaults.Transparency = true
 local HumanoidRootPart = LocalCharacter:FindFirstChild("HumanoidRootPart")
 
 local teleportSpots = {
@@ -331,3 +329,6 @@ DropdownItems:OnChanged(function(Value)
         end
     end
 end)
+
+_G.FishingConfig.ButtonDefaults.Size = true
+_G.FishingConfig.ButtonDefaults.Transparency = true
