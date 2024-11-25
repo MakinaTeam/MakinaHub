@@ -138,7 +138,11 @@ RunService.Heartbeat:Connect(function()
     CheckInactivity()
 end)
 
+local LocalPlayer = Players.LocalPlayer
+local LocalCharacter = LocalPlayer.Character
 local HumanoidRootPart = LocalCharacter:FindFirstChild("HumanoidRootPart")
+local ActiveFolder = Workspace:FindFirstChild("active")
+local PlayerGUI = LocalPlayer:FindFirstChildOfClass("PlayerGui")
 
 local teleportSpots = {
     altar = CFrame.new(1296.320068359375, -808.5519409179688, -298.93817138671875),
