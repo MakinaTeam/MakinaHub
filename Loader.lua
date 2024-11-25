@@ -7,7 +7,7 @@ local VirtualInputManager, RunService = game:GetService("VirtualInputManager"), 
 local player = game:GetService("Players").LocalPlayer
 
 _G.WindowConfig = {
-    Title = "[🐟] Fisch | Free SRC",
+    Title = "gg",
     SubTitle = "By DNA#7270 ",
     TabWidth = 160,
     Size = UDim2.fromOffset(500, 400),
@@ -137,6 +137,10 @@ RunService.Heartbeat:Connect(function()
     end
     CheckInactivity()
 end)
+
+_G.FishingConfig.ButtonDefaults.Size = true
+_G.FishingConfig.ButtonDefaults.Transparency = true
+local HumanoidRootPart = LocalCharacter:FindFirstChild("HumanoidRootPart")
 
 local teleportSpots = {
     altar = CFrame.new(1296.320068359375, -808.5519409179688, -298.93817138671875),
