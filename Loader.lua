@@ -7,8 +7,8 @@ local VirtualInputManager, RunService = game:GetService("VirtualInputManager"), 
 local player = game:GetService("Players").LocalPlayer
 
 _G.WindowConfig = {
-    Title = "gg",
-    SubTitle = "By DNA#7270 ",
+    Title = "🐟",
+    SubTitle = "🐟 ",
     TabWidth = 160,
     Size = UDim2.fromOffset(500, 400),
     Acrylic = true,
