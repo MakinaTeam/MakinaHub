@@ -1,8 +1,3 @@
-getgenv().Faster = { 
-    ['CDK Super Fast'] = true, -- Spawn Admin / เสกแอดมิน
-    ['Buy Color Haki'] = 3 -- Legendary Haki Max 3
-}
-
 getgenv().RAM = { -- Log Des 
     ['Enabled'] = false, 
     ['Delay'] = 600 
