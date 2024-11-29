@@ -1,4 +1,126 @@
 
+if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
+
+getgenv().Faster = { 
+    ['CDK Super Fast'] = true, -- Spawn Admin / เสกแอดมิน
+    ['Buy Color Haki'] = 3 -- Legendary Haki Max 3
+}
+
+getgenv().RAM = { -- Log Des 
+    ['Enabled'] = false, 
+    ['Delay'] = 600 
+}
+
+getgenv().Setting = { -- Setting Script / ตั้งค่าสคริปต์
+    ['FPS Booster'] = _G.Setting['FPS Booster'],
+    ['White Screen'] = true,
+    ['Disible Gui'] = _G.Setting['Close Ui'],
+    ['Lock Fruit'] = 1000000,
+    ['AFK Check'] = 150,
+    ['Rejoin'] = true
+}
+
+getgenv().Quest = { -- Farm Quest / ทำเควส
+    ['RGB Haki'] = _G.Quest['RGB Aura Haki'],
+    ['Evo Race'] = {
+        ['Enabled'] = true, 
+        ['Select Race'] = _G.Race['Select Race'],
+        ['Evo V3'] = _G.Race['Evo Race V3']
+    },
+    ['Quest Dough Awaken'] = { -- Dough Awaken + Mirror Fractal / ทำเควสโมจิตื่น + กระจก
+        ['Enabled'] = _G.Quest['Quest Dough Awaken'],
+        ['Fast Mode'] = true 
+    },
+    ['Kill Boss'] = true, 
+    ['Quest Race V4'] = _G.Quest['Pull Lever'] 
+}
+if _G.Race['Lock Race'] then
+	--getgenv().Quest['Evo Race']['Select Race'][1] = tostring(game.Players.LocalPlayer.Data.Race.Value)
+end
+getgenv().Fruit = { -- Select Fruit / เลือกผลที่ต้องการ
+    ['Main'] = _G.Fruit['Main Fruit'],
+    ['Select Fruit'] = _G.Fruit['Select Fruit'], 
+    ['Bring Fruit'] = true 
+}
+
+getgenv().Melee = { -- Farm Melee / ฟามหมัด
+    ['Superhuman'] = true,
+    ['Death Step'] = true,
+    ['Sharkman Karate'] = true,
+    ['Electric Claw'] = true,
+    ['Dragon Talon'] = true,
+    ['Godhuman'] = _G.Melee['Godhuman']
+}
+
+getgenv().Sword = _G.Sword 
+
+getgenv().Gun = _G.Gun
+
+getgenv().Mastery = { -- Farm Mastery / ฟามมาสเตอรี่
+    ['Melee'] = _G.Mastery['Melee'],
+    ['Fruit'] = _G.Mastery['Fruit'],
+
+    ['Sword'] = _G.Mastery['Sword'],
+    ['Setting Sword'] = { 
+        [1] = "Tushita",
+        [2] = "Hallow Scythe",
+        [3] = "Spikey Trident",
+        [4] = "Dark Dagger",
+        [5] = "Buddy Sword",
+        [6] = "Yama",
+        [7] = "Shisui",
+        [8] = "Saddi",
+        [9] = "Shark Anchor",
+        [10] = "True Triple Katana",
+        [11] = "Cursed Dual Katana",
+        [12] = "Midnight Blade",
+        [13] = "Rengoku",
+        [14] = "Saber",
+        [15] = "Canvander",
+		[16] = 'Wando'
+    },
+
+    ['Gun'] = false,
+    ['Setting Gun'] = { 
+        [1] = 'Soul Guitar',
+        [2] = 'Kabucha',
+        [3] = 'Acidum Rifle',
+        [4] = 'Serpent Bow'
+    }
+}
+
+_G.On_Next_Generation = true
+if _G.On_Next_Generation then
+    _G.Switch_Hub_Series_R = true
+    _G.Quest = {
+        ['RGB'] = getgenv().Quest['RGB Haki']
+    }
+    if getgenv().Quest['Evo Race']['Evo V3'] then
+		_G.Quest['Evo Race V1'] = true
+		_G.Quest['Evo Race V2'] = true
+		_G.Quest['Evo Race V3'] = true
+    end
+    _G.Main = {
+        ['FPS Booster'] = getgenv().Setting['FPS Booster'],
+        ['White Screen'] = getgenv().Setting['White Screen'],
+        ['Close Ui'] = getgenv().Setting['Disible Gui'],
+        ['AFK Check'] = getgenv().Setting['AFK Check'],
+        ['Lock Fruit'] = getgenv().Setting['Lock Fruit'],
+        ['Rejoin'] = getgenv().Setting['Rejoin'],
+        ['Bring Fruit'] = getgenv().Fruit['Bring Fruit'],
+        ['Kill Boss'] = getgenv().Quest['Kill Boss']
+    }
+    _G.Melee = getgenv().Melee
+    _G.Sword = getgenv().Sword
+    _G.Gun = getgenv().Gun
+    _G.Mastery = getgenv().Mastery
+    _G.Fruit_Main = { -- เลือกผลหลักและเควสโมจิตื่น
+        ['Main'] = getgenv().Fruit['Main'],
+        ['Quest Dough Awaken'] = getgenv().Quest['Quest Dough Awaken']['Enabled'],
+        ['Fast Dough Awaken'] = getgenv().Quest['Quest Dough Awaken']['Fast Mode']
+    }
+    _G.Fruit = getgenv().Fruit['Select Fruit']
+end
 	wait(3)
 	Weapon = 'Combat'
 	-- AFK
