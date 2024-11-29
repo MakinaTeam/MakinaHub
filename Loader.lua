@@ -1,36 +1,4 @@
 
-getgenv().Mastery = { -- Farm Mastery / ฟามมาสเตอรี่
-    ['Melee'] = _G.Mastery['Melee'],
-    ['Fruit'] = _G.Mastery['Fruit'],
-
-    ['Sword'] = _G.Mastery['Sword'],
-    ['Setting Sword'] = { 
-        [1] = "Tushita",
-        [2] = "Hallow Scythe",
-        [3] = "Spikey Trident",
-        [4] = "Dark Dagger",
-        [5] = "Buddy Sword",
-        [6] = "Yama",
-        [7] = "Shisui",
-        [8] = "Saddi",
-        [9] = "Shark Anchor",
-        [10] = "True Triple Katana",
-        [11] = "Cursed Dual Katana",
-        [12] = "Midnight Blade",
-        [13] = "Rengoku",
-        [14] = "Saber",
-        [15] = "Canvander",
-		[16] = 'Wando'
-    },
-
-    ['Gun'] = false,
-    ['Setting Gun'] = { 
-        [1] = 'Soul Guitar',
-        [2] = 'Kabucha',
-        [3] = 'Acidum Rifle',
-        [4] = 'Serpent Bow'
-    }
-}
 
 _G.On_Next_Generation = true
 if _G.On_Next_Generation then
