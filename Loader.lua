@@ -1,13 +1,4 @@
 
-getgenv().Melee = { -- Farm Melee / ฟามหมัด
-    ['Superhuman'] = true,
-    ['Death Step'] = true,
-    ['Sharkman Karate'] = true,
-    ['Electric Claw'] = true,
-    ['Dragon Talon'] = true,
-    ['Godhuman'] = _G.Melee['Godhuman']
-}
-
 getgenv().Mastery = { -- Farm Mastery / ฟามมาสเตอรี่
     ['Melee'] = _G.Mastery['Melee'],
     ['Fruit'] = _G.Mastery['Fruit'],
