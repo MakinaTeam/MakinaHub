@@ -38,10 +38,6 @@ getgenv().Melee = { -- Farm Melee / ฟามหมัด
     ['Godhuman'] = _G.Melee['Godhuman']
 }
 
-getgenv().Sword = _G.Sword 
-
-getgenv().Gun = _G.Gun
-
 getgenv().Mastery = { -- Farm Mastery / ฟามมาสเตอรี่
     ['Melee'] = _G.Mastery['Melee'],
     ['Fruit'] = _G.Mastery['Fruit'],
