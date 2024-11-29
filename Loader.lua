@@ -1,19 +1,4 @@
 
-getgenv().Quest = { -- Farm Quest / ทำเควส
-    ['RGB Haki'] = _G.Quest['RGB Aura Haki'],
-    ['Evo Race'] = {
-        ['Enabled'] = true, 
-        ['Select Race'] = _G.Race['Select Race'],
-        ['Evo V3'] = _G.Race['Evo Race V3']
-    },
-    ['Quest Dough Awaken'] = { -- Dough Awaken + Mirror Fractal / ทำเควสโมจิตื่น + กระจก
-        ['Enabled'] = _G.Quest['Quest Dough Awaken'],
-        ['Fast Mode'] = true 
-    },
-    ['Kill Boss'] = true, 
-    ['Quest Race V4'] = _G.Quest['Pull Lever'] 
-}
-
 getgenv().Fruit = { -- Select Fruit / เลือกผลที่ต้องการ
     ['Main'] = _G.Fruit['Main Fruit'],
     ['Select Fruit'] = _G.Fruit['Select Fruit'], 
