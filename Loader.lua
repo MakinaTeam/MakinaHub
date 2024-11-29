@@ -1,10 +1,4 @@
 
-getgenv().Fruit = { -- Select Fruit / เลือกผลที่ต้องการ
-    ['Main'] = _G.Fruit['Main Fruit'],
-    ['Select Fruit'] = _G.Fruit['Select Fruit'], 
-    ['Bring Fruit'] = true 
-}
-
 getgenv().Melee = { -- Farm Melee / ฟามหมัด
     ['Superhuman'] = true,
     ['Death Step'] = true,
