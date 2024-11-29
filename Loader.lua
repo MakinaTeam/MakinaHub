@@ -1,4 +1,217 @@
 
+if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
+
+getgenv().Faster = { 
+    ['CDK Super Fast'] = true, -- Spawn Admin / เสกแอดมิน
+    ['Buy Color Haki'] = 3 -- Legendary Haki Max 3
+}
+
+getgenv().RAM = { -- Log Des 
+    ['Enabled'] = false, 
+    ['Delay'] = 600 
+}
+
+getgenv().Setting = { -- Setting Script / ตั้งค่าสคริปต์
+    ['FPS Booster'] = _G.Setting['FPS Booster'],
+    ['White Screen'] = true,
+    ['Disible Gui'] = _G.Setting['Close Ui'],
+    ['Lock Fruit'] = 1000000,
+    ['AFK Check'] = 150,
+    ['Rejoin'] = true
+}
+
+getgenv().Quest = { -- Farm Quest / ทำเควส
+    ['RGB Haki'] = _G.Quest['RGB Aura Haki'],
+    ['Evo Race'] = {
+        ['Enabled'] = true, 
+        ['Select Race'] = _G.Race['Select Race'],
+        ['Evo V3'] = _G.Race['Evo Race V3']
+    },
+    ['Quest Dough Awaken'] = { -- Dough Awaken + Mirror Fractal / ทำเควสโมจิตื่น + กระจก
+        ['Enabled'] = _G.Quest['Quest Dough Awaken'],
+        ['Fast Mode'] = true 
+    },
+    ['Kill Boss'] = true, 
+    ['Quest Race V4'] = _G.Quest['Pull Lever'] 
+}
+if _G.Race['Lock Race'] then
+	--getgenv().Quest['Evo Race']['Select Race'][1] = tostring(game.Players.LocalPlayer.Data.Race.Value)
+end
+getgenv().Fruit = { -- Select Fruit / เลือกผลที่ต้องการ
+    ['Main'] = _G.Fruit['Main Fruit'],
+    ['Select Fruit'] = _G.Fruit['Select Fruit'], 
+    ['Bring Fruit'] = true 
+}
+
+getgenv().Melee = { -- Farm Melee / ฟามหมัด
+    ['Superhuman'] = true,
+    ['Death Step'] = true,
+    ['Sharkman Karate'] = true,
+    ['Electric Claw'] = true,
+    ['Dragon Talon'] = true,
+    ['Godhuman'] = _G.Melee['Godhuman']
+}
+
+getgenv().Sword = _G.Sword 
+
+getgenv().Gun = _G.Gun
+
+getgenv().Mastery = { -- Farm Mastery / ฟามมาสเตอรี่
+    ['Melee'] = _G.Mastery['Melee'],
+    ['Fruit'] = _G.Mastery['Fruit'],
+
+    ['Sword'] = _G.Mastery['Sword'],
+    ['Setting Sword'] = { 
+        [1] = "Tushita",
+        [2] = "Hallow Scythe",
+        [3] = "Spikey Trident",
+        [4] = "Dark Dagger",
+        [5] = "Buddy Sword",
+        [6] = "Yama",
+        [7] = "Shisui",
+        [8] = "Saddi",
+        [9] = "Shark Anchor",
+        [10] = "True Triple Katana",
+        [11] = "Cursed Dual Katana",
+        [12] = "Midnight Blade",
+        [13] = "Rengoku",
+        [14] = "Saber",
+        [15] = "Canvander",
+		[16] = 'Wando'
+    },
+
+    ['Gun'] = false,
+    ['Setting Gun'] = { 
+        [1] = 'Soul Guitar',
+        [2] = 'Kabucha',
+        [3] = 'Acidum Rifle',
+        [4] = 'Serpent Bow'
+    }
+}
+
+_G.On_Next_Generation = true
+if _G.On_Next_Generation then
+    _G.Switch_Hub_Series_R = true
+    _G.Quest = {
+        ['RGB'] = getgenv().Quest['RGB Haki']
+    }
+    if getgenv().Quest['Evo Race']['Evo V3'] then
+		_G.Quest['Evo Race V1'] = true
+		_G.Quest['Evo Race V2'] = true
+		_G.Quest['Evo Race V3'] = true
+    end
+    _G.Main = {
+        ['FPS Booster'] = getgenv().Setting['FPS Booster'],
+        ['White Screen'] = getgenv().Setting['White Screen'],
+        ['Close Ui'] = getgenv().Setting['Disible Gui'],
+        ['AFK Check'] = getgenv().Setting['AFK Check'],
+        ['Lock Fruit'] = getgenv().Setting['Lock Fruit'],
+        ['Rejoin'] = getgenv().Setting['Rejoin'],
+        ['Bring Fruit'] = getgenv().Fruit['Bring Fruit'],
+        ['Kill Boss'] = getgenv().Quest['Kill Boss']
+    }
+    _G.Melee = getgenv().Melee
+    _G.Sword = getgenv().Sword
+    _G.Gun = getgenv().Gun
+    _G.Mastery = getgenv().Mastery
+    _G.Fruit_Main = { -- เลือกผลหลักและเควสโมจิตื่น
+        ['Main'] = getgenv().Fruit['Main'],
+        ['Quest Dough Awaken'] = getgenv().Quest['Quest Dough Awaken']['Enabled'],
+        ['Fast Dough Awaken'] = getgenv().Quest['Quest Dough Awaken']['Fast Mode']
+    }
+    _G.Fruit = getgenv().Fruit['Select Fruit']
+end
+	-- RAM
+	if _G.Quest == nil then
+		_G.Quest = {
+			['RGB'] = false
+		}
+	end
+	if _G.Fruit_Main['Main'] == nil then
+	elseif type(_G.Fruit_Main['Main']) == 'table' then
+		for i,v in next,_G.Fruit_Main['Main'] do
+			table.insert(_G.Fruit,v)
+		end
+	else -- add table
+		local xp = _G.Fruit_Main['Main']
+		table.insert(_G.Fruit,xp)
+		_G.Fruit_Main['Main'] = {}
+		table.insert(_G.Fruit_Main['Main'],xp)
+	end
+	-- FPS Booster
+	--UserSettings():GetService("UserGameSettings").MasterVolume = 0
+
+	--UserSettings():GetService("UserGameSettings").SavedQualityLevel = 1
+	spawn(function()
+		if _G.Main['FPS Booster'] then
+			game:GetService("Players").LocalPlayer.PlayerGui.Notifications.Enabled = false
+			shared = {}
+			shared.BC_1 = true
+			shared.BC_2 = nil
+
+			if shared.BC_1 and shared.BC_2 == nil then
+				L_1 = game:GetService("Workspace");
+				L_2 = game:GetService("Lighting");
+				L_3 = L_1.Terrain;
+				L_4 = game:GetService("Players");
+				L_5 = L_4.LocalPlayer.Character;
+				
+				L_3.WaterWaveSize = 0;L_3.WaterWaveSpeed = 0;L_3.WaterReflectance = 0;L_3.WaterTransparency = 0;
+				L_2.GlobalShadows = false;L_2.FogEnd = tonumber(9e9);L_2.Brightness = 0;
+				settings().Rendering.QualityLevel = "Level01";
+				settings().Rendering.GraphicsMode = "NoGraphics";
+				--sethiddenproperty(L_2, "Technology", "Compatibility");
+				for i,v in pairs(L_1:GetDescendants()) do
+					if v.ClassName == "Part" or v.ClassName == "SpawnLocation" or v.ClassName == "WedgePart" or v.ClassName == "Terrain" or v.ClassName == "MeshPart" then
+						v.Material = "Plastic";v.Reflectance = 0;v.CastShadow = false;
+					elseif v.ClassName == "Decal" or v:IsA("Texture") then
+						v.Texture = 0;v.Transparency = 1;
+					elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+						v.LightInfluence = 0;v.Texture = 0;v.Lifetime = NumberRange.new(0);
+					elseif v:IsA("Explosion") then
+						v.BlastPressure = 0;v.BlastRadius = 0;
+					elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+						v.Enabled = false;
+					elseif v:IsA("MeshPart") then
+						v.Material = "Plastic";v.Reflectance = 0;v.TextureId = 0;v.CastShadow = false;v.RenderFidelity = Enum.RenderFidelity.Performance;
+					elseif v.ClassName == "SpecialMesh" then
+						v.TextureId = "rbxassetid://0";
+					elseif v.ClassName == "Shirt" or v.ClassName == "Pants" or v.ClassName == "Accessory" then
+						v:Destroy();
+					end
+				end
+				for i,v in pairs(L_2:GetDescendants()) do
+					if v:IsA("BlurEffect") or v:IsA("SunRaysEffect") or v:IsA("ColorCorrectionEffect") or v:IsA("BloomEffect") or v:IsA("DepthOfFieldEffect") then
+						v.Enabled = false;
+					end
+				end
+				for i,v in pairs(L_5:GetDescendants()) do
+					if v.ClassName == "Shirt" or v.ClassName == "Pants" or v.ClassName == "Accessory" then
+						v:Destroy();
+					end
+				end
+
+				if game.PlaceId == 2753915549 or 4442272183 or 7449423635 then -- Blox Fruits
+					if game:GetService("ReplicatedStorage").Effect.Container.Shared:FindFirstChild("AirDash") then
+						--game:GetService("ReplicatedStorage").Effect.Container.Shared.AirDash:Destroy();
+					end
+					if game:GetService("ReplicatedStorage").Effect.Container.Shared:FindFirstChild("LightningTP") then
+						--game:GetService("ReplicatedStorage").Effect.Container.Shared.LightningTP:Destroy();
+					end
+					if game:GetService("ReplicatedStorage").Effect.Container.Misc:FindFirstChild("Damage") then
+						--game:GetService("ReplicatedStorage").Effect.Container.Misc.Damage:Destroy();
+					end
+					if game:GetService("ReplicatedStorage").Effect.Container.Misc:FindFirstChild("Confetti") then
+						--game:GetService("ReplicatedStorage").Effect.Container.Misc.Confetti:Destroy();
+					end
+					if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("LevelUp") then
+						--game:GetService("ReplicatedStorage").Effect.Container.LevelUp:Destroy();
+					end
+				end
+				shared.BC_2 = true
+			end
+		end
+	end)
 	wait(3)
 	Weapon = 'Combat'
 	-- AFK
@@ -11169,3 +11382,5 @@
 			end
 		end)
 	end
+
+end
