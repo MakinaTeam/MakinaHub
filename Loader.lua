@@ -3189,6 +3189,25 @@ end
 
 local DoughKingTab = Tabs['Automatic']:AddLeftGroupbox("« Dough King »")
 
+local DoDoughKing = DoughKingTab:AddLabel('..')
+
+spawn(
+function()
+	while wait() do
+		pcall(  
+		function()
+			if string.len(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")) == 88 then
+DoDoughKing:SetText("🎄 : Have " .. string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), 39, 41) .. " More Left")
+			elseif string.len(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")) == 87 then
+DoDoughKing:SetText("🎄 : Have " .. string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), 39, 40) .. " More Left")
+			elseif string.len(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")) == 86 then
+DoDoughKing:SetText("🎄 : Have " .. string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), 39, 39) .. " More Left")
+			else
+			end
+		end)
+	end
+end)
+
 local MirrorFractal = DoughKingTab:AddLabel('..')
 
 spawn(function()
@@ -3209,25 +3228,6 @@ task.spawn(
             end
         end
     end)
-
-local DoDoughKing = DoughKingTab:AddLabel('..')
-
-spawn(
-function()
-	while wait() do
-		pcall(  
-		function()
-			if string.len(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")) == 88 then
-DoDoughKing:SetText("🦄 : Have " .. string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), 39, 41) .. " More Left")
-			elseif string.len(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")) == 87 then
-DoDoughKing:SetText("🦄 : Have " .. string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), 39, 40) .. " More Left")
-			elseif string.len(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")) == 86 then
-DoDoughKing:SetText("🦄 : Have " .. string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), 39, 39) .. " More Left")
-			else
-			end
-		end)
-	end
-end)
 
 DoughKingTab:AddToggle('', {Text = "Auto Dough King",Default = _G.Config["DoughKing"]["Auto Dough King"],}):OnChanged(function(Value)
 _G.KatakuriV2 = Value
@@ -4363,27 +4363,26 @@ end)
 
 local CakePrinceTab = Tabs['Automatic']:AddRightGroupbox("« Cake Prince »")
 
+local Cake = DoughKingTab:AddLabel('..')
+
+spawn(
+function()
+	while wait() do
+		pcall(  
+		function()
+			if string.len(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")) == 88 then
+Cake :SetText("🎄 : Have " .. string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), 39, 41) .. " More Left")
+			elseif string.len(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")) == 87 then
+Cake :SetText("🎄 : Have " .. string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), 39, 40) .. " More Left")
+			elseif string.len(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")) == 86 then
+Cake :SetText("🎄 : Have " .. string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), 39, 39) .. " More Left")
+			else
+			end
+		end)
+	end
+end)
+
 local Portal555 = CakePrinceTab:AddLabel('🌀 : Portal 🔴')
-
-local CakePrince555 = CakePrinceTab:AddLabel('..')
-
-    spawn(
-    function()
-        while wait() do
-            pcall(  
-            function()
-                if string.len(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")) == 88 then
-                    CakePrince555:SetText("🦄 : Have " .. string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), 39, 41) .. " More Left")
-                elseif string.len(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")) == 87 then
-                    CakePrince555:SetText("🦄 : Have " .. string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), 39, 40) .. " More Left")
-                elseif string.len(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")) == 86 then
-                    CakePrince555:SetText("🦄 : Have " .. string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), 39, 39) .. " More Left")
-                else
-                    Portal555:SetDesc("🌀 : Portal 🟢")                   
-                end
-            end)
-        end
-    end)
 
 CakePrinceTab:AddToggle('', {Text = "Auto Farm Cake Prince",Default = _G.Config["Cake Prince"]["Auto Farm Cake Prince"],}):OnChanged(function(Value)
 _G.AutoDoughtBoss = Value
