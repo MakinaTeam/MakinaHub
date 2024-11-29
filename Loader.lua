@@ -32,12 +32,7 @@ if _G.On_Next_Generation then
     }
     _G.Fruit = getgenv().Fruit['Select Fruit']
 end
-local Bijan = false
-local Bijan = loadstring(game:HttpGet("https://raw.githubusercontent.com/mondeef/s/main/README.lua"))()
-if type(Bijan) == 'table' then
-else
-	game:Shutdown()
-end
+
 if _G.Switch_Hub_Series_R then
 	if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
 	
