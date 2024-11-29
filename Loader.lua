@@ -33,27 +33,6 @@ if _G.On_Next_Generation then
     _G.Fruit = getgenv().Fruit['Select Fruit']
 end
 
-if _G.Switch_Hub_Series_R then
-	if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
-	
-	local function click(a)
-		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+90,0,true,a,1)
-		game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+90,0,false,a,1)
-	end
-	if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam") then
-		repeat task.wait()
-			if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main").ChooseTeam.Visible == true then
-				for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container["Pirates"].Frame.TextButton.Activated)) do
-					for a, b in pairs(getconnections(game:GetService("UserInputService").TouchTapInWorld)) do
-						b:Fire() 
-					end
-					v.Function()
-				end 
-			end
-		until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
-	end
-	task.spawn(function() loadstring(game:HttpGet('https://raw.githubusercontent.com/hermanos-dev/hermanos-script/main/middle.lua'))() end)
-
 	wait(3)
 	Weapon = 'Combat'
 	-- AFK
