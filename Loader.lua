@@ -101,7 +101,7 @@ if _G.On_Next_Generation then
 		_G.Quest['Evo Race V3'] = true
     end
     _G.Main = {
-        ['FPS Booster'] = getgenv().Setting['FPS Booster'],
+        --['FPS Booster'] = getgenv().Setting['FPS Booster'],
         ['White Screen'] = getgenv().Setting['White Screen'],
         ['Close Ui'] = getgenv().Setting['Disible Gui'],
         ['AFK Check'] = getgenv().Setting['AFK Check'],
@@ -119,7 +119,7 @@ if _G.On_Next_Generation then
         ['Quest Dough Awaken'] = getgenv().Quest['Quest Dough Awaken']['Enabled'],
         ['Fast Dough Awaken'] = getgenv().Quest['Quest Dough Awaken']['Fast Mode']
     }
-    _G.Fruit = getgenv().Fruit['Select Fruit']
+    --_G.Fruit = getgenv().Fruit['Select Fruit']
 end
 	-- RAM
 	if _G.Quest == nil then
