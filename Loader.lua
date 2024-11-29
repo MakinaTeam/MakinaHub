@@ -121,23 +121,6 @@ if _G.On_Next_Generation then
     }
     --_G.Fruit = getgenv().Fruit['Select Fruit']
 end
-	-- RAM
-	if _G.Quest == nil then
-		_G.Quest = {
-			['RGB'] = false
-		}
-	end
-	if _G.Fruit_Main['Main'] == nil then
-	elseif type(_G.Fruit_Main['Main']) == 'table' then
-		for i,v in next,_G.Fruit_Main['Main'] do
-			table.insert(_G.Fruit,v)
-		end
-	else -- add table
-		local xp = _G.Fruit_Main['Main']
-		table.insert(_G.Fruit,xp)
-		_G.Fruit_Main['Main'] = {}
-		table.insert(_G.Fruit_Main['Main'],xp)
-	end
 	wait(3)
 	Weapon = 'Combat'
 	-- AFK
