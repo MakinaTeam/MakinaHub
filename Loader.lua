@@ -1,7 +1,3 @@
-getgenv().RAM = { -- Log Des 
-    ['Enabled'] = false, 
-    ['Delay'] = 600 
-}
 
 getgenv().Quest = { -- Farm Quest / ทำเควส
     ['RGB Haki'] = _G.Quest['RGB Aura Haki'],
