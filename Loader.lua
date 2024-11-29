@@ -1,6 +1,4 @@
 
-
-_G.Switch_Hub_Series_R = true
 	 Old_World = false
 	 New_World = false
 	 Three_World = false
