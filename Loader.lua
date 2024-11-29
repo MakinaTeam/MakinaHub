@@ -1,4 +1,84 @@
 
+if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
+
+getgenv().Faster = { 
+    ['CDK Super Fast'] = true, -- Spawn Admin / เสกแอดมิน
+    ['Buy Color Haki'] = 3 -- Legendary Haki Max 3
+}
+
+getgenv().RAM = { -- Log Des 
+    ['Enabled'] = false, 
+    ['Delay'] = 600 
+}
+
+getgenv().Quest = { -- Farm Quest / ทำเควส
+    ['RGB Haki'] = _G.Quest['RGB Aura Haki'],
+    ['Evo Race'] = {
+        ['Enabled'] = true, 
+        ['Select Race'] = _G.Race['Select Race'],
+        ['Evo V3'] = _G.Race['Evo Race V3']
+    },
+    ['Quest Dough Awaken'] = { -- Dough Awaken + Mirror Fractal / ทำเควสโมจิตื่น + กระจก
+        ['Enabled'] = _G.Quest['Quest Dough Awaken'],
+        ['Fast Mode'] = true 
+    },
+    ['Kill Boss'] = true, 
+    ['Quest Race V4'] = _G.Quest['Pull Lever'] 
+}
+if _G.Race['Lock Race'] then
+	--getgenv().Quest['Evo Race']['Select Race'][1] = tostring(game.Players.LocalPlayer.Data.Race.Value)
+end
+getgenv().Fruit = { -- Select Fruit / เลือกผลที่ต้องการ
+    ['Main'] = _G.Fruit['Main Fruit'],
+    ['Select Fruit'] = _G.Fruit['Select Fruit'], 
+    ['Bring Fruit'] = true 
+}
+
+getgenv().Melee = { -- Farm Melee / ฟามหมัด
+    ['Superhuman'] = true,
+    ['Death Step'] = true,
+    ['Sharkman Karate'] = true,
+    ['Electric Claw'] = true,
+    ['Dragon Talon'] = true,
+    ['Godhuman'] = _G.Melee['Godhuman']
+}
+
+getgenv().Sword = _G.Sword 
+
+getgenv().Gun = _G.Gun
+
+getgenv().Mastery = { -- Farm Mastery / ฟามมาสเตอรี่
+    ['Melee'] = _G.Mastery['Melee'],
+    ['Fruit'] = _G.Mastery['Fruit'],
+
+    ['Sword'] = _G.Mastery['Sword'],
+    ['Setting Sword'] = { 
+        [1] = "Tushita",
+        [2] = "Hallow Scythe",
+        [3] = "Spikey Trident",
+        [4] = "Dark Dagger",
+        [5] = "Buddy Sword",
+        [6] = "Yama",
+        [7] = "Shisui",
+        [8] = "Saddi",
+        [9] = "Shark Anchor",
+        [10] = "True Triple Katana",
+        [11] = "Cursed Dual Katana",
+        [12] = "Midnight Blade",
+        [13] = "Rengoku",
+        [14] = "Saber",
+        [15] = "Canvander",
+		[16] = 'Wando'
+    },
+
+    ['Gun'] = false,
+    ['Setting Gun'] = { 
+        [1] = 'Soul Guitar',
+        [2] = 'Kabucha',
+        [3] = 'Acidum Rifle',
+        [4] = 'Serpent Bow'
+    }
+}
 
 _G.On_Next_Generation = true
 if _G.On_Next_Generation then
@@ -11320,3 +11400,5 @@ if _G.Switch_Hub_Series_R then
 			end
 		end)
 	end
+
+end
