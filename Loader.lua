@@ -2280,7 +2280,7 @@ local function StopTween()
         character.PartTele:Destroy()
     end
     _G.StopTween = false
-en
+end
 
     spawn(function()
 			while task.wait() do
@@ -3188,6 +3188,8 @@ local function inmyself(name)
 end
 
 local DoughKingTab = Tabs['Automatic']:AddLeftGroupbox("« Dough King »")
+
+local DoDoughKing = DoughKingTab:AddLabel('..')
 
 spawn(
 function()
@@ -4131,6 +4133,8 @@ _G.Config["DarkBeard"]["Auto Dark Coat Hop"] =  Value
 Saveconfig()
 end)
 
+local SoulReaperTab = Tabs['Automatic']:AddRightGroupbox("« Soul Reaper »")
+
 SoulReaperTab:AddToggle('', {Text = "Auto Soul Reaper",Default = _G.Config["Soul Reaper"]["Auto Soul Reaper"],}):OnChanged(function(Value)
 _G.AutoFarmBossHallow = Value
 _G.Config["Soul Reaper"]["Auto Soul Reaper"] =  Value
@@ -4283,7 +4287,8 @@ local CakePrinceTab = Tabs['Automatic']:AddRightGroupbox("« Cake Prince »")
                     CakePrince555:SetText("Task : Have " .. string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), 39, 40) .. " More Left")
                 elseif string.len(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")) == 86 then
                     CakePrince555:SetText("Task : Have " .. string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), 39, 39) .. " More Left")
-                else         
+                else
+                    --Portal555:SetDesc("🌀 : Portal 🟢")                   
                 end
             end)
         end
