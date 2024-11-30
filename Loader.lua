@@ -2280,22 +2280,7 @@ local function StopTween()
         character.PartTele:Destroy()
     end
     _G.StopTween = false
-end
-
-spawn(function()
-    pcall(function()
-        while wait() do
-            if _G.AutoAdvanceDungeon or _G.AutoDoughtBoss or _G.Auto_DungeonMobAura or _G.AutoFarmChest or _G.AutoFactory or _G.AutoFarmBossHallow or _G.AutoFarmSwanGlasses or _G.AutoLongSword or _G.AutoBlackSpikeycoat or _G.AutoElectricClaw or _G.AutoFarmGunMastery or _G.AutoHolyTorch or _G.AutoLawRaid or _G.AutoFarmBoss or _G.AutoTwinHooks or _G.AutoOpenSwanDoor or _G.AutoDragon_Trident or _G.AutoSaber or _G.NOCLIP or _G.AutoFarmFruitMastery or _G.AutoFarmGunMastery or _G.TeleportIsland or _G.Auto_EvoRace or _G.AutoFarmAllMsBypassType or _G.AutoObservationv2 or _G.AutoMusketeerHat or _G.AutoEctoplasm or _G.AutoRengoku or _G.Auto_Rainbow_Haki or _G.AutoObservation or _G.AutoDarkDagger or _G.Safe_Mode or _G.MasteryFruit or _G.AutoBudySword or _G.AutoOderSword or _G.AutoBounty or _G.AutoAllBoss or _G.Auto_Bounty or _G.AutoSharkman or _G.Auto_Mastery_Fruit or _G.Auto_Mastery_Gun or _G.Auto_Dungeon or _G.Auto_Cavender or _G.Auto_Pole or _G.Auto_Kill_Ply or _G.Auto_Factory or _G.AutoSecondSea or _G.TeleportPly or _G.AutoBartilo or _G.Auto_DarkBoss or _G.GrabChest or _G.AutoFarmBounty or _G.Holy_Torch or _G.AutoFarm or _G.Clip or _G.AutoElitehunter or _G.AutoThirdSea or _G.Auto_Bone or _G.Autoheart or _G.Autodoughking or _G.AutoFarmMaterial or _G.AutoNevaSoulGuitar or _G.Auto_Dragon_Trident or _G.Autotushita or _G.d or _G.Autowaden or _G.Autogay or _G.Autopole or _G.Autosaw or _G.AutoObservationHakiV2 or _G.AutoFarmNearest or AutoFarmChest or _G.AutoCarvender or _G.AutoTwinHook or AutoMobAura or _G.Tweenfruit or _G.AutoKai or _G.TeleportNPC or _G.Leather or _G.Auto_Wing or _G.Umm or _G.Makori_gay or Radioactive or Fish or Gunpowder or Dragon_Scale or Cocoafarm or Scrap or MiniHee or _G.AutoFarmSeabaest or _G.Auto_Cursed_Dual_Katana or _G.AutoFarmMob or _G.AutoMysticIsland or _G.AutoFarmDungeon or _G.AutoRaidPirate or _G.AutoQuestRace or _G.TweenMGear or getgenv().AutoFarm or _G.AutoPlayerHunter or _G.AutoFactory or Grab_Chest or _G.Namfon or _G.AutoSwordMastery or _G.AutoSeaBest or _G.AutoKillTial or _G.Auto_Saber or _G.Position_Spawn or _G.Farmfast or _G.AutoRace or _G.RaidPirate or Open_Color_Haki or _G.KillSaber or FarmMasterySword or _G.AutoTrueTripleKatana or _G.Farmfast2 or _G.Farmfast3 or _G.AutoFullySword or _G.KatakuriV2 or Auto_Dark_Coat or _G.Terrorshark or FarmShark or _G.farmpiranya or _G.Fish_Crew_Member or _G.AppleAutoDriveBoat or _G.bjirFishBoat or _G.KillGhostShip or _G.KillLeviathan or _G.AutoLeviathan or _G.FrozenDimension or _G.FKitsune or _G.SeaBest or _G.SailBoat then
-					if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
-                    local Highlight = Instance.new("Highlight")           
-                   Highlight.FillColor = Color3.fromRGB(24, 255, 24)
-                    Highlight.OutlineColor = Color3.fromRGB(24,255,24)         		
-              Highlight.Parent = game.Players.LocalPlayer.Character
-                end
-            end
-        end
-    end)
-end)
+en
 
     spawn(function()
 			while task.wait() do
@@ -2330,27 +2315,6 @@ spawn(function()
       end
       end
       end)
-    end)
-  end)
-
-  spawn(function()
-    game:GetService("RunService").Heartbeat:Connect(function()
-			if _G.AutoAdvanceDungeon or _G.AutoDoughtBoss or _G.Auto_DungeonMobAura or _G.AutoFarmChest or _G.AutoFactory or _G.AutoFarmBossHallow or _G.AutoFarmSwanGlasses or _G.AutoLongSword or _G.AutoBlackSpikeycoat or _G.AutoElectricClaw or _G.AutoFarmGunMastery or _G.AutoHolyTorch or _G.AutoLawRaid or _G.AutoFarmBoss or _G.AutoTwinHooks or _G.AutoOpenSwanDoor or _G.AutoDragon_Trident or _G.AutoSaber or _G.NOCLIP or _G.AutoFarmFruitMastery or _G.AutoFarmGunMastery or _G.TeleportIsland or _G.Auto_EvoRace or _G.AutoFarmAllMsBypassType or _G.AutoObservationv2 or _G.AutoMusketeerHat or _G.AutoEctoplasm or _G.AutoRengoku or _G.Auto_Rainbow_Haki or _G.AutoObservation or _G.AutoDarkDagger or _G.Safe_Mode or _G.MasteryFruit or _G.AutoBudySword or _G.AutoOderSword or _G.AutoBounty or _G.AutoAllBoss or _G.Auto_Bounty or _G.AutoSharkman or _G.Auto_Mastery_Fruit or _G.Auto_Mastery_Gun or _G.Auto_Dungeon or _G.Auto_Cavender or _G.Auto_Pole or _G.Auto_Kill_Ply or _G.Auto_Factory or _G.AutoSecondSea or _G.TeleportPly or _G.AutoBartilo or _G.Auto_DarkBoss or _G.GrabChest or _G.AutoFarmBounty or _G.Holy_Torch or _G.AutoFarm or _G.Clip or _G.AutoElitehunter or _G.AutoThirdSea or _G.Auto_Bone or _G.Autoheart or _G.Autodoughking or _G.AutoFarmMaterial or _G.AutoNevaSoulGuitar or _G.Auto_Dragon_Trident or _G.Autotushita or _G.d or _G.Autowaden or _G.Autogay or _G.Autopole or _G.Autosaw or _G.AutoObservationHakiV2 or _G.AutoFarmNearest or AutoFarmChest or _G.AutoCarvender or _G.AutoTwinHook or AutoMobAura or _G.Tweenfruit or _G.AutoKai or _G.TeleportNPC or _G.Leather or _G.Auto_Wing or _G.Umm or _G.Makori_gay or Radioactive or Fish or Gunpowder or Dragon_Scale or Cocoafarm or Scrap or MiniHee or _G.AutoFarmSeabaest or _G.Auto_Cursed_Dual_Katana or _G.AutoFarmMob or _G.AutoMysticIsland or _G.AutoFarmDungeon or _G.AutoRaidPirate or _G.AutoQuestRace or _G.TweenMGear or getgenv().AutoFarm or _G.AutoPlayerHunter or _G.AutoFactory or Grab_Chest or _G.Namfon or _G.AutoSwordMastery or _G.AutoSeaBest or _G.AutoKillTial or _G.Auto_Saber or _G.Position_Spawn or _G.Farmfast or _G.AutoRace or _G.RaidPirate or Open_Color_Haki or _G.KillSaber or FarmMasterySword or _G.AutoTrueTripleKatana or _G.Farmfast2 or _G.Farmfast3 or _G.AutoFullySword or _G.KatakuriV2 or Auto_Dark_Coat or _G.Terrorshark or FarmShark or _G.farmpiranya or _G.Fish_Crew_Member or _G.AppleAutoDriveBoat or _G.bjirFishBoat or _G.KillGhostShip or _G.KillLeviathan or _G.AutoLeviathan or _G.FrozenDimension or _G.FKitsune or _G.SeaBest or _G.SailBoat then
-				if not game:GetService("Workspace"):FindFirstChild("LOL") then
-                local LOL = Instance.new("Part")
-                LOL.Name = "LOL"
-                LOL.Parent = game.Workspace
-                LOL.Anchored = true
-                LOL.Transparency = 1
-                LOL.Size = Vector3.new(5,2,5)
-            elseif game:GetService("Workspace"):FindFirstChild("LOL") then
-                game.Workspace["LOL"].CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, -3.6, 0)
-            end
-        else
-            if game:GetService("Workspace"):FindFirstChild("LOL") then
-                game:GetService("Workspace"):FindFirstChild("LOL"):Destroy()
-            end
-        end
     end)
   end)
 
@@ -3237,17 +3201,6 @@ end)
 
 local Dough555 = DoughKingTab:AddLabel('🍩 : Dough Awaken 🔴')
 
-task.spawn(
-    function()
-        while task.wait() do
-            if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakeScientist","Check") == true then
-                Dough555:SetText("🍩 : Dough Awaken 🟢")
-            end
-        end
-    end)
-
-local DoDoughKing = DoughKingTab:AddLabel('..')
-
 spawn(
 function()
 	while wait() do
@@ -3943,30 +3896,6 @@ end)
 
 local DarkBeardTab = Tabs["Automatic"]:AddLeftGroupbox("« DarkBeard »")
 
-local Dark_Coat = DarkBeardTab:AddLabel("🧥 : Dark Coat 🔴")
-
-spawn(function()
-    while task.wait() do
-        pcall(function()
-            for i,v in pairs(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("getInventoryWeapons")) do
-                if v.Name == "Dark Coat" then
-                    Dark_Coat:SetText("🧥 : Dark Coat 🟢")          
-                end
-            end
-        end)
-    end
-end)
-
-local DarkFragment555 = DarkBeardTab:AddLabel('..')
-
-spawn(function()
-    while task.wait() do
-        pcall(function()
-DarkFragment555:SetText('🍎 : Dark Fragment '..CheckItem('Dark Fragment'))
-        end)
-    end
-end)
-
 DarkBeardTab:AddDropdown('', {Values = {"1550","2550","3000","3550"},Default = _G.Config["DarkBeard"]["Choose Wait Hop"],Text = "Choose Wait Hop",}):OnChanged(function(Value)
 Choose_Auto_Dark_Coat = Value
 _G.Config["DarkBeard"]["Choose Wait Hop"] = Value
@@ -4214,50 +4143,6 @@ _G.Config["DarkBeard"]["Auto Dark Coat Hop"] =  Value
 Saveconfig()
 end)
 
-local SoulReaperTab = Tabs['Automatic']:AddRightGroupbox("« Soul Reaper »")
-
-local SoulReaper555 = SoulReaperTab:AddLabel('..')
-
-task.spawn(function()
-    while task.wait() do
-        pcall(function()
-            if game.Players.LocalPlayer.Backpack:FindFirstChild("Soul Reaper") or game.Players.LocalPlayer.Character:FindFirstChild("Soul Reaper") then
-                SoulReaper555:SetText("🤡 : Soul Reaper 🟢")
-            else
-                SoulReaper555:SetText("🤡 : Soul Reaper 🔴")
-            end
-        end)
-    end
-end)
-
-local HallowScythe555 = SoulReaperTab:AddLabel("🎃 : Hallow Scythe 🔴")
-
-spawn(function()
-    while task.wait() do
-        pcall(function()
-            for i,v in pairs(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("getInventoryWeapons")) do
-                if v.Name == "Hallow Scythe" then
-                    HallowScythe555:SetText("🎃 : Hallow Scythe 🟢")          
-                end
-            end
-        end)
-    end
-end)
-
-local HallowEssence555 = SoulReaperTab:AddLabel('..')
-
-task.spawn(function()
-    while task.wait() do
-        pcall(function()
-            if game.Players.LocalPlayer.Backpack:FindFirstChild("Hallow Essence") or game.Players.LocalPlayer.Character:FindFirstChild("Hallow Essence") then
-                HallowEssence555:SetText("🐼 : You have a place at Spa Boss.")
-            else
-                HallowEssence555:SetText("🐼 : You don't have it at Spa Boss.")
-            end
-        end)
-    end
-end)
-
 SoulReaperTab:AddToggle('', {Text = "Auto Soul Reaper",Default = _G.Config["Soul Reaper"]["Auto Soul Reaper"],}):OnChanged(function(Value)
 _G.AutoFarmBossHallow = Value
 _G.Config["Soul Reaper"]["Auto Soul Reaper"] =  Value
@@ -4320,7 +4205,7 @@ local Bones555 = BonesTab:AddLabel('..')
 spawn(function()
     while task.wait() do
         pcall(function()
-Bones555:SetText('🦴 : Bones '..CheckItem('Bones'))
+Bones555:SetText('Bones : '..CheckItem('Bones'))
         end)
     end
 end)
@@ -4399,10 +4284,6 @@ end)
 
 local CakePrinceTab = Tabs['Automatic']:AddRightGroupbox("« Cake Prince »")
 
-local Portal555 = CakePrinceTab:AddLabel('🌀 : Portal 🔴')
-
-local CakePrince555 = CakePrinceTab:AddLabel('..')
-
     spawn(
     function()
         while wait() do
@@ -4414,8 +4295,7 @@ local CakePrince555 = CakePrinceTab:AddLabel('..')
                     CakePrince555:SetText("Task : Have " .. string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), 39, 40) .. " More Left")
                 elseif string.len(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")) == 86 then
                     CakePrince555:SetText("Task : Have " .. string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"), 39, 39) .. " More Left")
-                else
-                    Portal555:SetDesc("🌀 : Portal 🟢")                   
+                else         
                 end
             end)
         end
@@ -4530,20 +4410,6 @@ end)
 
 local ArenaTrainerTab = Tabs['Automatic']:AddRightGroupbox("« Arena Trainer »")
 
-local TrainingDummy555 = ArenaTrainerTab:AddLabel('..')
-
-task.spawn(function()
-    while task.wait() do
-        pcall(function()
-            if game.Players.LocalPlayer.Backpack:FindFirstChild("Training Dummy") or game.Players.LocalPlayer.Character:FindFirstChild("Training Dummy") then
-                TrainingDummy555:SetText("👀 : You have a place at Spa Boss.")
-            else
-                TrainingDummy555:SetText("👀 : You don't have it at Spa Boss.")
-            end
-        end)
-    end
-end)
-
 ArenaTrainerTab:AddToggle('', {Text = "Auto Arena Trainer",Default = _G.Config["Arena Trainer"]["Auto Arena Trainer"],}):OnChanged(function(Value)
 _G.Namfon = Value
 _G.Config["Arena Trainer"]["Auto Arena Trainer"] =  Value
@@ -4603,7 +4469,7 @@ local Race555 = EvoRaceTab:AddLabel('..')
 spawn(function()
     while task.wait() do
         pcall(function()
-Race555:SetText('💧 : Race '..CheckRace(''))
+Race555:SetText('Race : '..CheckRace(''))
         end)
     end
 end)
