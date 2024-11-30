@@ -3189,18 +3189,6 @@ end
 
 local DoughKingTab = Tabs['Automatic']:AddLeftGroupbox("« Dough King »")
 
-local MirrorFractal = DoughKingTab:AddLabel('..')
-
-spawn(function()
-    while task.wait() do
-        pcall(function()
-MirrorFractal:SetText('🥏 : Mirror Fractal '..CheckItem('Mirror Fractal'))
-        end)
-    end
-end)
-
-local Dough555 = DoughKingTab:AddLabel('🍩 : Dough Awaken 🔴')
-
 spawn(
 function()
 	while wait() do
