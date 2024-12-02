@@ -17,7 +17,7 @@ _G.Config = {
   },
 }
 end
-_G.FF = true
+_G.FF = 60
 spawn(function()
    while task.wait() do
       if _G.Config["Misc"]["White Screen"] then
