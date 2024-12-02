@@ -75,7 +75,7 @@ end)
                 end
             end
         end
-end
+end)
 
 function TP(p)
 	game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(p)
