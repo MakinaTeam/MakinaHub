@@ -559,7 +559,7 @@ function WebhookManager()
             }
             local success, response = pcall(function()
                 return (syn and syn.request or http_request) {
-                    Url = _G.Config["WebHook"]["Url"],
+                    Url = '_G.Config["WebHook"]["Url"]',
                     Method = 'POST',
                     Headers = { ['Content-Type'] = 'application/json' },
                     Body = game:GetService('HttpService'):JSONEncode({
