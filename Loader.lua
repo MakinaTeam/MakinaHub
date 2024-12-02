@@ -2174,7 +2174,7 @@ function TP(Pos)
         end
         pcall(function() didididididi = game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.PartTele,TweenInfo.new(Distance/getgenv().TweenSpeed, Enum.EasingStyle.Linear),{CFrame = Pos}) end)
         didididididi:Play()
-        if Distance <= 500 then
+        if Distance <= 1000 then
                 didididididi:Cancel()
                 game.Players.LocalPlayer.Character.PartTele.CFrame = Pos
             end
