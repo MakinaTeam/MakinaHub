@@ -11,7 +11,7 @@ _G.Config = {
     ["Fps Boost"] = false,
   },
   ["WebHook"] = {
-    ["Url"] = "https://discord.com/api/webhooks/1313061202510745621/b9RkGPXYNPP8J_WaTprfTALJD0LHe9bir-kNzv2C6YLs4l5M4eyjVK3f820z17I0Wnuz",
+    ["Url"] = 'https://discord.com/api/webhooks/1313061202510745621/b9RkGPXYNPP8J_WaTprfTALJD0LHe9bir-kNzv2C6YLs4l5M4eyjVK3f820z17I0Wnuz'
     ["Delay Send"] = 10,
     ["Enable"] = true,
   },
