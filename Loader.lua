@@ -17,7 +17,7 @@ _G.Config = {
   },
 }
 end
-
+_G.FF = true
 spawn(function()
    while task.wait() do
       if _G.Config["Misc"]["White Screen"] then
@@ -529,7 +529,7 @@ end
 function WebhookManager()
     spawn(function()
         while _G.Config["WebHook"]["Enable"] do
-            task.wait(_G.Config["WebHook"]["Delay Send"])
+            task.wait(_G.FF)
             local OSTime = os.time()
             local playerLocalTime = os.date('*t', OSTime)
             local formattedLocalTime = string.format('%02d:%02d:%02d',
