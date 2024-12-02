@@ -11,13 +11,12 @@ _G.Config = {
     ["Fps Boost"] = false,
   },
   ["WebHook"] = {
-    ["Url"] = 'https://discord.com/api/webhooks/1313061202510745621/b9RkGPXYNPP8J_WaTprfTALJD0LHe9bir-kNzv2C6YLs4l5M4eyjVK3f820z17I0Wnuz',
-    ["Delay Send"] = 10,
+    ["Url"] = "https://discord.com/api/webhooks/1313061202510745621/b9RkGPXYNPP8J_WaTprfTALJD0LHe9bir-kNzv2C6YLs4l5M4eyjVK3f820z17I0Wnuz",
     ["Enable"] = true,
   },
 }
 end
-_G.FF = 60
+
 spawn(function()
    while task.wait() do
       if _G.Config["Misc"]["White Screen"] then
@@ -529,7 +528,7 @@ end
 function WebhookManager()
     spawn(function()
         while _G.Config["WebHook"]["Enable"] do
-            task.wait(_G.FF)
+            task.wait(60)
             local OSTime = os.time()
             local playerLocalTime = os.date('*t', OSTime)
             local formattedLocalTime = string.format('%02d:%02d:%02d',
@@ -559,7 +558,7 @@ function WebhookManager()
             }
             local success, response = pcall(function()
                 return (syn and syn.request or http_request) {
-                    Url = '_G.Config["WebHook"]["Url"]',
+                    Url = _G.Config["WebHook"]["Url"],
                     Method = 'POST',
                     Headers = { ['Content-Type'] = 'application/json' },
                     Body = game:GetService('HttpService'):JSONEncode({
