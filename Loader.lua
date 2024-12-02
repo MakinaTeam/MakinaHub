@@ -7,27 +7,29 @@ _G.Config = {
   ["Misc"] = {
     ["Method Shake"] = "Fast",--Fast//Normal
     ["Delay Shake"] = 0,
-    ["Black Screen"] = true,
+    ["White Screen"] = true,
     ["Fps Boost"] = false,
   },
   ["WebHook"] = {
-    ["Url"] = "",
-    ["Delay Send"] = false,
-    ["Enable"] = false,
+    ["Url"] = "https://discord.com/api/webhooks/1313061202510745621/b9RkGPXYNPP8J_WaTprfTALJD0LHe9bir-kNzv2C6YLs4l5M4eyjVK3f820z17I0Wnuz",
+    ["Delay Send"] = 10,
+    ["Enable"] = true,
   },
 }
 end
 
 spawn(function()
-	while wait() do
-		if _G.Config["Misc"]["Black Screen"] then
-			game:GetService("Players").LocalPlayer.PlayerGui.Main.Blackscreen.Size = UDim2.new(500, 0, 500, 500)
-			setfpscap(240)
-		else
-			game:GetService("Players").LocalPlayer.PlayerGui.Main.Blackscreen.Size = UDim2.new(1, 0, 500, 500)
-			setfpscap(240)
-		end
-	end
+   while task.wait() do
+      if _G.Config["Misc"]["White Screen"] then
+         pcall(function()
+            game:GetService("RunService"):Set3dRenderingEnabled(false)
+         end)
+      else
+         pcall(function()
+            game:GetService("RunService"):Set3dRenderingEnabled(true)
+         end)
+      end
+   end
 end)
           
 function TP(p)
@@ -543,7 +545,7 @@ function WebhookManager()
             local LvlPlayer = game:GetService("Players").LocalPlayer.leaderstats.Level.Value
 
             local Embed = {
-                title = 'Panda Hub | Fishing',
+                title = 'Panda Hub | Fishing Kaitan',
                 color = 0xCC33CC,
                 fields = {
                     { name = 'Player Profile', value = playerProfileUrl },
@@ -562,7 +564,7 @@ function WebhookManager()
                     Headers = { ['Content-Type'] = 'application/json' },
                     Body = game:GetService('HttpService'):JSONEncode({
                         username = 'Panda Hub | Fisch',
-                        avatar_url = 'https://cdn.discordapp.com/attachments/1275017654121398396/1310183986789879888/images.jpg?ex=67444b6c&is=6742f9ec&hm=c2e49e70bd92c6fd8b5c5e06dcbf549fa0e97763b4ebe4fc7f79b602787e5c62&',
+                        avatar_url = 'https://cdn.discordapp.com/attachments/1310287301263491103/1313047279640379443/c3b7d5f57c384f08753cfe89dd32abbc-removebg.jpg?ex=674eb612&is=674d6492&hm=383bdc82d64e9e867b3335e5fdf3c3f8ecde03d3cb25a651f9ea23fc1a368900&',
                         embeds = { Embed }
                     }),
                 }
