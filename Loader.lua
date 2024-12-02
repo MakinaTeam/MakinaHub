@@ -17,17 +17,6 @@ _G.Config = {
   },
 }
 end
-
-spawn(function()
-	while wait() do
-		if _G.Config["Misc"]["Black Screen"] then
-			game:GetService("Players").LocalPlayer.PlayerGui.Main.Blackscreen.Size = UDim2.new(500, 0, 500, 500)
-		else
-			game:GetService("Players").LocalPlayer.PlayerGui.Main.Blackscreen.Size = UDim2.new(1, 0, 500, 500)
-		end
-	end
-end)
-
           
 function TP(p)
 	game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(p)
