@@ -1395,13 +1395,6 @@ LPH_JIT_MAX(function()
     end)
 end)()
 
-Fast_Attack = true
-DamageAura = true
-ClickNoCooldown = true
-DmgAttack.Enabled = not true
-NeedAttacking = true
-UsefastattackPlayers = true
-
 local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
 Mouse.Button1Down:Connect(function()
 	if ClickNoCooldown then
@@ -1413,14 +1406,12 @@ Mouse.Button1Down:Connect(function()
 	end
 end)
 
-spawn(function()
-                while wait() do
-                    pcall(function()
-                    local Camera = require(game.ReplicatedStorage.Util.CameraShaker)
-                    Camera:Stop()
-                    end)
-                end
-            end)
+Fast_Attack = true
+DamageAura = true
+ClickNoCooldown = true
+DmgAttack.Enabled = not true
+NeedAttacking = true
+UsefastattackPlayers = true
 
 spawn(function()
 	while wait() do
