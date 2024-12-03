@@ -2055,34 +2055,6 @@ function FarmLevelOO()
                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetSpawnPoint")
             end
 		elseif game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == true then
-		if _G.Farm_Boss then
-			if game.Workspace.Enemies:FindFirstChild(_G.SelectBoss) then
-				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-					if v.Name == _G.SelectBoss and v.Humanoid.Health > 0 then
-						if v.Humanoid:FindFirstChild("Animator") then
-							v.Humanoid.Animator:Destroy()
-						end
-						v.Humanoid:ChangeState(11)
-						v.Humanoid.JumpPower = 0
-						v.Humanoid.WalkSpeed = 0
-						v.HumanoidRootPart.CanCollide = false
-						StatrMagnet = nil
-						repeat wait()
-							_G.Doing = "Farm Boss Level"
-						    v.HumanoidRootPart.Size = Vector3.new(50,50,50)
-							EquipWeapon(Weapon)
-                    		TP(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
-							AttackNoCD()
-						until game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == false or not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameBoss) or not v.Parent or v.Humanoid.Health <= 0 or not Startk or Mix_Farm
-						
-						if not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameBoss) then
-							--game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
-						end
-					end
-				end
-			else
-				TP(CFrameBoss*CFrame.new(0,40,0))
-			end
 		else
             for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
                 if v.Name == Ms and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
