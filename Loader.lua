@@ -2072,6 +2072,25 @@ task.spawn(function()
   end
 end)
 
+function BypassTeleport(Pos)
+    if (Pos.Position - plr.Character.HumanoidRootPart.Position).Magnitude < 10000 then
+        repeat
+            wait()
+            if plr.Character:FindFirstChild("PartTele") then
+                plr.Character.PartTele.CFrame = Pos
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Pos
+            game.Players.LocalPlayer.Character.Head:Destroy()
+            game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid"):ChangeState(15)
+            wait(2)
+            game.Players.LocalPlayer.Character.PrimaryPart.CFrame = Pos
+            wait(3)
+        until (Pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2000
+    else
+        Tween(Pos)
+    end
+end
+
 local TweenService = game:GetService("TweenService")
 local TeleportPos
 local currentTween 
@@ -2111,43 +2130,6 @@ local function stopTween()
         currentTween = nil
     end
 end
-
-
-spawn(function()
-game:GetService("RunService").Heartbeat:Connect(function()
-    if _G.AutoAdvanceDungeon 
-      or _G.AutoDoughtBoss
-      or _G.Auto_DungeonMobAura
-      or _G.AutoFarmChest
-      or _G.AutoFarmBossHallow
-      or _G.AutoFarmSwanGlasses
-      or _G.AutoLongSword
-      or _G.AutoBlackSpikeycoat
-      or _G.AutoElectricClaw
-      or _G.AutoFarmGunMastery
-      or _G.AutoHolyTorch
-      or _G.AutoLawRaid
-      or _G.AutoFarmBoss
-      or _G.AutoTwinHooks
-      or _G.AutoOpenSwanDoo
-      or _G.AutoDragon_Trident or AutoSaber or _G.NOCLIP or _G.AutoFarmFruitMastery or _G.AutoFarmGunMastery or _G.TeleportIsland or _G.Auto_EvoRace or _G.AutoFarmAllMsBypassType or _G.AutoObservationv2 or _G.AutoMusketeerHat or _G.AutoEctoplasm or _G.KillFishCrew or _G.KillTerrorShark or _G.KillShark or _G.KillPiranha or _G.AutoRengoku or _G.Auto_Rainbow_Haki or _G.AutoObservation or _G.RipIndraKill or _G.Safe_Mode or _G.MasteryFruit or _G.AutoBudySword or _G.AutoOderSword or _G.AutoBounty or _G.AutoAllBoss or _G.Auto_Bounty or _G.AutoSharkman or _G.Auto_Mastery_Fruit or _G.Auto_Mastery_Gun or _G.Auto_Dungeon or _G.Auto_Cavender or _G.AutoSeaBest or _G.Auto_Pole or _G.Auto_Kill_Ply or _G.Auto_Factory or _G.AutoSecondSea or _G.TeleportPly or _G.AutoBartilo or _G.Auto_DarkBoss or _G.GrabChest or _G.AutoFarmBounty or _G.Holy_Torch or _G.AutoFarm or _G.Clip or _G.AutoElitehunter or _G.AutoThirdSea or _G.Auto_Bone or _G.Autoheart or PirateShip or _G.Autodoughking or _G.AutoFarmMaterial or _G.QuestSoulGuitar or _G.Auto_Dragon_Trident or _G.Autotushita or _G.d or _G.Autowaden or _G.Autogay or _G.Autopole or _G.Autosaw or _G.AutoObservationHakiV2 or _G.AutoFarmNearest or AutoFarmChest or _G.AutoCarvender or _G.AutoTwinHook or AutoMobAura or _G.Tweenfruit or _G.AutoKai or _G.TeleportNPC or _G.Leather or _G.Auto_Wing or _G.Umm or _G.Makori_gay or Radioactive or Fish or Gunpowder or Dragon_Scale or Cocoafarm or Scrap or MiniHee or _G.AutoFarmSeabaest or Auto_Cursed_Dual_Katana or _G.AutoFarmMob or _G.AutoMysticIsland or _G.AutoFarmDungeon or _G.AutoRaidPirate or _G.AutoQuestRace or _G.TweenMGear or getgenv().AutoFarm or _G.RaidPirate or _G.AutoPlayerHunter or _G.AutoFactory or Grab_Chest or Tween_Fruit or KillPlayer or KillPlayerSpam or _G.SeaBeasts1 then
-      if not game:GetService("Workspace"):FindFirstChild("LOL") then
-            local LOL = Instance.new("Part")
-            LOL.Name = "LOL"
-            LOL.Parent = game.Workspace
-            LOL.Anchored = true
-            LOL.Transparency = 1
-            LOL.Size = Vector3.new(1,-0.5,1)
-        elseif game:GetService("Workspace"):FindFirstChild("LOL") then
-            game.Workspace["LOL"].CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, -3.6, 0)
-        end
-    else
-        if game:GetService("Workspace"):FindFirstChild("LOL") then
-            game:GetService("Workspace"):FindFirstChild("LOL"):Destroy()
-        end
-    end
-end)
-end)
 
 function WaitHRP(q0) 
     if not q0 then return end
@@ -2240,55 +2222,7 @@ function TP(Pos)
             end
             didididididi:Play()
     end
-end
-        
-        function Tween(v326)
-            local v327 = game.Players.LocalPlayer;
-            if (v327.Character and (v327.Character.Humanoid.Health > 0) and v327.Character:FindFirstChild("HumanoidRootPart")) then
-                if  not v326 then
-                    return;
-                end
-                local v1379 = (v326.Position - v327.Character.HumanoidRootPart.Position).Magnitude;
-                local v1380 = CheckNearestTeleporter(v326);
-                if _G.RandomPosition and v1380 then
-                    requestEntrance(v1380);
-                end
-                if  not v327.Character:FindFirstChild("PartTele") then
-                    local v1714 = Instance.new("Part", v327.Character);
-                    v1714.Size = Vector3.new(10, 1, 10);
-                    v1714.Name = "PartTele";
-                    v1714.Anchored = true;
-                    v1714.Transparency = 1;
-                    v1714.CanCollide = true;
-                    v1714.CFrame = WaitHRP(v327).CFrame;
-                    v1714:GetPropertyChangedSignal("CFrame"):Connect(function()
-                        if  not v47 then
-                            return;
-                        end
-                        task.wait();
-                        if (v327.Character and v327.Character:FindFirstChild("HumanoidRootPart")) then
-                            local v2051 = v1714.CFrame;
-                            WaitHRP(v327).CFrame = CFrame.new(v2051.Position.X, v326.Position.Y, v2051.Position.Z);
-                        end
-                    end);
-                end
-                v47 = true;
-                local v1381 = CFrame.new(v326.Position.X, v326.Position.Y, v326.Position.Z);
-                local v1382 = game:GetService("TweenService"):Create(v327.Character.PartTele, TweenInfo.new(v1379 / getgenv().TweenSpeed , Enum.EasingStyle.Linear), {
-                    CFrame = v326
-                });
-                v1382:Play();
-                v1382.Completed:Connect(function(v1640)
-                    if (v1640 == Enum.PlaybackState.Completed) then
-                        if v327.Character:FindFirstChild("PartTele") then
-                            v327.Character.PartTele:Destroy();
-                        end
-                        v47 = false;
-                    end
-                end);
-            end
-        end
-        
+end          
 
 spawn(function()
     while task.wait() do
