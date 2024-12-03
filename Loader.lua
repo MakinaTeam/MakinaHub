@@ -1875,7 +1875,7 @@ function FindSkyMonster()
     end
 end
 function FarmSkyMonter()
-	_G.Doing = "Farm Sky Monster"
+	_G.Doing = "Task | Farm Sky Monster"
     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
     if FindSkyMonster() then
         v = FindSkyMonster()
@@ -1905,7 +1905,7 @@ function FarmLevelOO()
 			if _G.SelectBoss ~= nil and game.Workspace.Enemies:FindFirstChild(_G.SelectBoss) or _G.SelectBoss ~= nil and game.ReplicatedStorage:FindFirstChild(_G.SelectBoss) then
                 CheckQuestBoss()
                 repeat wait()
-                    _G.Doing = "Get Quest Level"
+                    _G.Doing = "Task | Get Quest Level"
                     TP(CFrameQBoss)
                 until (CFrameQBoss.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude < 10
                 wait(1)
@@ -1915,7 +1915,7 @@ function FarmLevelOO()
             elseif SelectMonster ~= nil then
                 CheckLevel()
                 repeat wait()
-                    _G.Doing = "Get Quest Level"
+                    _G.Doing = "Task | Get Quest Level"
                     TP(CFrameQ)
                 until (CFrameQ.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude < 10
                 wait(1)
@@ -1927,7 +1927,7 @@ function FarmLevelOO()
                 StatrMagnet = nil
                 CheckLevel()
                 repeat wait()
-                    _G.Doing = "Get Quest Level"
+                    _G.Doing = "Task | Get Quest Level"
                     TP(CFrameQ)
                 until (CFrameQ.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude < 10
                 wait(1)
@@ -1948,7 +1948,7 @@ function FarmLevelOO()
 						v.HumanoidRootPart.CanCollide = false
 						StatrMagnet = nil
 						repeat wait()
-							_G.Doing = "Farm Boss Level"
+							_G.Doing = "Task | Farm Boss"
 						    v.HumanoidRootPart.Size = Vector3.new(50,50,50)
 							EquipWeapon(Weapon)
                     		TP(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
@@ -1972,7 +1972,7 @@ function FarmLevelOO()
                         v.Humanoid.Animator:Destroy()
                     end
                     repeat task.wait()
-                        _G.Doing = "Farm Level"
+                        _G.Doing = "Task | Farm Level"
                         v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                         EquipWeapon(Weapon)
                         TP(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
@@ -1980,7 +1980,7 @@ function FarmLevelOO()
                     until game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == false or not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) or not v.Parent or v.Humanoid.Health <= 0 or not Startk or Mix_Farm
                     Attack = nil
                 else
-                    _G.Doing = "Wait Monster Level"
+                    _G.Doing = "Task | Wait Monster Level"
                     TP(CFrameMon)
                 end
             end
@@ -2001,7 +2001,7 @@ function FindPole()
     end
 end
 function FarmPole()
-	_G.Doing = "Farm Pole"
+	_G.Doing = "Task | Findm Pole"
     if FindPole() then
         v = FindPole()
     	repeat wait()
@@ -2020,7 +2020,7 @@ function FindFruit()
     end
 end
 function CollectFruit()
-	_G.Doing = "Bring Fruit"
+	_G.Doing = "Task | Find Fruit"
     if FindFruit() then
         v = FindFruit()
         repeat wait()
@@ -2029,7 +2029,7 @@ function CollectFruit()
     end
 end
 function SaberQuest()
-	_G.Doing = "Doing Saber Quest"
+	_G.Doing = "Task | Doing Saber Quest"
      game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
     if game:GetService("Workspace").Map.Jungle.Final.Part.Transparency == 0 then
         if game:GetService("Workspace").Map.Jungle.QuestPlates.Door.Transparency == 0 then
@@ -2122,7 +2122,7 @@ function FindSaber()
     end
 end
 function FarmSaber()
-	_G.Doing = "Get Saber"
+	_G.Doing = "Task | Get Saber"
     if FindSaber() then
         v = FindSaber()
     	repeat wait()
@@ -2147,7 +2147,7 @@ function FindBossWold2Quest()
     end
 end
 function DoingQuestWorld2()
-	_G.Doing = "Go to World 2"
+	_G.Doing = "Task | Go to World 2"
     if game.Workspace.Map.Ice.Door.CanCollide == true and game.Workspace.Map.Ice.Door.Transparency == 0 then
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("DressrosaQuestProgress","Detective")
         EquipWeapon("Key")
@@ -2178,7 +2178,7 @@ function FindBossWorld2()
     end
 end
 function FarmBossWorld2()
-	_G.Doing = "Farm Boss"
+	_G.Doing = "Task | Farm Boss"
     if FindBossWorld2() then
         v = FindBossWorld2()
     	repeat wait()
@@ -2202,7 +2202,7 @@ function FindCore()
     end
 end
 function FarmCore()
-	_G.Doing = "Farm Factory"
+	_G.Doing = "Task | Farm Factory"
     if FindCore() then
         v = FindCore()
     	repeat wait(.1)
@@ -2227,7 +2227,7 @@ function FindMonBartilo1()
     end
 end
 function BartiloQuest1()
-	_G.Doing = "Doing Bartilo Quest 1/3"
+	_G.Doing = "Task | Doing Bartilo Quest 1/3"
     if string.find(game.Players.LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Swan Pirates") and string.find(game.Players.LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "50") and game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == true then
         if FindMonBartilo1() then
             v = FindMonBartilo1()
@@ -2260,7 +2260,7 @@ function FindMonBartilo2()
     end
 end
 function BartiloQuest2()
-	_G.Doing = "Doing Bartilo Quest 2/3"
+	_G.Doing = "Task | Doing Bartilo Quest 2/3"
     if FindMonBartilo2() then
         v = FindMonBartilo2()
         repeat wait()
@@ -2273,7 +2273,7 @@ function BartiloQuest2()
     end
 end
 function BartiloQuest3()
-	_G.Doing = "Doing Bartilo Quest 3/3"
+	_G.Doing = "Task | Doing Bartilo Quest 3/3"
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1850.49329, 13.1789551, 1750.89685)
 	wait()
 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1858.87305, 19.3777466, 1712.01807)
@@ -2387,7 +2387,7 @@ function Buy_Chip()
 	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("RaidsNpc", "Select", "Flame")
 end
 function StartDungeon()
-	_G.Doing = "Start Raid"
+	_G.Doing = "Task | Start Raid"
     if W2 then
         fireclickdetector(game:GetService("Workspace").Map.CircleIsland.RaidSummon2.Button.Main.ClickDetector)
         repeat wait(1)
@@ -2415,23 +2415,23 @@ function NextIsland()
     Killaura()
     if FindIsland5() then
         v = FindIsland5()
-		_G.Doing = "Auto Raid | Ialand 5"
+		_G.Doing = "Task | Auto Raid | Ialand 5"
         TP(CFrame.new(v.CFrame.X, 100, v.CFrame.Z))
     elseif FindIsland4() then
         v = FindIsland4()
-		_G.Doing = "Auto Raid | Ialand 4"
+		_G.Doing = "Task | Auto Raid | Ialand 4"
         TP(CFrame.new(v.CFrame.X, 100, v.CFrame.Z))
     elseif FindIsland3() then
         v = FindIsland3()
-		_G.Doing = "Auto Raid | Ialand 3"
+		_G.Doing = "Task | Auto Raid | Ialand 3"
         TP(CFrame.new(v.CFrame.X, 100, v.CFrame.Z))
     elseif FindIsland2() then
         v = FindIsland2()
-		_G.Doing = "Auto Raid | Ialand 2"
+		_G.Doing = "Task | Auto Raid | Ialand 2"
         TP(CFrame.new(v.CFrame.X, 100, v.CFrame.Z))
     elseif FindIsland1() then
         v = FindIsland1()
-		_G.Doing = "Auto Raid | Ialand 1"
+		_G.Doing = "Task | Auto Raid | Ialand 1"
         TP(CFrame.new(v.CFrame.X, 100, v.CFrame.Z))
     end
 end
@@ -2462,7 +2462,7 @@ function FindIndraQuest()
     end
 end
 function gotoworld3()
-	_G.Doing = "Doing Quest World 3"
+	_G.Doing = "Task | Doing Quest World 3"
     if FindIndraQuest() then
         v = FindIndraQuest()
         repeat wait()
@@ -2517,7 +2517,7 @@ function DoingAllMelee()
     end
 end
 function LibraryKey()
-	_G.Doing = "Unlock Death Step Room"
+	_G.Doing = "Task | Unlock Death Step Room"
     EquipWeapon("Library Key")
     if (Vector3.new(6375.31152, 296.759796, -6845.37256, -0.864894807, 9.65125153e-08, -0.501953125, 1.00555702e-07, 1, 1.90105478e-08, 0.501953125, -3.40321265e-08, -0.864894807)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 10 then
         TP(CFrame.new(6375.31152, 296.759796, -6845.37256, -0.864894807, 9.65125153e-08, -0.501953125, 1.00555702e-07, 1, 1.90105478e-08, 0.501953125, -3.40321265e-08, -0.864894807))
@@ -2526,7 +2526,7 @@ function LibraryKey()
     end
 end
 function HiddenKey()
-	_G.Doing = "Unlock Rengoku"
+	_G.Doing = "Task | Unlock Rengoku"
     EquipWeapon("Hidden Key")
     if (Vector3.new(1347.7124, 37.3751602, -1325.6488)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 10 then
         TP(CFrame.new(6571.1201171875, 299.23028564453, -6967.841796875))
@@ -2565,7 +2565,7 @@ spawn(function()
                                                 if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,v.Name) then
                                                     v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                                     repeat wait()
-														_G.Doing = "Players Hunter Quest"
+														_G.Doing = "Task | Players Hunter Quest"
                                                         EquipWeapon(Weapon)
                                                         if game:GetService("Players")["LocalPlayer"].PlayerGui.Main.PvpDisabled.Visible == false then
                                                             TP(CFrame.new(v.HumanoidRootPart.Position + Vector3.new(math.random(-5,5), 0, math.random(-5,5))))
