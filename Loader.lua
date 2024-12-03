@@ -3584,9 +3584,9 @@ local function AutoRengoku()
   end
 end
 
-GeneralTab:AddSection("Farm")
+Tabs.GeneralTab:AddSection("Farm")
 
-GeneralTab:AddToggle("Toggle", {
+Tabs.GeneralTab:AddToggle("Toggle", {
   Title = "Auto Farm Level",
   Callback = function(Value)
     getgenv().AutoFarm_Level = Value
