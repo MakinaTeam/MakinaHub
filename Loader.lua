@@ -2174,25 +2174,6 @@ function WaitHRP(q0)
     if not q0 then return end
     return q0.Character:WaitForChild("HumanoidRootPart", 9) 
 end
-    _G.StopTween = true
-    wait()
-    local player = game.Players.LocalPlayer
-    local character = player.Character
-    if character and character:IsDescendantOf(game.Workspace) then
-        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
-        if humanoidRootPart then
-            humanoidRootPart.CFrame = humanoidRootPart.CFrame
-        end
-    end
-    wait()    
-    if character:FindFirstChild("BodyClip") then
-        character.BodyClip:Destroy()
-    end
-    if character:FindFirstChild("PartTele") then
-        character.PartTele:Destroy()
-    end
-    _G.StopTween = false
-end
 
 _G.FastTeleport = true
 function TP(Pos)
