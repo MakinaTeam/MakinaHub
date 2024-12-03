@@ -2112,7 +2112,7 @@ local function toTarget(Tween_Pos)
     elseif block then
     if v48 then
         wait(1)
-        BypassTeleport(Tween_Pos)
+        BypassTeleport(Pos)
         end
         local tweenTime = Distance / getgenv().TweenSpeed
         if Distance <= 250 then
