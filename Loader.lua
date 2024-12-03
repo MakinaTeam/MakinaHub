@@ -1,4 +1,3 @@
-print("Kaitun Loader | Ver 1")
 if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
 repeat wait() until game.Players
 repeat wait() until game.Players.LocalPlayer
@@ -1747,7 +1746,7 @@ function FindSkyMonster()
     end
 end
 function FarmSkyMonter()
-	 = "Farm Sky Monster"
+	_G.Doing = "Task | Farm Sky Monster"
     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
     if FindSkyMonster() then
         v = FindSkyMonster()
@@ -1873,7 +1872,7 @@ function FindPole()
     end
 end
 function FarmPole()
-	_G.Doing = "Task | Find Pole"
+	_G.Doing = "Task | Findm Pole"
     if FindPole() then
         v = FindPole()
     	repeat wait()
