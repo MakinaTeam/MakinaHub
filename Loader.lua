@@ -1,11 +1,10 @@
 print("Kaitun Loader | Ver 1")
-game.StarterGui:SetCore(
-    "SendNotification",
-    {
-        Title = "Danny Hub | Kaitun",
-        Text = ""
-        Duration = 99999999999
-    })
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Danny Hub | Kaitun", 
+    Text = "",
+    --Icon = "",
+    Duration = 1
+})
 if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
 repeat wait() until game.Players
 repeat wait() until game.Players.LocalPlayer
