@@ -9,6 +9,9 @@ spawn(function()
     while wait() do
         pcall(function()
             DoingText = _G.Doing
+            RealBeli.Text = tostring(formatNumber(game:GetService("Players").LocalPlayer.Data.Beli.Value))
+            RealFragment.Text = tostring(formatNumber(game:GetService("Players").LocalPlayer.Data.Fragments.Value))
+            RealLevel.Text = tostring(game:GetService("Players").LocalPlayer.Data.Level.Value)
         end)
     end
 end)
