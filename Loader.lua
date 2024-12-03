@@ -2212,6 +2212,10 @@ local function toTarget(Tween_Pos)
         wait(1)
         BypassTeleport(Tween_Pos)
         end
+        local tweenTime = Distance / getgenv().TweenSpeed
+        if Distance <= 250 then
+            tweenTime = Distance / getgenv().TweenSpeed
+        end
         if currentTween then
             currentTween:Pause()
         end
