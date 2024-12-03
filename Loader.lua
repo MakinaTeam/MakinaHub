@@ -5,16 +5,7 @@ game.StarterGui:SetCore("SendNotification", {
     --Icon = "",
     Duration = 99999999
 })
-spawn(function()
-    while wait() do
-        pcall(function()
-            DoingText = _G.Doing
-            RealBeli.Text = tostring(formatNumber(game:GetService("Players").LocalPlayer.Data.Beli.Value))
-            RealFragment.Text = tostring(formatNumber(game:GetService("Players").LocalPlayer.Data.Fragments.Value))
-            RealLevel.Text = tostring(game:GetService("Players").LocalPlayer.Data.Level.Value)
-        end)
-    end
-end)
+DoingText = _G.Doing
 if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
 repeat wait() until game.Players
 repeat wait() until game.Players.LocalPlayer
