@@ -1301,21 +1301,6 @@ function AttackNoCD()
         end
     end
 end
-
-_G.555 = true
-
-spawn(function()
-    while wait(.1) do
-        if _G.555 then
-            pcall(function()
-                repeat task.wait(0.01)
-                    AttackNoCD()
-                until not _G.555
-            end)
-        end
-    end
-end)
-
 spawn(function()
 	while wait() do
 		pcall(function()
