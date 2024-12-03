@@ -1,6 +1,7 @@
 print("Kaitun Loader | Ver 1")
 local ScreenGui = Instance.new("ScreenGui")
 local TextLabel = Instance.new("TextLabel")
+local UIGradient = Instance.new("UIGradient")
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 TextLabel.Parent = ScreenGui
@@ -14,6 +15,8 @@ TextLabel.Font = Enum.Font.FredokaOne
 TextLabel.Text = "Task | "
 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel.TextSize = 19.000
+UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(0.01, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(0.16, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(0.35, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(0.68, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 255, 255))}
+UIGradient.Parent = TextLabel
 
 spawn(function()
     while wait() do
