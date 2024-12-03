@@ -1,34 +1,3 @@
-local Fluent = loadstring(game:HttpGet("https://pastebin.com/raw/XBx7rSBB"))()
-
-local InterfaceManager = loadstring(game:HttpGet("https://pastebin.com/raw/KGwYU2Rv"))()
-
-local Window = Fluent:CreateWindow({
-Title = "<font color='rgb(255, 255, 255)'>Danny Hub | Fishing</font>"..os.date(" - %A, %B %dth, %Y."),
-TabWidth = 160,
-Size = UDim2.fromOffset(490, 300),
-Acrylic = false,
-Theme = "Danny Theme",
-MinimizeKey = Enum.KeyCode.LeftControl
-})
-
-local Tabs = {
-GeneralTab = Window:AddTab({ Title = "General", Icon = "home" }),
-Settings = Window:AddTab({ Title = "Interface", Icon = "align-vertical-distribute-center" })
-}
-
-local Options = Fluent.Options
-do
-end
-
-InterfaceManager:SetLibrary(Fluent)
-
-InterfaceManager:SetFolder("Danny_Hub_Theme")
-
-InterfaceManager:BuildInterfaceSection(Tabs.Settings)
-
-Window:SelectTab(1)
-
-repeat task.wait()until game:IsLoaded()
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local VirtualUser = game:GetService("VirtualUser")
 local RunService = game:GetService("RunService")
@@ -3584,9 +3553,50 @@ local function AutoRengoku()
   end
 end
 
-Tabs.GeneralTab:AddSection("« Fishing »")
+local Fluent = loadstring(game:HttpGet("https://pastebin.com/raw/XBx7rSBB"))()
 
-Tabs.GeneralTab:AddToggle("Toggle", {
+local InterfaceManager = loadstring(game:HttpGet("https://pastebin.com/raw/KGwYU2Rv"))()
+
+local Window = Fluent:CreateWindow({
+Title = "<font color='rgb(255, 255, 255)'>Danny Hub | Fishing</font>"..os.date(" - %A, %B %dth, %Y."),
+TabWidth = 160,
+Size = UDim2.fromOffset(490, 300),
+Acrylic = false,
+Theme = "Danny Theme",
+MinimizeKey = Enum.KeyCode.LeftControl
+})
+
+local Tabs = {
+GeneralTab = Window:AddTab({ Title = "General", Icon = "home" }),
+Settings = Window:AddTab({ Title = "Interface", Icon = "align-vertical-distribute-center" })
+}
+
+local Options = Fluent.Options
+do
+end
+
+InterfaceManager:SetLibrary(Fluent)
+
+InterfaceManager:SetFolder("Danny_Hub_Theme")
+
+InterfaceManager:BuildInterfaceSection(Tabs.Settings)
+
+Window:SelectTab(1)
+
+local MainFarm = Window:AddTab({Title = "Farm", Icon = "home"})
+
+MainFarm:AddDropdown("Dropdown", {
+  Title = "Farm Tool",
+  Values = {"Melee", "Sword", "Blox Fruit"},
+  Default = 1,
+  Callback = function(Value)
+    getgenv().FarmTool = Value
+  end
+})
+
+MainFarm:AddSection("Farm")
+
+MainFarm:AddToggle("Toggle", {
   Title = "Auto Farm Level",
   Callback = function(Value)
     getgenv().AutoFarm_Level = Value
