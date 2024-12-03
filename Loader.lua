@@ -2415,23 +2415,23 @@ function NextIsland()
     Killaura()
     if FindIsland5() then
         v = FindIsland5()
-		_G.Doing = "Task | Auto Raid | Ialand 5"
+		_G.Doing = "Task | Auto Raid Ialand 5"
         TP(CFrame.new(v.CFrame.X, 100, v.CFrame.Z))
     elseif FindIsland4() then
         v = FindIsland4()
-		_G.Doing = "Task | Auto Raid | Ialand 4"
+		_G.Doing = "Task | Auto Raid Ialand 4"
         TP(CFrame.new(v.CFrame.X, 100, v.CFrame.Z))
     elseif FindIsland3() then
         v = FindIsland3()
-		_G.Doing = "Task | Auto Raid | Ialand 3"
+		_G.Doing = "Task | Auto Raid Ialand 3"
         TP(CFrame.new(v.CFrame.X, 100, v.CFrame.Z))
     elseif FindIsland2() then
         v = FindIsland2()
-		_G.Doing = "Task | Auto Raid | Ialand 2"
+		_G.Doing = "Task | Auto Raid Ialand 2"
         TP(CFrame.new(v.CFrame.X, 100, v.CFrame.Z))
     elseif FindIsland1() then
         v = FindIsland1()
-		_G.Doing = "Task | Auto Raid | Ialand 1"
+		_G.Doing = "Task | Auto Raid Ialand 1"
         TP(CFrame.new(v.CFrame.X, 100, v.CFrame.Z))
     end
 end
