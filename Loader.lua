@@ -1,7 +1,7 @@
 print("Kaitun Loader | Ver 1")
 game.StarterGui:SetCore("SendNotification", {
     Title = "Danny Hub | Kaitun", 
-    Text = ""..Do.. " More Left",
+    Text = "",
     --Icon = "",
     Duration = 99999999
 })
