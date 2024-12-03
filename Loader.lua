@@ -2072,24 +2072,122 @@ task.spawn(function()
   end
 end)
 
-function BypassTeleport(Pos)
-    if (Pos.Position - plr.Character.HumanoidRootPart.Position).Magnitude < 10000 then
-        repeat
-            wait()
-            if plr.Character:FindFirstChild("PartTele") then
-                plr.Character.PartTele.CFrame = Pos
+
+        if World3 then
+            distbyp = 5000;
+            island = {
+                ["Port Town"] = CFrame.new( -290.7376708984375, 6.729952812194824, 5343.5537109375),
+                ["Hydra Island"] = CFrame.new(5749.7861328125 + 50 , 611.9736938476562, -276.2497863769531),
+                Mansion = CFrame.new( -12471.169921875 + 50 , 374.94024658203, -7551.677734375),
+                ["Castle On The Sea"] = CFrame.new( -5085.23681640625 + 50 , 316.5072021484375, -3156.202880859375),
+                ["Haunted Island"] = CFrame.new( -9547.5703125, 141.0137481689453, 5535.16162109375),
+                ["Great Tree"] = CFrame.new(2681.2736816406, 1682.8092041016, -7190.9853515625),
+                ["Candy Island"] = CFrame.new( -1106.076416015625, 13.016114234924316, -14231.9990234375),
+                ["Cake Island"] = CFrame.new( -1903.6856689453125, 36.70722579956055, -11857.265625),
+                ["Loaf Island"] = CFrame.new( -889.8325805664062, 64.72842407226562, -10895.8876953125),
+                ["Peanut Island"] = CFrame.new( -1943.59716796875, 37.012996673583984, -10288.01171875),
+                ["Cocoa Island"] = CFrame.new(147.35205078125, 23.642955780029297, -12030.5498046875),
+                ["Tiki Outpost"] = CFrame.new( -16234, 9, 416)
+            };
+        elseif World2 then
+            distbyp = 3500;
+            island = {
+                A = CFrame.new(753.14288330078, 408.23559570313, -5274.6147460938),
+                B = CFrame.new( -5622.033203125, 492.19604492188, -781.78552246094),
+                C = CFrame.new( -11.311455726624, 29.276733398438, 2771.5224609375),
+                D = CFrame.new( -2448.5300292969, 73.016105651855, -3210.6306152344),
+                E = CFrame.new( -380.47927856445, 77.220390319824, 255.82550048828),
+                F = CFrame.new( -3032.7641601563, 317.89672851563, -10075.373046875),
+                G = CFrame.new(6148.4116210938, 294.38687133789, -6741.1166992188),
+                H = CFrame.new(923.40197753906, 125.05712890625, 32885.875),
+                I = CFrame.new( -6127.654296875, 15.951762199402, -5040.2861328125)
+            };
+        elseif World1 then
+            distbyp = 1500;
+            island = {
+                A = CFrame.new(979.79895019531, 16.516613006592, 1429.0466308594),
+                B = CFrame.new( -2566.4296875, 6.8556680679321, 2045.2561035156),
+                C = CFrame.new(944.15789794922, 20.919729232788, 4373.3002929688),
+                D = CFrame.new( -1181.3093261719, 4.7514905929565, 3803.5456542969),
+                E = CFrame.new( -1612.7957763672, 36.852081298828, 149.12843322754),
+                F = CFrame.new( -690.33081054688, 15.09425163269, 1582.2380371094),
+                G = CFrame.new( -4607.82275, 872.54248, -1667.55688),
+                H = CFrame.new( -7952.31006, 5545.52832, -320.704956),
+                I = CFrame.new( -4914.8212890625, 50.963626861572, 4281.0278320313),
+                J = CFrame.new( -1427.6203613281, 7.2881078720093, -2792.7722167969),
+                K = CFrame.new(1347.8067626953, 104.66806030273, -1319.7370605469),
+                l = CFrame.new(5127.1284179688, 59.501365661621, 4105.4458007813),
+                M = CFrame.new(61163.8515625, 11.6796875, 1819.7841796875),
+                N = CFrame.new( -5247.7163085938, 12.883934020996, 8504.96875),
+                O = CFrame.new(4875.330078125, 5.6519818305969, 734.85021972656),
+                P = CFrame.new( -4813.0249, 903.708557, -1912.69055),
+                Q = CFrame.new( -4970.21875, 717.707275, -2622.35449)
+            };
+        end
+        local v36 = game.Players;
+        local v37 = v36.LocalPlayer;
+        local v38 = game:GetService("RunService");
+        local v39 = v38.Heartbeat;
+        local v40 = v38.RenderStepped;
+        local v41 = {};
+        getgenv().weapon = nil;
+        getgenv().targ = nil;
+        getgenv().lasttarrget = nil;
+        getgenv().checked = {};
+        getgenv().pl = v36:GetPlayers();
+        wait(1);
+        function BypassTeleport(v314)
+            if (v37.Character:FindFirstChild("Head") and v37.Character:FindFirstChild("HumanoidRootPart") and v37.Character:FindFirstChild("Humanoid")) then
+                dist = math.huge;
+                is = nil;
+                for v1638, v1639 in pairs(island) do
+                    if ((v314.Position - v1639.Position).magnitude < dist) then
+                        is = v1639;
+                        dist = (v314.Position - v1639.Position).magnitude;
+                    end
+                end
+                if (is == nil) then
+                    return;
+                end
+                if (v37:DistanceFromCharacter(v314.Position) > distbyp) then
+                    if ((v37.Character.Head.Position - v314.Position).magnitude > (is.Position - v314.Position).magnitude) then
+                        if tween then
+                            tween:Destroy();
+                        end
+                        if (((is.X == 61163.8515625) and (is.Y == 11.6796875) and (is.Z == 1819.7841796875)) or (is == CFrame.new( -12471.169921875 + 50 , 374.94024658203, -7551.677734375)) or (is == CFrame.new( -5085.23681640625 + 50 , 316.5072021484375, -3156.202880859375)) or (is == CFrame.new(5749.7861328125 + 50 , 611.9736938476562, -276.2497863769531))) then
+                            if tween then
+                                tween:Cancel();
+                            end
+                            repeat
+                                task.wait();
+                                v37.Character.HumanoidRootPart.CFrame = is;
+                            until v37.Character.PrimaryPart.CFrame == is
+                            task.wait(0.1);
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetSpawnPoint");
+                        elseif  not stopbypass then
+                            if tween then
+                                tween:Cancel();
+                            end
+                            repeat
+                                task.wait();
+                                v37.Character.HumanoidRootPart.CFrame = is;
+                            until v37.Character.PrimaryPart.CFrame == is
+                            game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid"):ChangeState(15);
+                            v37.Character:SetPrimaryPartCFrame(is);
+                            wait(0.1);
+                            v37.Character.Head:Destroy();
+                            wait(0.5);
+                            repeat
+                                task.wait();
+                                v37.Character.PrimaryPart.CFrame = is;
+                            until v37.Character:FindFirstChild("Humanoid").Health > 0
+                            task.wait(0.5);
+                        end
+                    end
+                end
             end
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Pos
-            game.Players.LocalPlayer.Character.Head:Destroy()
-            game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid"):ChangeState(15)
-            wait(2)
-            game.Players.LocalPlayer.Character.PrimaryPart.CFrame = Pos
-            wait(3)
-        until (Pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2000
-    else
-        Tween(Pos)
-    end
-end
+        end
+        local v47 = false;
 
 local TweenService = game:GetService("TweenService")
 local TeleportPos
@@ -2112,7 +2210,7 @@ local function toTarget(Tween_Pos)
     elseif block then
     if v48 then
         wait(1)
-        BypassTeleport(Pos)
+        BypassTeleport(Tween_Pos)
         end
         local tweenTime = Distance / getgenv().TweenSpeed
         if Distance <= 250 then
