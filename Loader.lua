@@ -3,7 +3,7 @@ game.StarterGui:SetCore("SendNotification", {
     Title = "Danny Hub | Kaitun", 
     Text = "".._G.Doing(''),
     --Icon = "",
-    Duration = 1
+    Duration = 99999999999
 })
 if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
 repeat wait() until game.Players
