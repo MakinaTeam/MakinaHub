@@ -2214,7 +2214,7 @@ local function toTarget(Tween_Pos)
         end
         local tweenTime = Distance / getgenv().TweenSpeed
         if Distance <= 250 then
-            tweenTime = Distance / tonumber(getgenv().TweenSpeed * 350)
+            tweenTime = Distance / (getgenv().TweenSpeed * 350)
         end
         if currentTween then
             currentTween:Pause()
