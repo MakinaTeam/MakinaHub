@@ -1,10 +1,17 @@
 print("Kaitun Loader | Ver 1")
 game.StarterGui:SetCore("SendNotification", {
     Title = "Danny Hub | Kaitun", 
-    Text = "".._G.Doing(''),
+    Text = ""..DoingText(''),
     --Icon = "",
-    Duration = 99999999999
+    Duration = 99999999
 })
+spawn(function()
+    while wait() do
+        pcall(function()
+            DoingText = _G.Doing
+        end)
+    end
+end)
 if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
 repeat wait() until game.Players
 repeat wait() until game.Players.LocalPlayer
