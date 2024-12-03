@@ -1123,37 +1123,31 @@ task.spawn(function()
   end
 end)
 
+getgenv().TweenSpeed = 350
+
 local TweenService = game:GetService("TweenService")
 local TeleportPos
 local currentTween 
 local function TP(Tween_Pos)
-    TeleportPos = Tween_Pos.p
-    local plrPP = Player.Character and Player.Character.PrimaryPart
-    if not plrPP then return end
-    local Distance = (plrPP.Position - Tween_Pos.p).Magnitude
-    local PortalPos = GetTPPos(Tween_Pos.p)
-    if Tween_Pos.p.Y < plrPP.Position.Y then
-        plrPP.CFrame = CFrame.new(plrPP.Position.X, Tween_Pos.p.Y, plrPP.Position.Z)
-    elseif Tween_Pos.p.Y > plrPP.Position.Y then
-        plrPP.CFrame = CFrame.new(plrPP.Position.X, Tween_Pos.p.Y, plrPP.Position.Z)
+  TeleportPos = Tween_Pos.p
+  local plrPP = Player.Character and Player.Character.PrimaryPart
+  if not plrPP then return end
+  local Distance = (plrPP.Position - Tween_Pos.p).Magnitude
+  local PortalPos = GetTPPos(Tween_Pos.p)
+  if (plrPP.Position - Tween_Pos.p).Magnitude > (Tween_Pos.p - PortalPos).Magnitude + 250 then
+    plrPP.CFrame = CFrame.new(PortalPos)
+    block.CFrame = CFrame.new(PortalPos)
+  elseif block then
+    if Distance <= 450 then
+      local tween = game:GetService("TweenService"):Create(block,
+      TweenInfo.new(Distance / tonumber(getgenv().TweenSpeed * 1.8), Enum.EasingStyle.Linear),
+      {CFrame = Tween_Pos}):Play()
+    else
+      local tween = game:GetService("TweenService"):Create(block,
+      TweenInfo.new(Distance / getgenv().TweenSpeed, Enum.EasingStyle.Linear),
+      {CFrame = Tween_Pos}):Play()
     end
-    if Distance > (Tween_Pos.p - PortalPos).Magnitude + 250 then
-        plrPP.CFrame = CFrame.new(PortalPos)
-        block.CFrame = CFrame.new(PortalPos)
-        task.wait(2) 
-    elseif block then
-        local tweenTime = Distance / getgenv().TweenSpeed
-        if Distance <= 250 then
-            tweenTime = Distance / tonumber(getgenv().TweenSpeed * 1.8)
-        end
-        if currentTween then
-            currentTween:Pause()
-        end
-        local tweenInfo = TweenInfo.new(tweenTime, Enum.EasingStyle.Linear)
-        local tweenGoal = {CFrame = Tween_Pos}
-        currentTween = TweenService:Create(block, tweenInfo, tweenGoal)
-        currentTween:Play()
-    end
+  end
 end
 
 local function stopTween()
