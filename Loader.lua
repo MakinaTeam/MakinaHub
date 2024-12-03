@@ -3584,7 +3584,7 @@ local function AutoRengoku()
   end
 end
 
-Tabs.GeneralTab:AddSection("Farm")
+Tabs.GeneralTab:AddSection("« Fishing »")
 
 Tabs.GeneralTab:AddToggle("Toggle", {
   Title = "Auto Farm Level",
