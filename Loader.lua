@@ -1,4 +1,5 @@
 if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
+loadstring(game:HttpGet("https://raw.githubusercontent.com/garnoog/BFMain/main/UIKaitun.lua"))()
 repeat wait() until game.Players
 repeat wait() until game.Players.LocalPlayer
 repeat wait() until game.ReplicatedStorage
