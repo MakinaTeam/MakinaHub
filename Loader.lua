@@ -983,269 +983,92 @@ end
 ------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------
 
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local VirtualUser = game:GetService("VirtualUser")
-local RunService = game:GetService("RunService")
-local Players = game:GetService("Players")
-local Player = Players.LocalPlayer
+function TP(p)
+    if W3 then
+        if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-p.Position).Magnitude > (Vector3.new(-12476.080078125, 374.9144592285156, -7566.93701171875)-p.Position).Magnitude then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-12476.080078125, 374.9144592285156, -7566.93701171875)) --Big Mansion
+        elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-p.Position).Magnitude > (Vector3.new(5742.9169921875, 610.7672729492188, -268.2395935058594)-p.Position).Magnitude then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(5742.9169921875, 610.7672729492188, -268.2395935058594)) --Hydra Island
+        elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-p.Position).Magnitude > (Vector3.new(-5076.99853515625, 314.8587341308594, -3151.824951171875)-p.Position).Magnitude then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-5076.99853515625, 314.8587341308594, -3151.824951171875)) --Castle on the Sea
+        elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-p.Position).Magnitude > (Vector3.new(-11993.580078125, 331.8077087402344, -8844.1826171875)-p.Position).Magnitude then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-11993.580078125, 331.8077087402344, -8844.1826171875)) --Canvender T
+        elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-p.Position).Magnitude > (Vector3.new(5314.58203125, 22.53643226623535, -125.94227600097656)-p.Position).Magnitude then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(5314.58203125, 22.53643226623535, -125.94227600097656)) --Canvender H
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.X, 60, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Z)
+        elseif (Vector3.new(-1990.672607421875, 4532.998046875, -14973.6748046875)-p.Position).Magnitude < 1500 and (Vector3.new(-1990.672607421875, 4532.998046875, -14973.6748046875)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 1500 then --Cake Prince
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2149.209228515625, 80.00882720947266, -12402.974609375)
+        elseif (Vector3.new(28609.388671875, 14896.8505859375, 105.2657241821289)-p.Position).Magnitude > 1500 and (Vector3.new(28609.388671875, 14896.8505859375, 105.2657241821289)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude < 1500 then --temple
+            TP(CFrame.new(28609.388671875, 14896.8505859375, 105.2657241821289))
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("RaceV4Progress","Check")
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("RaceV4Progress","TeleportBack")
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetLastSpawnPoint","GreatTree")
+        end
+    elseif W2 then
+        if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-p.Position).Magnitude > (Vector3.new(923.2125244140625, 125.40035247802734, 32852.83203125)-p.Position).Magnitude then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(923.2125244140625, 125.40035247802734, 32852.83203125)) --Ghost Ship
+        elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-p.Position).Magnitude > (Vector3.new(-286.6488037109375, 306.130615234375, 596.5967407226562)-p.Position).Magnitude then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-286.6488037109375, 306.130615234375, 596.5967407226562)) --ManSion
+        elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-p.Position).Magnitude > (Vector3.new(2283.7080078125, 15.277364730834961, 905.8712158203125)-p.Position).Magnitude then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(2283.7080078125, 15.277364730834961, 905.8712158203125)) --Sawn
+        elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-p.Position).Magnitude > (Vector3.new(-6505.7294921875, 83.31233978271484, -130.24234008789062)-p.Position).Magnitude then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6505.7294921875, 83.31233978271484, -130.24234008789062)) --Out Ghost Ship
+        end
+    elseif W1 then
+        if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-p.Position).Magnitude > (Vector3.new(3864.6884765625, 5.716391563415527, -1926.214111328125)-p.Position).Magnitude then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(3864.6884765625, 5.716391563415527, -1926.214111328125)) --Gate
+        elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-p.Position).Magnitude > (Vector3.new(61163.8515625, 5.650546073913574, 1819.7841796875)-p.Position).Magnitude then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(61163.8515625, 5.650546073913574, 1819.7841796875)) --Under Water
+        elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-p.Position).Magnitude > (Vector3.new(-7894.61767578125, 5545.8349609375, -380.29119873046875)-p.Position).Magnitude then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-7894.61767578125, 5545.8349609375, -380.29119873046875)) --Sky2
+        elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-p.Position).Magnitude > (Vector3.new(-4607.82275, 872.54248, -1667.55688)-p.Position).Magnitude then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-4607.82275, 872.54248, -1667.55688)) --Sky1
+        end
+    end
+        --local Distance = (p.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+    	--game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart,TweenInfo.new(Distance/300, Enum.EasingStyle.Linear),{CFrame = p}):Play()
+    	--game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.X, p.Y, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Z)
+    local RealtargetPos = {p}
+	local targetPos = RealtargetPos[1]
+	local RealTarget
+	if type(targetPos) == "vector" then
+		RealTarget = CFrame.new(targetPos)
+	elseif type(targetPos) == "userdata" then
+		RealTarget = targetPos
+	elseif type(targetPos) == "number" then
+		RealTarget = CFrame.new(unpack(RealtargetPos))
+	end
 
-local Remotes = ReplicatedStorage:WaitForChild("Remotes", 9e9)
-local CommF = Remotes:WaitForChild("CommF_", 9e9)
+	if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health == 0 then if tween then tween:Cancel() end repeat wait() until game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health > 0; wait(0.2) end
 
-local block = Instance.new("Part", workspace)
-block.Size = Vector3.new(1, 1, 1)
-block.Name = "windy dep trai"
-block.Anchored = true
-block.CanCollide = false
-block.CanTouch = false
-block.Transparency = 1
+	local tweenfunc = {}
+	local Distance = (RealTarget.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).Magnitude
+	if Distance < 1000 then
+		Speed = 315
+	elseif Distance >= 1000 then
+		Speed = 300
+	end
+    local tween_s = game:service"TweenService"
+	local info = TweenInfo.new((RealTarget.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).Magnitude/Speed, Enum.EasingStyle.Linear)
+	local tweenw, err = pcall(function()
+		tween = tween_s:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, {CFrame = RealTarget})
+		tween:Play()
+	end)
 
-local blockfind = workspace:FindFirstChild(block.Name)
-if blockfind and blockfind ~= block then
-  blockfind:Destroy()
+	function tweenfunc:Stop()
+		tween:Cancel()
+	end 
+
+	function tweenfunc:Wait()
+		tween.Completed:Wait()
+	end 
+
+	return tweenfunc
 end
 
-task.spawn(function()
-  while task.wait() do
-    if block and block.Parent == workspace then
-      if _G.AutoAdvanceDungeon 
-      or _G.AutoDoughtBoss
-      or _G.Auto_DungeonMobAura
-      or _G.AutoFarmChest
-      or _G.AutoFarmBossHallow
-      or _G.AutoFarmSwanGlasses
-      or _G.AutoLongSword
-      or _G.AutoBlackSpikeycoat
-      or _G.AutoElectricClaw
-      or _G.AutoFarmGunMastery
-      or _G.AutoHolyTorch
-      or _G.AutoLawRaid
-      or _G.AutoFarmBoss
-      or _G.AutoTwinHooks
-      or _G.AutoOpenSwanDoo
-      or _G.AutoDragon_Trident or AutoSaber or _G.NOCLIP or _G.AutoFarmFruitMastery or _G.AutoFarmGunMastery or _G.TeleportIsland or _G.Auto_EvoRace or _G.AutoFarmAllMsBypassType or _G.AutoObservationv2 or _G.AutoMusketeerHat or _G.AutoEctoplasm or _G.KillFishCrew or _G.KillTerrorShark or _G.KillShark or _G.KillPiranha or _G.AutoRengoku or _G.Auto_Rainbow_Haki or _G.AutoObservation or _G.RipIndraKill or _G.Safe_Mode or _G.MasteryFruit or _G.AutoBudySword or _G.AutoOderSword or _G.AutoBounty or _G.AutoAllBoss or _G.Auto_Bounty or _G.AutoSharkman or _G.Auto_Mastery_Fruit or _G.Auto_Mastery_Gun or _G.Auto_Dungeon or _G.Auto_Cavender or _G.AutoSeaBest or _G.Auto_Pole or _G.Auto_Kill_Ply or _G.Auto_Factory or _G.AutoSecondSea or _G.TeleportPly or _G.AutoBartilo or _G.Auto_DarkBoss or _G.GrabChest or _G.AutoFarmBounty or _G.Holy_Torch or _G.AutoFarm or _G.Clip or _G.AutoElitehunter or _G.AutoThirdSea or _G.Auto_Bone or _G.Autoheart or PirateShip or _G.Autodoughking or _G.AutoFarmMaterial or _G.QuestSoulGuitar or _G.Auto_Dragon_Trident or _G.Autotushita or _G.d or _G.Autowaden or _G.Autogay or _G.Autopole or _G.Autosaw or _G.AutoObservationHakiV2 or _G.AutoFarmNearest or AutoFarmChest or _G.AutoCarvender or _G.AutoTwinHook or AutoMobAura or _G.Tweenfruit or _G.AutoKai or _G.TeleportNPC or _G.Leather or _G.Auto_Wing or _G.Umm or _G.Makori_gay or Radioactive or Fish or Gunpowder or Dragon_Scale or Cocoafarm or Scrap or MiniHee or _G.AutoFarmSeabaest or Auto_Cursed_Dual_Katana or _G.AutoFarmMob or _G.AutoMysticIsland or _G.AutoFarmDungeon or _G.AutoRaidPirate or _G.AutoQuestRace or _G.TweenMGear or getgenv().AutoFarm or _G.RaidPirate or _G.AutoPlayerHunter or _G.AutoFactory or Grab_Chest or Tween_Fruit or KillPlayer or KillPlayerSpam or _G.SeaBeasts1 then
- 
-        getgenv().OnFarm = true
-      else
-        getgenv().OnFarm = false
-      end
-    else
-      getgenv().OnFarm = false
-    end
-  end
-end)
-
-task.spawn(function()
-  repeat task.wait()
-  until Player.Character and Player.Character.PrimaryPart
-  block.CFrame = Player.Character.PrimaryPart.CFrame
-  
-  while task.wait() do
-    pcall(function()
-      if getgenv().OnFarm then
-        if block and block.Parent == workspace then
-          local plrPP = Player.Character and Player.Character.PrimaryPart
-          
-          if plrPP and (plrPP.Position - block.Position).Magnitude <= 200 then
-            plrPP.CFrame = block.CFrame
-          else
-            block.CFrame = plrPP.CFrame
-          end
-        end
-        local plrChar = Player.Character
-        if plrChar then
-          for _,part in pairs(plrChar:GetChildren()) do
-            if part:IsA("BasePart") then
-              part.CanCollide = false
-            end
-          end
-          if plrChar:FindFirstChild("Stun") and plrChar.Stun.Value ~= 0 then
-            plrChar.Stun.Value = 0
-          end
-          if plrChar:FindFirstChild("Busy") and plrChar.Busy.Value then
-            plrChar.Busy.Value = false
-          end
-        end
-      else
-        local plrChar = Player.Character
-        if plrChar then
-          for _,part in pairs(plrChar:GetChildren()) do
-            if part:IsA("BasePart") then
-              part.CanCollide = true
-            end
-          end
-        end
-      end
-    end)
-  end
-end)
-
-task.spawn(function()
-  local PortalPos = {}
-  
-  if World1 then
-    PortalPos = {
-      Vector3.new(-4652, 873, -1754), -- Sky Island 1
-      Vector3.new(-7895, 5547, -380), -- Sky Island 2
-      Vector3.new(61164, 5, 1820), -- Under Water Island
-      Vector3.new(3865, 5, -1926) -- Under Water Island Entrace
-    }
-  elseif World2 then
-    PortalPos = {
-      Vector3.new(-317, 331, 597), -- Flamingo Mansion
-      Vector3.new(2283, 15, 867), -- Flamingo Room
-      Vector3.new(923, 125, 32853), -- Cursed Ship
-      Vector3.new(-6509, 83, -133) -- Zombie Island0
-    }
-  elseif World3 then
-    PortalPos = {
-      Vector3.new(-12471, 374, -7551), -- Mansion
-      Vector3.new(5756, 610, -282), -- Hydra Island
-      Vector3.new(-5092, 315, -3130), -- Castle on the Sea
-      Vector3.new(-12001, 332, -8861), -- Floating Turtle
-      Vector3.new(5319, 23, -93), -- Beautiful Pirate
-      Vector3.new(5314.58203, 22.5364361, -125.942276, 1, 2.14762768e-08, -1.99111154e-13, -2.14762768e-08, 1, -3.0510602e-08, 1.98455903e-13, 3.0510602e-08, 1), -- room bot cavender
-      Vector3.new(28286, 14897, 103) -- Temple of Time
-    }
-  end
-  
-  function GetTPPos(position)
-    local NearPos = math.huge
-    local TpPos = Vector3.new()
-    
-    table.foreach(PortalPos, function(___, pos)
-      if (pos - position).Magnitude <= NearPos then
-        NearPos = (pos - position).Magnitude
-        TpPos = pos
-      end
-    end)
-    return TpPos
-  end
-end)
-
-getgenv().TweenSpeed = 350
-
-local TweenService = game:GetService("TweenService")
-local TeleportPos
-local currentTween 
-local function TP(Tween_Pos)
-    TeleportPos = Tween_Pos.p
-    local plrPP = Player.Character and Player.Character.PrimaryPart
-    if not plrPP then return end
-    local Distance = (plrPP.Position - Tween_Pos.p).Magnitude
-    local PortalPos = GetTPPos(Tween_Pos.p)
-    if (plrPP.Position - Tween_Pos.p).Magnitude > (Tween_Pos.p - PortalPos).Magnitude + 250 then
-      plrPP.CFrame = CFrame.new(PortalPos)
-      block.CFrame = CFrame.new(PortalPos)
-    elseif block then
-      if Distance <= 450 then
-        local tween = game:GetService("TweenService"):Create(block,
-        TweenInfo.new(Distance / tonumber(getgenv().TweenSpeed * 1.8), Enum.EasingStyle.Linear),
-        {CFrame = Tween_Pos}):Play()
-      else
-        local tween = game:GetService("TweenService"):Create(block,
-        TweenInfo.new(Distance / getgenv().TweenSpeed, Enum.EasingStyle.Linear),
-        {CFrame = Tween_Pos}):Play()
-      end
-    end
-  end
-
-local function stopTween()
-    if currentTween then
-        currentTween:Cancel()
-        currentTween = nil
-    end
-end
-
-
-spawn(function()
-game:GetService("RunService").Heartbeat:Connect(function()
-    if _G.AutoAdvanceDungeon 
-      or _G.AutoDoughtBoss
-      or _G.Auto_DungeonMobAura
-      or _G.AutoFarmChest
-      or _G.AutoFarmBossHallow
-      or _G.AutoFarmSwanGlasses
-      or _G.AutoLongSword
-      or _G.AutoBlackSpikeycoat
-      or _G.AutoElectricClaw
-      or _G.AutoFarmGunMastery
-      or _G.AutoHolyTorch
-      or _G.AutoLawRaid
-      or _G.AutoFarmBoss
-      or _G.AutoTwinHooks
-      or _G.AutoOpenSwanDoo
-      or _G.AutoDragon_Trident or AutoSaber or _G.NOCLIP or _G.AutoFarmFruitMastery or _G.AutoFarmGunMastery or _G.TeleportIsland or _G.Auto_EvoRace or _G.AutoFarmAllMsBypassType or _G.AutoObservationv2 or _G.AutoMusketeerHat or _G.AutoEctoplasm or _G.KillFishCrew or _G.KillTerrorShark or _G.KillShark or _G.KillPiranha or _G.AutoRengoku or _G.Auto_Rainbow_Haki or _G.AutoObservation or _G.RipIndraKill or _G.Safe_Mode or _G.MasteryFruit or _G.AutoBudySword or _G.AutoOderSword or _G.AutoBounty or _G.AutoAllBoss or _G.Auto_Bounty or _G.AutoSharkman or _G.Auto_Mastery_Fruit or _G.Auto_Mastery_Gun or _G.Auto_Dungeon or _G.Auto_Cavender or _G.AutoSeaBest or _G.Auto_Pole or _G.Auto_Kill_Ply or _G.Auto_Factory or _G.AutoSecondSea or _G.TeleportPly or _G.AutoBartilo or _G.Auto_DarkBoss or _G.GrabChest or _G.AutoFarmBounty or _G.Holy_Torch or _G.AutoFarm or _G.Clip or _G.AutoElitehunter or _G.AutoThirdSea or _G.Auto_Bone or _G.Autoheart or PirateShip or _G.Autodoughking or _G.AutoFarmMaterial or _G.QuestSoulGuitar or _G.Auto_Dragon_Trident or _G.Autotushita or _G.d or _G.Autowaden or _G.Autogay or _G.Autopole or _G.Autosaw or _G.AutoObservationHakiV2 or _G.AutoFarmNearest or AutoFarmChest or _G.AutoCarvender or _G.AutoTwinHook or AutoMobAura or _G.Tweenfruit or _G.AutoKai or _G.TeleportNPC or _G.Leather or _G.Auto_Wing or _G.Umm or _G.Makori_gay or Radioactive or Fish or Gunpowder or Dragon_Scale or Cocoafarm or Scrap or MiniHee or _G.AutoFarmSeabaest or Auto_Cursed_Dual_Katana or _G.AutoFarmMob or _G.AutoMysticIsland or _G.AutoFarmDungeon or _G.AutoRaidPirate or _G.AutoQuestRace or _G.TweenMGear or getgenv().AutoFarm or _G.RaidPirate or _G.AutoPlayerHunter or _G.AutoFactory or Grab_Chest or Tween_Fruit or KillPlayer or KillPlayerSpam or _G.SeaBeasts1 then
-      if not game:GetService("Workspace"):FindFirstChild("LOL") then
-            local LOL = Instance.new("Part")
-            LOL.Name = "LOL"
-            LOL.Parent = game.Workspace
-            LOL.Anchored = true
-            LOL.Transparency = 1
-            LOL.Size = Vector3.new(1,-0.5,1)
-        elseif game:GetService("Workspace"):FindFirstChild("LOL") then
-            game.Workspace["LOL"].CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, -3.6, 0)
-        end
-    else
-        if game:GetService("Workspace"):FindFirstChild("LOL") then
-            game:GetService("Workspace"):FindFirstChild("LOL"):Destroy()
-        end
-    end
-end)
-end)
-
-function WaitHRP(q0) 
-    if not q0 then return end
-    return q0.Character:WaitForChild("HumanoidRootPart", 9) 
-end
-
-function TP2(Pos)
-    if game.Players.LocalPlayer.Character.Humanoid.Health > 0 and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
-        local Distance = (Pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
-        if not Pos then 
-            return 
-        end
-        if not game.Players.LocalPlayer.Character:FindFirstChild("PartTele") then
-            local PartTele = Instance.new("Part", game.Players.LocalPlayer.Character) -- Create part
-            PartTele.Size = Vector3.new(1,1,1)
-            PartTele.Name = "PartTele"
-            PartTele.Anchored = true
-            PartTele.Transparency = 1
-            PartTele.CanCollide = false
-            PartTele.CFrame = WaitHRP(game.Players.LocalPlayer).CFrame 
-            PartTele:GetPropertyChangedSignal("CFrame"):Connect(function()
-                task.wait()
-                WaitHRP(game.Players.LocalPlayer).CFrame = PartTele.CFrame
-            end)
-        end
-        local itzwindy = game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.PartTele, TweenInfo.new(Distance / getgenv().TweenSpeed, Enum.EasingStyle.Linear), {CFrame = Pos})
-        itzwindy:Play()
-      end
-    end
-    
-    local function StopTween()
-    if _G.StopTween then
-        return
-    end
-    
-    _G.StopTween = true
-    wait()
-    local player = game.Players.LocalPlayer
-    local character = player.Character
-    if character and character:IsDescendantOf(game.Workspace) then
-        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
-        if humanoidRootPart then
-            humanoidRootPart.CFrame = humanoidRootPart.CFrame
-        end
-    end
-    wait()    
-    if character:FindFirstChild("BodyClip") then
-        character.BodyClip:Destroy()
-    end
-    if character:FindFirstChild("PartTele") then
-        character.PartTele:Destroy()
-    end
-    _G.StopTween = false
+function StopTween()
+    tweenfunc:Stop()
+    TP(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
 end
 ------------------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------
@@ -1407,18 +1230,6 @@ spawn(function()
     end
 end)
 
-local plr = game.Players.LocalPlayer
-local CbFw = getupvalues(require(plr.PlayerScripts.CombatFramework))
-local CbFw2 = CbFw[2]
-
-function GetCurrentBlade() 
-    local p13 = CbFw2.activeController
-    local ret = p13.blades[1]
-    if not ret then return end
-    while ret.Parent~=game.Players.LocalPlayer.Character do ret=ret.Parent end
-    return ret
-end
-
 spawn(function()
     while wait() do
         pcall(function()
@@ -1429,59 +1240,180 @@ spawn(function()
     end
 end)
 
-function AttackNoCD()
-    if not Auto_Farm_Bounty and not Auto_Farm_Fruit or Mix_Farm then
-        if game:GetService("Workspace").Characters[game:GetService("Players").LocalPlayer.Name].Stun.Value == 0 then
-            if not Auto_Raid then
-                local AC = CbFw2.activeController
-                for i = 1, 1 do
-                    local bladehit =
-                        require(game.ReplicatedStorage.CombatFramework.RigLib).getBladeHits(
-                        plr.Character,
-                        {plr.Character.HumanoidRootPart},
-                        60
-                    )
-                    local cac = {}
-                    local hash = {}
-                    for k, v in pairs(bladehit) do
-                        if v.Parent:FindFirstChild("HumanoidRootPart") and not hash[v.Parent] then
-                            table.insert(cac, v.Parent.HumanoidRootPart)
-                            hash[v.Parent] = true
-                        end
+if not LPH_OBFUSCATED then
+	LPH_JIT_MAX = (function(...) return ... end)
+	LPH_NO_VIRTUALIZE = (function(...) return ... end)
+	LPH_NO_UPVALUES = (function(...) return ... end)
+end
+NoAttackAnimation = true
+local DmgAttack = game:GetService("ReplicatedStorage").Assets.GUI:WaitForChild("DamageCounter")
+local PC = require(game.Players.LocalPlayer.PlayerScripts.CombatFramework.Particle)
+local plr = game.Players.LocalPlayer
+local RL = require(game:GetService("ReplicatedStorage").CombatFramework.RigLib)
+local oldRL = RL.wrapAttackAnimationAsync
+RL.wrapAttackAnimationAsync = function(a, b, c, d, func)
+    if not NoAttackAnimation then
+        return oldRL(a, b, c, 60, func)
+    end
+    local Hits = {}
+    local Client = game.Players.LocalPlayer
+    local Characters = game:GetService("Workspace").Characters:GetChildren()
+    for i, v in pairs(Characters) do
+        local Human = v:FindFirstChildOfClass("Humanoid")
+        if v.Name ~= game.Players.LocalPlayer.Name and Human and Human.RootPart and Human.Health > 0 and Client:DistanceFromCharacter(Human.RootPart.Position) < 65 then
+            table.insert(Hits, Human.RootPart)
+        end
+    end
+    local Enemies = game:GetService("Workspace").Enemies:GetChildren()
+    for i, v in pairs(Enemies) do
+        local Human = v:FindFirstChildOfClass("Humanoid")
+        if Human and Human.RootPart and Human.Health > 0 and Client:DistanceFromCharacter(Human.RootPart.Position) < 65 then
+            table.insert(Hits, Human.RootPart)
+        end
+    end
+    a:Play(0.01, 0.01, 0.01)
+    pcall(func, Hits)
+end
+getAllBladeHits = LPH_NO_VIRTUALIZE(function(Sizes)
+    local Hits = {}
+    local Client = game.Players.LocalPlayer
+    local Enemies = game:GetService("Workspace").Enemies:GetChildren()
+    for i, v in pairs(Enemies) do
+        local Human = v:FindFirstChildOfClass("Humanoid")
+        if Human and Human.RootPart and Human.Health > 0 and Client:DistanceFromCharacter(Human.RootPart.Position) < Sizes + 5 then
+            table.insert(Hits, Human.RootPart)
+        end
+    end
+    return Hits
+end)
+getAllBladeHitsPlayers = LPH_NO_VIRTUALIZE(function(Sizes)
+    local Hits = {}
+    local Client = game.Players.LocalPlayer
+    local Characters = game:GetService("Workspace").Characters:GetChildren()
+    for i, v in pairs(Characters) do
+        local Human = v:FindFirstChildOfClass("Humanoid")
+        if v.Name ~= game.Players.LocalPlayer.Name and Human and Human.RootPart and Human.Health > 0 and Client:DistanceFromCharacter(Human.RootPart.Position) < Sizes + 5 then
+            table.insert(Hits, Human.RootPart)
+        end
+    end
+    return Hits
+end)
+local CombatFramework = require(game:GetService("Players").LocalPlayer.PlayerScripts:WaitForChild("CombatFramework"))
+local CombatFrameworkR = getupvalues(CombatFramework)[2]
+local RigEven = game:GetService("ReplicatedStorage").RigControllerEvent
+local AttackAnim = Instance.new("Animation")
+local AttackCoolDown = 0
+local cooldowntickFire = 0
+local MaxFire = 1000
+local FireCooldown = 0.01
+local FireL = 0
+local bladehit = {}
+CancelCoolDown = LPH_JIT_MAX(function()
+    local ac = CombatFrameworkR.activeController
+    if ac and ac.equipped then
+        AttackCoolDown = tick() + (FireCooldown or 0.01) + ((FireL / MaxFire) * 0.3)
+        RigEven.FireServer(RigEven, "weaponChange", ac.currentWeaponModel.Name)
+        FireL = FireL + 1
+        task.delay((FireCooldown or 0.01) + ((FireL + 0.1 / MaxFire) * 0.1), function()
+            FireL = FireL - 1
+        end)
+    end
+end)
+AttackFunction = LPH_JIT_MAX(function(typef)
+    local ac = CombatFrameworkR.activeController
+    if ac and ac.equipped then
+        local bladehit = require(game.ReplicatedStorage.CombatFramework.RigLib).getBladeHits(
+            plr.Character,
+            {plr.Character.HumanoidRootPart},
+            60
+        )
+        local cac = {}
+        local hash = {}      
+        if #bladehit > 0 then
+            pcall(task.spawn, ac.attack, ac)
+            if tick() > AttackCoolDown then
+                CancelCoolDown()
+            end
+            if tick() - cooldowntickFire > 0.1 then
+                ac.timeToNextAttack = 0
+                ac.hitboxMagnitude = 60
+                pcall(task.spawn, ac.attack, ac)
+                cooldowntickFire = tick()
+            end
+            local AMI3 = ac.anims.basic[3]
+            local AMI2 = ac.anims.basic[2]
+            local REALID = AMI3 or AMI2
+            AttackAnim.AnimationId = REALID
+            local StartP = ac.humanoid:LoadAnimation(AttackAnim)
+            StartP:Play(0.01, 0.01, 0.01)
+            RigEven.FireServer(RigEven, "hit", bladehit, AMI3 and 3 or 2, "")
+            task.delay(0, function()
+                StartP:Stop()
+            end)
+        end
+    end
+end)
+function CheckStun()
+    if game:GetService('Players').LocalPlayer.Character:FindFirstChild("Stun") then
+        return game:GetService('Players').LocalPlayer.Character.Stun.Value ~= 0
+    end
+    return false
+end
+LPH_JIT_MAX(function()
+    spawn(function()
+        while game:GetService("RunService").Stepped:Wait() do
+            local ac = CombatFrameworkR.activeController
+            if ac and ac.equipped and not CheckStun() then
+                if NeedAttacking and Fast_Attack then
+                    task.spawn(function()
+                        pcall(task.spawn, AttackFunction, 1)
+                    end)
+                elseif DamageAura then
+                    task.spawn(function()
+                        pcall(task.spawn, AttackFunction, 3)
+                    end)
+                elseif UsefastattackPlayers and Fast_Attack then
+                    task.spawn(function()
+                        pcall(task.spawn, AttackFunction, 2)
+                    end)
+                elseif NeedAttacking and Fast_Attack == false then
+                    if ac.hitboxMagnitude ~= 55 then
+                        ac.hitboxMagnitude = 55
                     end
-                    bladehit = cac
-                    if #bladehit > 0 then
-                        local u8 = debug.getupvalue(AC.attack, 5)
-                        local u9 = debug.getupvalue(AC.attack, 6)
-                        local u7 = debug.getupvalue(AC.attack, 4)
-                        local u10 = debug.getupvalue(AC.attack, 7)
-                        local u12 = (u8 * 798405 + u7 * 727595) % u9
-                        local u13 = u7 * 798405
-                        (function()
-                            u12 = (u12 * u9 + u13) % 1099511627776
-                            u8 = math.floor(u12 / u9)
-                            u7 = u12 - u8 * u9
-                        end)()
-                        u10 = u10 + 1
-                        debug.setupvalue(AC.attack, 5, u8)
-                        debug.setupvalue(AC.attack, 6, u9)
-                        debug.setupvalue(AC.attack, 4, u7)
-                        debug.setupvalue(AC.attack, 7, u10)
-                        task.wait(0.01)
-                        pcall(function()
-                            if plr.Character:FindFirstChildOfClass("Tool") and AC.blades and AC.blades[1] then
-                                AC.animator.anims.basic[3]:Play(0.01,0.01,0.01)
-                                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(GetCurrentBlade()))
-                                game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(u12 / 1099511627776 * 16777215),u10)
-                                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit",bladehit,i,"")
-                            end
-                        end)
-                    end
+                    pcall(task.spawn, ac.attack, ac)
                 end
             end
         end
-    end
-end
+    end)
+end)()
+
+Fast_Attack = true
+DamageAura = true
+ClickNoCooldown = true
+DmgAttack.Enabled = not true
+NeedAttacking = true
+UsefastattackPlayers = true
+
+local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
+Mouse.Button1Down:Connect(function()
+	if ClickNoCooldown then
+		local ac = CombatFrameworkR.activeController
+		if ac and ac.equipped then
+			ac.hitboxMagnitude = 55
+			pcall(AttackFunction)
+		end
+	end
+end)
+
+spawn(function()
+                while wait() do
+                    pcall(function()
+                    local Camera = require(game.ReplicatedStorage.Util.CameraShaker)
+                    Camera:Stop()
+                    end)
+                end
+            end)
+
 spawn(function()
 	while wait() do
 		pcall(function()
