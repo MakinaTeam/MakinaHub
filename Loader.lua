@@ -2110,6 +2110,10 @@ local function toTarget(Tween_Pos)
         block.CFrame = CFrame.new(PortalPos)
         task.wait(2) 
     elseif block then
+    if v48 then
+        wait(1)
+        BypassTeleport(Tween_Pos)
+        end
         local tweenTime = Distance / getgenv().TweenSpeed
         if Distance <= 250 then
             tweenTime = Distance / tonumber(getgenv().TweenSpeed * 1.8)
