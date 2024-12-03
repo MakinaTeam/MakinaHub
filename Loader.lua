@@ -1,6 +1,6 @@
 if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
 
-loadstring(game:HttpGet("https://pastebin.com/raw/ddxg9F4D"))()
+loadstring(game:HttpGet("https://pastebin.com/raw/rDNhv83y"))()
 
 repeat wait() until game.Players
 repeat wait() until game.Players.LocalPlayer
