@@ -1,35 +1,4 @@
 print("Kaitun Loader | Ver 1")
-local ScreenGui = Instance.new("ScreenGui")
-local TextLabel = Instance.new("TextLabel")
-local UIGradient = Instance.new("UIGradient")
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-TextLabel.Parent = ScreenGui
-TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.BackgroundTransparency = 1.000
-TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel.BorderSizePixel = 0
-TextLabel.Position = UDim2.new(0.359138072, 0, -0.025062656, 0)
-TextLabel.Size = UDim2.new(0, 200, 0, 50)
-TextLabel.Font = Enum.Font.FredokaOne
-TextLabel.Text = ""
-TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.TextSize = 19.000
-
-UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(0.01, Color3.fromRGB(255, 0, 242)), ColorSequenceKeypoint.new(0.16, Color3.fromRGB(59, 200, 251)), ColorSequenceKeypoint.new(0.35, Color3.fromRGB(247, 0, 255)), ColorSequenceKeypoint.new(0.68, Color3.fromRGB(8, 255, 214)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(114, 187, 255))}
-UIGradient.Parent = TextLabel
-
-spawn(function()
-    while wait() do
-        pcall(function()
-            TextLabel.Text = _G.Doing
-            RealBeli.Text = tostring(formatNumber(game:GetService("Players").LocalPlayer.Data.Beli.Value))
-            RealFragment.Text = tostring(formatNumber(game:GetService("Players").LocalPlayer.Data.Fragments.Value))
-            RealLevel.Text = tostring(game:GetService("Players").LocalPlayer.Data.Level.Value)
-        end)
-    end
-end)
-
 if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
 repeat wait() until game.Players
 repeat wait() until game.Players.LocalPlayer
@@ -1923,7 +1892,7 @@ function FindFruit()
     end
 end
 function CollectFruit()
-	_G.Doing = "Task | find Fruit"
+	_G.Doing = "Task | Find Fruit"
     if FindFruit() then
         v = FindFruit()
         repeat wait()
