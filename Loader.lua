@@ -1267,7 +1267,7 @@ function TPB(Pos)
         end
         pcall(function() didididididi = game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.PartTele,TweenInfo.new(Distance/getgenv().TweenSpeed, Enum.EasingStyle.Linear),{CFrame = Pos}) end)
         didididididi:Play()
-        if Distance <= 500 then
+        if Distance <= 1000 then
                 didididididi:Cancel()
                 game.Players.LocalPlayer.Character.PartTele.CFrame = Pos
             end
@@ -2011,7 +2011,7 @@ function FindPole()
     end
 end
 function FarmPole()
-	_G.Doing = "Task | Findm Pole"
+	_G.Doing = "Task | Find Pole"
     if FindPole() then
         v = FindPole()
     	repeat wait()
@@ -2038,7 +2038,7 @@ function CollectFruit()
     end
 end
 function SaberQuest()
-	_G.Doing = "Task | Doing Saber Quest"
+	_G.Doing = "Task | Saber Quest"
      game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
     if game:GetService("Workspace").Map.Jungle.Final.Part.Transparency == 0 then
         if game:GetService("Workspace").Map.Jungle.QuestPlates.Door.Transparency == 0 then
@@ -2230,7 +2230,7 @@ function FindMonBartilo1()
     end
 end
 function BartiloQuest1()
-	_G.Doing = "Task | Doing Bartilo Quest 1/3"
+	_G.Doing = "Task | Bartilo Quest 1/3"
     if string.find(game.Players.LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Swan Pirates") and string.find(game.Players.LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "50") and game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == true then
         if FindMonBartilo1() then
             v = FindMonBartilo1()
@@ -2262,7 +2262,7 @@ function FindMonBartilo2()
     end
 end
 function BartiloQuest2()
-	_G.Doing = "Task | Doing Bartilo Quest 2/3"
+	_G.Doing = "Task | Bartilo Quest 2/3"
     if FindMonBartilo2() then
         v = FindMonBartilo2()
         repeat wait()
@@ -2274,7 +2274,7 @@ function BartiloQuest2()
     end
 end
 function BartiloQuest3()
-	_G.Doing = "Task | Doing Bartilo Quest 3/3"
+	_G.Doing = "Task | Bartilo Quest 3/3"
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1850.49329, 13.1789551, 1750.89685)
 	wait()
 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1858.87305, 19.3777466, 1712.01807)
@@ -2463,7 +2463,7 @@ function FindIndraQuest()
     end
 end
 function gotoworld3()
-	_G.Doing = "Task | Doing Quest World 3"
+	_G.Doing = "Task | Quest World 3"
     if FindIndraQuest() then
         v = FindIndraQuest()
         repeat wait()
