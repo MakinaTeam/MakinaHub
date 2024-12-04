@@ -1,35 +1,133 @@
+print("Kaitun Loader | Ver 1")
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/garnoog/BFMain/main/UIKaitun.lua"))()
+
+local Notify_DM = Instance.new("ScreenGui")
+local NotifyList = Instance.new("Frame")
+local UIListLayout = Instance.new("UIListLayout")
+Notify_DM.Name = "Notify_DM"
+Notify_DM.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+Notify_DM.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+NotifyList.Name = "NotifyList"
+NotifyList.Parent = Notify_DM
+NotifyList.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+NotifyList.BackgroundTransparency = 1.000
+NotifyList.BorderColor3 = Color3.fromRGB(0, 0, 0)
+NotifyList.BorderSizePixel = 0
+NotifyList.Position = UDim2.new(0.780645132, 0, 0, 0)
+NotifyList.Size = UDim2.new(0, 190, 0, 504)
+
+UIListLayout.Parent = NotifyList
+UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Top
+UIListLayout.Padding = UDim.new(0, 5)
+
+local Tw = game:GetService("TweenService")
+local Tf = TweenInfo.new(0.2, Enum.EasingStyle.Quart, Enum.EasingDirection.Out)
+
+Notify = {}
+function Notify.new(Title,SupTitle,Sec)
+
+    local NotifyTemple = Instance.new("Frame")
+    local CornerTemple = Instance.new("UICorner")
+    local Frame = Instance.new("Frame")
+    local UICorner = Instance.new("UICorner")
+    local Close = Instance.new("TextButton")
+    local Main = Instance.new("TextLabel")
+    local Sup = Instance.new("TextLabel")
+
+    NotifyTemple.Name = "NotifyTemple"
+    NotifyTemple.Parent = NotifyList
+    NotifyTemple.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    NotifyTemple.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    NotifyTemple.BorderSizePixel = 0
+    NotifyTemple.Position = UDim2.new(0.264976948, 0, 0.390873015, 0)
+    NotifyTemple.Size = UDim2.new(0, 0, 0, 40)
+
+    CornerTemple.Name = "CornerTemple"
+    CornerTemple.Parent = NotifyTemple
+
+    Frame.Parent = NotifyTemple
+    Frame.BackgroundColor3 = Color3.fromRGB(255, 204, 0)
+    Frame.BorderColor3 = Color3.fromRGB(255, 255, 0)
+    Frame.BorderSizePixel = 0
+    Frame.Size = UDim2.new(0, 6, 0, 40)
+    Frame.ZIndex = 2
+
+    UICorner.Parent = Frame
+
+    Close.Name = "Close"
+    Close.Parent = NotifyTemple
+    Close.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Close.BackgroundTransparency = 1.000
+    Close.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Close.BorderSizePixel = 0
+    Close.Position = UDim2.new(0.837499976, 0, 0.25, 0)
+    Close.Size = UDim2.new(0, 20, 0, 20)
+    Close.Font = Enum.Font.FredokaOne
+    Close.Text = "X"
+    Close.TextColor3 = Color3.fromRGB(255, 204, 0)
+    Close.TextScaled = true
+    Close.TextSize = 14.000
+    Close.TextWrapped = true
+
+    Main.Name = "Main"
+    Main.Parent = NotifyTemple
+    Main.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Main.BackgroundTransparency = 1.000
+    Main.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Main.BorderSizePixel = 0
+    Main.Position = UDim2.new(0.0375000015, 0, 0, 0)
+    Main.Size = UDim2.new(0, 148, 0, 19)
+    Main.Font = Enum.Font.FredokaOne
+    Main.Text = Title
+    Main.TextColor3 = Color3.fromRGB(255, 204, 0)
+    Main.TextSize = 12.000
+    Main.TextXAlignment = Enum.TextXAlignment.Left
+
+    Sup.Name = "Sup"
+    Sup.Parent = NotifyTemple
+    Sup.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Sup.BackgroundTransparency = 1.000
+    Sup.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Sup.BorderSizePixel = 0
+    Sup.Position = UDim2.new(0.0375000648, 0, 0.474999994, 0)
+    Sup.Size = UDim2.new(0, 148, 0, 19)
+    Sup.Font = Enum.Font.FredokaOne
+    Sup.Text = SupTitle
+    Sup.TextColor3 = Color3.fromRGB(255, 250, 99)
+    Sup.TextSize = 12.000
+    Sup.TextXAlignment = Enum.TextXAlignment.Left
+
+    Close.MouseButton1Click:Connect(function()
+        Tw:Create(NotifyTemple,Tf,{BackgroundTransparency = 1}):Play()
+        Tw:Create(Main,Tf,{TextTransparency = 1}):Play()
+        Tw:Create(Sup,Tf,{TextTransparency = 1}):Play()
+        Tw:Create(Close,Tf,{TextTransparency = 1}):Play()
+        Tw:Create(Frame,Tf,{BackgroundTransparency = 1}):Play()
+        task.wait(.27)
+        NotifyTemple:Destroy()
+    end)
+
+    Tw:Create(NotifyTemple,Tf,{Size = UDim2.new(0, 187, 0, 40)}):Play()
+
+    task.spawn(function()
+        task.wait(Sec)
+        Tw:Create(NotifyTemple,Tf,{BackgroundTransparency = 1}):Play()
+        Tw:Create(Main,Tf,{TextTransparency = 1}):Play()
+        Tw:Create(Sup,Tf,{TextTransparency = 1}):Play()
+        Tw:Create(Close,Tf,{TextTransparency = 1}):Play()
+        Tw:Create(Frame,Tf,{BackgroundTransparency = 1}):Play()
+        task.wait(.27)
+        NotifyTemple:Destroy()
+    end)
+
+    return Notify
+end
+Notify.new("Dummy Hub | Loading","Kaitun Mode",5)
+
 if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
-
-local ScreenGui = Instance.new("ScreenGui")
-local TextLabel = Instance.new("TextLabel")
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-TextLabel.Parent = ScreenGui
-TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.BackgroundTransparency = 1.000
-TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel.BorderSizePixel = 0
-TextLabel.Position = UDim2.new(0.5, 0, 0.22, 0)
-TextLabel.Size = UDim2.new(0, 200, 0, 50)
-TextLabel.Font = Enum.Font.FredokaOne
-TextLabel.Text = ""
-TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.TextSize = 19.000
-
-spawn(function()
-    while wait() do
-        pcall(function()
-            TextLabel.Text = _G.Doing
-            RealBeli.Text = tostring(formatNumber(game:GetService("Players").LocalPlayer.Data.Beli.Value))
-            RealFragment.Text = tostring(formatNumber(game:GetService("Players").LocalPlayer.Data.Fragments.Value))
-            RealLevel.Text = tostring(game:GetService("Players").LocalPlayer.Data.Level.Value)
-        end)
-    end
-end)
-
-
-loadstring(game:HttpGet("https://pastebin.com/raw/im9UmM84"))()
-
 repeat wait() until game.Players
 repeat wait() until game.Players.LocalPlayer
 repeat wait() until game.ReplicatedStorage
@@ -1099,54 +1197,6 @@ function StopTween()
     TP(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
 end
 
-function WaitHRP(q0) 
-    if not q0 then return end
-    return q0.Character:WaitForChild("HumanoidRootPart", 9) 
-end 
-
-function WaitHRP(v315)
-    if  not v315 then
-        return;
-    end
-    return v315.Character:WaitForChild("HumanoidRootPart", 9);
-end
-
-getgenv().TweenSpeed = 350
-_G.FastTeleport = true
-function TPB(Pos)
-    if game.Players.LocalPlayer.Character.Humanoid.Health > 0 and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
-        local Distance = (Pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
-        if _G.FastTeleport then
-        if Distance >= 1000 then          game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Pos
-              game.Players.LocalPlayer.Character.Humanoid.Health =- math.huge         
-          end
-       end            		
-        if not Pos then 
-            return
-        end
-        if not game.Players.LocalPlayer.Character:FindFirstChild("PartTele") then
-            local PartTele = Instance.new("Part", game.Players.LocalPlayer.Character)
-            PartTele.Size = Vector3.new(5,2,5)
-            PartTele.Name = "PartTele"
-            PartTele.Anchored = true
-            PartTele.Transparency = 1
-            PartTele.CanCollide = false
-            PartTele.CFrame = WaitHRP(game.Players.LocalPlayer).CFrame 
-            PartTele:GetPropertyChangedSignal("CFrame"):Connect(function()
-                task.wait()
- WaitHRP(game.Players.LocalPlayer).CFrame = PartTele.CFrame
-            end)
-        end
-        pcall(function() didididididi = game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.PartTele,TweenInfo.new(Distance/getgenv().TweenSpeed, Enum.EasingStyle.Linear),{CFrame = Pos}) end)
-        didididididi:Play()
-        if Distance <= 1000 then
-                didididididi:Cancel()
-                game.Players.LocalPlayer.Character.PartTele.CFrame = Pos
-            end
-            didididididi:Play()
-    end
-end
-
 function EquipWeapon(ToolSe)
 	if game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe) then
 		local tool = game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe)
@@ -1304,6 +1354,18 @@ spawn(function()
     end
 end)
 
+local plr = game.Players.LocalPlayer
+local CbFw = getupvalues(require(plr.PlayerScripts.CombatFramework))
+local CbFw2 = CbFw[2]
+
+function GetCurrentBlade() 
+    local p13 = CbFw2.activeController
+    local ret = p13.blades[1]
+    if not ret then return end
+    while ret.Parent~=game.Players.LocalPlayer.Character do ret=ret.Parent end
+    return ret
+end
+
 spawn(function()
     while wait() do
         pcall(function()
@@ -1314,6 +1376,59 @@ spawn(function()
     end
 end)
 
+function AttackNoCD()
+    if not Auto_Farm_Bounty and not Auto_Farm_Fruit or Mix_Farm then
+        if game:GetService("Workspace").Characters[game:GetService("Players").LocalPlayer.Name].Stun.Value == 0 then
+            if not Auto_Raid then
+                local AC = CbFw2.activeController
+                for i = 1, 1 do
+                    local bladehit =
+                        require(game.ReplicatedStorage.CombatFramework.RigLib).getBladeHits(
+                        plr.Character,
+                        {plr.Character.HumanoidRootPart},
+                        60
+                    )
+                    local cac = {}
+                    local hash = {}
+                    for k, v in pairs(bladehit) do
+                        if v.Parent:FindFirstChild("HumanoidRootPart") and not hash[v.Parent] then
+                            table.insert(cac, v.Parent.HumanoidRootPart)
+                            hash[v.Parent] = true
+                        end
+                    end
+                    bladehit = cac
+                    if #bladehit > 0 then
+                        local u8 = debug.getupvalue(AC.attack, 5)
+                        local u9 = debug.getupvalue(AC.attack, 6)
+                        local u7 = debug.getupvalue(AC.attack, 4)
+                        local u10 = debug.getupvalue(AC.attack, 7)
+                        local u12 = (u8 * 798405 + u7 * 727595) % u9
+                        local u13 = u7 * 798405
+                        (function()
+                            u12 = (u12 * u9 + u13) % 1099511627776
+                            u8 = math.floor(u12 / u9)
+                            u7 = u12 - u8 * u9
+                        end)()
+                        u10 = u10 + 1
+                        debug.setupvalue(AC.attack, 5, u8)
+                        debug.setupvalue(AC.attack, 6, u9)
+                        debug.setupvalue(AC.attack, 4, u7)
+                        debug.setupvalue(AC.attack, 7, u10)
+                        task.wait(0.01)
+                        pcall(function()
+                            if plr.Character:FindFirstChildOfClass("Tool") and AC.blades and AC.blades[1] then
+                                AC.animator.anims.basic[3]:Play(0.01,0.01,0.01)
+                                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(GetCurrentBlade()))
+                                game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(u12 / 1099511627776 * 16777215),u10)
+                                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit",bladehit,i,"")
+                            end
+                        end)
+                    end
+                end
+            end
+        end
+    end
+end
 spawn(function()
 	while wait() do
 		pcall(function()
@@ -1742,7 +1857,7 @@ function GetQuest()
         wait(.5)
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest", NameQuest, QuestLv)
     else
-		_G.Doing = "Task | Get Questing Level"
+		_G.Doing = "Get Quest Level"
         TP(NPCPos())
     end
 end
@@ -1760,7 +1875,7 @@ function FindSkyMonster()
     end
 end
 function FarmSkyMonter()
-	_G.Doing = "Task | Farm Sky Monster"
+	_G.Doing = "Farm Sky Monster"
     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
     if FindSkyMonster() then
         v = FindSkyMonster()
@@ -1770,6 +1885,7 @@ function FarmSkyMonter()
     	    v.HumanoidRootPart.Size = Vector3.new(50,50,50)
     		EquipWeapon(Weapon)
             TP(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+    		AttackNoCD()
     	until not Startk or not v or not v:FindFirstChild("Humanoid") or not v:FindFirstChild("HumanoidRootPart") or v.Humanoid.Health <= 0 
     	
         StatrMagnet = false
@@ -1789,7 +1905,7 @@ function FarmLevelOO()
 			if _G.SelectBoss ~= nil and game.Workspace.Enemies:FindFirstChild(_G.SelectBoss) or _G.SelectBoss ~= nil and game.ReplicatedStorage:FindFirstChild(_G.SelectBoss) then
                 CheckQuestBoss()
                 repeat wait()
-                    _G.Doing = "Task | Get Questing Level"
+                    _G.Doing = "Get Quest Level"
                     TP(CFrameQBoss)
                 until (CFrameQBoss.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude < 10
                 wait(1)
@@ -1799,7 +1915,7 @@ function FarmLevelOO()
             elseif SelectMonster ~= nil then
                 CheckLevel()
                 repeat wait()
-                    _G.Doing = "Task | Get Questing Level"
+                    _G.Doing = "Get Quest Level"
                     TP(CFrameQ)
                 until (CFrameQ.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude < 10
                 wait(1)
@@ -1811,7 +1927,7 @@ function FarmLevelOO()
                 StatrMagnet = nil
                 CheckLevel()
                 repeat wait()
-                    _G.Doing = "Task | Get Questing Level"
+                    _G.Doing = "Get Quest Level"
                     TP(CFrameQ)
                 until (CFrameQ.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude < 10
                 wait(1)
@@ -1832,10 +1948,11 @@ function FarmLevelOO()
 						v.HumanoidRootPart.CanCollide = false
 						StatrMagnet = nil
 						repeat wait()
-							_G.Doing = "Task | Farm Boss"
+							_G.Doing = "Farm Boss Level"
 						    v.HumanoidRootPart.Size = Vector3.new(50,50,50)
 							EquipWeapon(Weapon)
                     		TP(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+							AttackNoCD()
 						until game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == false or not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameBoss) or not v.Parent or v.Humanoid.Health <= 0 or not Startk or Mix_Farm
 						
 						if not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameBoss) then
@@ -1855,14 +1972,15 @@ function FarmLevelOO()
                         v.Humanoid.Animator:Destroy()
                     end
                     repeat task.wait()
-                        _G.Doing = "Task | Farm Level"
+                        _G.Doing = "Farm Level"
                         v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                         EquipWeapon(Weapon)
                         TP(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+                        AttackNoCD()
                     until game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == false or not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) or not v.Parent or v.Humanoid.Health <= 0 or not Startk or Mix_Farm
                     Attack = nil
                 else
-                    _G.Doing = "Task | Waiting Monster Level"
+                    _G.Doing = "Wait Monster Level"
                     TP(CFrameMon)
                 end
             end
@@ -1883,13 +2001,14 @@ function FindPole()
     end
 end
 function FarmPole()
-	_G.Doing = "Task | Finding Pole"
+	_G.Doing = "Farm Pole"
     if FindPole() then
         v = FindPole()
     	repeat wait()
     	    v.HumanoidRootPart.Size = Vector3.new(50,50,50)
     		EquipWeapon(Weapon)
     		TP(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+    		AttackNoCD()
     	until not Startk or not v or not v:FindFirstChild("Humanoid") or not v:FindFirstChild("HumanoidRootPart") or v.Humanoid.Health <= 0 
     end
 end
@@ -1901,7 +2020,7 @@ function FindFruit()
     end
 end
 function CollectFruit()
-	_G.Doing = "Task | Finding Fruit"
+	_G.Doing = "Bring Fruit"
     if FindFruit() then
         v = FindFruit()
         repeat wait()
@@ -1910,7 +2029,7 @@ function CollectFruit()
     end
 end
 function SaberQuest()
-	_G.Doing = "Task | Saber Questing"
+	_G.Doing = "Doing Saber Quest"
      game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
     if game:GetService("Workspace").Map.Jungle.Final.Part.Transparency == 0 then
         if game:GetService("Workspace").Map.Jungle.QuestPlates.Door.Transparency == 0 then
@@ -1966,6 +2085,7 @@ function SaberQuest()
 									    v.HumanoidRootPart.Size = Vector3.new(50,50,50)
 										EquipWeapon(Weapon)
 										TP(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+										AttackNoCD()
 									until v.Humanoid.Health <= 0 or not v.Parent or not Startk 
 									repeat
 									    
@@ -2002,14 +2122,16 @@ function FindSaber()
     end
 end
 function FarmSaber()
-	_G.Doing = "Task | Geting Saber"
+	_G.Doing = "Get Saber"
     if FindSaber() then
         v = FindSaber()
     	repeat wait()
     	    v.HumanoidRootPart.Size = Vector3.new(50,50,50)
     		EquipWeapon(Weapon)
     		TP(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+    		AttackNoCD()
     	until not Startk or not v or not v:FindFirstChild("Humanoid") or not v:FindFirstChild("HumanoidRootPart") or v.Humanoid.Health <= 0 
+    	Notify.new("Dummy Hub | Quest","Saber: ✅",99999999999)
     end
 end
 function FindBossWold2Quest()
@@ -2025,7 +2147,7 @@ function FindBossWold2Quest()
     end
 end
 function DoingQuestWorld2()
-	_G.Doing = "Task | Go to World 2"
+	_G.Doing = "Go to World 2"
     if game.Workspace.Map.Ice.Door.CanCollide == true and game.Workspace.Map.Ice.Door.Transparency == 0 then
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("DressrosaQuestProgress","Detective")
         EquipWeapon("Key")
@@ -2037,6 +2159,7 @@ function DoingQuestWorld2()
         	    v.HumanoidRootPart.Size = Vector3.new(50,50,50)
         		EquipWeapon(Weapon)
         		TP(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+        		AttackNoCD()
         	until not Startk or not v or not v:FindFirstChild("Humanoid") or not v:FindFirstChild("HumanoidRootPart") or v.Humanoid.Health <= 0
         	TP_World2()
         end
@@ -2055,13 +2178,14 @@ function FindBossWorld2()
     end
 end
 function FarmBossWorld2()
-	_G.Doing = "Task | Farm Boss"
+	_G.Doing = "Farm Boss"
     if FindBossWorld2() then
         v = FindBossWorld2()
     	repeat wait()
     	    v.HumanoidRootPart.Size = Vector3.new(50,50,50)
     		EquipWeapon(Weapon)
     		TP(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+    		AttackNoCD()
     	until not Startk or not v or not v:FindFirstChild("Humanoid") or not v:FindFirstChild("HumanoidRootPart") or v.Humanoid.Health <= 0 
     end
 end
@@ -2078,13 +2202,14 @@ function FindCore()
     end
 end
 function FarmCore()
-	_G.Doing = "Task | Farm Factory"
+	_G.Doing = "Farm Factory"
     if FindCore() then
         v = FindCore()
     	repeat wait(.1)
     	    v.HumanoidRootPart.Size = Vector3.new(50,50,50)
     		EquipWeapon(Weapon)
 		    TP(v.HumanoidRootPart.CFrame)
+    		AttackNoCD()
     	until not Startk or not v or not v:FindFirstChild("Humanoid") or not v:FindFirstChild("HumanoidRootPart") or v.Humanoid.Health <= 0 
     	
     end
@@ -2102,7 +2227,7 @@ function FindMonBartilo1()
     end
 end
 function BartiloQuest1()
-	_G.Doing = "Task | Bartilo Questing"
+	_G.Doing = "Doing Bartilo Quest 1/3"
     if string.find(game.Players.LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Swan Pirates") and string.find(game.Players.LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "50") and game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == true then
         if FindMonBartilo1() then
             v = FindMonBartilo1()
@@ -2112,6 +2237,7 @@ function BartiloQuest1()
                 v.HumanoidRootPart.Size = Vector3.new(50,50,50)
         		EquipWeapon(Weapon)
         		TP(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+        		AttackNoCD()
         	until not Startk or not v or not v:FindFirstChild("Humanoid") or not v:FindFirstChild("HumanoidRootPart") or v.Humanoid.Health <= 0 
         	
         else
@@ -2134,19 +2260,20 @@ function FindMonBartilo2()
     end
 end
 function BartiloQuest2()
-	_G.Doing = "Task | Bartilo Questing"
+	_G.Doing = "Doing Bartilo Quest 2/3"
     if FindMonBartilo2() then
         v = FindMonBartilo2()
         repeat wait()
             v.HumanoidRootPart.Size = Vector3.new(50,50,50)
     		EquipWeapon(Weapon)
     		TP(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+    		AttackNoCD()
     	until not Startk or not v or not v:FindFirstChild("Humanoid") or not v:FindFirstChild("HumanoidRootPart") or v.Humanoid.Health <= 0 
     	
     end
 end
 function BartiloQuest3()
-	_G.Doing = "Task | Bartilo Questing"
+	_G.Doing = "Doing Bartilo Quest 3/3"
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1850.49329, 13.1789551, 1750.89685)
 	wait()
 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1858.87305, 19.3777466, 1712.01807)
@@ -2260,7 +2387,7 @@ function Buy_Chip()
 	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("RaidsNpc", "Select", "Flame")
 end
 function StartDungeon()
-	_G.Doing = "Task | Start Raid"
+	_G.Doing = "Start Raid"
     if W2 then
         fireclickdetector(game:GetService("Workspace").Map.CircleIsland.RaidSummon2.Button.Main.ClickDetector)
         repeat wait(1)
@@ -2288,23 +2415,23 @@ function NextIsland()
     Killaura()
     if FindIsland5() then
         v = FindIsland5()
-		_G.Doing = "Task | Auto Raid | Ialand 5"
+		_G.Doing = "Auto Raid | Ialand 5"
         TP(CFrame.new(v.CFrame.X, 100, v.CFrame.Z))
     elseif FindIsland4() then
         v = FindIsland4()
-		_G.Doing = "Task | Auto Raid | Ialand 4"
+		_G.Doing = "Auto Raid | Ialand 4"
         TP(CFrame.new(v.CFrame.X, 100, v.CFrame.Z))
     elseif FindIsland3() then
         v = FindIsland3()
-		_G.Doing = "Task | Auto Raid | Ialand 3"
+		_G.Doing = "Auto Raid | Ialand 3"
         TP(CFrame.new(v.CFrame.X, 100, v.CFrame.Z))
     elseif FindIsland2() then
         v = FindIsland2()
-		_G.Doing = "Task | Auto Raid | Ialand 2"
+		_G.Doing = "Auto Raid | Ialand 2"
         TP(CFrame.new(v.CFrame.X, 100, v.CFrame.Z))
     elseif FindIsland1() then
         v = FindIsland1()
-		_G.Doing = "Task | Auto Raid | Ialand 1"
+		_G.Doing = "Auto Raid | Ialand 1"
         TP(CFrame.new(v.CFrame.X, 100, v.CFrame.Z))
     end
 end
@@ -2335,13 +2462,14 @@ function FindIndraQuest()
     end
 end
 function gotoworld3()
-	_G.Doing = "Task | Quest World 3"
+	_G.Doing = "Doing Quest World 3"
     if FindIndraQuest() then
         v = FindIndraQuest()
         repeat wait()
             v.HumanoidRootPart.Size = Vector3.new(50,50,50)
     		EquipWeapon(Weapon)
     		TP(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+    		AttackNoCD()
         until not Startk or not v or not v:FindFirstChild("Humanoid") or not v:FindFirstChild("HumanoidRootPart") or v.Humanoid.Health <= 0 
 	TP_World3()
     end
@@ -2389,7 +2517,7 @@ function DoingAllMelee()
     end
 end
 function LibraryKey()
-	_G.Doing = "Task | Unlocking Death Step"
+	_G.Doing = "Unlock Death Step Room"
     EquipWeapon("Library Key")
     if (Vector3.new(6375.31152, 296.759796, -6845.37256, -0.864894807, 9.65125153e-08, -0.501953125, 1.00555702e-07, 1, 1.90105478e-08, 0.501953125, -3.40321265e-08, -0.864894807)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 10 then
         TP(CFrame.new(6375.31152, 296.759796, -6845.37256, -0.864894807, 9.65125153e-08, -0.501953125, 1.00555702e-07, 1, 1.90105478e-08, 0.501953125, -3.40321265e-08, -0.864894807))
@@ -2398,7 +2526,7 @@ function LibraryKey()
     end
 end
 function HiddenKey()
-	_G.Doing = "Task | Unlocking Rengoku"
+	_G.Doing = "Unlock Rengoku"
     EquipWeapon("Hidden Key")
     if (Vector3.new(1347.7124, 37.3751602, -1325.6488)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 10 then
         TP(CFrame.new(6571.1201171875, 299.23028564453, -6967.841796875))
@@ -2437,15 +2565,16 @@ spawn(function()
                                                 if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,v.Name) then
                                                     v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                                     repeat wait()
-														_G.Doing = "Task | Players Hunter Questing"
+														_G.Doing = "Players Hunter Quest"
                                                         EquipWeapon(Weapon)
                                                         if game:GetService("Players")["LocalPlayer"].PlayerGui.Main.PvpDisabled.Visible == false then
-                                                            TPB(CFrame.new(v.HumanoidRootPart.Position + Vector3.new(math.random(-5,5), 0, math.random(-5,5))))
+                                                            TP(CFrame.new(v.HumanoidRootPart.Position + Vector3.new(math.random(-5,5), 0, math.random(-5,5))))
                                                         else
                                                             StopTween()
                                                         end
                                                         if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude < 30 then
                                                             KillHuntQuest()
+                                                            AttackNoCD()
                                                         end
                                                         OpenPVP = true
                                                     until v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false or not Startk
@@ -2546,201 +2675,3 @@ spawn(function()
         end)
     end)
 end)
-
-_G.Kill_Aura = true
-
-spawn(function()
-    pcall(function() 
-        while wait() do
-            if _G.Kill_Aura then
-                if game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Timer.Visible == true then
-                    for i,v in pairs(game:GetService("Workspace").Enemies:GetDescendants()) do
-                        if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                            pcall(function()
-                                repeat wait()
-                                    sethiddenproperty(game:GetService("Players").LocalPlayer,"SimulationRadius",math.huge)
-                                    v.Humanoid.Health = 0
-                                    v.HumanoidRootPart.CanCollide = false
-                                until not _G.Kill_Aura or not v.Parent or v.Humanoid.Health <= 0
-                            end)
-                        end
-                    end
-                end
-            end
-        end
-    end)
-end)
-
-if not LPH_OBFUSCATED then
-	LPH_JIT_MAX = (function(...) return ... end)
-	LPH_NO_VIRTUALIZE = (function(...) return ... end)
-	LPH_NO_UPVALUES = (function(...) return ... end)
-end
-NoAttackAnimation = true
-local DmgAttack = game:GetService("ReplicatedStorage").Assets.GUI:WaitForChild("DamageCounter")
-local PC = require(game.Players.LocalPlayer.PlayerScripts.CombatFramework.Particle)
-local plr = game.Players.LocalPlayer
-local RL = require(game:GetService("ReplicatedStorage").CombatFramework.RigLib)
-local oldRL = RL.wrapAttackAnimationAsync
-RL.wrapAttackAnimationAsync = function(a, b, c, d, func)
-    if not NoAttackAnimation then
-        return oldRL(a, b, c, 60, func)
-    end
-    local Hits = {}
-    local Client = game.Players.LocalPlayer
-    local Characters = game:GetService("Workspace").Characters:GetChildren()
-    for i, v in pairs(Characters) do
-        local Human = v:FindFirstChildOfClass("Humanoid")
-        if v.Name ~= game.Players.LocalPlayer.Name and Human and Human.RootPart and Human.Health > 0 and Client:DistanceFromCharacter(Human.RootPart.Position) < 65 then
-            table.insert(Hits, Human.RootPart)
-        end
-    end
-    local Enemies = game:GetService("Workspace").Enemies:GetChildren()
-    for i, v in pairs(Enemies) do
-        local Human = v:FindFirstChildOfClass("Humanoid")
-        if Human and Human.RootPart and Human.Health > 0 and Client:DistanceFromCharacter(Human.RootPart.Position) < 65 then
-            table.insert(Hits, Human.RootPart)
-        end
-    end
-    a:Play(0.01, 0.01, 0.01)
-    pcall(func, Hits)
-end
-getAllBladeHits = LPH_NO_VIRTUALIZE(function(Sizes)
-    local Hits = {}
-    local Client = game.Players.LocalPlayer
-    local Enemies = game:GetService("Workspace").Enemies:GetChildren()
-    for i, v in pairs(Enemies) do
-        local Human = v:FindFirstChildOfClass("Humanoid")
-        if Human and Human.RootPart and Human.Health > 0 and Client:DistanceFromCharacter(Human.RootPart.Position) < Sizes + 5 then
-            table.insert(Hits, Human.RootPart)
-        end
-    end
-    return Hits
-end)
-getAllBladeHitsPlayers = LPH_NO_VIRTUALIZE(function(Sizes)
-    local Hits = {}
-    local Client = game.Players.LocalPlayer
-    local Characters = game:GetService("Workspace").Characters:GetChildren()
-    for i, v in pairs(Characters) do
-        local Human = v:FindFirstChildOfClass("Humanoid")
-        if v.Name ~= game.Players.LocalPlayer.Name and Human and Human.RootPart and Human.Health > 0 and Client:DistanceFromCharacter(Human.RootPart.Position) < Sizes + 5 then
-            table.insert(Hits, Human.RootPart)
-        end
-    end
-    return Hits
-end)
-local CombatFramework = require(game:GetService("Players").LocalPlayer.PlayerScripts:WaitForChild("CombatFramework"))
-local CombatFrameworkR = getupvalues(CombatFramework)[2]
-local RigEven = game:GetService("ReplicatedStorage").RigControllerEvent
-local AttackAnim = Instance.new("Animation")
-local AttackCoolDown = 0
-local cooldowntickFire = 0
-local MaxFire = 1000
-local FireCooldown = 0.01
-local FireL = 0
-local bladehit = {}
-CancelCoolDown = LPH_JIT_MAX(function()
-    local ac = CombatFrameworkR.activeController
-    if ac and ac.equipped then
-        AttackCoolDown = tick() + (FireCooldown or 0.01) + ((FireL / MaxFire) * 0.3)
-        RigEven.FireServer(RigEven, "weaponChange", ac.currentWeaponModel.Name)
-        FireL = FireL + 1
-        task.delay((FireCooldown or 0.01) + ((FireL + 0.1 / MaxFire) * 0.1), function()
-            FireL = FireL - 1
-        end)
-    end
-end)
-AttackFunction = LPH_JIT_MAX(function(typef)
-    local ac = CombatFrameworkR.activeController
-    if ac and ac.equipped then
-        local bladehit = require(game.ReplicatedStorage.CombatFramework.RigLib).getBladeHits(
-            plr.Character,
-            {plr.Character.HumanoidRootPart},
-            60
-        )
-        local cac = {}
-        local hash = {}      
-        if #bladehit > 0 then
-            pcall(task.spawn, ac.attack, ac)
-            if tick() > AttackCoolDown then
-                CancelCoolDown()
-            end
-            if tick() - cooldowntickFire > 0.1 then
-                ac.timeToNextAttack = 0
-                ac.hitboxMagnitude = 60
-                pcall(task.spawn, ac.attack, ac)
-                cooldowntickFire = tick()
-            end
-            local AMI3 = ac.anims.basic[3]
-            local AMI2 = ac.anims.basic[2]
-            local REALID = AMI3 or AMI2
-            AttackAnim.AnimationId = REALID
-            local StartP = ac.humanoid:LoadAnimation(AttackAnim)
-            StartP:Play(0.01, 0.01, 0.01)
-            RigEven.FireServer(RigEven, "hit", bladehit, AMI3 and 3 or 2, "")
-            task.delay(0, function()
-                StartP:Stop()
-            end)
-        end
-    end
-end)
-function CheckStun()
-    if game:GetService('Players').LocalPlayer.Character:FindFirstChild("Stun") then
-        return game:GetService('Players').LocalPlayer.Character.Stun.Value ~= 0
-    end
-    return false
-end
-LPH_JIT_MAX(function()
-    spawn(function()
-        while game:GetService("RunService").Stepped:Wait() do
-            local ac = CombatFrameworkR.activeController
-            if ac and ac.equipped and not CheckStun() then
-                if NeedAttacking and Fast_Attack then
-                    task.spawn(function()
-                        pcall(task.spawn, AttackFunction, 1)
-                    end)
-                elseif DamageAura then
-                    task.spawn(function()
-                        pcall(task.spawn, AttackFunction, 3)
-                    end)
-                elseif UsefastattackPlayers and Fast_Attack then
-                    task.spawn(function()
-                        pcall(task.spawn, AttackFunction, 2)
-                    end)
-                elseif NeedAttacking and Fast_Attack == false then
-                    if ac.hitboxMagnitude ~= 55 then
-                        ac.hitboxMagnitude = 55
-                    end
-                    pcall(task.spawn, ac.attack, ac)
-                end
-            end
-        end
-    end)
-end)()
-
-local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
-Mouse.Button1Down:Connect(function()
-	if ClickNoCooldown then
-		local ac = CombatFrameworkR.activeController
-		if ac and ac.equipped then
-			ac.hitboxMagnitude = 55
-			pcall(AttackFunction)
-		end
-	end
-end)
-
-spawn(function()
-                while wait() do
-                    pcall(function()
-                    local Camera = require(game.ReplicatedStorage.Util.CameraShaker)
-                    Camera:Stop()
-                    end)
-                end
-            end)
-
-            Fast_Attack = true
-            DamageAura = true
-            ClickNoCooldown = true
-            DmgAttack.Enabled = not true
-           NeedAttacking = true
-           UsefastattackPlayers = true
