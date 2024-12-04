@@ -17,7 +17,7 @@ TextLabel.Text = ""
 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel.TextSize = 19.000
 
-UIGradient.Color = Color3.fromRGB(255, 255, 255)
+--UIGradient.Color = Color3.fromRGB(255, 255, 255)
 UIGradient.Parent = TextLabel
 
 spawn(function()
