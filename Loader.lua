@@ -1008,7 +1008,7 @@ function CheckQuest()
     end
 end
 
-    function CheckQuest()
+    function CheckQuestLevel()
         local Lvl = game:GetService("Players").LocalPlayer.Data.Level.Value
         local IgnoreQuests = {"BartiloQuest", "Trainees", "MarineQuest", "CitizenQuest"}
         local Quest = {}
