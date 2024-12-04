@@ -1,6 +1,6 @@
 if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
 
-loadstring(game:HttpGet("https://pastebin.com/raw/rDNhv83y"))()
+loadstring(game:HttpGet("https://pastebin.com/raw/im9UmM84"))()
 
 local ScreenGui = Instance.new("ScreenGui")
 local TextLabel = Instance.new("TextLabel")
