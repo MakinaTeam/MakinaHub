@@ -1233,6 +1233,48 @@ function TP(v326)
 	end
 end
 
+function WaitHRP(v315)
+    if  not v315 then
+        return;
+    end
+    return v315.Character:WaitForChild("HumanoidRootPart", 9);
+end
+
+_G.FastTeleport = true
+function TPB(Pos)
+    if game.Players.LocalPlayer.Character.Humanoid.Health > 0 and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+        local Distance = (Pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+        if _G.FastTeleport then
+        if Distance >= 3000 then          game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Pos
+              game.Players.LocalPlayer.Character.Humanoid.Health =- math.huge         
+          end
+       end            		
+        if not Pos then 
+            return
+        end
+        if not game.Players.LocalPlayer.Character:FindFirstChild("PartTele") then
+            local PartTele = Instance.new("Part", game.Players.LocalPlayer.Character)
+            PartTele.Size = Vector3.new(5,2,5)
+            PartTele.Name = "PartTele"
+            PartTele.Anchored = true
+            PartTele.Transparency = 1
+            PartTele.CanCollide = false
+            PartTele.CFrame = WaitHRP(game.Players.LocalPlayer).CFrame 
+            PartTele:GetPropertyChangedSignal("CFrame"):Connect(function()
+                task.wait()
+ WaitHRP(game.Players.LocalPlayer).CFrame = PartTele.CFrame
+            end)
+        end
+        pcall(function() didididididi = game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.PartTele,TweenInfo.new(Distance/getgenv().TweenSpeed, Enum.EasingStyle.Linear),{CFrame = Pos}) end)
+        didididididi:Play()
+        if Distance <= 500 then
+                didididididi:Cancel()
+                game.Players.LocalPlayer.Character.PartTele.CFrame = Pos
+            end
+            didididididi:Play()
+    end
+end
+
 function EquipWeapon(ToolSe)
 	if game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe) then
 		local tool = game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe)
@@ -2526,7 +2568,7 @@ spawn(function()
 														_G.Doing = "Task | Players Hunter Quest"
                                                         EquipWeapon(Weapon)
                                                         if game:GetService("Players")["LocalPlayer"].PlayerGui.Main.PvpDisabled.Visible == false then
-                                                            TP(CFrame.new(v.HumanoidRootPart.Position + Vector3.new(math.random(-5,5), 0, math.random(-5,5))))
+                                                            TPB(CFrame.new(v.HumanoidRootPart.Position + Vector3.new(math.random(-5,5), 0, math.random(-5,5))))
                                                         else
                                                             StopTween()
                                                         end
