@@ -1160,7 +1160,7 @@ function TPB(Pos)
     if game.Players.LocalPlayer.Character.Humanoid.Health > 0 and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
         local Distance = (Pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
         if _G.FastTeleport then
-        if Distance >= 3000 then          game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Pos
+        if Distance >= 150 then          game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Pos
               game.Players.LocalPlayer.Character.Humanoid.Health =- math.huge         
           end
        end            		
