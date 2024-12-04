@@ -371,6 +371,18 @@ LPH_JIT_MAX(function()
     end)
 end)()
 
+W1 = false
+W2 = false
+W3 = false
+local placeId = game.PlaceId
+if placeId == 2753915549 then
+    W1 = true
+elseif placeId == 4442272183 then
+    W2 = true
+elseif placeId == 7449423635 then
+    W3 = true
+end
+
 function CheckQuest() 
         local Lv = game:GetService("Players").LocalPlayer.Data.Level.Value
         if _G.Upto then
