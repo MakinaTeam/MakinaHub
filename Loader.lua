@@ -1,7 +1,5 @@
 if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
 
-loadstring(game:HttpGet("https://pastebin.com/raw/im9UmM84"))()
-
 local ScreenGui = Instance.new("ScreenGui")
 local TextLabel = Instance.new("TextLabel")
 local UIGradient = Instance.new("UIGradient")
@@ -21,6 +19,9 @@ TextLabel.TextSize = 19.000
 
 UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(0.01, Color3.fromRGB(255, 0, 242)), ColorSequenceKeypoint.new(0.16, Color3.fromRGB(59, 200, 251)), ColorSequenceKeypoint.new(0.35, Color3.fromRGB(247, 0, 255)), ColorSequenceKeypoint.new(0.68, Color3.fromRGB(8, 255, 214)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(114, 187, 255))}
 UIGradient.Parent = TextLabel
+
+
+loadstring(game:HttpGet("https://pastebin.com/raw/im9UmM84"))()
 
 repeat wait() until game.Players
 repeat wait() until game.Players.LocalPlayer
