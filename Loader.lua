@@ -2835,7 +2835,7 @@ spawn(function()
         if _G.AutoFarm and game.Players.LocalPlayer.Data.Level.Value >= 85 and game.Players.LocalPlayer.Data.Level.Value <= 2550 then
             pcall(function()
                 local QuestTitle = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text
-                if not string.find(QuestTitle, NameMon) then
+                if not string.find(QuestTitle, QuestLv) then
                     bringmob = false
                     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
                 end
