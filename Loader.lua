@@ -2888,8 +2888,8 @@ MonFarm = v.Name
                     else
                         toTarget(CFrameMon)                    
                         bringmob = false
-                        if game:GetService("ReplicatedStorage"):FindFirstChild(NameMon) then
-                         toTarget(game:GetService("ReplicatedStorage"):FindFirstChild(NameMon).HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+                        if game:GetService("ReplicatedStorage"):FindFirstChild(Ms) then
+                         toTarget(game:GetService("ReplicatedStorage"):FindFirstChild(NameMonMs).HumanoidRootPart.CFrame * CFrame.new(0,40,0))
                         end
                     end
                 end
