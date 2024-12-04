@@ -2844,22 +2844,22 @@ spawn(function()
                     --CheckQuest()
                     if BypassTP then
                     if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - CFrameQuest.Position).Magnitude > 1500 then
-                    BTP(CFrameQuest)
+                    BTP(CFrameQ)
                     elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - CFrameQuest.Position).Magnitude < 1500 then
-                    toTarget(CFrameQuest)
+                    toTarget(CFrameQ)
                     end
                 else
-                    toTarget(CFrameQuest)
+                    toTarget(CFrameQ)
                 end
                 if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - CFrameQuest.Position).Magnitude <= 5 then
-                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest",NameQuest,LevelQuest)
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest",NameQuest,QuestLv)
                     end
                 elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
                     --CheckQuest()
                     if game:GetService("Workspace").Enemies:FindFirstChild(Mon) then
                         for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                             if v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
-                                if v.Name == Mon then
+                                if v.Name == Ms then
                                     if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) then
                                         repeat task.wait()
                                             
@@ -2888,8 +2888,8 @@ MonFarm = v.Name
                     else
                         toTarget(CFrameMon)                    
                         bringmob = false
-                        if game:GetService("ReplicatedStorage"):FindFirstChild(Mon) then
-                         toTarget(game:GetService("ReplicatedStorage"):FindFirstChild(Mon).HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+                        if game:GetService("ReplicatedStorage"):FindFirstChild(NameMon) then
+                         toTarget(game:GetService("ReplicatedStorage"):FindFirstChild(NameMon).HumanoidRootPart.CFrame * CFrame.new(0,40,0))
                         end
                     end
                 end
