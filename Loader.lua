@@ -2,7 +2,6 @@ if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
 
 local ScreenGui = Instance.new("ScreenGui")
 local TextLabel = Instance.new("TextLabel")
-local UIGradient = Instance.new("UIGradient")
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 TextLabel.Parent = ScreenGui
@@ -16,9 +15,6 @@ TextLabel.Font = Enum.Font.FredokaOne
 TextLabel.Text = ""
 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel.TextSize = 19.000
-
---UIGradient.Color = Color3.fromRGB(255, 255, 255)
-UIGradient.Parent = TextLabel
 
 spawn(function()
     while wait() do
