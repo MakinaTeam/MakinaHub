@@ -1146,7 +1146,7 @@ function WaitHRP(v315)
     end
     return v315.Character:WaitForChild("HumanoidRootPart", 9);
 end
-
+getgenv().TweenSpeed = 350
 _G.FastTeleport = true
 function TPB(Pos)
     if game.Players.LocalPlayer.Character.Humanoid.Health > 0 and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
