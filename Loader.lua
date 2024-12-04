@@ -1742,7 +1742,7 @@ function GetQuest()
         wait(.5)
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest", NameQuest, QuestLv)
     else
-		_G.Doing = "Task | Get Quest Level"
+		_G.Doing = "Task | Get Questing Level"
         TP(NPCPos())
     end
 end
@@ -1789,7 +1789,7 @@ function FarmLevelOO()
 			if _G.SelectBoss ~= nil and game.Workspace.Enemies:FindFirstChild(_G.SelectBoss) or _G.SelectBoss ~= nil and game.ReplicatedStorage:FindFirstChild(_G.SelectBoss) then
                 CheckQuestBoss()
                 repeat wait()
-                    _G.Doing = "Task | Get Quest Level"
+                    _G.Doing = "Task | Get Questing Level"
                     TP(CFrameQBoss)
                 until (CFrameQBoss.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude < 10
                 wait(1)
@@ -1799,7 +1799,7 @@ function FarmLevelOO()
             elseif SelectMonster ~= nil then
                 CheckLevel()
                 repeat wait()
-                    _G.Doing = "Task | Get Quest Level"
+                    _G.Doing = "Task | Get Questing Level"
                     TP(CFrameQ)
                 until (CFrameQ.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude < 10
                 wait(1)
@@ -1811,7 +1811,7 @@ function FarmLevelOO()
                 StatrMagnet = nil
                 CheckLevel()
                 repeat wait()
-                    _G.Doing = "Task | Get Quest Level"
+                    _G.Doing = "Task | Get Questing Level"
                     TP(CFrameQ)
                 until (CFrameQ.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude < 10
                 wait(1)
@@ -1862,7 +1862,7 @@ function FarmLevelOO()
                     until game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == false or not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) or not v.Parent or v.Humanoid.Health <= 0 or not Startk or Mix_Farm
                     Attack = nil
                 else
-                    _G.Doing = "Task | Wait Monster Level"
+                    _G.Doing = "Task | Waiting Monster Level"
                     TP(CFrameMon)
                 end
             end
@@ -1883,7 +1883,7 @@ function FindPole()
     end
 end
 function FarmPole()
-	_G.Doing = "Task | Find Pole"
+	_G.Doing = "Task | Finding Pole"
     if FindPole() then
         v = FindPole()
     	repeat wait()
@@ -1901,7 +1901,7 @@ function FindFruit()
     end
 end
 function CollectFruit()
-	_G.Doing = "Task | Find Fruit"
+	_G.Doing = "Task | Finding Fruit"
     if FindFruit() then
         v = FindFruit()
         repeat wait()
@@ -1910,7 +1910,7 @@ function CollectFruit()
     end
 end
 function SaberQuest()
-	_G.Doing = "Task | Saber Quest"
+	_G.Doing = "Task | Saber Questing"
      game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
     if game:GetService("Workspace").Map.Jungle.Final.Part.Transparency == 0 then
         if game:GetService("Workspace").Map.Jungle.QuestPlates.Door.Transparency == 0 then
@@ -2002,7 +2002,7 @@ function FindSaber()
     end
 end
 function FarmSaber()
-	_G.Doing = "Task | Get Saber"
+	_G.Doing = "Task | Geting Saber"
     if FindSaber() then
         v = FindSaber()
     	repeat wait()
@@ -2102,7 +2102,7 @@ function FindMonBartilo1()
     end
 end
 function BartiloQuest1()
-	_G.Doing = "Task | Bartilo Quest 1/3"
+	_G.Doing = "Task | Bartilo Questing"
     if string.find(game.Players.LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Swan Pirates") and string.find(game.Players.LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "50") and game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == true then
         if FindMonBartilo1() then
             v = FindMonBartilo1()
@@ -2134,7 +2134,7 @@ function FindMonBartilo2()
     end
 end
 function BartiloQuest2()
-	_G.Doing = "Task | Bartilo Quest 2/3"
+	_G.Doing = "Task | Bartilo Questing"
     if FindMonBartilo2() then
         v = FindMonBartilo2()
         repeat wait()
@@ -2146,7 +2146,7 @@ function BartiloQuest2()
     end
 end
 function BartiloQuest3()
-	_G.Doing = "Task | Bartilo Quest 3/3"
+	_G.Doing = "Task | Bartilo Questing"
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1850.49329, 13.1789551, 1750.89685)
 	wait()
 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1858.87305, 19.3777466, 1712.01807)
@@ -2389,7 +2389,7 @@ function DoingAllMelee()
     end
 end
 function LibraryKey()
-	_G.Doing = "Task | Unlock Death Step Room"
+	_G.Doing = "Task | Unlocking Death Step"
     EquipWeapon("Library Key")
     if (Vector3.new(6375.31152, 296.759796, -6845.37256, -0.864894807, 9.65125153e-08, -0.501953125, 1.00555702e-07, 1, 1.90105478e-08, 0.501953125, -3.40321265e-08, -0.864894807)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 10 then
         TP(CFrame.new(6375.31152, 296.759796, -6845.37256, -0.864894807, 9.65125153e-08, -0.501953125, 1.00555702e-07, 1, 1.90105478e-08, 0.501953125, -3.40321265e-08, -0.864894807))
@@ -2398,7 +2398,7 @@ function LibraryKey()
     end
 end
 function HiddenKey()
-	_G.Doing = "Task | Unlock Rengoku"
+	_G.Doing = "Task | Unlocking Rengoku"
     EquipWeapon("Hidden Key")
     if (Vector3.new(1347.7124, 37.3751602, -1325.6488)-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 10 then
         TP(CFrame.new(6571.1201171875, 299.23028564453, -6967.841796875))
@@ -2437,7 +2437,7 @@ spawn(function()
                                                 if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,v.Name) then
                                                     v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                                     repeat wait()
-														_G.Doing = "Task | Players Hunter Quest"
+														_G.Doing = "Task | Players Hunter Questing"
                                                         EquipWeapon(Weapon)
                                                         if game:GetService("Players")["LocalPlayer"].PlayerGui.Main.PvpDisabled.Visible == false then
                                                             TPB(CFrame.new(v.HumanoidRootPart.Position + Vector3.new(math.random(-5,5), 0, math.random(-5,5))))
