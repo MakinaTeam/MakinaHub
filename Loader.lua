@@ -1093,7 +1093,7 @@ function WaitHRP(q0)
     if not q0 then return end
     return q0.Character:WaitForChild("HumanoidRootPart", 9) 
 end 
-function Tween(Pos)
+function TP(Pos)
     if game.Players.LocalPlayer.Character.Humanoid.Health > 0 and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
         Distance = (Pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
         game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart", 9)
