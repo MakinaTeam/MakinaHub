@@ -20,6 +20,17 @@ TextLabel.TextSize = 19.000
 UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(0.01, Color3.fromRGB(255, 0, 242)), ColorSequenceKeypoint.new(0.16, Color3.fromRGB(59, 200, 251)), ColorSequenceKeypoint.new(0.35, Color3.fromRGB(247, 0, 255)), ColorSequenceKeypoint.new(0.68, Color3.fromRGB(8, 255, 214)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(114, 187, 255))}
 UIGradient.Parent = TextLabel
 
+spawn(function()
+    while wait() do
+        pcall(function()
+            TextLabel.Text = _G.Doing
+            RealBeli.Text = tostring(formatNumber(game:GetService("Players").LocalPlayer.Data.Beli.Value))
+            RealFragment.Text = tostring(formatNumber(game:GetService("Players").LocalPlayer.Data.Fragments.Value))
+            RealLevel.Text = tostring(game:GetService("Players").LocalPlayer.Data.Level.Value)
+        end)
+    end
+end)
+
 
 loadstring(game:HttpGet("https://pastebin.com/raw/im9UmM84"))()
 
