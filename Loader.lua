@@ -1011,89 +1011,6 @@ function Warp(p)
     tweenfunc:Stop()
 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = p
 end
-
-------------------------------------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------------------------------------
-
-function NearestEntrace(aI)
-    vcspos = aI.Position
-    min = math.huge
-    min2 = math.huge
-    local y = game.PlaceId
-    if y == 2753915549 then
-        OldWorld = true
-    elseif y == 4442272183 then
-        NewWorld = true
-    elseif y == 7449423635 then
-        ThreeWorld = true
-    end
-    if ThreeWorld then
-        TableLocations = {
-            ["Caslte On The Sea"] = Vector3.new(-5058.77490234375, 314.5155029296875, -3155.88330078125),
-            ["Hydra"] = Vector3.new(5756.83740234375, 610.4240112304688, -253.9253692626953),
-            ["Mansion"] = Vector3.new(-12463.8740234375, 374.9144592285156, -7523.77392578125),
-            ["Great Tree"] = Vector3.new(28282.5703125, 14896.8505859375, 105.1042709350586),
-            ["DoorBossNPCPirate"] = Vector3.new(-11993.580078125, 334.7812805175781, -8844.1826171875),
-            ["DoorBossNPCPirate2"] = Vector3.new(5314.58203125, 25.419387817382812, -125.94227600097656),
-            ["Temple"] = Vector3.new(28282.5703125, 14896.8505859375, 105.1042709350586)
-        }
-    elseif NewWorld then
-        TableLocations = {
-            ["Mansion"] = Vector3.new(-288.46246337890625, 306.130615234375, 597.9988403320312),
-            ["Flamingo"] = Vector3.new(2284.912109375, 15.152046203613281, 905.48291015625),
-            ["CursedShip"] = Vector3.new(923.21252441406, 126.9760055542, 32852.83203125),
-            ["CursedShip2"] = Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422)
-        }
-    elseif OldWorld then
-        TableLocations = {
-            ["Sky3"] = Vector3.new(-7894.6201171875, 5545.49169921875, -380.2467346191406),
-            ["Sky2"] = Vector3.new(-4607.82275390625, 872.5422973632812, -1667.556884765625),
-            ["thanhphoduoibien"] = Vector3.new(61163.8515625, 11.759522438049316, 1819.7841796875),
-            ["thanhphoduoibien2"] = Vector3.new(3876.280517578125, 35.10614013671875, -1939.3201904296875)
-        }
-    end
-    TableLocations2 = {}
-    for r, v in pairs(TableLocations) do
-        TableLocations2[r] = (v - vcspos).Magnitude
-    end
-    for r, v in pairs(TableLocations2) do
-        if v < min then
-            min = v
-            min2 = v
-        end
-    end
-    for r, v in pairs(TableLocations2) do
-        if v < min then
-            min = v
-            min2 = v
-        end
-    end
-    for r, v in pairs(TableLocations2) do
-        if v <= min then
-            choose = TableLocations[r]
-        end
-    end
-    min3 = (vcspos - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
-    if min2 <= min3 then
-        return choose
-    end
-end
-function RETeleport(aJ)
-    args = {"requestEntrance", aJ}
-    game.ReplicatedStorage.Remotes.CommF_:InvokeServer(unpack(args))
-    oldcframe = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-    char = game.Players.LocalPlayer.Character.HumanoidRootPart
-    char.CFrame = CFrame.new(oldcframe.X, oldcframe.Y + 50, oldcframe.Z)
-    if plr.Character:FindFirstChild("PartTele") then
-        plr.Character.PartTele.CFrame = WaitHRP(plr).CFrame 
-    end
-    task.wait(0.01)
-end
-function WaitHRP(q0) 
-    if not q0 then return end
-    return q0.Character:WaitForChild("HumanoidRootPart", 9) 
-end 
-
 function TP(p)
     if W3 then
         if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-p.Position).Magnitude > (Vector3.new(-12476.080078125, 374.9144592285156, -7566.93701171875)-p.Position).Magnitude then
@@ -1181,6 +1098,11 @@ function StopTween()
     tweenfunc:Stop()
     TP(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
 end
+
+function WaitHRP(q0) 
+    if not q0 then return end
+    return q0.Character:WaitForChild("HumanoidRootPart", 9) 
+end 
 
 function WaitHRP(v315)
     if  not v315 then
@@ -1382,6 +1304,18 @@ spawn(function()
     end
 end)
 
+local plr = game.Players.LocalPlayer
+local CbFw = getupvalues(require(plr.PlayerScripts.CombatFramework))
+local CbFw2 = CbFw[2]
+
+function GetCurrentBlade() 
+    local p13 = CbFw2.activeController
+    local ret = p13.blades[1]
+    if not ret then return end
+    while ret.Parent~=game.Players.LocalPlayer.Character do ret=ret.Parent end
+    return ret
+end
+
 spawn(function()
     while wait() do
         pcall(function()
@@ -1392,12 +1326,65 @@ spawn(function()
     end
 end)
 
+function AttackNoCD()
+    if not Auto_Farm_Bounty and not Auto_Farm_Fruit or Mix_Farm then
+        if game:GetService("Workspace").Characters[game:GetService("Players").LocalPlayer.Name].Stun.Value == 0 then
+            if not Auto_Raid then
+                local AC = CbFw2.activeController
+                for i = 1, 1 do
+                    local bladehit =
+                        require(game.ReplicatedStorage.CombatFramework.RigLib).getBladeHits(
+                        plr.Character,
+                        {plr.Character.HumanoidRootPart},
+                        60
+                    )
+                    local cac = {}
+                    local hash = {}
+                    for k, v in pairs(bladehit) do
+                        if v.Parent:FindFirstChild("HumanoidRootPart") and not hash[v.Parent] then
+                            table.insert(cac, v.Parent.HumanoidRootPart)
+                            hash[v.Parent] = true
+                        end
+                    end
+                    bladehit = cac
+                    if #bladehit > 0 then
+                        local u8 = debug.getupvalue(AC.attack, 5)
+                        local u9 = debug.getupvalue(AC.attack, 6)
+                        local u7 = debug.getupvalue(AC.attack, 4)
+                        local u10 = debug.getupvalue(AC.attack, 7)
+                        local u12 = (u8 * 798405 + u7 * 727595) % u9
+                        local u13 = u7 * 798405
+                        (function()
+                            u12 = (u12 * u9 + u13) % 1099511627776
+                            u8 = math.floor(u12 / u9)
+                            u7 = u12 - u8 * u9
+                        end)()
+                        u10 = u10 + 1
+                        debug.setupvalue(AC.attack, 5, u8)
+                        debug.setupvalue(AC.attack, 6, u9)
+                        debug.setupvalue(AC.attack, 4, u7)
+                        debug.setupvalue(AC.attack, 7, u10)
+                        task.wait(0.01)
+                        pcall(function()
+                            if plr.Character:FindFirstChildOfClass("Tool") and AC.blades and AC.blades[1] then
+                                AC.animator.anims.basic[3]:Play(0.01,0.01,0.01)
+                                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(GetCurrentBlade()))
+                                game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(u12 / 1099511627776 * 16777215),u10)
+                                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit",bladehit,i,"")
+                            end
+                        end)
+                    end
+                end
+            end
+        end
+    end
+end
 spawn(function()
 	while wait() do
 		pcall(function()
 			if StatrMagnet then
 				for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-					if not string.find(v.Name,"Boss") and (v.HumanoidRootPart.Position-_G.PosMon.Position).Magnitude <= 250 then
+					if not string.find(v.Name,"Boss") and (v.HumanoidRootPart.Position-_G.PosMon.Position).Magnitude <= 350 then
 						if v.Humanoid:FindFirstChild("Animator") then
 							v.Humanoid.Animator:Destroy()
 						end
@@ -1848,6 +1835,7 @@ function FarmSkyMonter()
     	    v.HumanoidRootPart.Size = Vector3.new(50,50,50)
     		EquipWeapon(Weapon)
             TP(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+    		AttackNoCD()
     	until not Startk or not v or not v:FindFirstChild("Humanoid") or not v:FindFirstChild("HumanoidRootPart") or v.Humanoid.Health <= 0 
     	
         StatrMagnet = false
@@ -1914,6 +1902,7 @@ function FarmLevelOO()
 						    v.HumanoidRootPart.Size = Vector3.new(50,50,50)
 							EquipWeapon(Weapon)
                     		TP(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+							AttackNoCD()
 						until game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == false or not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameBoss) or not v.Parent or v.Humanoid.Health <= 0 or not Startk or Mix_Farm
 						
 						if not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameBoss) then
@@ -1937,6 +1926,7 @@ function FarmLevelOO()
                         v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                         EquipWeapon(Weapon)
                         TP(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+                        AttackNoCD()
                     until game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == false or not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) or not v.Parent or v.Humanoid.Health <= 0 or not Startk or Mix_Farm
                     Attack = nil
                 else
@@ -1961,13 +1951,14 @@ function FindPole()
     end
 end
 function FarmPole()
-	_G.Doing = "Task | Find Pole"
+	_G.Doing = "Task | Findm Pole"
     if FindPole() then
         v = FindPole()
     	repeat wait()
     	    v.HumanoidRootPart.Size = Vector3.new(50,50,50)
     		EquipWeapon(Weapon)
     		TP(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+    		AttackNoCD()
     	until not Startk or not v or not v:FindFirstChild("Humanoid") or not v:FindFirstChild("HumanoidRootPart") or v.Humanoid.Health <= 0 
     end
 end
@@ -2044,6 +2035,7 @@ function SaberQuest()
 									    v.HumanoidRootPart.Size = Vector3.new(50,50,50)
 										EquipWeapon(Weapon)
 										TP(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+										AttackNoCD()
 									until v.Humanoid.Health <= 0 or not v.Parent or not Startk 
 									repeat
 									    
@@ -2087,6 +2079,7 @@ function FarmSaber()
     	    v.HumanoidRootPart.Size = Vector3.new(50,50,50)
     		EquipWeapon(Weapon)
     		TP(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+    		AttackNoCD()
     	until not Startk or not v or not v:FindFirstChild("Humanoid") or not v:FindFirstChild("HumanoidRootPart") or v.Humanoid.Health <= 0 
     end
 end
@@ -2115,6 +2108,7 @@ function DoingQuestWorld2()
         	    v.HumanoidRootPart.Size = Vector3.new(50,50,50)
         		EquipWeapon(Weapon)
         		TP(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+        		AttackNoCD()
         	until not Startk or not v or not v:FindFirstChild("Humanoid") or not v:FindFirstChild("HumanoidRootPart") or v.Humanoid.Health <= 0
         	TP_World2()
         end
@@ -2140,6 +2134,7 @@ function FarmBossWorld2()
     	    v.HumanoidRootPart.Size = Vector3.new(50,50,50)
     		EquipWeapon(Weapon)
     		TP(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+    		AttackNoCD()
     	until not Startk or not v or not v:FindFirstChild("Humanoid") or not v:FindFirstChild("HumanoidRootPart") or v.Humanoid.Health <= 0 
     end
 end
@@ -2163,6 +2158,7 @@ function FarmCore()
     	    v.HumanoidRootPart.Size = Vector3.new(50,50,50)
     		EquipWeapon(Weapon)
 		    TP(v.HumanoidRootPart.CFrame)
+    		AttackNoCD()
     	until not Startk or not v or not v:FindFirstChild("Humanoid") or not v:FindFirstChild("HumanoidRootPart") or v.Humanoid.Health <= 0 
     	
     end
@@ -2190,6 +2186,7 @@ function BartiloQuest1()
                 v.HumanoidRootPart.Size = Vector3.new(50,50,50)
         		EquipWeapon(Weapon)
         		TP(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+        		AttackNoCD()
         	until not Startk or not v or not v:FindFirstChild("Humanoid") or not v:FindFirstChild("HumanoidRootPart") or v.Humanoid.Health <= 0 
         	
         else
@@ -2219,6 +2216,7 @@ function BartiloQuest2()
             v.HumanoidRootPart.Size = Vector3.new(50,50,50)
     		EquipWeapon(Weapon)
     		TP(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+    		AttackNoCD()
     	until not Startk or not v or not v:FindFirstChild("Humanoid") or not v:FindFirstChild("HumanoidRootPart") or v.Humanoid.Health <= 0 
     	
     end
@@ -2420,6 +2418,7 @@ function gotoworld3()
             v.HumanoidRootPart.Size = Vector3.new(50,50,50)
     		EquipWeapon(Weapon)
     		TP(v.HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+    		AttackNoCD()
         until not Startk or not v or not v:FindFirstChild("Humanoid") or not v:FindFirstChild("HumanoidRootPart") or v.Humanoid.Health <= 0 
 	TP_World3()
     end
@@ -2524,6 +2523,7 @@ spawn(function()
                                                         end
                                                         if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude < 30 then
                                                             KillHuntQuest()
+                                                            AttackNoCD()
                                                         end
                                                         OpenPVP = true
                                                     until v.Humanoid.Health <= 0 or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false or not Startk
@@ -2624,177 +2624,3 @@ spawn(function()
         end)
     end)
 end)
-
-if not LPH_OBFUSCATED then
-	LPH_JIT_MAX = (function(...) return ... end)
-	LPH_NO_VIRTUALIZE = (function(...) return ... end)
-	LPH_NO_UPVALUES = (function(...) return ... end)
-end
-NoAttackAnimation = true
-local DmgAttack = game:GetService("ReplicatedStorage").Assets.GUI:WaitForChild("DamageCounter")
-local PC = require(game.Players.LocalPlayer.PlayerScripts.CombatFramework.Particle)
-local plr = game.Players.LocalPlayer
-local RL = require(game:GetService("ReplicatedStorage").CombatFramework.RigLib)
-local oldRL = RL.wrapAttackAnimationAsync
-RL.wrapAttackAnimationAsync = function(a, b, c, d, func)
-    if not NoAttackAnimation then
-        return oldRL(a, b, c, 60, func)
-    end
-    local Hits = {}
-    local Client = game.Players.LocalPlayer
-    local Characters = game:GetService("Workspace").Characters:GetChildren()
-    for i, v in pairs(Characters) do
-        local Human = v:FindFirstChildOfClass("Humanoid")
-        if v.Name ~= game.Players.LocalPlayer.Name and Human and Human.RootPart and Human.Health > 0 and Client:DistanceFromCharacter(Human.RootPart.Position) < 65 then
-            table.insert(Hits, Human.RootPart)
-        end
-    end
-    local Enemies = game:GetService("Workspace").Enemies:GetChildren()
-    for i, v in pairs(Enemies) do
-        local Human = v:FindFirstChildOfClass("Humanoid")
-        if Human and Human.RootPart and Human.Health > 0 and Client:DistanceFromCharacter(Human.RootPart.Position) < 65 then
-            table.insert(Hits, Human.RootPart)
-        end
-    end
-    a:Play(0.01, 0.01, 0.01)
-    pcall(func, Hits)
-end
-getAllBladeHits = LPH_NO_VIRTUALIZE(function(Sizes)
-    local Hits = {}
-    local Client = game.Players.LocalPlayer
-    local Enemies = game:GetService("Workspace").Enemies:GetChildren()
-    for i, v in pairs(Enemies) do
-        local Human = v:FindFirstChildOfClass("Humanoid")
-        if Human and Human.RootPart and Human.Health > 0 and Client:DistanceFromCharacter(Human.RootPart.Position) < Sizes + 5 then
-            table.insert(Hits, Human.RootPart)
-        end
-    end
-    return Hits
-end)
-getAllBladeHitsPlayers = LPH_NO_VIRTUALIZE(function(Sizes)
-    local Hits = {}
-    local Client = game.Players.LocalPlayer
-    local Characters = game:GetService("Workspace").Characters:GetChildren()
-    for i, v in pairs(Characters) do
-        local Human = v:FindFirstChildOfClass("Humanoid")
-        if v.Name ~= game.Players.LocalPlayer.Name and Human and Human.RootPart and Human.Health > 0 and Client:DistanceFromCharacter(Human.RootPart.Position) < Sizes + 5 then
-            table.insert(Hits, Human.RootPart)
-        end
-    end
-    return Hits
-end)
-local CombatFramework = require(game:GetService("Players").LocalPlayer.PlayerScripts:WaitForChild("CombatFramework"))
-local CombatFrameworkR = getupvalues(CombatFramework)[2]
-local RigEven = game:GetService("ReplicatedStorage").RigControllerEvent
-local AttackAnim = Instance.new("Animation")
-local AttackCoolDown = 0
-local cooldowntickFire = 0
-local MaxFire = 1000
-local FireCooldown = 0.01
-local FireL = 0
-local bladehit = {}
-CancelCoolDown = LPH_JIT_MAX(function()
-    local ac = CombatFrameworkR.activeController
-    if ac and ac.equipped then
-        AttackCoolDown = tick() + (FireCooldown or 0.01) + ((FireL / MaxFire) * 0.3)
-        RigEven.FireServer(RigEven, "weaponChange", ac.currentWeaponModel.Name)
-        FireL = FireL + 1
-        task.delay((FireCooldown or 0.01) + ((FireL + 0.1 / MaxFire) * 0.1), function()
-            FireL = FireL - 1
-        end)
-    end
-end)
-AttackFunction = LPH_JIT_MAX(function(typef)
-    local ac = CombatFrameworkR.activeController
-    if ac and ac.equipped then
-        local bladehit = require(game.ReplicatedStorage.CombatFramework.RigLib).getBladeHits(
-            plr.Character,
-            {plr.Character.HumanoidRootPart},
-            60
-        )
-        local cac = {}
-        local hash = {}      
-        if #bladehit > 0 then
-            pcall(task.spawn, ac.attack, ac)
-            if tick() > AttackCoolDown then
-                CancelCoolDown()
-            end
-            if tick() - cooldowntickFire > 0.1 then
-                ac.timeToNextAttack = 0
-                ac.hitboxMagnitude = 60
-                pcall(task.spawn, ac.attack, ac)
-                cooldowntickFire = tick()
-            end
-            local AMI3 = ac.anims.basic[3]
-            local AMI2 = ac.anims.basic[2]
-            local REALID = AMI3 or AMI2
-            AttackAnim.AnimationId = REALID
-            local StartP = ac.humanoid:LoadAnimation(AttackAnim)
-            StartP:Play(0.01, 0.01, 0.01)
-            RigEven.FireServer(RigEven, "hit", bladehit, AMI3 and 3 or 2, "")
-            task.delay(0, function()
-                StartP:Stop()
-            end)
-        end
-    end
-end)
-function CheckStun()
-    if game:GetService('Players').LocalPlayer.Character:FindFirstChild("Stun") then
-        return game:GetService('Players').LocalPlayer.Character.Stun.Value ~= 0
-    end
-    return false
-end
-LPH_JIT_MAX(function()
-    spawn(function()
-        while game:GetService("RunService").Stepped:Wait() do
-            local ac = CombatFrameworkR.activeController
-            if ac and ac.equipped and not CheckStun() then
-                if NeedAttacking and Fast_Attack then
-                    task.spawn(function()
-                        pcall(task.spawn, AttackFunction, 1)
-                    end)
-                elseif DamageAura then
-                    task.spawn(function()
-                        pcall(task.spawn, AttackFunction, 3)
-                    end)
-                elseif UsefastattackPlayers and Fast_Attack then
-                    task.spawn(function()
-                        pcall(task.spawn, AttackFunction, 2)
-                    end)
-                elseif NeedAttacking and Fast_Attack == false then
-                    if ac.hitboxMagnitude ~= 55 then
-                        ac.hitboxMagnitude = 55
-                    end
-                    pcall(task.spawn, ac.attack, ac)
-                end
-            end
-        end
-    end)
-end)()
-
-local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
-Mouse.Button1Down:Connect(function()
-	if ClickNoCooldown then
-		local ac = CombatFrameworkR.activeController
-		if ac and ac.equipped then
-			ac.hitboxMagnitude = 55
-			pcall(AttackFunction)
-		end
-	end
-end)
-
-spawn(function()
-                while wait() do
-                    pcall(function()
-                    local Camera = require(game.ReplicatedStorage.Util.CameraShaker)
-                    Camera:Stop()
-                    end)
-                end
-            end)
-
-            Fast_Attack = true
-            DamageAura = true
-            ClickNoCooldown = true
-            DmgAttack.Enabled = not true
-           NeedAttacking = true
-           UsefastattackPlayers = true
