@@ -1883,7 +1883,7 @@ function FindPole()
     end
 end
 function FarmPole()
-	_G.Doing = "Task | Findm Pole"
+	_G.Doing = "Task | Find Pole"
     if FindPole() then
         v = FindPole()
     	repeat wait()
