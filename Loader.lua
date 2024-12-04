@@ -2852,7 +2852,7 @@ spawn(function()
                     toTarget(CFrameQ)
                 end
                 if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - CFrameQuest.Position).Magnitude <= 5 then
-                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest",NameQuest,QuestLv)
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest", NameQuest, QuestLv)
                     end
                 elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
                     --CheckQuest()
