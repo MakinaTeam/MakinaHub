@@ -17,7 +17,7 @@ TextLabel.Text = ""
 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel.TextSize = 19.000
 
-UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(0.01, Color3.fromRGB(255, 0, 242)), ColorSequenceKeypoint.new(0.16, Color3.fromRGB(59, 200, 251)), ColorSequenceKeypoint.new(0.35, Color3.fromRGB(247, 0, 255)), ColorSequenceKeypoint.new(0.68, Color3.fromRGB(8, 255, 214)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(114, 187, 255))}
+UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(0.01, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(0.16, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(0.35, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(0.68, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 255, 255))}
 UIGradient.Parent = TextLabel
 
 spawn(function()
@@ -2320,23 +2320,23 @@ function NextIsland()
     Killaura()
     if FindIsland5() then
         v = FindIsland5()
-		_G.Doing = "Task | Auto Raid Ialand 5"
+		_G.Doing = "Task | Auto Raid | Ialand 5"
         TP(CFrame.new(v.CFrame.X, 100, v.CFrame.Z))
     elseif FindIsland4() then
         v = FindIsland4()
-		_G.Doing = "Task | Auto Raid Ialand 4"
+		_G.Doing = "Task | Auto Raid | Ialand 4"
         TP(CFrame.new(v.CFrame.X, 100, v.CFrame.Z))
     elseif FindIsland3() then
         v = FindIsland3()
-		_G.Doing = "Task | Auto Raid Ialand 3"
+		_G.Doing = "Task | Auto Raid | Ialand 3"
         TP(CFrame.new(v.CFrame.X, 100, v.CFrame.Z))
     elseif FindIsland2() then
         v = FindIsland2()
-		_G.Doing = "Task | Auto Raid Ialand 2"
+		_G.Doing = "Task | Auto Raid | Ialand 2"
         TP(CFrame.new(v.CFrame.X, 100, v.CFrame.Z))
     elseif FindIsland1() then
         v = FindIsland1()
-		_G.Doing = "Task | Auto Raid Ialand 1"
+		_G.Doing = "Task | Auto Raid | Ialand 1"
         TP(CFrame.new(v.CFrame.X, 100, v.CFrame.Z))
     end
 end
