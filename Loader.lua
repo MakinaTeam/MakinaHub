@@ -2547,6 +2547,30 @@ spawn(function()
     end)
 end)
 
+_G.Kill_Aura = true
+
+spawn(function()
+    pcall(function() 
+        while wait() do
+            if _G.Kill_Aura then
+                if game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Timer.Visible == true then
+                    for i,v in pairs(game:GetService("Workspace").Enemies:GetDescendants()) do
+                        if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                            pcall(function()
+                                repeat wait()
+                                    sethiddenproperty(game:GetService("Players").LocalPlayer,"SimulationRadius",math.huge)
+                                    v.Humanoid.Health = 0
+                                    v.HumanoidRootPart.CanCollide = false
+                                until not _G.Kill_Aura or not v.Parent or v.Humanoid.Health <= 0
+                            end)
+                        end
+                    end
+                end
+            end
+        end
+    end)
+end)
+
 if not LPH_OBFUSCATED then
 	LPH_JIT_MAX = (function(...) return ... end)
 	LPH_NO_VIRTUALIZE = (function(...) return ... end)
