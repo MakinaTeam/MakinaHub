@@ -2856,11 +2856,11 @@ spawn(function()
                     end
                 elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
                     --CheckQuest()
-                    if game:GetService("Workspace").Enemies:FindFirstChild(Mon) then
+                    if game:GetService("Workspace").Enemies:FindFirstChild(Ms) then
                         for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                             if v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
                                 if v.Name == Ms then
-                                    if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) then
+                                    if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, QuestLv) then
                                         repeat task.wait()
                                             
                                             AutoHaki()                                                                                   
@@ -2889,7 +2889,7 @@ MonFarm = v.Name
                         toTarget(CFrameMon)                    
                         bringmob = false
                         if game:GetService("ReplicatedStorage"):FindFirstChild(Ms) then
-                         toTarget(game:GetService("ReplicatedStorage"):FindFirstChild(NameMonMs).HumanoidRootPart.CFrame * CFrame.new(0,40,0))
+                         toTarget(game:GetService("ReplicatedStorage"):FindFirstChild(Ms).HumanoidRootPart.CFrame * CFrame.new(0,40,0))
                         end
                     end
                 end
