@@ -4830,6 +4830,27 @@ v69:Toggle("Fast Attack", true, function(v413)
 	ClickNoCooldown = v413;
 	v51.Enabled = not v413;
 end);
+
+local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
+Mouse.Button1Down:Connect(function()
+	if ClickNoCooldown then
+		local ac = CombatFrameworkR.activeController
+		if ac and ac.equipped then
+			ac.hitboxMagnitude = 55
+			pcall(AttackFunction)
+		end
+	end
+end)
+
+spawn(function()
+                while wait() do
+                    pcall(function()
+                    local Camera = require(game.ReplicatedStorage.Util.CameraShaker)
+                    Camera:Stop()
+                    end)
+                end
+            end)
+
 v69:Toggle("No Attack Animation", true, function(v415)
 	NoAttackAnimation = v415;
 end);
