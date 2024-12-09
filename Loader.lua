@@ -4402,6 +4402,14 @@ spawn(function()
 									end
 								end
 							else
+								local RandomTele = math.random(1, 3)
+								if RandomTele == 1 then
+									toTarget(CFrame.new(-1436.86011, 167.753616, -12296.9512))
+								elseif RandomTele == 2 then
+									toTarget(CFrame.new(-2383.78979, 150.450592, -12126.4961))
+								elseif RandomTele == 3 then
+									toTarget(CFrame.new(-2231.2793, 168.256653, -12845.7559))
+								end
 								if game:GetService("ReplicatedStorage"):FindFirstChild("Cookie Crafter") then
 									toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Cookie Crafter").HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
 								else
