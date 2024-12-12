@@ -698,7 +698,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
         MainTop.BorderColor3 = Color3.fromRGB(0, 0, 0)
         MainTop.BorderSizePixel = 0
         MainTop.Position = UDim2.new(0.5, 0, 0.257999986, 0)
-        MainTop.Size = UDim2.new(0, 560, 0, 217)--56
+        MainTop.Size = UDim2.new(0, 200, 0, 217)--56
     
         UICorner_7.Parent = MainTop
     
