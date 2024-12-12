@@ -702,24 +702,6 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
     
         UICorner_7.Parent = MainTop
     
-        Hub_2.Name = "Hub"
-        Hub_2.Parent = MainTop
-        Hub_2.AnchorPoint = Vector2.new(0.5, 0.5)
-        Hub_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-        Hub_2.BackgroundTransparency = 1.000
-        Hub_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-        Hub_2.BorderSizePixel = 0
-        Hub_2.Position = UDim2.new(0.493928522, 0, 0.21421659, 0)
-        Hub_2.Size = UDim2.new(0, 159, 0, 35)
-        Hub_2.Font = Enum.Font.SourceSansBold
-        Hub_2.Text = "Hub"
-        Hub_2.TextColor3 = Color3.fromRGB(0, 166, 255)
-        Hub_2.TextScaled = true
-        Hub_2.TextSize = 21.000
-        Hub_2.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
-        Hub_2.TextWrapped = true
-        Hub_2.TextXAlignment = Enum.TextXAlignment.Left
-    
         UICorner_9.Parent = TextButton
     
         local TabHolder = Instance.new("Frame")
