@@ -618,7 +618,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
         Main.Position = UDim2.new(0.3, 0, 0.5, 0)
         Main.Size = UDim2.new(0, 0, 0, 0)
     
-        Main.Size = UDim2.new(0, 600, 0, 2) wait(0.1)
+        Main.Size = UDim2.new(0, 3000, 2) wait(0.1)--60
         Main:TweenSize(UDim2.new(0,600,0,600),"Out","Back",0.4,true)
     
         UICorner.Parent = Main
@@ -629,7 +629,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
         Top.BackgroundTransparency = 1.000
         Top.BorderColor3 = Color3.fromRGB(0, 0, 0)
         Top.BorderSizePixel = 0
-        Top.Size = UDim2.new(0, 600, 0, 53)
+        Top.Size = UDim2.new(0, 300, 0, 53)--6
     
         Name.Name = "Name"
         Name.Parent = Top
@@ -698,7 +698,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
         MainTop.BorderColor3 = Color3.fromRGB(0, 0, 0)
         MainTop.BorderSizePixel = 0
         MainTop.Position = UDim2.new(0.5, 0, 0.257999986, 0)
-        MainTop.Size = UDim2.new(0, 300, 0, 217)
+        MainTop.Size = UDim2.new(0, 300, 0, 217)--56
     
         UICorner_7.Parent = MainTop
     
