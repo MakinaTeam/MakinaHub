@@ -609,6 +609,279 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
         local LabelFruit = Instance.new("TextLabel")
         local NameFruit2 = Instance.new("TextLabel")
     
+        Main.Name = "Main"
+        Main.Parent = QuarterlyHub
+        Main.AnchorPoint = Vector2.new(0.5, 0.5)
+        Main.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+        Main.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        Main.BorderSizePixel = 0
+        Main.Position = UDim2.new(0.3, 0, 0.5, 0)
+        Main.Size = UDim2.new(0, 0, 0, 0)
+    
+        Main.Size = UDim2.new(0, 600, 0, 2) wait(0.1)
+        Main:TweenSize(UDim2.new(0,600,0,600),"Out","Back",0.4,true)
+    
+        UICorner.Parent = Main
+    
+        Top.Name = "Top"
+        Top.Parent = Main
+        Top.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Top.BackgroundTransparency = 1.000
+        Top.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        Top.BorderSizePixel = 0
+        Top.Size = UDim2.new(0, 600, 0, 53)
+    
+        Name.Name = "Name"
+        Name.Parent = Top
+        Name.AnchorPoint = Vector2.new(0, 0.5)
+        Name.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Name.BackgroundTransparency = 1.000
+        Name.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        Name.BorderSizePixel = 0
+        Name.Position = UDim2.new(0.112333275, 0, 0.5, 0)
+        Name.Size = UDim2.new(0, 91, 0, 25)
+        Name.Font = Enum.Font.SourceSansBold
+        Name.Text = "Quarterly"
+        Name.TextColor3 = Color3.fromRGB(255, 255, 255)
+        Name.TextScaled = true
+        Name.TextSize = 21.000
+        Name.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+        Name.TextWrapped = true
+        Name.TextXAlignment = Enum.TextXAlignment.Left
+    
+        Hub.Name = "Hub"
+        Hub.Parent = Top
+        Hub.AnchorPoint = Vector2.new(0, 0.5)
+        Hub.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Hub.BackgroundTransparency = 1.000
+        Hub.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        Hub.BorderSizePixel = 0
+        Hub.Position = UDim2.new(0.0927777588, 110, 0.5, 0)
+        Hub.Size = UDim2.new(0, 110, 0, 25)
+        Hub.Font = Enum.Font.SourceSansBold
+        Hub.Text = "Hub"
+        Hub.TextColor3 = Color3.fromRGB(0, 166, 255)
+        Hub.TextScaled = true
+        Hub.TextSize = 21.000
+        Hub.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+        Hub.TextWrapped = true
+        Hub.TextXAlignment = Enum.TextXAlignment.Left
+    
+        ImageLabel.Parent = Top
+        ImageLabel.AnchorPoint = Vector2.new(0, 0.5)
+        ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        ImageLabel.BackgroundTransparency = 1.000
+        ImageLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        ImageLabel.BorderSizePixel = 0
+        ImageLabel.Position = UDim2.new(0, 20, 0.5, 0)
+        ImageLabel.Size = UDim2.new(0, 35, 0, 35)
+        ImageLabel.Image = "rbxassetid://14284996066"
+    
+        UICorner_2.Parent = Top
+    
+        local MainTop = Instance.new("Frame")
+        local UICorner_7 = Instance.new("UICorner")
+        local Hub_2 = Instance.new("TextLabel")
+        local Name_2 = Instance.new("TextLabel")
+        local LogoBackground = Instance.new("ImageLabel")
+        local _Label = Instance.new("Frame")
+        local UICorner_8 = Instance.new("UICorner")
+        local Logo = Instance.new("ImageLabel")
+        local Name_3 = Instance.new("TextLabel")
+        local TextButton = Instance.new("TextButton")
+        local UICorner_9 = Instance.new("UICorner")
+    
+        MainTop.Name = "MainTop"
+        MainTop.Parent = Main
+        MainTop.AnchorPoint = Vector2.new(0.5, 0.5)
+        MainTop.BackgroundColor3 = Color3.fromRGB(0, 0, 16)
+        MainTop.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        MainTop.BorderSizePixel = 0
+        MainTop.Position = UDim2.new(0.5, 0, 0.257999986, 0)
+        MainTop.Size = UDim2.new(0, 560, 0, 217)
+    
+        UICorner_7.Parent = MainTop
+    
+        Hub_2.Name = "Hub"
+        Hub_2.Parent = MainTop
+        Hub_2.AnchorPoint = Vector2.new(0.5, 0.5)
+        Hub_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Hub_2.BackgroundTransparency = 1.000
+        Hub_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        Hub_2.BorderSizePixel = 0
+        Hub_2.Position = UDim2.new(0.493928522, 0, 0.21421659, 0)
+        Hub_2.Size = UDim2.new(0, 159, 0, 35)
+        Hub_2.Font = Enum.Font.SourceSansBold
+        Hub_2.Text = "Hub"
+        Hub_2.TextColor3 = Color3.fromRGB(0, 166, 255)
+        Hub_2.TextScaled = true
+        Hub_2.TextSize = 21.000
+        Hub_2.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+        Hub_2.TextWrapped = true
+        Hub_2.TextXAlignment = Enum.TextXAlignment.Left
+    
+        Name_2.Name = "Name"
+        Name_2.Parent = MainTop
+        Name_2.AnchorPoint = Vector2.new(0, 0.5)
+        Name_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Name_2.BackgroundTransparency = 1.000
+        Name_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        Name_2.BorderSizePixel = 0
+        Name_2.Position = UDim2.new(0.128928587, 0, 0.21421659, 0)
+        Name_2.Size = UDim2.new(0, 166, 0, 35)
+        Name_2.Font = Enum.Font.SourceSansBold
+        Name_2.Text = "Quarterly"
+        Name_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+        Name_2.TextScaled = true
+        Name_2.TextSize = 21.000
+        Name_2.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+        Name_2.TextWrapped = true
+        Name_2.TextXAlignment = Enum.TextXAlignment.Left
+    
+        LogoBackground.Name = "LogoBackground"
+        LogoBackground.Parent = MainTop
+        LogoBackground.AnchorPoint = Vector2.new(0, 0.5)
+        LogoBackground.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        LogoBackground.BackgroundTransparency = 1.000
+        LogoBackground.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        LogoBackground.BorderSizePixel = 0
+        LogoBackground.Position = UDim2.new(0.526309848, 20, 0.49480328, 0)
+        LogoBackground.Size = UDim2.new(0, 235, 0, 235)
+        LogoBackground.Image = "rbxassetid://14572696504"
+        LogoBackground.ImageColor3 = Color3.fromRGB(0, 0, 30)
+    
+        _Label.Name = "_Label"
+        _Label.Parent = MainTop
+        _Label.BackgroundColor3 = Color3.fromRGB(0, 132, 255)
+        _Label.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        _Label.BorderSizePixel = 0
+        _Label.Position = UDim2.new(0.10535714, 0, 0.302765042, 0)
+        _Label.Size = UDim2.new(0, 204, 0, 5)
+    
+        UICorner_8.Parent = _Label
+    
+        Logo.Name = "Logo"
+        Logo.Parent = MainTop
+        Logo.AnchorPoint = Vector2.new(0, 0.5)
+        Logo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Logo.BackgroundTransparency = 1.000
+        Logo.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        Logo.BorderSizePixel = 0
+        Logo.Position = UDim2.new(0.567381263, 20, 0.49751696, 0)
+        Logo.Size = UDim2.new(0, 188, 0, 194)
+        Logo.Image = "rbxassetid://14572696504"
+        Logo.ImageColor3 = Color3.fromRGB(154, 154, 154)
+    
+        Name_3.Name = "Name"
+        Name_3.Parent = MainTop
+        Name_3.AnchorPoint = Vector2.new(0, 0.5)
+        Name_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Name_3.BackgroundTransparency = 1.000
+        Name_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        Name_3.BorderSizePixel = 0
+        Name_3.Position = UDim2.new(0.128928587, 0, 0.416981578, 0)
+        Name_3.Size = UDim2.new(0, 166, 0, 19)
+        Name_3.Font = Enum.Font.SourceSansBold
+        Name_3.Text = "Premium Script PC"
+        Name_3.TextColor3 = Color3.fromRGB(255, 255, 255)
+        Name_3.TextScaled = true
+        Name_3.TextSize = 21.000
+        Name_3.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+        Name_3.TextWrapped = true
+    
+        TextButton.Parent = MainTop
+        TextButton.BackgroundColor3 = Color3.fromRGB(0, 132, 255)
+        TextButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        TextButton.BorderSizePixel = 0
+        TextButton.Position = UDim2.new(0.0982142836, 0, 0.54838711, 0)
+        TextButton.Size = UDim2.new(0, 208, 0, 31)
+        TextButton.Font = Enum.Font.SourceSansBold
+        TextButton.Text = "Player Ui Stast : On"
+        TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+        TextButton.TextSize = 19.000
+        TextButton.TextWrapped = true
+    
+        TextButton.MouseButton1Click:Connect(function()
+            if Button == "On" then
+                TextButton.Text = "Player Ui Stast : OFF"
+                TweenService:Create(
+                    StatsPlayer_2,
+                    TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                    {Position = UDim2.new(0, 0, -6, 0)}
+                ):Play()
+                wait(0.2)
+                TweenService:Create(
+                    StatsPlayer,
+                    TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                    {Position = UDim2.new(0, 0, -6, 0)}
+                ):Play()
+                wait(0.2)
+                TweenService:Create(
+                    PlayerSword,
+                    TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                    {Position = UDim2.new(0, 0, 12, 0)}
+                ):Play()
+                wait(0.2)
+                TweenService:Create(
+                    PlayerFruit,
+                    TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                    {Position = UDim2.new(0, 0, -6, 0)}
+                ):Play()
+                wait(0.2)
+                TweenService:Create(
+                    PlayerStast,
+                    TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                    {Position = UDim2.new(1.00999999, 0, -1.5, 0)}
+                ):Play()
+                TweenService:Create(
+                    Main,
+                    TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                    {Position = UDim2.new(0.5, 0, 0.5, 0)}
+                ):Play()
+                wait(0.5)
+                Button = "OFF"
+            else
+                TextButton.Text = "Player Ui Stast : On"
+                TweenService:Create(
+                    Main,
+                    TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                    {Position = UDim2.new(0.3, 0, 0.5, 0)}
+                ):Play()
+                TweenService:Create(
+                    PlayerStast,
+                    TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                    {Position = UDim2.new(1.00999999, 0, 0, 0)}
+                ):Play()
+                wait(0.2)
+                TweenService:Create(
+                    PlayerFruit,
+                    TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                    {Position = UDim2.new(0.299559474, 0, 0, 0)}
+                ):Play()
+                wait(0.2)
+                TweenService:Create(
+                    PlayerSword,
+                    TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                    {Position = UDim2.new(0.299559474, 0, 1.05000019, 0)}
+                ):Play()
+                wait(0.2)
+                TweenService:Create(
+                    StatsPlayer,
+                    TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                    {Position = UDim2.new(0, 0, 1.05000007, 0)}
+                ):Play()
+                wait(0.2)
+                TweenService:Create(
+                    StatsPlayer_2,
+                    TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                    {Position = UDim2.new(-0.00366300368, 0, 2.1962564, 0)}
+                ):Play()
+                wait(0.5)
+                Button = "On"
+            end
+            return
+        end)
+    
         UICorner_9.Parent = TextButton
     
         local TabHolder = Instance.new("Frame")
