@@ -619,7 +619,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
         Main.Size = UDim2.new(0, 0, 0, 0)
     
         Main.Size = UDim2.new(0, 300, 2) wait(0.1)--60
-        Main:TweenSize(UDim2.new(0,600,0,600),"Out","Back",0.4,true)
+        Main:TweenSize(UDim2.new(0,300,0,300),"Out","Back",0.4,true)
     
         UICorner.Parent = Main
     
