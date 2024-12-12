@@ -698,7 +698,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
         MainTop.BorderColor3 = Color3.fromRGB(0, 0, 0)
         MainTop.BorderSizePixel = 0
         MainTop.Position = UDim2.new(0.5, 0, 0.257999986, 0)
-        MainTop.Size = UDim2.new(0, 200, 0, 217)--56
+        MainTop.Size = UDim2.new(0, 560, 0, 217)--56
     
         UICorner_7.Parent = MainTop
     
@@ -719,58 +719,6 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
         Hub_2.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
         Hub_2.TextWrapped = true
         Hub_2.TextXAlignment = Enum.TextXAlignment.Left
-    
-        Name_2.Name = "Name"
-        Name_2.Parent = MainTop
-        Name_2.AnchorPoint = Vector2.new(0, 0.5)
-        Name_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-        Name_2.BackgroundTransparency = 1.000
-        Name_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-        Name_2.BorderSizePixel = 0
-        Name_2.Position = UDim2.new(0.128928587, 0, 0.21421659, 0)
-        Name_2.Size = UDim2.new(0, 166, 0, 35)
-        Name_2.Font = Enum.Font.SourceSansBold
-        Name_2.Text = "Quarterly"
-        Name_2.TextColor3 = Color3.fromRGB(255, 255, 255)
-        Name_2.TextScaled = true
-        Name_2.TextSize = 21.000
-        Name_2.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
-        Name_2.TextWrapped = true
-        Name_2.TextXAlignment = Enum.TextXAlignment.Left
-    
-        LogoBackground.Name = "LogoBackground"
-        LogoBackground.Parent = MainTop
-        LogoBackground.AnchorPoint = Vector2.new(0, 0.5)
-        LogoBackground.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-        LogoBackground.BackgroundTransparency = 1.000
-        LogoBackground.BorderColor3 = Color3.fromRGB(0, 0, 0)
-        LogoBackground.BorderSizePixel = 0
-        LogoBackground.Position = UDim2.new(0.526309848, 20, 0.49480328, 0)
-        LogoBackground.Size = UDim2.new(0, 235, 0, 235)
-        LogoBackground.Image = "rbxassetid://14572696504"
-        LogoBackground.ImageColor3 = Color3.fromRGB(0, 0, 30)
-    
-        _Label.Name = "_Label"
-        _Label.Parent = MainTop
-        _Label.BackgroundColor3 = Color3.fromRGB(0, 132, 255)
-        _Label.BorderColor3 = Color3.fromRGB(0, 0, 0)
-        _Label.BorderSizePixel = 0
-        _Label.Position = UDim2.new(0.10535714, 0, 0.302765042, 0)
-        _Label.Size = UDim2.new(0, 204, 0, 5)
-    
-        UICorner_8.Parent = _Label
-    
-        Logo.Name = "Logo"
-        Logo.Parent = MainTop
-        Logo.AnchorPoint = Vector2.new(0, 0.5)
-        Logo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-        Logo.BackgroundTransparency = 1.000
-        Logo.BorderColor3 = Color3.fromRGB(0, 0, 0)
-        Logo.BorderSizePixel = 0
-        Logo.Position = UDim2.new(0.567381263, 20, 0.49751696, 0)
-        Logo.Size = UDim2.new(0, 188, 0, 194)
-        Logo.Image = "rbxassetid://14572696504"
-        Logo.ImageColor3 = Color3.fromRGB(154, 154, 154)
     
         UICorner_9.Parent = TextButton
     
