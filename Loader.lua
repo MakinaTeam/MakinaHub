@@ -582,6 +582,10 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
     
     library = {}
     
+    local QuarterlyHub = Instance.new("ScreenGui")
+    QuarterlyHub.Name = "Quarterly Hub"
+    QuarterlyHub.Parent = game.CoreGui:WaitForChild("RobloxGui"):WaitForChild("Modules")
+    
     function library:Createlibrary()
         local Main = Instance.new("Frame")
         local UICorner = Instance.new("UICorner")
