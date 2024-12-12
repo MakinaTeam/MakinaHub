@@ -1,23 +1,3 @@
-local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/Jxereas/UI-Libraries/main/notification_gui_library.lua", true))()
-local notif1 = Notification.new("message", "Quarterly Hub Premium Script Pc", "Script Loading..")
-local notif2 = Notification.new("message", "Quarterly Hub Premium Script Pc", "Check Whilelist.")
-wait(1)
-local notif3 = Notification.new("message", "Quarterly Hub Premium Script Pc", "Check Game...")
-wait(2)
-local notif4 = Notification.new("success", "Quarterly Hub Premium Script Pc", "Script Loading Success ✅")
-wait(0.4)
-local notif5 = Notification.new("success", "Quarterly Hub Premium Script Pc", "Thank For Buying Quarterly Hub ✅")
-wait(0.5)
-notif1:delete()
-wait(0.1)
-notif2:delete()
-wait(0.1)
-notif3:delete()
-wait(0.1)
-notif4:delete()
-wait(0.1)
-notif5:delete()
-wait(.1)
 if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7449423635 then 
 
     _G.Color = Color3.fromRGB(0 , 200, 200)
@@ -618,8 +598,8 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
         Main.Position = UDim2.new(0.3, 0, 0.5, 0)
         Main.Size = UDim2.new(0, 0, 0, 0)
     
-        Main.Size = UDim2.new(0, 300, 2) wait(0.1)--60
-        Main:TweenSize(UDim2.new(0,300,0,300),"Out","Back",0.4,true)
+        Main.Size = UDim2.new(0, 600, 2) wait(0.1)--60
+        Main:TweenSize(UDim2.new(0,600,0,600),"Out","Back",0.4,true)
     
         UICorner.Parent = Main
     
@@ -12883,7 +12863,3 @@ MikSection:AddButton({
         end
     end
 })
-
---[[loadstring(game:HttpGet("https://raw.githubusercontent.com/robloxfui/Checkhealthplayer/main/HEEEEEEEEEEEE", true))()--]]
-
-end
