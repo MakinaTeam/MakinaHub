@@ -1100,7 +1100,7 @@ function Library:CreateWindow(a)
 	Discord["Name"] = [[Discord]]
 
 	UICorner4["Parent"] = Discord
-	UICorner4["CornerRadius"] = UDim.new(0, 9)
+	UICorner4["CornerRadius"] = UDim.new(1, 9)
 
 	UIStroke3["Parent"] = Discord
 	UIStroke3["Transparency"] = 0.6
