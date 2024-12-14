@@ -981,13 +981,13 @@ function Library:CreateWindow(a)
 	Credit.Parent = BackGround
 	Credit.BorderSizePixel = 0
 	Credit.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Credit.Size = UDim2.new(0, 217, 0, 900)
-	Credit.Position = UDim2.new(0.22105, 0, 0.05667, 0)
+	Credit.Size = UDim2.new(0, 217, 0, 43)
+	Credit.Position = UDim2.new(0.38737, 0, 0.05667, 0)
 	Credit.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	Credit.Name = "Credit"
 
 	UICorner2.Parent = Credit
-	UICorner2.CornerRadius = UDim.new(10, 1)
+	UICorner2.CornerRadius = UDim.new(1, 9)
 
 	UIStroke.Parent = Credit
 	UIStroke.Transparency = 0.6
@@ -1012,6 +1012,146 @@ function Library:CreateWindow(a)
 	CreditText.Position = UDim2.new(0.41935, 0, 0.30233, 0)
    CreditText.TextXAlignment = Enum.TextXAlignment.Left
 
+	local TimeMark = Instance.new("Frame")
+	local UICorner3 = Instance.new("UICorner")
+	local UIStroke2 = Instance.new("UIStroke")
+	local Text = Instance.new("TextLabel")
+	local Des = Instance.new("TextLabel")
+	local Icon = Instance.new("ImageLabel")
+
+	TimeMark.Parent = BackGround
+	TimeMark.BorderSizePixel = 0
+	TimeMark.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TimeMark.Size = UDim2.new(0, 67, 0, 43)
+	TimeMark.Position = UDim2.new(0.22105, 0, 0.05667, 0)
+	TimeMark.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	TimeMark.Name = "TimeMark"
+
+	UICorner3["Parent"] = TimeMark
+	UICorner3["CornerRadius"] = UDim.new(0, 9)
+
+	UIStroke2["Parent"] = TimeMark
+	UIStroke2["Transparency"] = 0.6
+	UIStroke2["Color"] = Color3.fromRGB(223, 223, 223)
+
+	Text["Parent"] = TimeMark
+	Text["BorderSizePixel"] = 0
+	Text["TextXAlignment"] = Enum.TextXAlignment.Left
+	Text["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+	Text["TextSize"] = 10
+	Text["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+	Text["TextColor3"] = Color3.fromRGB(0, 0, 0)
+	Text["BackgroundTransparency"] = 1
+	Text["Size"] = UDim2.new(0, 53, 0, 17)
+	Text["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+	Text["Text"] = [[     Time]]
+	Text["Name"] = [[Text]]
+	Text["Position"] = UDim2.new(0.10931, 0, 0.12766, 0)
+
+	Des["Parent"] = TimeMark
+	Des["BorderSizePixel"] = 0
+	Des["TextTransparency"] = 0.5
+	Des["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+	Des["TextSize"] = 12
+	Des["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+	Des["TextColor3"] = Color3.fromRGB(0, 0, 0)
+	Des["BackgroundTransparency"] = 1
+	Des["Size"] = UDim2.new(0, 43, 0, 11)
+	Des["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+	Des["Text"] = [[00:00:00]]
+	Des["Name"] = [[Des]]
+	Des["Position"] = UDim2.new(0.23262, 0, 0.5218, 0)
+
+	task.defer(function()
+		while wait(.5) do
+			pcall(function()
+				local scripttime = game.Workspace.DistributedGameTime
+				local seconds = scripttime%60
+				local minutes = math.floor(scripttime/60%60)
+				local hours = math.floor(scripttime/3600)
+				local tempo = string.format("%02d:%02d:%02d", hours ,minutes, seconds)
+				Des["Text"] = tostring(tempo)
+			end)
+		end
+	end)
+
+
+	Icon["Parent"] = TimeMark
+	Icon["ImageTransparency"] = 0.5
+	Icon["ImageColor3"] = Color3.fromRGB(0, 0, 0)
+	Icon["Image"] = [[rbxassetid://]]
+	Icon["Size"] = UDim2.new(0, 9, 0, 9)
+	Icon["BackgroundTransparency"] = 1
+	Icon["Name"] = [[Selected: timer_enabled]]
+	Icon["Position"] = UDim2.new(0.1028, 0, 0.55814, 0)
+
+	local Discord = Instance.new("Frame")
+	local UICorner4 = Instance.new("UICorner")
+	local UIStroke3 = Instance.new("UIStroke")
+	local IconDiscord = Instance.new("ImageLabel")
+	local DiscordClick = Instance.new("TextButton")
+
+	Discord["Parent"] = BackGround
+	Discord["BorderSizePixel"] = 0
+	Discord["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+	Discord["Size"] = UDim2.new(0, 43, 0, 43)
+	Discord["Position"] = UDim2.new(0.86737, 0, 0.05667, 0)
+	Discord["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+	Discord["Name"] = [[Discord]]
+
+	UICorner4["Parent"] = Discord
+	UICorner4["CornerRadius"] = UDim.new(0, 9)
+
+	UIStroke3["Parent"] = Discord
+	UIStroke3["Transparency"] = 0.6
+	UIStroke3["Color"] = Color3.fromRGB(223, 223, 223)
+
+	IconDiscord["Parent"] = Discord
+	IconDiscord["BorderSizePixel"] = 0
+	IconDiscord["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+	IconDiscord["ImageColor3"] = Color3.fromRGB(0, 0, 0)
+	IconDiscord["ImageTransparency"] = 0
+	IconDiscord["AnchorPoint"] = Vector2.new(0.5, 0.5)
+	IconDiscord["Image"] = [[rbxassetid://9886659671]]
+	IconDiscord["Size"] = UDim2.new(0.65, 0, 0.5, 0)
+	IconDiscord["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+	IconDiscord["BackgroundTransparency"] = 0
+	IconDiscord["Name"] = [[IconDiscord]]
+	IconDiscord["Position"] = UDim2.new(0.5, 0, 0.5, 0)
+
+	DiscordClick["Parent"] = Discord
+	DiscordClick["BorderSizePixel"] = 0
+	DiscordClick["TextSize"] = 14
+	DiscordClick["TextColor3"] = Color3.fromRGB(0, 0, 0)
+	DiscordClick["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+	DiscordClick["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+	DiscordClick["Size"] = UDim2.new(1, 0, 1, 0)
+	DiscordClick["BackgroundTransparency"] = 1
+	DiscordClick["Name"] = [[DiscordClick]]
+	DiscordClick["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+	DiscordClick["Text"] = [[]]
+
+	local function tweensize(object, target)
+		local targetSize = target
+		local tweenInfo = TweenInfo.new(0.2, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
+		local tween = Tw:Create(object, tweenInfo, {Size = targetSize})
+		tween:Play()
+	end
+
+	DiscordClick.MouseButton1Click:Connect(function()
+		tweensize(Discord, UDim2.new(0, 35, 0, 35))
+		Tw:Create(Discord, Tf2, {Position = UDim2.new(0.863, 0,0.07, 0)}):Play()
+		task.delay(0.16, function()
+			tweensize(Discord, UDim2.new(0, 43, 0, 43))
+			Tw:Create(Discord, Tf2, {Position = UDim2.new(0.867, 0,0.057, 0)}):Play()
+		end)
+				if BackGround.Visible then
+			BackGround.Visible = false
+		else
+			BackGround.Visible = true
+		end
+	end)
+
 	local Tab = Instance.new("Frame")
 	local UIStroke4 = Instance.new("UIStroke")
 	local TabList = Instance.new("Frame")
@@ -1033,7 +1173,7 @@ function Library:CreateWindow(a)
 	TabList["BorderSizePixel"] = 0
 	TabList["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
 	TabList["Size"] = UDim2.new(0, 54, 0, 222)
-	TabList["Position"] = UDim2.new(0.41935, 0, 0.30233, 0)
+	TabList["Position"] = UDim2.new(0.17647, 0, 0.13, 0)
 	TabList["BorderColor3"] = Color3.fromRGB(0, 0, 0)
 	TabList["Name"] = [[TabList]]
 	TabList["BackgroundTransparency"] = 1
