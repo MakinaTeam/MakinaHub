@@ -618,7 +618,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
         Main.Position = UDim2.new(0.3, 0, 0.5, 0)
         Main.Size = UDim2.new(0, 0, 0, 0)
     
-        Main.Size = UDim2.new(0, 600, 2) wait(0.1)--60
+        Main.Size = UDim2.new(0, 600, 0, 2) wait(0.1)
         Main:TweenSize(UDim2.new(0,600,0,600),"Out","Back",0.4,true)
     
         UICorner.Parent = Main
@@ -629,7 +629,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
         Top.BackgroundTransparency = 1.000
         Top.BorderColor3 = Color3.fromRGB(0, 0, 0)
         Top.BorderSizePixel = 0
-        Top.Size = UDim2.new(0, 600, 0, 53)--6
+        Top.Size = UDim2.new(0, 600, 0, 53)
     
         Name.Name = "Name"
         Name.Parent = Top
@@ -679,6 +679,769 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
     
         UICorner_2.Parent = Top
     
+        PlayerStast.Name = "PlayerStast"
+        PlayerStast.Parent = Main
+        PlayerStast.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+        PlayerStast.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        PlayerStast.BorderSizePixel = 0
+        PlayerStast.Position = UDim2.new(-5, 0, 0, 0)
+        PlayerStast.Size = UDim2.new(0, 273, 0, 187)
+    
+        spawn(function()
+            TweenService:Create(
+                PlayerStast,
+                TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                {Position = UDim2.new(1.00999999, 0, 0, 0)}
+            ):Play()
+        end)
+    
+        UICorner_3.Parent = PlayerStast
+    
+        IconPlayer.Name = "IconPlayer"
+        IconPlayer.Parent = PlayerStast
+        IconPlayer.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
+        IconPlayer.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        IconPlayer.BorderSizePixel = 0
+        IconPlayer.Position = UDim2.new(0.315018326, 0, 0.0641711205, 0)
+        IconPlayer.Size = UDim2.new(0, 100, 0, 100)
+        IconPlayer.Image = "https://www.roblox.com/headshot-thumbnail/image?userId="..game.Players.LocalPlayer.UserId.."&width=420&height=420&format=png"
+    
+        UICorner_4.Parent = IconPlayer
+    
+        MainText.Name = "MainText"
+        MainText.Parent = PlayerStast
+        MainText.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+        MainText.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        MainText.BorderSizePixel = 0
+        MainText.Position = UDim2.new(0, 0, 0.636363626, 0)
+        MainText.Size = UDim2.new(0, 273, 0, 68)
+    
+        UICorner_5.Parent = MainText
+    
+        NamePlayer.Name = "NamePlayer"
+        NamePlayer.Parent = MainText
+        NamePlayer.AnchorPoint = Vector2.new(0.5, 0.5)
+        NamePlayer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        NamePlayer.BackgroundTransparency = 1.000
+        NamePlayer.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        NamePlayer.BorderSizePixel = 0
+        NamePlayer.Position = UDim2.new(0.5, 0, 0.5, 0)
+        NamePlayer.Size = UDim2.new(0, 200, 0, 50)
+        NamePlayer.Font = Enum.Font.FredokaOne
+        NamePlayer.Text = game.Players.LocalPlayer.Name
+        NamePlayer.TextColor3 = Color3.fromRGB(255, 255, 255)
+        NamePlayer.TextSize = 26.000
+    
+        StatsPlayer.Name = "Stats Player"
+        StatsPlayer.Parent = PlayerStast
+        StatsPlayer.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+        StatsPlayer.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        StatsPlayer.BorderSizePixel = 0
+        StatsPlayer.Position = UDim2.new(0, 0, 1.05000007, 0)
+        StatsPlayer.Size = UDim2.new(0, 273, 0, 206)
+    
+        UICorner_6.Parent = StatsPlayer
+    
+        ScrollingFrame1.Name = "ScrollingFrame1"
+        ScrollingFrame1.Parent = StatsPlayer
+        ScrollingFrame1.Active = true
+        ScrollingFrame1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        ScrollingFrame1.BackgroundTransparency = 1.000
+        ScrollingFrame1.BorderColor3 = Color3.fromRGB(255, 255, 255)
+        ScrollingFrame1.BorderSizePixel = 0
+        ScrollingFrame1.Size = UDim2.new(0, 273, 0, 206)
+        ScrollingFrame1.CanvasSize = UDim2.new(0, 5, 0, 0)
+    
+        LabelName.Name = "Label Name"
+        LabelName.Parent = ScrollingFrame1
+        LabelName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        LabelName.BackgroundTransparency = 1.000
+        LabelName.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        LabelName.BorderSizePixel = 0
+        LabelName.Position = UDim2.new(0, 0, 0.0436893217, 0)
+        LabelName.Size = UDim2.new(0, 273, 0, 15)
+        LabelName.Font = Enum.Font.SourceSansBold
+        LabelName.Text = "( Name )"
+        LabelName.TextColor3 = Color3.fromRGB(94, 94, 94)
+        LabelName.TextScaled = true
+        LabelName.TextSize = 19.000
+        LabelName.TextWrapped = true
+    
+        NamePlayer2.Name = "NamePlayer2"
+        NamePlayer2.Parent = ScrollingFrame1
+        NamePlayer2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        NamePlayer2.BackgroundTransparency = 1.000
+        NamePlayer2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        NamePlayer2.BorderSizePixel = 0
+        NamePlayer2.Position = UDim2.new(0, 0, 0.203883499, 0)
+        NamePlayer2.Size = UDim2.new(0, 273, 0, 23)
+        NamePlayer2.Font = Enum.Font.SourceSansBold
+        NamePlayer2.Text = ": "..game.Players.LocalPlayer.Name
+        NamePlayer2.TextColor3 = Color3.fromRGB(140, 0, 255)
+        NamePlayer2.TextScaled = true
+        NamePlayer2.TextSize = 19.000
+        NamePlayer2.TextWrapped = true
+    
+        LabelFruit.Name = "Label Fruit"
+        LabelFruit.Parent = ScrollingFrame1
+        LabelFruit.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        LabelFruit.BackgroundTransparency = 1.000
+        LabelFruit.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        LabelFruit.BorderSizePixel = 0
+        LabelFruit.Position = UDim2.new(0, 0, 0.378640771, 0)
+        LabelFruit.Size = UDim2.new(0, 273, 0, 18)
+        LabelFruit.Font = Enum.Font.SourceSansBold
+        LabelFruit.Text = "( Fruit )"
+        LabelFruit.TextColor3 = Color3.fromRGB(94, 94, 94)
+        LabelFruit.TextScaled = true
+        LabelFruit.TextSize = 19.000
+        LabelFruit.TextWrapped = true
+    
+        NameFruit2.Name = "NameFruit2"
+        NameFruit2.Parent = ScrollingFrame1
+        NameFruit2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        NameFruit2.BackgroundTransparency = 1.000
+        NameFruit2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        NameFruit2.BorderSizePixel = 0
+        NameFruit2.Position = UDim2.new(0, 0, 0.543689311, 0)
+        NameFruit2.Size = UDim2.new(0, 273, 0, 23)
+        NameFruit2.Font = Enum.Font.SourceSansBold
+        NameFruit2.Text = ": Nil"
+        NameFruit2.TextColor3 = Color3.fromRGB(0, 136, 255)
+        NameFruit2.TextScaled = true
+        NameFruit2.TextSize = 19.000
+        NameFruit2.TextWrapped = true
+    
+        spawn(function()
+            while wait() do
+                NameFruit2.Text = ": "..game:GetService("Players").LocalPlayer.Data.DevilFruit.Value
+            end
+        end)
+    
+        local NameBeli = Instance.new("TextLabel")
+        local LabelBeli = Instance.new("TextLabel")
+        local NameBeli2 = Instance.new("TextLabel")
+        local StatsPlayer_2 = Instance.new("Frame")
+        local UICorner_7 = Instance.new("UICorner")
+        local ScrollingFramePP = Instance.new("ScrollingFrame")
+        local IconMoon = Instance.new("ImageLabel")
+        local UICorner_8 = Instance.new("UICorner")
+        local TextLabelMoon = Instance.new("TextLabel")
+        local MainLabel = Instance.new("TextLabel")
+        local MainLabel_2 = Instance.new("TextLabel")
+        local TextLabelIsLand = Instance.new("TextLabel")
+        local LabelValueBone = Instance.new("TextLabel")
+        local ValueBone = Instance.new("TextLabel")
+        local LabelBeli_2 = Instance.new("TextLabel")
+        local LabelValueElite = Instance.new("TextLabel")
+        local ValueElite = Instance.new("TextLabel")
+    
+        NameBeli.Name = "NameBeli"
+        NameBeli.Parent = ScrollingFrame1
+        NameBeli.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        NameBeli.BackgroundTransparency = 1.000
+        NameBeli.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        NameBeli.BorderSizePixel = 0
+        NameBeli.Position = UDim2.new(0.131868139, 0, 0.825242698, 0)
+        NameBeli.Size = UDim2.new(0, 95, 0, 23)
+        NameBeli.Font = Enum.Font.SourceSansBold
+        NameBeli.Text = "Bali : 0"
+        NameBeli.TextColor3 = Color3.fromRGB(38, 255, 0)
+        NameBeli.TextScaled = true
+        NameBeli.TextSize = 19.000
+        NameBeli.TextWrapped = true
+        NameBeli.TextXAlignment = Enum.TextXAlignment.Left
+    
+        spawn(function()
+            local player = game:GetService("Players").LocalPlayer
+            
+            while wait() do
+                local beliValue = player.Data.Beli.Value
+                local formattedBeli = ""
+    
+                if beliValue >= 1e12 then
+                    formattedBeli = string.format("%.1fT", beliValue / 1e12)
+                elseif beliValue >= 1e9 then
+                    formattedBeli = string.format("%.1fB", beliValue / 1e9)
+                elseif beliValue >= 1e6 then
+                    formattedBeli = string.format("%.1fM", beliValue / 1e6)
+                elseif beliValue >= 1e3 then
+                    formattedBeli = string.format("%.1fk", beliValue / 1e3)
+                else
+                    formattedBeli = tostring(beliValue)
+                end
+                NameBeli.Text = "Bali : " .. formattedBeli
+            end
+        end)
+    
+        LabelBeli.Name = "Label Beli"
+        LabelBeli.Parent = ScrollingFrame1
+        LabelBeli.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        LabelBeli.BackgroundTransparency = 1.000
+        LabelBeli.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        LabelBeli.BorderSizePixel = 0
+        LabelBeli.Position = UDim2.new(0, 0, 0.684466004, 0)
+        LabelBeli.Size = UDim2.new(0, 273, 0, 18)
+        LabelBeli.Font = Enum.Font.SourceSansBold
+        LabelBeli.Text = "( Bali and Fragments  )"
+        LabelBeli.TextColor3 = Color3.fromRGB(94, 94, 94)
+        LabelBeli.TextScaled = true
+        LabelBeli.TextSize = 19.000
+        LabelBeli.TextWrapped = true
+    
+        NameBeli2.Name = "NameBeli2"
+        NameBeli2.Parent = ScrollingFrame1
+        NameBeli2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        NameBeli2.BackgroundTransparency = 1.000
+        NameBeli2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        NameBeli2.BorderSizePixel = 0
+        NameBeli2.Position = UDim2.new(0.689853481, 0, 0.825242698, 0)
+        NameBeli2.Size = UDim2.new(0, 142, 0, 23)
+        NameBeli2.Font = Enum.Font.SourceSansBold
+        NameBeli2.Text = "F : 0"
+        NameBeli2.TextColor3 = Color3.fromRGB(149, 0, 255)
+        NameBeli2.TextScaled = true
+        NameBeli2.TextSize = 19.000
+        NameBeli2.TextWrapped = true
+        NameBeli2.TextXAlignment = Enum.TextXAlignment.Left
+    
+        spawn(function()
+            while wait() do
+                local beliValue = game:GetService("Players").LocalPlayer.Data.Fragments.Value
+                local formattedBeli = ""
+    
+                if beliValue >= 1e12 then
+                    formattedBeli = string.format("%.1fT", beliValue / 1e12)
+                elseif beliValue >= 1e9 then
+                    formattedBeli = string.format("%.1fB", beliValue / 1e9)
+                elseif beliValue >= 1e6 then
+                    formattedBeli = string.format("%.1fM", beliValue / 1e6)
+                elseif beliValue >= 1e3 then
+                    formattedBeli = string.format("%.1fk", beliValue / 1e3)
+                else
+                    formattedBeli = tostring(beliValue)
+                end
+                NameBeli2.Text = "F : "..formattedBeli
+            end
+        end)
+    
+        StatsPlayer_2.Name = "Stats Player 2"
+        StatsPlayer_2.Parent = PlayerStast
+        StatsPlayer_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+        StatsPlayer_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        StatsPlayer_2.BorderSizePixel = 0
+        StatsPlayer_2.Position = UDim2.new(-0.00366300368, 0, 2.1962564, 0)
+        StatsPlayer_2.Size = UDim2.new(0, 273, 0, 189)
+    
+        UICorner_7.Parent = StatsPlayer_2
+    
+        ScrollingFramePP.Name = "ScrollingFramePP"
+        ScrollingFramePP.Parent = StatsPlayer_2
+        ScrollingFramePP.Active = true
+        ScrollingFramePP.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        ScrollingFramePP.BackgroundTransparency = 1.000
+        ScrollingFramePP.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        ScrollingFramePP.BorderSizePixel = 0
+        ScrollingFramePP.Size = UDim2.new(0, 274, 0, 189)
+        ScrollingFramePP.ScrollBarThickness = 0
+    
+        IconMoon.Name = "IconMoon"
+        IconMoon.Parent = ScrollingFramePP
+        IconMoon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        IconMoon.BackgroundTransparency = 1.000
+        IconMoon.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        IconMoon.BorderSizePixel = 0
+        IconMoon.Position = UDim2.new(0.0360000506, 0, 0.117671907, 0)
+        IconMoon.Size = UDim2.new(0, 45, 0, 45)
+    
+        spawn(function()
+            while wait() do
+                IconMoon.Image = game:GetService("Lighting").Sky.MoonTextureId
+            end
+        end)
+    
+        UICorner_8.Parent = IconMoon
+    
+        TextLabelMoon.Name = "TextLabelMoon"
+        TextLabelMoon.Parent = ScrollingFramePP
+        TextLabelMoon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        TextLabelMoon.BackgroundTransparency = 1.000
+        TextLabelMoon.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        TextLabelMoon.BorderSizePixel = 0
+        TextLabelMoon.Position = UDim2.new(0.244452477, 0, 0.178411245, 0)
+        TextLabelMoon.Size = UDim2.new(0, 75, 0, 23)
+        TextLabelMoon.Font = Enum.Font.FredokaOne
+        TextLabelMoon.Text = "0/5"
+        TextLabelMoon.TextColor3 = Color3.fromRGB(209, 209, 16)
+        TextLabelMoon.TextScaled = true
+        TextLabelMoon.TextSize = 14.000
+        TextLabelMoon.TextWrapped = true
+        TextLabelMoon.TextXAlignment = Enum.TextXAlignment.Left
+    
+        spawn(function()
+            while wait() do
+                if game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
+                    TextLabelMoon.Text = "5/5"
+                elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149052" then
+                    TextLabelMoon.Text = "4/5"
+                elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709143733" then
+                    TextLabelMoon.Text = "3/5"
+                elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150086" then
+                    TextLabelMoon.Text = "3/5"
+                elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150401" then
+                    TextLabelMoon.Text = "2/5"
+                elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" then
+                    TextLabelMoon.Text = "1/5"
+                elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709139597" then
+                    TextLabelMoon.Text = "1/5"
+                else
+                    TextLabelMoon.Text = "0/5"
+                end
+            end
+        end)
+    
+        MainLabel.Name = "Main Label"
+        MainLabel.Parent = ScrollingFramePP
+        MainLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        MainLabel.BackgroundTransparency = 1.000
+        MainLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        MainLabel.BorderSizePixel = 0
+        MainLabel.Position = UDim2.new(0.0327736512, 0, 0.0355541073, 0)
+        MainLabel.Size = UDim2.new(0, 112, 0, 19)
+        MainLabel.Font = Enum.Font.FredokaOne
+        MainLabel.Text = "Check Moon"
+        MainLabel.TextColor3 = Color3.fromRGB(209, 209, 16)
+        MainLabel.TextScaled = true
+        MainLabel.TextSize = 14.000
+        MainLabel.TextWrapped = true
+    
+        MainLabel_2.Name = "Main Label"
+        MainLabel_2.Parent = ScrollingFramePP
+        MainLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        MainLabel_2.BackgroundTransparency = 1.000
+        MainLabel_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        MainLabel_2.BorderSizePixel = 0
+        MainLabel_2.Position = UDim2.new(0.536000013, 0, 0.0359999985, 0)
+        MainLabel_2.Size = UDim2.new(0, 112, 0, 38)
+        MainLabel_2.Font = Enum.Font.FredokaOne
+        MainLabel_2.Text = "Check Mirage IsLand"
+        MainLabel_2.TextColor3 = Color3.fromRGB(10, 209, 7)
+        MainLabel_2.TextScaled = true
+        MainLabel_2.TextSize = 14.000
+        MainLabel_2.TextWrapped = true
+    
+        TextLabelIsLand.Name = "TextLabelIsLand"
+        TextLabelIsLand.Parent = ScrollingFramePP
+        TextLabelIsLand.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        TextLabelIsLand.BackgroundTransparency = 1.000
+        TextLabelIsLand.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        TextLabelIsLand.BorderSizePixel = 0
+        TextLabelIsLand.Position = UDim2.new(0.697999983, 0, 0.178000003, 0)
+        TextLabelIsLand.Size = UDim2.new(0, 39, 0, 23)
+        TextLabelIsLand.Font = Enum.Font.FredokaOne
+        TextLabelIsLand.Text = "🔴"
+        TextLabelIsLand.TextColor3 = Color3.fromRGB(10, 209, 7)
+        TextLabelIsLand.TextScaled = true
+        TextLabelIsLand.TextSize = 14.000
+        TextLabelIsLand.TextWrapped = true
+        TextLabelIsLand.TextXAlignment = Enum.TextXAlignment.Left
+    
+        spawn(function()
+            while wait() do
+                if game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Mirage Island") then
+                    TextLabelIsLand.Text = "🟢"
+                else
+                    TextLabelIsLand.Text = "🔴"
+                end
+            end
+        end)
+    
+        LabelValueBone.Name = "Label Value Bone"
+        LabelValueBone.Parent = ScrollingFramePP
+        LabelValueBone.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        LabelValueBone.BackgroundTransparency = 1.000
+        LabelValueBone.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        LabelValueBone.BorderSizePixel = 0
+        LabelValueBone.Position = UDim2.new(0.00364963501, 0, 0.398416817, 0)
+        LabelValueBone.Size = UDim2.new(0, 92, 0, 18)
+        LabelValueBone.Font = Enum.Font.SourceSansBold
+        LabelValueBone.Text = "( Bone  )"
+        LabelValueBone.TextColor3 = Color3.fromRGB(94, 94, 94)
+        LabelValueBone.TextScaled = true
+        LabelValueBone.TextSize = 19.000
+        LabelValueBone.TextWrapped = true
+    
+        
+        ValueBone.Name = "ValueBone"
+        ValueBone.Parent = ScrollingFramePP
+        ValueBone.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        ValueBone.BackgroundTransparency = 1.000
+        ValueBone.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        ValueBone.BorderSizePixel = 0
+        ValueBone.Position = UDim2.new(0.063000001, 0, 0.479000002, 0)
+        ValueBone.Size = UDim2.new(0, 95, 0, 23)
+        ValueBone.Font = Enum.Font.SourceSansBold
+        ValueBone.Text = "Bone : 0"
+        ValueBone.TextColor3 = Color3.fromRGB(255, 102, 0)
+        ValueBone.TextScaled = true
+        ValueBone.TextSize = 19.000
+        ValueBone.TextWrapped = true
+        ValueBone.TextXAlignment = Enum.TextXAlignment.Left
+    
+        local function RunBone()
+            for i, v in pairs(game:GetService("ReplicatedStorage").Remotes['CommF_']:InvokeServer("getInventory")) do
+                if v.Type == "Material" then
+                    if v.Name == "Bones" then
+                        ValueBone.Text = "Bone : "..v.Count
+                    end
+                end
+            end
+        end
+    
+        spawn(function()
+            while wait() do
+                RunBone()
+            end
+        end)
+    
+        LabelBeli_2.Name = "Label Beli"
+        LabelBeli_2.Parent = ScrollingFramePP
+        LabelBeli_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        LabelBeli_2.BackgroundTransparency = 1.000
+        LabelBeli_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        LabelBeli_2.BorderSizePixel = 0
+        LabelBeli_2.Position = UDim2.new(-0.0182481743, 0, 0.295371413, 0)
+        LabelBeli_2.Size = UDim2.new(0, 273, 0, 21)
+        LabelBeli_2.Font = Enum.Font.SourceSansBold
+        LabelBeli_2.Text = "Time : "
+        LabelBeli_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+        LabelBeli_2.TextScaled = true
+        LabelBeli_2.TextSize = 19.000
+        LabelBeli_2.TextWrapped = true
+    
+        spawn(function()
+            while wait() do
+                LabelBeli_2.Text = "Time : "..os.date('%A, %B %d ')
+            end
+        end)
+    
+        LabelValueElite.Name = "Label Value Elite"
+        LabelValueElite.Parent = ScrollingFramePP
+        LabelValueElite.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        LabelValueElite.BackgroundTransparency = 1.000
+        LabelValueElite.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        LabelValueElite.BorderSizePixel = 0
+        LabelValueElite.Position = UDim2.new(0.569000006, 0, 0.398000002, 0)
+        LabelValueElite.Size = UDim2.new(0, 92, 0, 18)
+        LabelValueElite.Font = Enum.Font.SourceSansBold
+        LabelValueElite.Text = "( Total Elite Hunter  )"
+        LabelValueElite.TextColor3 = Color3.fromRGB(94, 94, 94)
+        LabelValueElite.TextScaled = true
+        LabelValueElite.TextSize = 19.000
+        LabelValueElite.TextWrapped = true
+    
+        ValueElite.Name = "ValueElite"
+        ValueElite.Parent = ScrollingFramePP
+        ValueElite.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        ValueElite.BackgroundTransparency = 1.000
+        ValueElite.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        ValueElite.BorderSizePixel = 0
+        ValueElite.Position = UDim2.new(0.565999985, 0, 0.479000002, 0)
+        ValueElite.Size = UDim2.new(0, 95, 0, 34)
+        ValueElite.Font = Enum.Font.SourceSansBold
+        ValueElite.Text = "Total Elite Hunter : 0"
+        ValueElite.TextColor3 = Color3.fromRGB(38, 190, 255)
+        ValueElite.TextScaled = true
+        ValueElite.TextSize = 19.000
+        ValueElite.TextWrapped = true
+        ValueElite.TextXAlignment = Enum.TextXAlignment.Left
+    
+        spawn(function()
+            while wait() do
+                ValueElite.Text = "Total Elite Hunter : "..game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("EliteHunter","Progress")
+            end
+        end)
+    
+        local Main555 = Instance.new("Frame")
+        local UICorner_12 = Instance.new("UICorner")
+        local PlayerFruit = Instance.new("Frame")
+        local UICorner_13 = Instance.new("UICorner")
+        local ScrollingFrame595 = Instance.new("ScrollingFrame")
+        local UIGridLayout = Instance.new("UIGridLayout")
+        local UIPadding = Instance.new("UIPadding")
+        local FruitStocks = Instance.new("TextLabel")
+        local PlayerSword = Instance.new("Frame")
+        local UICorner_14 = Instance.new("UICorner")
+        local ScrollingFrame5595 = Instance.new("ScrollingFrame")
+        local UIGridLayout_2 = Instance.new("UIGridLayout")
+        local UIPadding_2 = Instance.new("UIPadding")
+        local FruitSword = Instance.new("TextLabel")
+    
+        Main555.Name = "Main555"
+        Main555.Parent = PlayerStast
+        Main555.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+        Main555.BackgroundTransparency = 1.000
+        Main555.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        Main555.BorderSizePixel = 0
+        Main555.Position = UDim2.new(0.5555, 0, 0, 0)
+        Main555.Size = UDim2.new(0, 454, 0, 308)
+    
+        UICorner_12.Parent = Main555
+    
+        PlayerFruit.Name = "PlayerFruit"
+        PlayerFruit.Parent = Main555
+        PlayerFruit.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+        PlayerFruit.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        PlayerFruit.BorderSizePixel = 0
+        PlayerFruit.Position = UDim2.new(0.299559474, 0, 0, 0)
+        PlayerFruit.Size = UDim2.new(0, 318, 0, 308)
+    
+        UICorner_13.Parent = PlayerFruit
+    
+        ScrollingFrame595.Name = "ScrollingFrame595"
+        ScrollingFrame595.Parent = PlayerFruit
+        ScrollingFrame595.Active = true
+        ScrollingFrame595.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        ScrollingFrame595.BackgroundTransparency = 1.000
+        ScrollingFrame595.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        ScrollingFrame595.BorderSizePixel = 0
+        ScrollingFrame595.Position = UDim2.new(0.0754715055, 0, 0.117442541, 0)
+        ScrollingFrame595.Size = UDim2.new(0, 270, 0, 255)
+        ScrollingFrame595.ScrollBarThickness = 0
+    
+        spawn(function()
+            game:GetService("Players").LocalPlayer.PlayerGui.Main.FruitInventory.Visible = true
+            wait(0.2)
+            for _, Clone_1 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Main.FruitInventory.Container.Stored.ScrollingFrame:GetChildren()) do
+                if Clone_1:IsA("Frame") then
+                    local Clone_Fruit = Clone_1:Clone()
+                    
+                    Clone_Fruit.Parent = game:GetService("CoreGui"):WaitForChild("RobloxGui"):WaitForChild("Modules"):WaitForChild("Quarterly Hub").Main.PlayerStast.Main555.PlayerFruit.ScrollingFrame595
+                    Clone_Fruit.Position = UDim2.new(0,0,0,0)
+                end
+            end
+            game:GetService("Players").LocalPlayer.PlayerGui.Main.FruitInventory.Visible = false
+        end)
+    
+        UIGridLayout.Parent = ScrollingFrame595
+        UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
+        UIGridLayout.CellSize = UDim2.new(0, 100, 0, 90)
+    
+        UIPadding.Parent = ScrollingFrame595
+        UIPadding.PaddingTop = UDim.new(0, 5)
+    
+        FruitStocks.Name = "FruitStocks"
+        FruitStocks.Parent = PlayerFruit
+        FruitStocks.AnchorPoint = Vector2.new(0, 0.5)
+        FruitStocks.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        FruitStocks.BackgroundTransparency = 1.000
+        FruitStocks.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        FruitStocks.BorderSizePixel = 0
+        FruitStocks.Position = UDim2.new(-1.91934447e-07, 0, 0.0432646237, 0)
+        FruitStocks.Size = UDim2.new(0, 318, 0, 27)
+        FruitStocks.Font = Enum.Font.SourceSansBold
+        FruitStocks.Text = "Fruit Stocks"
+        FruitStocks.TextColor3 = Color3.fromRGB(115, 0, 255)
+        FruitStocks.TextScaled = true
+        FruitStocks.TextSize = 21.000
+        FruitStocks.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+        FruitStocks.TextWrapped = true
+    
+        PlayerSword.Name = "PlayerSword"
+        PlayerSword.Parent = Main555
+        PlayerSword.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+        PlayerSword.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        PlayerSword.BorderSizePixel = 0
+        PlayerSword.Position = UDim2.new(0.299559474, 0, 1.05000019, 0)
+        PlayerSword.Size = UDim2.new(0, 318, 0, 276)
+    
+        UICorner_14.Parent = PlayerSword
+    
+        ScrollingFrame5595.Name = "ScrollingFrame5595"
+        ScrollingFrame5595.Parent = PlayerSword
+        ScrollingFrame5595.Active = true
+        ScrollingFrame5595.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        ScrollingFrame5595.BackgroundTransparency = 1.000
+        ScrollingFrame5595.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        ScrollingFrame5595.BorderSizePixel = 0
+        ScrollingFrame5595.Position = UDim2.new(0.0754715055, 0, 0.117442541, 0)
+        ScrollingFrame5595.Size = UDim2.new(0, 270, 0, 225)
+        ScrollingFrame5595.ScrollBarThickness = 0
+    
+        UIGridLayout_2.Parent = ScrollingFrame5595
+        UIGridLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
+        UIGridLayout_2.CellSize = UDim2.new(0, 70, 0, 65)
+    
+        UIPadding_2.Parent = ScrollingFrame5595
+        UIPadding_2.PaddingLeft = UDim.new(0, 20)
+        UIPadding_2.PaddingTop = UDim.new(0, 5)
+    
+        local Ldwawfa = Instance.new("UIListLayout")
+        Ldwawfa.Parent = ScrollingFrame5595
+        Ldwawfa.SortOrder = Enum.SortOrder.LayoutOrder
+        Ldwawfa.Padding = UDim.new(5, 5)
+    
+        local Players = game:GetService("Players")
+        local CoreGui = game:GetService("CoreGui")
+    
+        local function processFrame(frame)
+            local background = frame:FindFirstChild("Background")
+            if background then
+                if background.BackgroundColor3 == Color3.fromRGB(238, 47, 50) then
+                    wait(0.05)
+                    local itemRed = frame:Clone()
+                    local playerStats = CoreGui:WaitForChild("RobloxGui"):WaitForChild("Modules"):WaitForChild("Quarterly Hub").Main.PlayerStast.Main555
+                    if not playerStats.PlayerSword.ScrollingFrame5595:FindFirstChild(frame.Name) then
+                        itemRed.Parent = playerStats.PlayerSword.ScrollingFrame5595
+                        itemRed.Position = UDim2.new(0, 0, 0, 0)
+                    end
+                elseif background.BackgroundColor3 == Color3.fromRGB(213, 43, 228) then
+                    wait(0.05)
+                    local itemPurple = frame:Clone()
+                    local playerStats = CoreGui:WaitForChild("RobloxGui"):WaitForChild("Modules"):WaitForChild("Quarterly Hub").Main.PlayerStast.Main555
+                    if not playerStats.PlayerSword.ScrollingFrame5595:FindFirstChild(frame.Name) then
+                        itemPurple.Parent = playerStats.PlayerSword.ScrollingFrame5595
+                        itemPurple.Position = UDim2.new(0, 0, 0, 0)
+                    end
+                end
+            end
+        end
+    
+        local function processInventory()
+            local localPlayer = Players.LocalPlayer
+            local mainGui = localPlayer.PlayerGui.Main
+            if mainGui then
+                local inventoryFrame = mainGui.InventoryContainer.Right.Content.ScrollingFrame.Frame
+                for _, frame in pairs(inventoryFrame:GetChildren()) do
+                    if frame:IsA("Frame") then
+                        processFrame(frame)
+                    end
+                end
+            end
+        end
+    
+        spawn(function()
+            while wait() do
+                processInventory()
+            end
+        end)
+    
+        FruitSword.Name = "FruitSword"
+        FruitSword.Parent = PlayerSword
+        FruitSword.AnchorPoint = Vector2.new(0, 0.5)
+        FruitSword.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        FruitSword.BackgroundTransparency = 1.000
+        FruitSword.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        FruitSword.BorderSizePixel = 0
+        FruitSword.Position = UDim2.new(-1.91934447e-07, 0, 0.0432646237, 0)
+        FruitSword.Size = UDim2.new(0, 318, 0, 27)
+        FruitSword.Font = Enum.Font.SourceSansBold
+        FruitSword.Text = "Items Stocks"
+        FruitSword.TextColor3 = Color3.fromRGB(56, 255, 222)
+        FruitSword.TextScaled = true
+        FruitSword.TextSize = 21.000
+        FruitSword.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+        FruitSword.TextWrapped = true
+    
+        local Button = "OFF"
+        local uitoggled = false
+        UserInputService.InputBegan:Connect(function(input)
+            if input.KeyCode == UIConfig.Bind then
+                if uitoggled == false then
+                    if Button == "On" then
+                        TweenService:Create(
+                            StatsPlayer_2,
+                            TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                            {Position = UDim2.new(0, 0, -6, 0)}
+                        ):Play()
+                        wait(0.2)
+                        TweenService:Create(
+                            StatsPlayer,
+                            TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                            {Position = UDim2.new(0, 0, -6, 0)}
+                        ):Play()
+                        wait(0.2)
+                        TweenService:Create(
+                            PlayerSword,
+                            TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                            {Position = UDim2.new(0, 0, 12, 0)}
+                        ):Play()
+                        wait(0.2)
+                        TweenService:Create(
+                            PlayerFruit,
+                            TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                            {Position = UDim2.new(0, 0, -6, 0)}
+                        ):Play()
+                        wait(0.2)
+                        TweenService:Create(
+                            PlayerStast,
+                            TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                            {Position = UDim2.new(1.00999999, 0, -1.5, 0)}
+                        ):Play()
+                        wait(0.1)
+                        TweenService:Create(
+                            Main,
+                            TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                            {Position = UDim2.new(0.3, 0, -1.5, 0)}
+                        ):Play()
+                    else
+                        TweenService:Create(
+                            Main,
+                            TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                            {Position = UDim2.new(0.5, 0, -1.5, 0)}
+                        ):Play()
+                    end
+                    uitoggled = true
+                else
+                    if Button == "On" then
+                        TweenService:Create(
+                            Main,
+                            TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                            {Position = UDim2.new(0.3, 0, 0.5, 0)}
+                        ):Play()
+                        TweenService:Create(
+                            PlayerStast,
+                            TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                            {Position = UDim2.new(1.00999999, 0, 0, 0)}
+                        ):Play()
+                        wait(0.2)
+                        TweenService:Create(
+                            PlayerFruit,
+                            TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                            {Position = UDim2.new(0.299559474, 0, 0, 0)}
+                        ):Play()
+                        wait(0.2)
+                        TweenService:Create(
+                            PlayerSword,
+                            TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                            {Position = UDim2.new(0.299559474, 0, 1.05000019, 0)}
+                        ):Play()
+                        wait(0.2)
+                        TweenService:Create(
+                            StatsPlayer,
+                            TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                            {Position = UDim2.new(0, 0, 1.05000007, 0)}
+                        ):Play()
+                        wait(0.2)
+                        TweenService:Create(
+                            StatsPlayer_2,
+                            TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                            {Position = UDim2.new(-0.00366300368, 0, 2.1962564, 0)}
+                        ):Play()
+                    else
+                        TweenService:Create(
+                            Main,
+                            TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                            {Position = UDim2.new(0.5, 0, 0.5, 0)}
+                        ):Play()
+                    end
+                    
+                    uitoggled = false
+                end
+                return
+            end
+        end)
+    
         local MainTop = Instance.new("Frame")
         local UICorner_7 = Instance.new("UICorner")
         local Hub_2 = Instance.new("TextLabel")
@@ -698,7 +1461,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
         MainTop.BorderColor3 = Color3.fromRGB(0, 0, 0)
         MainTop.BorderSizePixel = 0
         MainTop.Position = UDim2.new(0.5, 0, 0.257999986, 0)
-        MainTop.Size = UDim2.new(0, 560, 0, 217)--56
+        MainTop.Size = UDim2.new(0, 560, 0, 217)
     
         UICorner_7.Parent = MainTop
     
@@ -719,6 +1482,168 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
         Hub_2.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
         Hub_2.TextWrapped = true
         Hub_2.TextXAlignment = Enum.TextXAlignment.Left
+    
+        Name_2.Name = "Name"
+        Name_2.Parent = MainTop
+        Name_2.AnchorPoint = Vector2.new(0, 0.5)
+        Name_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Name_2.BackgroundTransparency = 1.000
+        Name_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        Name_2.BorderSizePixel = 0
+        Name_2.Position = UDim2.new(0.128928587, 0, 0.21421659, 0)
+        Name_2.Size = UDim2.new(0, 166, 0, 35)
+        Name_2.Font = Enum.Font.SourceSansBold
+        Name_2.Text = "Quarterly"
+        Name_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+        Name_2.TextScaled = true
+        Name_2.TextSize = 21.000
+        Name_2.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+        Name_2.TextWrapped = true
+        Name_2.TextXAlignment = Enum.TextXAlignment.Left
+    
+        LogoBackground.Name = "LogoBackground"
+        LogoBackground.Parent = MainTop
+        LogoBackground.AnchorPoint = Vector2.new(0, 0.5)
+        LogoBackground.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        LogoBackground.BackgroundTransparency = 1.000
+        LogoBackground.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        LogoBackground.BorderSizePixel = 0
+        LogoBackground.Position = UDim2.new(0.526309848, 20, 0.49480328, 0)
+        LogoBackground.Size = UDim2.new(0, 235, 0, 235)
+        LogoBackground.Image = "rbxassetid://14572696504"
+        LogoBackground.ImageColor3 = Color3.fromRGB(0, 0, 30)
+    
+        _Label.Name = "_Label"
+        _Label.Parent = MainTop
+        _Label.BackgroundColor3 = Color3.fromRGB(0, 132, 255)
+        _Label.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        _Label.BorderSizePixel = 0
+        _Label.Position = UDim2.new(0.10535714, 0, 0.302765042, 0)
+        _Label.Size = UDim2.new(0, 204, 0, 5)
+    
+        UICorner_8.Parent = _Label
+    
+        Logo.Name = "Logo"
+        Logo.Parent = MainTop
+        Logo.AnchorPoint = Vector2.new(0, 0.5)
+        Logo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Logo.BackgroundTransparency = 1.000
+        Logo.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        Logo.BorderSizePixel = 0
+        Logo.Position = UDim2.new(0.567381263, 20, 0.49751696, 0)
+        Logo.Size = UDim2.new(0, 188, 0, 194)
+        Logo.Image = "rbxassetid://14572696504"
+        Logo.ImageColor3 = Color3.fromRGB(154, 154, 154)
+    
+        Name_3.Name = "Name"
+        Name_3.Parent = MainTop
+        Name_3.AnchorPoint = Vector2.new(0, 0.5)
+        Name_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Name_3.BackgroundTransparency = 1.000
+        Name_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        Name_3.BorderSizePixel = 0
+        Name_3.Position = UDim2.new(0.128928587, 0, 0.416981578, 0)
+        Name_3.Size = UDim2.new(0, 166, 0, 19)
+        Name_3.Font = Enum.Font.SourceSansBold
+        Name_3.Text = "Premium Script PC"
+        Name_3.TextColor3 = Color3.fromRGB(255, 255, 255)
+        Name_3.TextScaled = true
+        Name_3.TextSize = 21.000
+        Name_3.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+        Name_3.TextWrapped = true
+    
+        TextButton.Parent = MainTop
+        TextButton.BackgroundColor3 = Color3.fromRGB(0, 132, 255)
+        TextButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        TextButton.BorderSizePixel = 0
+        TextButton.Position = UDim2.new(0.0982142836, 0, 0.54838711, 0)
+        TextButton.Size = UDim2.new(0, 208, 0, 31)
+        TextButton.Font = Enum.Font.SourceSansBold
+        TextButton.Text = "Player Ui Stast : On"
+        TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+        TextButton.TextSize = 19.000
+        TextButton.TextWrapped = true
+    
+        TextButton.MouseButton1Click:Connect(function()
+            if Button == "On" then
+                TextButton.Text = "Player Ui Stast : OFF"
+                TweenService:Create(
+                    StatsPlayer_2,
+                    TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                    {Position = UDim2.new(0, 0, -6, 0)}
+                ):Play()
+                wait(0.2)
+                TweenService:Create(
+                    StatsPlayer,
+                    TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                    {Position = UDim2.new(0, 0, -6, 0)}
+                ):Play()
+                wait(0.2)
+                TweenService:Create(
+                    PlayerSword,
+                    TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                    {Position = UDim2.new(0, 0, 12, 0)}
+                ):Play()
+                wait(0.2)
+                TweenService:Create(
+                    PlayerFruit,
+                    TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                    {Position = UDim2.new(0, 0, -6, 0)}
+                ):Play()
+                wait(0.2)
+                TweenService:Create(
+                    PlayerStast,
+                    TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                    {Position = UDim2.new(1.00999999, 0, -1.5, 0)}
+                ):Play()
+                TweenService:Create(
+                    Main,
+                    TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                    {Position = UDim2.new(0.5, 0, 0.5, 0)}
+                ):Play()
+                wait(0.5)
+                Button = "OFF"
+            else
+                TextButton.Text = "Player Ui Stast : On"
+                TweenService:Create(
+                    Main,
+                    TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                    {Position = UDim2.new(0.3, 0, 0.5, 0)}
+                ):Play()
+                TweenService:Create(
+                    PlayerStast,
+                    TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                    {Position = UDim2.new(1.00999999, 0, 0, 0)}
+                ):Play()
+                wait(0.2)
+                TweenService:Create(
+                    PlayerFruit,
+                    TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                    {Position = UDim2.new(0.299559474, 0, 0, 0)}
+                ):Play()
+                wait(0.2)
+                TweenService:Create(
+                    PlayerSword,
+                    TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                    {Position = UDim2.new(0.299559474, 0, 1.05000019, 0)}
+                ):Play()
+                wait(0.2)
+                TweenService:Create(
+                    StatsPlayer,
+                    TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                    {Position = UDim2.new(0, 0, 1.05000007, 0)}
+                ):Play()
+                wait(0.2)
+                TweenService:Create(
+                    StatsPlayer_2,
+                    TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+                    {Position = UDim2.new(-0.00366300368, 0, 2.1962564, 0)}
+                ):Play()
+                wait(0.5)
+                Button = "On"
+            end
+            return
+        end)
     
         UICorner_9.Parent = TextButton
     
