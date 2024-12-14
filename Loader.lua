@@ -987,7 +987,7 @@ function Library:CreateWindow(a)
 	Credit.Name = "Credit"
 
 	UICorner2.Parent = Credit
-	UICorner2.CornerRadius = UDim.new(0, 20)
+	UICorner2.CornerRadius = UDim.new(0, 1)
 
 	UIStroke.Parent = Credit
 	UIStroke.Transparency = 0.6
