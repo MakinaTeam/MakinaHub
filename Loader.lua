@@ -981,13 +981,13 @@ function Library:CreateWindow(a)
 	Credit.Parent = BackGround
 	Credit.BorderSizePixel = 0
 	Credit.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Credit.Size = UDim2.new(0, 250, 0, 43)
+	Credit.Size = UDim2.new(0, 217, 0, 43)
 	Credit.Position = UDim2.new(0.38737, 0, 0.05667, 0)
 	Credit.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	Credit.Name = "Credit"
 
 	UICorner2.Parent = Credit
-	UICorner2.CornerRadius = UDim.new(0, 9)
+	UICorner2.CornerRadius = UDim.new(0, 20)
 
 	UIStroke.Parent = Credit
 	UIStroke.Transparency = 0.6
