@@ -961,7 +961,7 @@ function Library:CreateWindow(a)
 	end)
 
 	UICorner.Parent = BackGround
-	UICorner.CornerRadius = UDim.new(0, 20)
+	UICorner.CornerRadius = UDim.new(0, 9)
 
 	local Credit = Instance.new("Frame")
 	local UICorner2 = Instance.new("UICorner")
@@ -1033,7 +1033,7 @@ function Library:CreateWindow(a)
 	TabList["BorderSizePixel"] = 0
 	TabList["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
 	TabList["Size"] = UDim2.new(0, 54, 0, 222)
-	TabList["Position"] = UDim2.new(0.17647, 0, 0.13, 0)
+	TabList["Position"] = UDim2.new(0.41935, 0, 0.30233, 0)
 	TabList["BorderColor3"] = Color3.fromRGB(0, 0, 0)
 	TabList["Name"] = [[TabList]]
 	TabList["BackgroundTransparency"] = 1
