@@ -961,7 +961,7 @@ function Library:CreateWindow(a)
 	end)
 
 	UICorner.Parent = BackGround
-	UICorner.CornerRadius = UDim.new(0, 9)
+	UICorner.CornerRadius = UDim.new(0, 20)
 
 	local Credit = Instance.new("Frame")
 	local UICorner2 = Instance.new("UICorner")
