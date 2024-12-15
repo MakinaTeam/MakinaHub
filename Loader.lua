@@ -1305,7 +1305,7 @@ function Library:CreateWindow(a)
 		IconPageL["Position"] = UDim2.new(0.5, 0, 0.3, 0)
 
 		TitlePageL["Parent"] = SectionFrame
-		TitlePageL["TextWrapped"] = true
+		TitlePageL["TextWrapped"] = false
 		TitlePageL["BorderSizePixel"] = 0
 		TitlePageL["TextXAlignment"] = Enum.TextXAlignment.Left
 		TitlePageL["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
