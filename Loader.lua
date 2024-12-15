@@ -981,8 +981,8 @@ function Library:CreateWindow(a)
 	Credit.Parent = BackGround
 	Credit.BorderSizePixel = 0
 	Credit.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Credit.Size = UDim2.new(90, 217, 0, 43)
-	Credit.Position = UDim2.new(0.38737, 0, 0.05667, 0)
+	Credit.Size = UDim2.new(20, 217, 0, 43)
+	Credit.Position = UDim2.new(0.22105, 0, 0.05667, 0)
 	Credit.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	Credit.Name = "Credit"
 
@@ -1011,79 +1011,6 @@ function Library:CreateWindow(a)
 	CreditText.Name = "CreditText"
 	CreditText.Position = UDim2.new(0.41935, 0, 0.30233, 0)
    CreditText.TextXAlignment = Enum.TextXAlignment.Left
-
-	local TimeMark = Instance.new("Frame")
-	local UICorner3 = Instance.new("UICorner")
-	local UIStroke2 = Instance.new("UIStroke")
-	local Text = Instance.new("TextLabel")
-	local Des = Instance.new("TextLabel")
-	local Icon = Instance.new("ImageLabel")
-
-	TimeMark.Parent = BackGround
-	TimeMark.BorderSizePixel = 0
-	TimeMark.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	TimeMark.Size = UDim2.new(0, 67, 0, 43)
-	TimeMark.Position = UDim2.new(0.22105, 0, 0.05667, 0)
-	TimeMark.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	TimeMark.Name = "TimeMark"
-
-	UICorner3["Parent"] = TimeMark
-	UICorner3["CornerRadius"] = UDim.new(0, 9)
-
-	UIStroke2["Parent"] = TimeMark
-	UIStroke2["Transparency"] = 0.6
-	UIStroke2["Color"] = Color3.fromRGB(223, 223, 223)
-
-	Text["Parent"] = TimeMark
-	Text["BorderSizePixel"] = 0
-	Text["TextXAlignment"] = Enum.TextXAlignment.Left
-	Text["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
-	Text["TextSize"] = 10
-	Text["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-	Text["TextColor3"] = Color3.fromRGB(0, 0, 0)
-	Text["BackgroundTransparency"] = 1
-	Text["Size"] = UDim2.new(0, 53, 0, 17)
-	Text["BorderColor3"] = Color3.fromRGB(0, 0, 0)
-	Text["Text"] = [[     Time]]
-	Text["Name"] = [[Text]]
-	Text["Position"] = UDim2.new(0.10931, 0, 0.12766, 0)
-
-	Des["Parent"] = TimeMark
-	Des["BorderSizePixel"] = 0
-	Des["TextTransparency"] = 0.5
-	Des["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
-	Des["TextSize"] = 12
-	Des["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-	Des["TextColor3"] = Color3.fromRGB(0, 0, 0)
-	Des["BackgroundTransparency"] = 1
-	Des["Size"] = UDim2.new(0, 43, 0, 11)
-	Des["BorderColor3"] = Color3.fromRGB(0, 0, 0)
-	Des["Text"] = [[00:00:00]]
-	Des["Name"] = [[Des]]
-	Des["Position"] = UDim2.new(0.23262, 0, 0.5218, 0)
-
-	task.defer(function()
-		while wait(.5) do
-			pcall(function()
-				local scripttime = game.Workspace.DistributedGameTime
-				local seconds = scripttime%60
-				local minutes = math.floor(scripttime/60%60)
-				local hours = math.floor(scripttime/3600)
-				local tempo = string.format("%02d:%02d:%02d", hours ,minutes, seconds)
-				Des["Text"] = tostring(tempo)
-			end)
-		end
-	end)
-
-
-	Icon["Parent"] = TimeMark
-	Icon["ImageTransparency"] = 0.5
-	Icon["ImageColor3"] = Color3.fromRGB(0, 0, 0)
-	Icon["Image"] = [[rbxassetid://]]
-	Icon["Size"] = UDim2.new(0, 9, 0, 9)
-	Icon["BackgroundTransparency"] = 1
-	Icon["Name"] = [[Selected: timer_enabled]]
-	Icon["Position"] = UDim2.new(0.1028, 0, 0.55814, 0)
 
 	local Discord = Instance.new("Frame")
 	local UICorner4 = Instance.new("UICorner")
