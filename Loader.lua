@@ -1314,12 +1314,12 @@ function Library:CreateWindow(a)
 		TitlePageL["TextColor3"] = Color3.fromRGB(0, 0, 0)
 		TitlePageL["BackgroundTransparency"] = 1
 		TitlePageL["AnchorPoint"] = Vector2.new(0.5, 0.5)
-		TitlePageL["Size"] = UDim2.new(0, 1, 0, 40)
+		TitlePageL["Size"] = UDim2.new(0, 15, 0, 15)
 		TitlePageL["BorderColor3"] = Color3.fromRGB(0, 0, 0)
 		TitlePageL["Text"] = a.Page.Left.Name
 		TitlePageL["LayoutOrder"] = 1
 		TitlePageL["Name"] = [[Title]]
-		TitlePageL["Position"] = UDim2.new(0.5, 0, 0.15, 0)
+		TitlePageL["Position"] = UDim2.new(0.5, 0, 0.7, 0)
 
 		UnderScore["Parent"] = PageL
 		UnderScore["BorderSizePixel"] = 0
@@ -1401,7 +1401,7 @@ function Library:CreateWindow(a)
 		TitlePageR["TextColor3"] = Color3.fromRGB(0, 0, 0)
 		TitlePageR["BackgroundTransparency"] = 1
 		TitlePageR["AnchorPoint"] = Vector2.new(0.5, 0.5)
-		TitlePageR["Size"] = UDim2.new(0, 10, 0, 10)
+		TitlePageR["Size"] = UDim2.new(0, 40, 0, 15)
 		TitlePageR["BorderColor3"] = Color3.fromRGB(0, 0, 0)
 		TitlePageR["Text"] = a.Page.Right.Name
 		TitlePageR["LayoutOrder"] = 1
