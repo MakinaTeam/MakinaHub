@@ -1313,13 +1313,13 @@ function Library:CreateWindow(a)
 		TitlePageL["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
 		TitlePageL["TextColor3"] = Color3.fromRGB(0, 0, 0)
 		TitlePageL["BackgroundTransparency"] = 1
-		TitlePageL["AnchorPoint"] = Vector2.new(1, 1)
-		TitlePageL["Size"] = UDim2.new(0, 40, 0, 30)
+		TitlePageL["AnchorPoint"] = Vector2.new(0.5, 0.5)
+		TitlePageL["Size"] = UDim2.new(0, 94, 0, 30)
 		TitlePageL["BorderColor3"] = Color3.fromRGB(0, 0, 0)
 		TitlePageL["Text"] = a.Page.Left.Name
 		TitlePageL["LayoutOrder"] = 1
 		TitlePageL["Name"] = [[Title]]
-		TitlePageL["Position"] = UDim2.new(2, 0, 2, 0)
+		TitlePageL["Position"] = UDim2.new(0.5, 0, 0.7, 0)
 
 		UnderScore["Parent"] = PageL
 		UnderScore["BorderSizePixel"] = 0
@@ -1392,7 +1392,7 @@ function Library:CreateWindow(a)
 		IconPageR["Position"] = UDim2.new(0.5, 0, 0.3, 0)
 
 		TitlePageR["Parent"] = SectionFrame2
-		TitlePageR["TextWrapped"] = true
+		TitlePageR["TextWrapped"] = false
 		TitlePageR["BorderSizePixel"] = 0
 		TitlePageR["TextXAlignment"] = Enum.TextXAlignment.Left
 		TitlePageR["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
@@ -1401,7 +1401,7 @@ function Library:CreateWindow(a)
 		TitlePageR["TextColor3"] = Color3.fromRGB(0, 0, 0)
 		TitlePageR["BackgroundTransparency"] = 1
 		TitlePageR["AnchorPoint"] = Vector2.new(0.5, 0.5)
-		TitlePageR["Size"] = UDim2.new(0, 40, 0, 15)
+		TitlePageR["Size"] = UDim2.new(0, 94, 0, 30)
 		TitlePageR["BorderColor3"] = Color3.fromRGB(0, 0, 0)
 		TitlePageR["Text"] = a.Page.Right.Name
 		TitlePageR["LayoutOrder"] = 1
@@ -1447,20 +1447,20 @@ function Library:CreateWindow(a)
 		ScrollingFrame1["BorderSizePixel"] = 0
 		ScrollingFrame1["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
 		ScrollingFrame1["Size"] = UDim2.new(1, 0, 1, 0)
-		ScrollingFrame1["ScrollBarImageColor3"] = Color3.fromRGB(0, 100, 255)
+		ScrollingFrame1["ScrollBarImageColor3"] = Color3.fromRGB(255, 0, 127)
 		ScrollingFrame1["BorderColor3"] = Color3.fromRGB(0, 0, 0)
 		ScrollingFrame1["ScrollBarThickness"] = 3
-		ScrollingFrame1["BackgroundTransparency"] = 1
+		ScrollingFrame1["BackgroundTransparency"] = 0
 
 		ScrollingFrame2["Parent"] = SectionList2
 		ScrollingFrame2["Active"] = true
 		ScrollingFrame2["BorderSizePixel"] = 0
 		ScrollingFrame2["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
 		ScrollingFrame2["Size"] = UDim2.new(1, 0, 1, 0)
-		ScrollingFrame2["ScrollBarImageColor3"] = Color3.fromRGB(0, 100, 255)
+		ScrollingFrame2["ScrollBarImageColor3"] = Color3.fromRGB(255, 0, 127)
 		ScrollingFrame2["BorderColor3"] = Color3.fromRGB(0, 0, 0)
 		ScrollingFrame2["ScrollBarThickness"] = 3
-		ScrollingFrame2["BackgroundTransparency"] = 1
+		ScrollingFrame2["BackgroundTransparency"] = 0
 
 		UIListLayout5["Parent"] = ScrollingFrame1
 		UIListLayout5["HorizontalAlignment"] = Enum.HorizontalAlignment.Center
@@ -1492,7 +1492,7 @@ function Library:CreateWindow(a)
 			Tw:Create(TitleTab ,Tf ,{TextTransparency = 0}):Play()
 			Tw:Create(tick1 ,Tf ,{BackgroundTransparency = 0}):Play()
 			Tw:Create(IconTab ,Tf ,{ImageTransparency = 0}):Play()
-			Tw:Create(tick1 ,Tf ,{BackgroundColor3 = Color3.fromRGB(0, 102, 255)}):Play()
+			Tw:Create(tick1 ,Tf ,{BackgroundColor3 = Color3.fromRGB(255, 0, 127)}):Play()
 			Page["Visible"] = true
 			Tw:Create(Page ,Tf2 ,{Position = UDim2.new(0.22105, 0, 0.24667, 0)}):Play()
 		end)
@@ -1502,7 +1502,7 @@ function Library:CreateWindow(a)
 				Tw:Create(TitleTab ,Tf ,{TextTransparency = 0}):Play()
 				Tw:Create(tick1 ,Tf ,{BackgroundTransparency = 0}):Play()
 				Tw:Create(IconTab ,Tf ,{ImageTransparency = 0}):Play()
-				Tw:Create(tick1 ,Tf ,{BackgroundColor3 = Color3.fromRGB(0, 102, 255)}):Play()
+				Tw:Create(tick1 ,Tf ,{BackgroundColor3 = Color3.fromRGB(255, 0, 127)}):Play()
 				Page["Visible"] = true
 				Library.Page.Value = true
 				Tw:Create(Page ,Tf2 ,{Position = UDim2.new(0.22105, 0, 0.24667, 0)}):Play()
@@ -1711,7 +1711,7 @@ function Library:CreateWindow(a)
 					TweenToggle(O, UDim2.new(0.28, 0, 0.5, 0))
 				elseif bool then 
 					Callback(bool)
-					O["BackgroundColor3"] = Color3.fromRGB(0, 102, 255)
+					O["BackgroundColor3"] = Color3.fromRGB(255, 0, 127)
 					TweenToggle(O, UDim2.new(0.7, 0, 0.5, 0))
 				end
 			end
@@ -1720,7 +1720,7 @@ function Library:CreateWindow(a)
 				bool = not bool 
 				if bool then
 					Callback(bool)
-					O["BackgroundColor3"] = Color3.fromRGB(0, 102, 255)
+					O["BackgroundColor3"] = Color3.fromRGB(255, 0, 127)
 					TweenToggle(O, UDim2.new(0.7, 0, 0.5, 0))
 				elseif not bool then
 					Callback(bool)
@@ -1790,7 +1790,7 @@ function Library:CreateWindow(a)
 
 			Buttons["c0"] = Instance.new("Frame", Buttons["bb"])
 			Buttons["c0"]["BorderSizePixel"] = 0
-			Buttons["c0"]["BackgroundColor3"] = Color3.fromRGB(0, 102, 255)
+			Buttons["c0"]["BackgroundColor3"] = Color3.fromRGB(255, 0, 127)
 			Buttons["c0"]["AnchorPoint"] = Vector2.new(0.5, 0.5)
 			Buttons["c0"]["Size"] = UDim2.new(0.3, 0, 0.35, 0)
 			Buttons["c0"]["Position"] = UDim2.new(0.77715, 0, 0.5, 0)
@@ -1870,7 +1870,7 @@ function Library:CreateWindow(a)
 			TextLabelC["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
 			TextLabelC["TextSize"] = 14
 			TextLabelC["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-			TextLabelC["TextColor3"] = Color3.fromRGB(0, 102, 255)
+			TextLabelC["TextColor3"] = Color3.fromRGB(255, 0, 127)
 			TextLabelC["BackgroundTransparency"] = 1
 			TextLabelC["AnchorPoint"] = Vector2.new(0.5, 0.5)
 			TextLabelC["Size"] = UDim2.new(1, 0, 1, 0)
@@ -2082,7 +2082,7 @@ function Library:CreateWindow(a)
 
 			Sliders["ab"] = Instance.new("Frame", Sliders["a8"])
 			Sliders["ab"]["BorderSizePixel"] = 0
-			Sliders["ab"]["BackgroundColor3"] = Color3.fromRGB(0, 102, 255)
+			Sliders["ab"]["BackgroundColor3"] = Color3.fromRGB(255, 0, 127)
 			Sliders["ab"]["Size"] = UDim2.new(0.5, 0, 1, 0)
 			Sliders["ab"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
 			Sliders["ab"]["Name"] = [[BarValue]]
@@ -2298,11 +2298,11 @@ function Library:CreateWindow(a)
 			CONTAINER["BorderSizePixel"] = 0
 			CONTAINER["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
 			CONTAINER["Size"] = UDim2.new(1, 0, 0.95488, 0)
-			CONTAINER["ScrollBarImageColor3"] = Color3.fromRGB(0, 100, 255)
+			CONTAINER["ScrollBarImageColor3"] = Color3.fromRGB(255, 0, 127)
 			CONTAINER["Position"] = UDim2.new(0, 0, 0.04512, 0)
 			CONTAINER["BorderColor3"] = Color3.fromRGB(0, 0, 0)
 			CONTAINER["ScrollBarThickness"] = 3
-			CONTAINER["BackgroundTransparency"] = 1
+			CONTAINER["BackgroundTransparency"] = 0
 
 			local DropdownDes = Instance.new("TextLabel", Dropdowns["39"])
 			DropdownDes["BorderSizePixel"] = 0
@@ -2439,7 +2439,7 @@ function Library:CreateWindow(a)
 							selectedItems[index] = nil
 						else
 							selectedItems[index] = item
-							item["46"].BackgroundColor3 = Color3.fromRGB(0, 102, 255)
+							item["46"].BackgroundColor3 = Color3.fromRGB(255, 0, 127)
 							item["46"].BackgroundTransparency = 0
 						end
 
@@ -2459,14 +2459,14 @@ function Library:CreateWindow(a)
 						Dropdowns["ba"]["Text"] = text
 						callback(text)
 
-						item["46"].BackgroundColor3 = Color3.fromRGB(0, 102, 255)
+						item["46"].BackgroundColor3 = Color3.fromRGB(255, 0, 127)
 						item["46"].BackgroundTransparency = 0
 					end
 				end)
 
 				if text == value then
 					selectedItem = item
-					item["46"].BackgroundColor3 = Color3.fromRGB(0, 102, 255)
+					item["46"].BackgroundColor3 = Color3.fromRGB(255, 0, 127)
 					item["46"].BackgroundTransparency = 0
 				end
 
@@ -2753,7 +2753,7 @@ function Library:Notify(a)
 
 	local timeBar = Instance.new("Frame", notify)
 	timeBar["BorderSizePixel"] = 0
-	timeBar["BackgroundColor3"] = Color3.fromRGB(0, 102, 255)
+	timeBar["BackgroundColor3"] = Color3.fromRGB(255, 0, 127)
 	timeBar["AnchorPoint"] = Vector2.new(0, 0.5)
 	timeBar["Size"] = UDim2.new(1, 0, 0, 3)
 	timeBar["Position"] = UDim2.new(0, 0, 0.9625, 0)
@@ -2800,6 +2800,6 @@ function Library:Notify(a)
 		TweenS(timeBar, UDim2.new(0, 0, 0, 3))
 		Time = 0
 	end)
-end
+end 
 
 return Library
