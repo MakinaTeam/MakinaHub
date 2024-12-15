@@ -1313,7 +1313,7 @@ function Library:CreateWindow(a)
 		TitlePageL["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
 		TitlePageL["TextColor3"] = Color3.fromRGB(0, 0, 0)
 		TitlePageL["BackgroundTransparency"] = 1
-		TitlePageL["AnchorPoint"] = Vector2.new(0.5, 0.5)
+		TitlePageL["AnchorPoint"] = Vector2.new(0.2, 0.2)
 		TitlePageL["Size"] = UDim2.new(0, 40, 0, 30)
 		TitlePageL["BorderColor3"] = Color3.fromRGB(0, 0, 0)
 		TitlePageL["Text"] = a.Page.Left.Name
