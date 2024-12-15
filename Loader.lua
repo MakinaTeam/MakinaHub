@@ -981,7 +981,7 @@ function Library:CreateWindow(a)
 	Credit.Parent = BackGround
 	Credit.BorderSizePixel = 0
 	Credit.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Credit.Size = UDim2.new(5, 217, 0, 43)
+	Credit.Size = UDim2.new(1, 217, 0, 43)
 	Credit.Position = UDim2.new(0.22105, 0, 0.05667, 0)
 	Credit.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	Credit.Name = "Credit"
