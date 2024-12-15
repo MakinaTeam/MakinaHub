@@ -1401,7 +1401,7 @@ function Library:CreateWindow(a)
 		TitlePageR["TextColor3"] = Color3.fromRGB(0, 0, 0)
 		TitlePageR["BackgroundTransparency"] = 1
 		TitlePageR["AnchorPoint"] = Vector2.new(0.5, 0.5)
-		TitlePageR["Size"] = UDim2.new(0, 10, 0, 30)
+		TitlePageR["Size"] = UDim2.new(0, 10, 0, 10)
 		TitlePageR["BorderColor3"] = Color3.fromRGB(0, 0, 0)
 		TitlePageR["Text"] = a.Page.Right.Name
 		TitlePageR["LayoutOrder"] = 1
