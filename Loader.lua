@@ -1319,7 +1319,7 @@ function Library:CreateWindow(a)
 		TitlePageL["Text"] = a.Page.Left.Name
 		TitlePageL["LayoutOrder"] = 1
 		TitlePageL["Name"] = [[Title]]
-		TitlePageL["Position"] = UDim2.new(0.5, 0, 0.2, 0)
+		TitlePageL["Position"] = UDim2.new(2, 0, 0.2, 0)
 
 		UnderScore["Parent"] = PageL
 		UnderScore["BorderSizePixel"] = 0
