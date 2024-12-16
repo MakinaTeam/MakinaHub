@@ -831,6 +831,42 @@ if game.Players.LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("Patinum") 
 	game.Players.LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("Patinum"):Destroy()
 end
 
+local ScreenGui = Instance.new("ScreenGui")
+local ImageButton = Instance.new("ImageButton")
+local UICorner = Instance.new("UICorner")
+local ClickSound = Instance.new("Sound")
+
+ScreenGui.Name = "ImageButton"
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+ImageButton.Parent = ScreenGui
+ImageButton.BackgroundColor3 = Color3.fromRGB(255, 182, 193)  -- 
+ImageButton.BorderSizePixel = 10  -- ขอบของปุ่ม
+ImageButton.BorderColor3 = Color3.fromRGB(255, 182, 193)  -- 
+ImageButton.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
+ImageButton.Size = UDim2.new(0, 55, 0, 55)  
+ImageButton.Draggable = true
+ImageButton.Image = "rbxassetid://87567481752287"
+
+UICorner.Parent = ImageButton
+UICorner.CornerRadius = UDim.new(1, 0)  -- ทำให้ปุ่มเป็นวงกลม
+
+ClickSound.Parent = ImageButton
+ClickSound.SoundId = "rbxassetid://130785805"
+ClickSound.Volume = 1
+
+local function playClickAnimation()
+    local originalSize = ImageButton.Size
+    local TweenSizeUp = TweenService:Create(ImageButton, TweenInfo.new(0.1), {Size = UDim2.new(0, 55, 0, 55)})
+    local TweenSizeDown = TweenService:Create(ImageButton, TweenInfo.new(0.1), {Size = originalSize})
+
+    TweenSizeUp:Play()
+    TweenSizeUp.Completed:Connect(function()
+        TweenSizeDown:Play()
+    end)
+end
+
 Patinum.Parent = game.CoreGui
 Patinum.Name = "Patinum"
 Patinum.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
