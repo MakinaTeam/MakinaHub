@@ -911,6 +911,15 @@ function Library:CreateWindow(a)
 
 	OpenUI()
 
+ImageButton.MouseButton1Down:Connect(function()
+    ClickSound:Play()    
+    playClickAnimation()    
+    		if BackGround.Visible then
+			BackGround.Visible = false
+		else
+			BackGround.Visible = true
+		end
+end)
 
 	CloseUIClick_1.MouseButton1Click:Connect(function()
 		if BackGround.Visible then
